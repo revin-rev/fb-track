@@ -238,6 +238,8 @@ $(document).ready(function(){
 
 	/*Campaigns checkbox*/
 	$('.campaigns_checkbox').click(function() {
+		$('#ads-full-details').hide();
+		var data = camapaigns;
 		if(!$(this).is(':checked')) {
 			$('.all_camapaign_checkbox').prop('checked',false);
 		}
@@ -252,7 +254,7 @@ $(document).ready(function(){
 			$('.right-fix-drawer-outr span.camapaign_name').text(cmp_name);
 			$('#camapaign_selected span').text(checked_count);
 			$('#camapaign_selected').show();
-			$('.camapaign-details-list').hide();
+			//$('.camapaign-details-list').hide();
 			$('.dummy_text').text('Campaign');
 			if(checked_count > 1) {
 				$('#cmp_mixed').show();
@@ -262,7 +264,7 @@ $(document).ready(function(){
 				$('.total_ads_count').text($('#ad_table tbody .ad_rows').length);
 				$('.right-fix-drawer-outr span.camapaign_name,.dummy_text').hide();
 			} else {
-				$('#cmp_'+cmp_id).show();
+				var newData = _.find(data, function(o) { return o.id == cmp_id;  });
 				$('.mixed_value').hide();
 				$('.right-fix-drawer-outr span.camapaign_name,.dummy_text').show();
 			}
@@ -306,7 +308,7 @@ $(document).ready(function(){
 		}
 
 		if(campaigns_count > 1) {
-			$('.camapaign-details-list').hide();
+			//$('.camapaign-details-list').hide();
 			$('#cmp_mixed').show();
 			$('.mixed_value').show();
 			$('.mixed_value').text(campaigns_count+ ' Campaigns');
@@ -341,6 +343,7 @@ $(document).ready(function(){
 	$('.adsets_checkbox').click(function() {
 		$('#camapaign-full-details').hide();
 		$('#adsets-full-details').show();
+		$('#ads-full-details').hide();
 		$('li.ad-sets a span').hide();
 		if(!$(this).is(':checked')) {
 			$('.all_adsets_checkbox').prop('checked',false);
@@ -354,23 +357,23 @@ $(document).ready(function(){
 			$('.right-fix-drawer-outr span.camapaign_name').text(adsets_name);
 			$('#adsets_selected span').text(checked_count);
 			$('#adsets_selected').show();
-			$('.adsets-details-list').hide();
+			//$('.adsets-details-list').hide();
 			$('.dummy_text').text('Ad Sets');
 			$('#adset_'+adsets_id).show();
 			if(checked_count > 1) {
 				$('.mixed_value').show();
 				$('.right-fix-drawer-outr span.camapaign_name,.dummy_text').hide();
 				$('.mixed_value').text(checked_count+ ' Ad Sets');
-				$('.adsets-details-list').hide();
+				//$('.adsets-details-list').hide();
 				$('#adsets-full-details').show();
-				$('#adset_mixed').show();
+				//$('#adset_mixed').show();
 				$('.total_ads_count').text($('#ad_table tbody tr.ad_rows').length);
 				$('.total_campaigns_count').text($('#camapaign_table tbody tr.camp_rows').length);
 
 			} else {
 				$('.mixed_value').hide();
 				$('.right-fix-drawer-outr span.camapaign_name,.dummy_text').show();
-				$('#adset_'+adsets_id).show();
+				$('.adsets-details-list').show();
 			}
 		});
 
@@ -402,9 +405,9 @@ $(document).ready(function(){
 			$('#adsets_selected span').text(adsets_count);
 			$('#adsets_selected').show();
 			$('li.ads a span').text('for '+adsets_count+' Ad Set');
-			$('.adsets-details-list').hide();
+			//$('.adsets-details-list').hide();
 			$('#adsets-full-details').show();
-			$('#adset_mixed').show();
+			//$('#adset_mixed').show();
 		} else {
 			$('.adsets_checkbox').prop('checked', false);
 			$(".right-fix-drawer-outr").removeClass("drawer-open-content");
@@ -426,9 +429,9 @@ $(document).ready(function(){
 			$('.mixed_value').show();
 			$('.right-fix-drawer-outr span.camapaign_name,.dummy_text').hide();
 			$('.mixed_value').text(adsets_count+ ' Ad Sets');
-			$('.adsets-details-list').hide();
+			//$('.adsets-details-list').hide();
 			$('#adsets-full-details').show();
-			$('#adset_mixed').show();
+			//$('#adset_mixed').show();
 			$('.total_ads_count').text($('#ad_table tbody tr.ad_rows').length);
 			$('.total_campaigns_count').text($('#camapaign_table tbody tr.camp_rows').length);
 		} else {
@@ -463,7 +466,7 @@ $(document).ready(function(){
 		$('#camapaign-full-details').hide();
 		$('#adsets-full-details').hide();
 		$('#ads-full-details').show();
-		$('.adsets-details-list').hide();
+		//$('.adsets-details-list').hide();
 		$('#ads_selected').show();
 		$('.ad_checkbox:checked').each(function() {
 			var ads_id = $(this).parent().parent().attr('id');
@@ -494,7 +497,7 @@ $(document).ready(function(){
 	$('.all_ad_checkbox').click(function() {
 		if($(this).is(':checked')) {
 			$('#camapaign-full-details').hide();
-			$('#adsets-full-details').hide();
+			//$('#adsets-full-details').hide();
 			$('#ads-full-details').show();
 			$('.ad_checkbox').prop('checked', true);
 			var ads_count = $('.ad_checkbox:checked').length;
@@ -509,7 +512,7 @@ $(document).ready(function(){
 		}
 
 		if(ads_count > 1) {
-			$('.adsets-details-list').hide();
+			//$('.adsets-details-list').hide();
 			$('#ad_mixed').show();
 			$('.total_campaigns_count').text($('#camapaign_table tbody tr.camp_rows').length);
 			$('.total_adsets_count').text($('#adset_table tbody tr.adset_rows').length);

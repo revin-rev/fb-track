@@ -233,7 +233,7 @@ table tbody tr:hover .edit-row-title{ visibility:visible;}
 
 /* popu design */
 .modal-header {background: #eceff2 none repeat scroll 0 0; border-bottom: 1px solid #dadcde;border-top-left-radius: 5px;border-top-right-radius: 5px;}
-.modal-title {color: #1c1d1d; font-family: arial; font-size: 14px !important; }
+.modal-title {color: #1c1d1d; font-family: arial; font-size: 14px !important; font-weight: bold; }
 
 /* right drawer */
 .right-fix-drawer-outr{ position:fixed; top:44px; right:-960px; background-color:#394959; height: 100%; width: 1010px; z-index: 99;-webkit-transition: all 0.5s ease-out;-moz-transition:all 0.5s ease-outall 0.5s ease-out;-ms-transition:all 0.5s ease-out; -o-transition: all 0.5s ease-out; transition:all 0.5s ease-out; z-index: 999999} 

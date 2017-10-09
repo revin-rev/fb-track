@@ -19,26 +19,31 @@ if(isset($_SESSION['user'])) :
 	$result=curl_exec($cSession);
 	curl_close($cSession);
 	$camapaigns = json_decode($result, true);
+	
 	/*get camapagins*/
 ?>
 <!DOCTYPE html>
 <html>
 <head>
 <title>FB Power-Editor</title>
-<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="css/daterangepicker.css" />
-<link rel="stylesheet" type="text/css" href="css/bootstrap-select.min.css" />
-<link rel="stylesheet" type="text/css" href="css/style.css">
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/moment.min.js"></script>
+<script type="text/javascript">
+	var camapaigns = <?php echo json_encode($camapaigns['data']); ?>;
+</script>
+<link rel="stylesheet" type="text/css" href="http://<?php echo $_SERVER['HTTP_HOST'];?>/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="http://<?php echo $_SERVER['HTTP_HOST'];?>/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="http://<?php echo $_SERVER['HTTP_HOST'];?>/css/daterangepicker.css" />
+<link rel="stylesheet" type="text/css" href="http://<?php echo $_SERVER['HTTP_HOST'];?>/css/bootstrap-select.min.css" />
+<link rel="stylesheet" type="text/css" href="http://<?php echo $_SERVER['HTTP_HOST'];?>/css/style.css">
+<script type="text/javascript" src="http://<?php echo $_SERVER['HTTP_HOST'];?>/js/jquery.min.js"></script>
+<script type="text/javascript" src="http://<?php echo $_SERVER['HTTP_HOST'];?>/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://<?php echo $_SERVER['HTTP_HOST'];?>/js/moment.min.js"></script>
 <!-- Include Date Range Picker -->
-<script type="text/javascript" src="js/daterangepicker.js"></script>
+<script type="text/javascript" src="http://<?php echo $_SERVER['HTTP_HOST'];?>/js/daterangepicker.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
-<script type="text/javascript" src="js/custom.js"></script>
+<script type="text/javascript" src="http://<?php echo $_SERVER['HTTP_HOST'];?>/js/custom.js"></script>
 <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lodash@4.17.4/lodash.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('.listing .account-category').click(function(){
@@ -2295,14 +2300,13 @@ if(isset($_SESSION['user'])) :
 								      	<div class="edit-camp-form-outr">
 								      		<!-- start of campaigns -->
 								      		<div id="camapaign-full-details" style="display: block;">
-								      			<?php foreach($camapaigns['data'] as $camapaign):?>
-								      				<div class="camapaign-details-list" id="cmp_<?php echo $camapaign['id'];?>" style="display: none;">
+								      				<div class="camapaign-details-list" id="">
 								      					<div class="col-md-7 col-sm-8">
 								      						<div class="form-white-block" style="padding: 15px; margin-top: 20px;">
 								      							<div class="row">
 								      								<div class="col-sm-4"><label for="email" class="pull-right">Campaign Name:</label></div>
 								      								<div class="col-sm-8 padding0">
-								      									<input type="email" class="form-control" id="email" value="<?php echo str_replace('"','&#34;',$camapaign['name']);?>">
+								      									<input type="email" class="form-control" id="" value="">
 								      									<a href="#">Rename usign available fields</a>
 								      								</div>
 								      							</div>
@@ -2378,7 +2382,6 @@ if(isset($_SESSION['user'])) :
 								      						</div>
 								      					</div>
 								      				</div>
-								      			<?php endforeach ?>
 								      			<div class="camapaign-details-list" id="cmp_mixed" style="display: none;">
 								      				<div class="col-md-7 col-sm-8">
 								      					<div class="form-white-block" style="padding: 15px; margin-top: 20px;">
@@ -2465,9 +2468,7 @@ if(isset($_SESSION['user'])) :
 								      		<!-- end of campaigns -->
 								      		<!-- start of adsets -->
 								      		<div class="edit-camp-form" style="display: none;" id="adsets-full-details">
-								      			<?php foreach ($camapaigns['data'] as $adsets) : 
-								      			       foreach ($adsets['adsets']['data'] as $adset) : ?>
-								      			<div class="adsets-details-list" id="adset_<?php echo $adset['id'];?>" style="display: none;">
+								      			<div class="adsets-details-list" id="" >
 								      				<div class="col-md-7 col-ms-8">
 								      					<div class="edit-camp-left-blocks">
 								      						<div class="form-white-block" style="padding: 15px;">
@@ -2781,303 +2782,13 @@ if(isset($_SESSION['user'])) :
 
 								      				</div>
 								      			</div>
-								      		<?php endforeach; endforeach; ?>
-								      		<div class="adsets-details-list" id="adset_mixed" style="display: none;">
-								      			<div class="col-md-7 col-ms-8">
-								      				<div class="edit-camp-left-blocks">
-								      					<div class="form-white-block" style="padding: 15px;">
-								      						<label>Ad Set Name</label>
-								      						<input type="text" name="" class="form-control" value="Mixed Value">
-								      						<a href="#">Rename usign available fields</a>
-								      					</div>
-								      					<div class="form-white-block">
-								      						<h5 class="white-block-legend">Traffic</h5>
-								      						<div class="white-block-body">
-								      							<label class="light-grey-label">Choose where you want to drive traffic. You'll enter more details about the destination later.</label>
-								      							<div class="radio">
-								      								<label><input type="radio" name="optradio">Website</label>
-								      							</div>
-								      							<div class="radio">
-								      								<label><input type="radio" name="optradio">App</label>
-								      							</div>
-								      							<div class="radio">
-								      								<label><input type="radio" name="optradio">Messenger</label>
-								      							</div>
-								      						</div>
-								      					</div>
-								      					<div class="form-white-block">
-								      						<h5 class="white-block-legend">Budget &amp; Schedule</h5>
-								      						<div class="white-block-body">
-								      							<!-- <form> -->
-								      								<div class="row">
-								      									<div class="col-md-5"><label>Daily Budget</label></div>
-								      									<div class="col-md-6">
-								      										<input type="text" name="" value="Mixed Value" style=" margin-right: 10px;width:100px;">
-								      										<button class="light-grey-btn" data-toggle="modal" data-target="#adjust_button">Adjust Budget</button>
-								      									</div>
-								      								</div>
-								      								<div class="row">
-								      									<div class="col-md-5"><label>Schedule Start</label></div>
-								      									<div class="col-md-6">
-								      										<p>Mixed Value</p>
-								      									</div>
-								      								</div>
-								      								<div class="row">
-								      									<div class="col-md-5"><label>Schedule End</label></div>
-								      									<div class="col-md-7">
-								      										<div class="radio margin-top-zero">
-								      											<p>Mixed Value</p>
-								      										</div>
-								      									</div>	
-								      								</div>
-								      								<div class="row">
-								      									<div class="col-md-5"><label>Ad Scheduling</label></div>
-								      									<div class="col-md-7">
-								      										<div class="radio margin-top-zero">
-								      											<label><input type="radio" name="optradio">Run ads all the time</label><br>
-								      											<label><input type="radio" name="optradio">Run ads on a schedule</label>
-								      										</div>
-								      									</div>							      											
-								      								</div>
-								      								<!-- </form> -->
-								      							</div>
-								      						</div>	
-								      						<div class="form-white-block">
-								      							<h5 class="white-block-legend">Audience</h5>
-								      							<div class="white-block-body">
-								      								<form>
-								      									<div class="row">
-								      										<div class="col-md-5"><label>Custom Audiences <i class="fa fa-info-circle" aria-hidden="true"></i></label></div>
-								      										<div class="col-md-6">
-								      											<input type="text" name="" value="" class="form-control"><br>
-								      											<a href="#">Exclude</a> | <a href="#">Create New</a>
-								      										</div>
-								      									</div>
-								      									<div class="row">
-								      										<div class="col-md-5"><label>Location <i class="fa fa-info-circle" aria-hidden="true"></i></label></div>
-								      										<div class="col-md-6">
-								      											<p>Mixed Value</p>
-								      										</div>
-								      									</div>
-								      									<div class="row">
-								      										<div class="col-md-5"><label>Age <i class="fa fa-info-circle" aria-hidden="true"></i></label></div>
-								      										<div class="col-md-6">
-								      											<p>Mixed Value</p>
-								      										</div>
-								      									</div>
-								      									<div class="row gender">
-								      										<div class="col-md-5"><label style="border: 0">Gender <i class="fa fa-info-circle" aria-hidden="true"></i></label></div>
-								      										<div class="col-md-6 r">
-								      											<p>?Mixed Value</p>
-								      										</div>
-								      									</div>
-								      									<div class="row">
-								      										<div class="col-md-5"><label>Languages <i class="fa fa-info-circle" aria-hidden="true"></i></label></div>
-								      										<div class="col-md-6">
-								      											<input type="text" name="" placeholder="Enter a language" class="form-control"> 
-								      										</div>
-								      									</div>
-								      									<div class="row"><hr class="edit-forms-divider">&nbsp;</div>
-								      									<div class="row">
-								      										<div class="col-md-5"><label>Detailed Targeting <i class="fa fa-info-circle" aria-hidden="true"></i></label></div>
-								      										<div class="col-md-7">
-								      											<div class="radio margin-top-zero">
-								      												<label style="padding: 0">INCLUDE people who match at least ONE of the following <i class="fa fa-info-circle" aria-hidden="true"></i></label><br>
-								      												<select class="form-control">
-								      													<option>Option1</option>
-								      												</select>
-								      											</div>
-								      										</div>	
-								      									</div>
-								      									<div class="row"><hr class="edit-forms-divider">&nbsp;</div>
-								      									<div class="row">
-								      										<div class="col-md-5"><label>Connections <i class="fa fa-info-circle" aria-hidden="true"></i></label></div>
-								      										<div class="col-md-7">
-								      											<div class="radio margin-top-zero">
-								      												<div class="custom-autocomplete-select">
-								      													<div class="btn-group bootstrap-select show-tick"><button type="button" class="btn dropdown-toggle btn-default" data-toggle="dropdown" role="button" title="Apps"><span class="filter-option pull-left">Apps</span>&nbsp;<span class="bs-caret"><span class="caret"></span></span></button><div class="dropdown-menu open" role="combobox"><ul class="dropdown-menu inner" role="listbox" aria-expanded="false"><li data-original-index="0" class="selected"><a tabindex="0" class="" data-tokens="ketchup mustard" role="option" aria-disabled="false" aria-selected="true"><span class="text">Apps</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li></ul></div><select class="selectpicker show-tick" data-size="3" tabindex="-98">
-								      														<option data-tokens="ketchup mustard">Apps</option>
-
-								      													</select></div>			 											
-								      												</div>
-								      											</div>
-								      										</div>	
-								      									</div>
-								      									<div class="row" style="margin: 0"><hr class="edit-forms-divider" style="margin: 0">
-								      									&nbsp;</div>
-								      									<div class="row">
-								      										<div class="col-md-5">&nbsp;</div>
-								      										<div class="col-md-7">
-								      											<button type="button" class="light-grey-btn" data-toggle="modal" data-target="#save-aud">Save This Audience</button>
-								      										</div>
-								      									</div>
-								      								</form>
-								      							</div>
-								      						</div>
-
-
-								      						<div id="save-aud" class="modal fade duplicate-row-popup" role="dialog">
-								      							<div class="modal-dialog">
-								      								<div class="modal-content">
-								      									<div class="modal-header">
-								      										<button type="button" class="close" data-dismiss="modal">×</button>
-								      										<h4 class="modal-title">Save Audience</h4>
-								      									</div>
-								      									<div class="modal-body">
-								      										<form class="form-inline">
-								      											<div class="row">
-								      												<div class="col-md-4"><label for="email">Audience Name</label></div>
-								      												<div class="col-md-6">
-								      													<div class="input-group">
-								      														<input type="text" class="form-control" value="42">
-								      													</div>
-								      													<p>Location:<span>India</span></p>
-								      													<p>Location:<span>India</span></p>
-								      												</div>	
-								      											</div>
-								      										</form>		  	
-								      									</div>
-								      									<div class="modal-footer">
-								      										<button type="button" class="light-grey-btn" data-dismiss="modal">Cancel</button>
-								      										<button type="button" class="blue-btn" data-dismiss="modal">Save</button>
-								      									</div>
-								      								</div>
-								      							</div>
-								      						</div>
-
-
-								      						<div class="form-white-block">
-								      							<h5 class="white-block-legend">Placement</h5>
-								      							<div class="white-block-body">
-								      								<div class="radio">
-								      									<label><input type="radio" name="optradio">Automatic Placements (Recommended)</label>
-								      									<p>Your ads will automatically be shown to your audience in the places they're likely to perform best. For this objective, placements may include Facebook, Instagram, Audience Network and Messenger.</p>
-								      								</div> 
-								      								<div class="radio">
-								      									<label><input type="radio" name="optradio">Edit Placements (Recommended)</label>
-								      									<p>Your ads will automatically be shown to your audience in the places they're likely to perform best. For this objective, placements may include Facebook, Instagram, Audience Network and Messenger.</p>
-								      								</div> 
-								      							</div>
-								      						</div>
-								      						<div class="form-white-block">
-								      							<h5 class="white-block-legend">Optimization &amp; Delivery</h5>
-								      							<div class="white-block-body">
-								      								<!-- <form> -->
-								      									<div class="row">
-								      										<div class="col-md-5"><label>Optimization for Ad Delivery <i class="fa fa-info-circle" aria-hidden="true"></i></label></div>
-								      										<div class="col-md-6">
-
-								      											<button class="light-grey-btn" data-toggle="modal" data-target="">Adjust Budget</button>
-								      										</div>
-								      									</div>
-
-								      									<div class="row">
-								      										<div class="col-md-5"><label>Bid Amount <i class="fa fa-info-circle" aria-hidden="true"></i></label></div>
-								      										<div class="col-md-7">
-								      											<div class="radio margin-top-zero">
-								      												<label><input type="radio" name="optradio">Automatic - Let Facebook set the bid that helps you get the most impressions at the best price.</label><br>
-								      												<label><input type="radio" name="optradio">Manual - Enter a bid based on what 1,000 impressions are worth to you.</label>
-								      											</div>
-								      										</div>	
-								      									</div>
-								      									<div class="row">
-								      										<div class="col-md-5"><label>When You Get Charged <i class="fa fa-info-circle" aria-hidden="true"></i></label></div>
-								      										<div class="col-md-7">
-								      											<div class="radio margin-top-zero">
-								      												<label>Mixed Value</label> 
-								      											</div>
-								      										</div>							      											
-								      									</div>
-								      									<div class="row">
-								      										<div class="col-md-5"><label>Delivery Type<i class="fa fa-info-circle" aria-hidden="true"></i></label></div>
-								      										<div class="col-md-7">
-								      											<div class="radio margin-top-zero">
-								      												<label>Standard - Show your ads throughout your selected schedule (recommended)</label> 
-								      											</div>
-								      										</div>							      											
-								      									</div>
-								      									<!-- </form> -->
-								      								</div>
-								      							</div>	
-
-								      						</div>
-								      					</div>
-								      					<div class="col-md-5 col-sm-5">
-								      						<div class="form-white-block" style="margin-top:20px;">
-								      							<div class="row main-heading">
-								      								<div class="col-md-9 padding10"><h5 class="white-block-legend"><b>Ad Set id:23842657531340433</b></h5><div class="toggle btn btn-primary btn-xs" data-toggle="toggle" style="width: 17.9531px; height: 3.96875px;"><input type="checkbox" checked="" class="" value="23842657531340433" data-toggle="toggle" data-size="mini"><div class="toggle-group"><label class="btn btn-primary btn-xs toggle-on">On</label><label class="btn btn-default btn-xs active toggle-off">Off</label><span class="toggle-handle btn btn-default btn-xs"></span></div></div> </div>
-								      								<div class="col-md-3 padding10">
-								      									<div class="btn-and-caret-icon-dropdown" style="margin-top: 6px;">
-								      										<a href="#" class="create-camp-btn">Link</a>
-								      										<div class="dropdown caret-icon-dropdown-with-btn">
-								      											<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border-left:0">
-								      												<span class="caret"></span>
-								      											</button>
-								      											<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-								      												<a class="dropdown-item" href="#">Action</a>
-								      												<a class="dropdown-item" href="#">Another action</a>
-								      												<a class="dropdown-item" href="#">Something else here</a>
-								      											</div>
-								      										</div>
-								      									</div>
-								      								</div>
-								      							</div>
-								      							<div class="white-block-body">
-								      								<p>
-								      									<a href="#"><span class="total_campaigns_count"></span> Campaigns</a><br>
-								      									<span>Targeting, placement, budget and schedule</span>
-								      								</p>
-								      								<p>
-								      									<a href="#"><span class="total_ads_count"></span> Ads</a><br>
-								      									<span>Images, videos, text and links</span>
-								      								</p>
-								      								<hr>
-								      								<p><b>Rule</b></p>
-								      								<div class="btn-and-caret-icon-dropdown" style="margin-top: 6px;">
-								      									<a href="#" class="create-camp-btn">Create Rule</a>
-								      									<div class="dropdown caret-icon-dropdown-with-btn">
-								      										<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border-left:0">
-								      											<span class="caret"></span>
-								      										</button>
-								      										<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-								      											<a class="dropdown-item" href="#">Action</a>
-								      											<a class="dropdown-item" href="#">Another action</a>
-								      											<a class="dropdown-item" href="#">Something else here</a>
-								      										</div>
-								      									</div>
-								      								</div>
-								      							</div>
-								      						</div>
-								      						<div class="edit-camp-right-blocks">
-								      							<div class="form-white-block">
-								      								<h5 class="white-block-legend">Audience Definition</h5>
-								      								<div class="white-block-body">
-								      									<img src="../img/audience.jpg"> <p>Your audience selection is fairly broad</p> 
-
-								      								</div>
-								      							</div>
-								      							<div class="form-white-block">
-								      								<h5 class="white-block-legend">Estimated Daily Results</h5>
-								      								<div class="white-block-body">
-								      									<div class="col-md-12" style="padding-left: 0"><b>Reach</b> 33,000 - 210,000 (of 110,000,000)<br>
-								      										<img src="../img/reach-img.jpg">
-								      									</div>
-								      									<div class="radio">
-								      										<p>Your ads will automatically be shown to your audience in the places they're likely to perform best. For this objective, placements may include Facebook, Instagram, Audience Network and Messenger.</p>
-								      									</div> 
-								      								</div>
-								      							</div>
-								      						</div>
-
-								      					</div>
-								      				</div>
 								      		</div>
 										      <!-- end of adsets -->
 										      <!-- starts of ads -->
 										      	<div class="edit-camp-form" style="display: none;" id="ads-full-details">
-										      		<?php foreach ($camapaigns['data'] as $ads) : 
-								      			       foreach ($ads['ads']['data'] as $ads) : ?>
-										      		<div class="adsets-details-list" id="ad_<?php echo $ads['id']?>">
+										      		<?php /*foreach ($camapaigns['data'] as $ads) : 
+								      			       foreach ($ads['ads']['data'] as $ads) : */?>
+										      		<div class="ads-details-list" id="ad_<?php echo $ads['id']?>">
 										      			<div class="col-md-6 col-sm-8">
 										      				<div class="edit-camp-left-blocks">
 										      					<div class="form-white-block" style="padding: 15px;">
@@ -3560,199 +3271,8 @@ if(isset($_SESSION['user'])) :
 
 								      					</div>
 										      		</div>
-										      	<?php endforeach; endforeach; ?>
-										      	<div class="adsets-details-list" id="ad_mixed">
-										      		<div class="col-md-6 col-sm-8">
-										      			<div class="edit-camp-left-blocks">
-										      				<div class="form-white-block" style="padding: 15px;">
-										      					<label>Ad Set Name</label>
-										      					<input type="text" name="" class="form-control" value="Mixed Value">
-										      					<a href="#">Rename usign available fields</a>
-										      				</div>
-
-										      				<div class="form-white-block identity">
-										      					<h5 class="white-block-legend">Identity</h5>
-										      					<div class="white-block-body">
-										      						<div class="col-md-12">
-										      							<label class="light-grey-label">Facebook Page <i class="fa fa-info-circle" aria-hidden="true"></i></label>
-										      							<p>Choose a Facebook Page to represent your business in News Feed. Your ad will link to your site, but it will show as coming from your Facebook Page.</p>
-										      							<div class="custom-autocomplete-select">
-										      								<div class="btn-group bootstrap-select show-tick"><button type="button" class="btn dropdown-toggle btn-default" data-toggle="dropdown" role="button" title="Columns"><span class="filter-option pull-left">Columns </span>&nbsp;<span class="bs-caret"><span class="caret"></span></span></button><div class="dropdown-menu open" role="combobox"><ul class="dropdown-menu inner" role="listbox" aria-expanded="false"><li data-original-index="0" class="selected"><a tabindex="0" class="" data-tokens="ketchup mustard" role="option" aria-disabled="false" aria-selected="true"><span class="text">Columns </span><span class="glyphicon glyphicon-ok check-mark"></span></a></li><li data-original-index="1"><a tabindex="0" class="" data-tokens="mustard" role="option" aria-disabled="false" aria-selected="false"><span class="text">Lorem</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li><li data-original-index="2"><a tabindex="0" class="" data-tokens="frosting" role="option" aria-disabled="false" aria-selected="false"><span class="text">Dummy text printing</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li></ul></div><select class="selectpicker show-tick" data-size="3" tabindex="-98">
-										      									<option data-tokens="ketchup mustard">Mixed Value </option>
-										      								</select></div>	
-										      							</div>
-										      							<p>or <a href="#">Don't Connect a Facebook Page</a> (will disable News Feed ads).</p>
-										      						</div>
-
-										      						<div class="col-md-12">
-										      							<hr class="edit-forms-divider" style="margin-bottom: 20px">
-										      						</div>
-
-										      						<div class="col-md-12">
-
-										      							<label class="light-grey-label">Instagram Account  <i class="fa fa-info-circle" aria-hidden="true"></i></label>
-										      							<p>The selected Page has no Instagram account connected. Your ad will use the Page name and profile picture.</p>
-										      							<div class="identity-instagram">
-										      								<button class="light-grey-btn"><img src="../img/ident-acc-icon.jpg">Revinfotech (Page) <i class="fa fa-check" aria-hidden="true"></i></button>
-										      								<span>OR</span>
-										      								<button class="light-grey-btn" data-toggle="modal" data-target="#add-insta-acct-btn"><i class="fa fa-instagram" aria-hidden="true"></i> Add an Account</button>
-										      								
-
-										      							</div>	
-										      						</div>
-										      					</div>
-										      				</div>
-
-										      				<div class="form-white-block new-existing-ads-tab" style="padding:0px;">
-
-										      					<ul class="nav nav-tabs">
-										      						<li class="active"><a data-toggle="tab" href="#crt-ad" aria-expanded="true">Create Ad</a></li>
-										      						<li><a data-toggle="tab" href="#ext-post" aria-expanded="true">Use Existing Post</a></li>			 
-										      					</ul>
-
-										      					<div class="tab-content">
-										      						<div id="crt-ad" class="tab-pane fade in active">
-										      							<ul>
-										      								<li><input type="radio" name=""> <img src="../img/single-img-icon.jpg"><label>Ad with an image or video</label></li>
-										      								<li><input type="radio" name=""> <img src="../img/single-img-icon.jpg"><label>Ad with multiple images or videos in a carousel </label><p>Show multiple images or videos for the same price.<a href="#">Learn more.</a></p></li>
-										      								<li><input type="radio" name=""> <img src="../img/single-img-icon.jpg"><label>Collection</label><p>Feature a collection of items that open into a fullscreen mobile experience.<a href="#">Learn more.</a></p></li>
-										      							</ul>
-										      						</div>
-										      						<div id="ext-post" class="tab-pane fade">
-										      							<label>Page Post</label><br>
-										      							<p class="no-post-exist"><i class="fa fa-info-circle" aria-hidden="true"></i> No eligible posts exist.</p>
-										      							<button class="light-grey-btn plus-popup">+</button><br>
-										      							<a href="#">Enter Post ID</a>
-										      						</div>																	  
-										      					</div>
-										      				</div>
-
-										      				<div class="form-white-block tracking-form">
-										      					<h5 class="white-block-legend">Tracking</h5>
-										      					<div class="white-block-body">
-										      						<div class="col-md-12 track-row">
-										      							<label class="light-grey-label">Facebook Page <i class="fa fa-info-circle" aria-hidden="true"></i></label>
-										      							<input type="text" name="" placeholder="Ex: key1=value1&amp;key2=value2" class="col-md-12">
-										      						</div>
-										      						<div class="col-md-12 track-row">
-										      							<label class="light-grey-label">Pixel Tracking <i class="fa fa-info-circle" aria-hidden="true"></i></label>
-										      							<div class="radio">
-										      								<label><input name="optradio" type="radio">Track all conversions from my Facebook pixel</label>
-										      								<div class="pixel-tracking-ids">
-										      									<ul>
-										      										<li><b>John Pixel</b><br>Pixel ID: 143012979405875</li>
-										      									</ul>			 
-										      								</div>	
-										      							</div>
-										      							<div class="radio">
-										      								<label><input name="optradio" type="radio">Do not track conversions</label> 
-										      							</div>
-										      						</div>
-										      						<div class="col-md-12 track-row">
-										      							<label>Mobile App Events Tracking (optional)</label>
-										      							<div class="custom-autocomplete-select">
-										      								<div class="btn-group bootstrap-select show-tick"><button type="button" class="btn dropdown-toggle btn-default" data-toggle="dropdown" role="button" title="Columns"><span class="filter-option pull-left">Columns</span>&nbsp;<span class="bs-caret"><span class="caret"></span></span></button><div class="dropdown-menu open" role="combobox"><ul class="dropdown-menu inner" role="listbox" aria-expanded="false"><li data-original-index="0" class="selected"><a tabindex="0" class="" data-tokens="ketchup mustard" role="option" aria-disabled="false" aria-selected="true"><span class="text">Columns</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li><li data-original-index="1"><a tabindex="0" class="" data-tokens="mustard" role="option" aria-disabled="false" aria-selected="false"><span class="text">Lorem</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li><li data-original-index="2"><a tabindex="0" class="" data-tokens="frosting" role="option" aria-disabled="false" aria-selected="false"><span class="text">Dummy text printing</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li></ul></div><select class="selectpicker show-tick" data-size="3" tabindex="-98">
-										      									<option data-tokens="ketchup mustard">Columns</option>
-										      									<option data-tokens="mustard">Lorem</option>
-										      									<option data-tokens="frosting">Dummy text printing</option>
-										      								</select></div>													
-										      							</div>
-										      						</div>
-										      					</div>
-										      				</div>
-
-										      			</div>
-										      		</div>
-										      		<div class="col-md-6 col-sm-5">
-										      			<div class="form-white-block" style="margin-top:20px;">
-										      				<div class="row main-heading">
-										      					<div class="col-md-12 padding10">
-										      						<h5 class="white-block-legend" style="border-bottom: 0"><b>Ad id:</b></h5>
-										      					</div>
-										      				</div>
-										      				<div class="white-block-body">
-										      					<p>
-										      						<a href="#"><span class="total_campaigns_count"></span> Campaigns </a><br>
-										      						<span>Targeting, placement, budget and schedule</span>
-										      					</p>
-										      					<p>
-										      						<a href="#"><span class="total_adsets_count"></span> Ad Sets</a><br>
-										      						<span>Images, videos, text and links</span>
-										      					</p>
-										      				</div>
-										      			</div>
-										      			<div class="form-white-block">
-										      				<div class="row main-heading">
-										      					<h5 class="white-block-legend" style="border-bottom: 0">
-										      						<i class="fa fa-warning" style="color:red"></i> 
-										      						Fix 1 Error in 1 Ad
-										      					</h5>
-										      				</div>  
-										      				<div class="white-block-body">
-										      					<p>
-										      						Promoted Object Is Missing: Your campaign must include an ad set with a selected object to promote related to your objective (ex: Page, URL, event). Please update your ad set to continue. (#1487930)
-										      					</p>
-										      				</div>
-										      			</div> 
-
-										      			<div class="form-white-block ad-preview">
-										      				<div class="row main-heading">
-										      					<h5 class="white-block-legend" style="border-bottom: 0">
-										      						Ad Preview
-										      					</h5>
-										      				</div>  
-										      				<div class="white-block-body">
-										      					<div class="row">
-										      						<div class="col-md-6 ads-preview-dropd-down-list">
-										      							<a href="#" class="light-grey-btn">Feature Phone <i class="fa fa-caret-down" aria-hidden="true"></i></a>
-										      							<ul>
-										      								<li><img src="../img/ads-list-icon1.jpg"> Mobile News Feed</li>
-										      								<li><img src="../img/ads-list-icon1.jpg"> Feature Phone</li>
-										      								<li class="active"><img src="../img/ads-list-icon1.jpg"> Desktop New Feed</li>
-										      								<li><img src="../img/ads-list-icon1.jpg"> Mobile News Feed</li>
-										      								<li><img src="../img/ads-list-icon1.jpg"> Feature Phone</li>
-										      								<li><img src="../img/ads-list-icon1.jpg"> Desktop New Feed</li>
-										      							</ul>
-										      						</div>
-										      						<div class="col-md-6 text-right" style="padding-right: 50px;">5 of 10</div>
-										      					</div>
-										      					<div class="row">
-										      						<div class="col-md-12 text-center">
-										      							<div id="ads-preview-crsl" class="carousel slide" data-ride="carousel">	
-										      								<div class="carousel-inner">
-										      									<div class="item active">
-										      										<img src="../img/ads-preview-icon.jpg">
-										      										<p>Please select a Facebook Page post to show this type of ad</p>
-										      									</div>
-
-										      									<div class="item">
-										      										<img src="../img/ads-preview-icon.jpg">
-										      										<p>Please select a Facebook Page post to show this type of ad</p>
-										      									</div>
-
-										      									<div class="item">
-										      										<img src="../img/ads-preview-icon.jpg">
-										      										<p>Please select a Facebook Page post to show this type of ad</p>
-										      									</div>
-										      								</div>
-
-										      								<!-- Left and right controls -->
-										      								<a class="left carousel-control" href="#ads-preview-crsl" data-slide="prev">
-										      									<span class="glyphicon glyphicon-chevron-left"></span>
-										      									<span class="sr-only">Previous</span>
-										      								</a>
-										      								<a class="right carousel-control" href="#ads-preview-crsl" data-slide="next">
-										      									<span class="glyphicon glyphicon-chevron-right"></span>
-										      									<span class="sr-only">Next</span>
-										      								</a>
-										      							</div>
-										      						</div>	
-										      					</div>
-										      				</div>
-										      			</div> 
-
-										      		</div>
-										      	</div>
+										      	<?php //endforeach; endforeach; ?>
+										      	
 										      	</div>
 										      <!-- ends of ads -->
 										</div> 
