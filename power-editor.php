@@ -3502,16 +3502,150 @@ if(isset($_SESSION['user'])) :
 			</div>
 			<div class="modal-body">
 				<div class="use-temp-let-sec"> 
-					fbdfbd
+					<div class="use-temp-pop-row">
+						<h5>Cover Image or Video</h5>
+						<p>Use an eye-catching image or video as a visual way to introduce your product, service or brand.</p>
+						<div class="use-temp-radio-tabs">
+							<ul class="nav nav-tabs">
+								<li class="active">
+									<a href="#temp-radio-tab1" data-toggle="tab">
+										<label class="radio-inline">
+											<input id="f-option" name="selector" type="radio">
+											<label for="f-option">Image</label>
+											<div class="check"></div>
+										</label>
+									</a>
+								</li>
+								<li>
+									<a href="#temp-radio-tab2" data-toggle="tab">
+										<label class="radio-inline">
+											<input id="f-option" name="selector" type="radio">
+											<label for="f-option">Video</label>
+											<div class="check"></div>
+										</label>
+									</a>
+								</li>
+							</ul>
+								
+							<div class="tab-content">
+						    	<div class="img-radio-tab-cont tab-pane active" id="temp-radio-tab1">
+						    		<div class="common-row">	
+						    			<div class="left-img">
+						    				<img src="../img/use-temp-img-thumb.jpg">
+						    			</div>
+						    			<div class="right-detail">
+						    				<p>Recommended: Image width of 1080 pixels</p>
+						    				<button class="light-grey-btn">Replace Photo</button>
+						    			</div>
+						    		</div>	
+						    		<div class="common-row">
+						    			<label>Destination URL (optional)</label>
+						    			<input type="text" name="" class="form-control">
+						    		</div>
+						    	</div>
+								<div class="video-slideshow-radio-tab-cont tab-pane" id="temp-radio-tab2">
+					    			<div class="common-row">	
+						    			<div class="left-img">
+						    				<img src="../img/use-temp-img-thumb.jpg">
+						    			</div>
+						    			<div class="right-detail">
+						    				<p>Recommended: Image width of 1080 pixels</p>
+						    				<button class="light-grey-btn">Replace Photo</button>
+						    			</div>
+						    		</div>	
+						    		<div class="common-row">
+						    			<label>Destination URL (optional)</label>
+						    			<input type="text" name="" class="form-control">
+						    		</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="use-temp-pop-row">
+						<h5>Text</h5>
+						<textarea class="form-control"></textarea>
+					</div>
+					<div class="use-temp-pop-row">
+						<h5>Text</h5>
+						<textarea class="form-control"></textarea>
+					</div>
+					<div class="use-temp-pop-row">
+						<h5>Button</h5>
+						<p>Give people an action to take.</p>
+						<div class="common-row">
+							<label>Text</label>
+							<input type="text" name="" class="form-control">
+						</div>
+						<div class="common-row">
+							<label>Destination URL</label>
+							<input type="text" name="" class="form-control">
+						</div>
+					</div>
+					<div class="use-temp-pop-row">
+						<h5>Carousel</h5>
+						<p>Upload 2-10 images to show them in a carousel format. If images are not the same size, they will be cropped to match your first image.</p>
+						<ul class="crsl-slide">
+							<li><a href="#">1</a></li>
+							<li><a href="#">2</a></li>
+							<li><a href="#">3</a></li>
+							<li><a href="#">4</a></li>
+							<li><a href="#">5</a></li>
+							<li><a href="#" class="active">6</a></li>
+							<li><a href="#">+</a></li>
+						</ul>
+						<div class="edit-selected-slide">
+							<div class="common-row">	
+				    			<div class="left-img">
+				    				<img src="../img/use-temp-img-thumb.jpg">
+				    			</div>
+				    			<div class="right-detail">
+				    				 <button class="light-grey-btn">Replace Photo</button>
+				    				 <button class="light-grey-btn pull-right"><i class="fa fa-trash"></i></button>
+				    			</div>
+				    		</div>
+				    		<div class="common-row">
+								<label>Destination URL</label>
+								<input type="text" name="" class="form-control">
+							</div>
+						</div>
+					</div>
+					<div class="use-temp-pop-row">
+						<div class="common-row">
+							<h5>Text</h5>
+							<textarea class="form-control" placeholder="Add descriptive content for people to read while they swipe through your carousel images."></textarea>
+						</div>	
+						<div class="common-row">
+							<h5>Button</h5>
+							<p>Give people an action to take.</p>
+						</div>
+						<div class="common-row">
+							<label>Text</label>
+							<input type="text" name="" class="form-control">
+						</div>
+						<div class="common-row">
+							<label>Destination URL</label>
+							<input type="text" name="" class="form-control">
+						</div>
+					</div>
+					 
 				</div>
 				<div class="use-temp-right-sec">
-					fdfgdg
+					<div class="common-row">
+						<div class="img-or-video-prev">
+							<img src="../img/use-temp-img-prev.jpg">
+						</div>
+						<h1>Add Context</h1>
+						<p>Change the text and use this space to tell people about your product, brand, or service. </p>
+						<button>Write something ...</button>
+					</div>
+
 				</div>	
 
 
 
 			</div>
 			<div class="modal-footer">
+				<button class="light-grey-btn"><i class="fa fa-mobile"></i> Preview on Mobile</button>
 				<button type="button" class="blue-btn" data-dismiss="modal">Done</button>
 			</div>
 		</div>
