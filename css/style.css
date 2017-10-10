@@ -19,6 +19,8 @@ table th, table td{ font-family: arial }
 
 .blue-btn{background: #066cd2; border:1px solid #066cd2; color: #ffffff; font-family: Arial,sans-serif; font-size: 12px; font-weight: bold; height: 28px; letter-spacing: normal; line-height: 26px; padding-left: 12px; padding-right: 12px; text-align: center;}
 .blue-btn:hover{ background: #0454A3 }
+
+.big-black-bordered-btn{ background-color: transparent; border: 2px solid #000; text-align: center;padding: 12px 100px; font-size: 18px;}
 .margin-top-zero{ margin-top: 0 }
 
 
@@ -606,6 +608,69 @@ color:#FFFFFF;
 #useTemplate .modal-footer{display: inline-block; width: 100%}
 .use-temp-right-sec h1{font-size: 21px;}
 .use-temp-right-sec p{color: #666}
+.use-temp-right-sec .common-row{ margin-bottom: 25px; }
+
+/* create canvas popup */
+.create-canv{ float:left;width: 100% }
+#create-canv-popup .modal-dialog{ width: 1080px;}
+.canvs-popup-header-optns{ float: left; width: 100%; background-color: #fff; padding: 10px; border-bottom: 1px solid #ccc;}
+.round-cmpnt-btn{ float: left; width: auto; padding:5px; background-color: transparent; font-size: 11px !important; color: #999; text-align: center;}
+.round-cmpnt-btn i{ color: #066cd2;display: block; font-size: 16px;} 
+.round-cmpnt-btn:hover{background-color: #F3F4F4}
+#create-canv-popup .modal-body{padding: 0; float: left;width: 100%}
+#crt-ad .canvs-popup-header-optns ul{ float: right; padding: 0}
+#crt-ad .canvs-popup-header-optns ul li {display: inline-block;font-size: 11px;width: auto;text-align: center;margin: 0 5px; padding: 3px 7px;}
+.canvs-popup-header-optns ul li i {color: #999999; font-size: 15px; }
+#crt-ad .canvs-popup-header-optns ul li:hover{ background-color: #f3f4f4; cursor: default; }
+.canvs-components{ float: left;width: 100% }
+.canvs-components-left-sec{ float: left;width: 50% }
+.canvs-components-right-sec{ float: left;width: 50% }
+.canvs-row{ float: left;width: 100%; padding: 15px 10px; border-bottom: 1px solid #ccc;}
+.canvs-title-field{ border: 0; padding: 5px; box-shadow: none; width: 100%; font-size: 16px;}
+#create-canv-popup .modal-content{ height: 800px; }
+.canvs-components .panel-heading .accordion-toggle:after {font-family: 'Glyphicons Halflings'; content: "\e114"; float: right; color: grey; }
+.canvs-components .panel-heading .accordion-toggle.collapsed:after { content: "\e080"; }
+.canvs-row .panel-default{ border: 0 }
+.canvs-row .panel{ border: 0; background-color: transparent; box-shadow: none;}
+.canvs-row .panel-default .panel-heading{ background-color: transparent; }
+.canvs-row .tab-content .panel-title{ font-weight: normal; }
+.canvs-row .panel-default .panel-heading a{ font-size: 16px; font-weight: normal;}
+.canvs-row .panel-group .panel-heading + .panel-collapse > .panel-body, .canvs-row .panel-group .panel-heading + .panel-collapse > .list-group{ border-top: 0 }
+.canvs-row .panel-group{ margin-bottom: 0 }
+.canvs-row .panel-title span {font-size: 16px; font-weight: normal; position: relative; }
+.canvs-row .panel-title span i {font-size: 16px; display: none; font-weight: normal; position: absolute;color: #666; right:-30px; top: 0 }
+.canvs-row .panel-title span:hover i{ display: block; } 
+.canvs-row .panel-title .dropdown{ display: inline-block;float: right; margin-right: 25px;padding-right: 25px;border-right: 1px solid #cccccc;}
+.canvs-row .dropdown-menu{ right: 0; left: auto; }
+#comp-option {background: rgba(0, 0, 0, 0); border: 0 none; color: #666666; font-size: 19px;}
+#crt-ad .full-scrn-canvs-opt .comp-option-drp ul{ padding: 0 }
+#crt-ad .full-scrn-canvs-opt .comp-option-drp ul li a{ font-size: 12px; }
+.theme-optn div {float: left; margin-right: 25px; width: auto; }
+.tra-bg  a {background: rgba(0, 0, 0, 0) none repeat scroll 0 0; border: 1px solid #4e5665; color: #4e5665; display: inline-block; font-size: 15px; font-weight: bold; padding: 2px 0; text-align: center; width: 35px; }
+.grey-bg a {background: #4E5665; border: 1px solid #4E5665; color: #fff; display: inline-block; font-size: 15px; font-weight: bold; padding: 2px 0; text-align: center; width: 35px; }
+.cust-bg  a {background: #000; border: 1px solid #000; color: #000; display: inline-block; font-size: 15px; font-weight: bold; padding: 2px 0; text-align: center; width: 35px; }
+.canvs-row label{ margin-left: 0 }
+#cnvs-settings .theme-optn div.toggle-group{width: 200%;}
+#carousel-accordion .right > div {float: left; margin-right:20px; width: 140px; }
+#carousel-accordion .right > div i{ font-size: 16px; margin-right:8px; }
+#carousel-accordion ul li{ display: inline-block; width: auto !important;float: none !important; }
+#add-cnvs-component-popup.modal.fade.in{ background-color: rgba(0,0,0,0.4); }
+.cc{margin:20px 0 0 0}
+.cc label.btn-default.active{color: #264D99;background-color: #ecf1ff; box-shadow: none; height: 125px;} 
+.cc label.btn-default{width:90%;border:1px solid #ccc;margin:5px; padding: 25px 12px;height: 125px;} 
+.cc label .bizcontent{width:100%;}
+.cc .btn-group{width:100%}
+.cc .btn span.glyphicon{opacity: 0;}
+.cc .btn.active span.glyphicon {opacity: 1;}
+#add-cnvs-component-popup .modal-body{ float: left;width: 100%; background-color: #fff}
+.cc .items {float: left; width: 165px; }
+#add-cnvs-component-popup .modal-dialog{ width: 530px; }
+#add-cnvs-component-popup .modal-footer{ float: left;width: 100%; background-color: #fff; }
+#add-cnvs-component-popup img{ width: 60px; }
+.plus-add-more-c{ font-size: 17px !important; color: #066cd2 }
+
+
+
 
 
 

@@ -498,7 +498,7 @@ $(document).ready(function(){
 		var checked_count = $('.ad_checkbox:checked').length;
 		$('.ad_checkbox:checked').each(function() {
 			var ads_id = $(this).parent().parent().attr('id');
-			$('.right-fix-drawer-outr span.camapaign_name').text(ads_name);
+			// $('.right-fix-drawer-outr span.camapaign_name').text(ads_name);
 			$('#ads_selected span').text(checked_count);
 			$('.dummy_text').text('Ads');
 			$('li.ads a span').hide();
