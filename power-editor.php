@@ -27,20 +27,20 @@ if(isset($_SESSION['user'])) :
 <head>
 <title>FB Power-Editor</title>
 <script type="text/javascript">
-	var camapaigns = <?php echo json_encode($camapaigns['data']); ?>;
+	var _camapaigns = <?php echo json_encode($camapaigns['data']); ?>;
 </script>
-<link rel="stylesheet" type="text/css" href="http://<?php echo $_SERVER['HTTP_HOST'];?>/css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="http://<?php echo $_SERVER['HTTP_HOST'];?>/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="http://<?php echo $_SERVER['HTTP_HOST'];?>/css/daterangepicker.css" />
-<link rel="stylesheet" type="text/css" href="http://<?php echo $_SERVER['HTTP_HOST'];?>/css/bootstrap-select.min.css" />
-<link rel="stylesheet" type="text/css" href="http://<?php echo $_SERVER['HTTP_HOST'];?>/css/style.css">
-<script type="text/javascript" src="http://<?php echo $_SERVER['HTTP_HOST'];?>/js/jquery.min.js"></script>
-<script type="text/javascript" src="http://<?php echo $_SERVER['HTTP_HOST'];?>/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="http://<?php echo $_SERVER['HTTP_HOST'];?>/js/moment.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="css/daterangepicker.css" />
+<link rel="stylesheet" type="text/css" href="css/bootstrap-select.min.css" />
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/moment.min.js"></script>
 <!-- Include Date Range Picker -->
-<script type="text/javascript" src="http://<?php echo $_SERVER['HTTP_HOST'];?>/js/daterangepicker.js"></script>
+<script type="text/javascript" src="js/daterangepicker.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
-<script type="text/javascript" src="http://<?php echo $_SERVER['HTTP_HOST'];?>/js/custom.js"></script>
+<script type="text/javascript" src="js/custom.js"></script>
 <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lodash@4.17.4/lodash.min.js"></script>
@@ -131,19 +131,19 @@ if(isset($_SESSION['user'])) :
 								  		</li>
 								  		<li>
 								  			<div class="different-acc">
-								  				<img src="../img/acc-img.png">
+								  				<img src="img/acc-img.png">
 								  				<p><b>Lorem ipsum dummy text</b><?php echo $_SESSION['user']['email']; ?></p>
 								  			</div>
 								  		</li>
 								  		<li>
 								  			<div class="different-acc active">
-								  				<img src="../img/acc-img.png">
+								  				<img src="img/acc-img.png">
 								  				<p><b>Lorem ipsum dummy text</b><?php echo $_SESSION['user']['email']; ?></p>
 								  			</div>
 								  		</li>
 								  		<li>
 								  			<div class="different-acc">
-								  				<img src="../img/acc-img.png">
+								  				<img src="img/acc-img.png">
 								  				<p><b>Lorem ipsum dummy text</b><?php echo $_SESSION['user']['email']; ?></p>
 								  			</div>
 								  		</li>
@@ -177,11 +177,11 @@ if(isset($_SESSION['user'])) :
 											<ul><li style="padding: 15px;"><input type="text" name="" class="form-control" placeholder="Search"></li></ul>
 											<ul class="listing">										
 												<li>
-													<h5><img src="../img/prsnl-acnt-icon.png"> your personal accounts</h5>
+													<h5><img src="img/prsnl-acnt-icon.png"> your personal accounts</h5>
 													<?php foreach ($accounts['data'] as $key => $account): ?>
 														<?php if($account['id'] == $_REQUEST['act']): $acc_class = 'active'; else : $acc_class = ''; endif ?>
 														<div class="account-category <?php echo $acc_class;?>">
-															<img src="../img/acnt-by-id-icon.png">
+															<img src="img/acnt-by-id-icon.png">
 															<p>
 																<span class="account_name"><b><?php echo $account['name'];?></b></span>
 																Account #: <span class="account_id"><?php echo $account['account_id'];?></span>
@@ -189,65 +189,65 @@ if(isset($_SESSION['user'])) :
 														</div>
 													<?php endforeach ?>	
 													<!-- <div class="account-category">
-														<img src="../img/acnt-by-id-icon.png">
+														<img src="img/acnt-by-id-icon.png">
 														<p><b>Lorem Ipsum Account</b>Account #: 156893694872356</p>
 													</div>
 													<div class="account-category active">
-														<img src="../img/acnt-by-id-icon.png">
+														<img src="img/acnt-by-id-icon.png">
 														<p><b>Lorem Ipsum Account</b>Account #: 156893694872356</p>
 													</div>
 													<div class="account-category">
-														<img src="../img/acnt-by-id-icon.png">
+														<img src="img/acnt-by-id-icon.png">
 														<p><b>Lorem Ipsum Account</b>Account #: 156893694872356</p>
 													</div> -->
 												</li>
 												<!-- <li>
-													<h5><img src="../img/prsnl-acnt-icon.png"> your personal accounts</h5>
+													<h5><img src="img/prsnl-acnt-icon.png"> your personal accounts</h5>
 													<div class="account-category">
-														<img src="../img/acnt-by-id-icon.png">
+														<img src="img/acnt-by-id-icon.png">
 														<p><b>Lorem Ipsum Account</b>Account #: 156893694872356</p>
 													</div>
 													<div class="account-category">
-														<img src="../img/acnt-by-id-icon.png">
+														<img src="img/acnt-by-id-icon.png">
 														<p><b>Lorem Ipsum Account</b>Account #: 156893694872356</p>
 													</div>
 													<div class="account-category">
-														<img src="../img/acnt-by-id-icon.png">
+														<img src="img/acnt-by-id-icon.png">
 														<p><b>Lorem Ipsum Account</b>Account #: 156893694872356</p>
 													</div>
 												</li>
 												<li>
-													<h5><img src="../img/prsnl-acnt-icon.png"> your personal accounts</h5>
+													<h5><img src="img/prsnl-acnt-icon.png"> your personal accounts</h5>
 													<div class="account-category">
-														<img src="../img/acnt-by-id-icon.png">
+														<img src="img/acnt-by-id-icon.png">
 														<p><b>Lorem Ipsum Account</b>Account #: 156893694872356</p>
 													</div>
 													<div class="account-category">
-														<img src="../img/acnt-by-id-icon.png">
+														<img src="img/acnt-by-id-icon.png">
 														<p><b>Lorem Ipsum Account</b>Account #: 156893694872356</p>
 													</div>
 													<div class="account-category">
-														<img src="../img/acnt-by-id-icon.png">
+														<img src="img/acnt-by-id-icon.png">
 														<p><b>Lorem Ipsum Account</b>Account #: 156893694872356</p>
 													</div>
 													<div class="account-category">
-														<img src="../img/acnt-by-id-icon.png">
+														<img src="img/acnt-by-id-icon.png">
 														<p><b>Lorem Ipsum Account</b>Account #: 156893694872356</p>
 													</div>
 													<div class="account-category">
-														<img src="../img/acnt-by-id-icon.png">
+														<img src="img/acnt-by-id-icon.png">
 														<p><b>Lorem Ipsum Account</b>Account #: 156893694872356</p>
 													</div>
 													<div class="account-category">
-														<img src="../img/acnt-by-id-icon.png">
+														<img src="img/acnt-by-id-icon.png">
 														<p><b>Lorem Ipsum Account</b>Account #: 156893694872356</p>
 													</div>
 													<div class="account-category">
-														<img src="../img/acnt-by-id-icon.png">
+														<img src="img/acnt-by-id-icon.png">
 														<p><b>Lorem Ipsum Account</b>Account #: 156893694872356</p>
 													</div>
 													<div class="account-category">
-														<img src="../img/acnt-by-id-icon.png">
+														<img src="img/acnt-by-id-icon.png">
 														<p><b>Lorem Ipsum Account</b>Account #: 156893694872356</p>
 													</div>
 												</li> -->
@@ -399,28 +399,28 @@ if(isset($_SESSION['user'])) :
 		                                    <div class="tab-content">
 		                                        <div role="tabpanel" class="tab-pane active" id="reach">
 		                                        	<div class="no-result-found">
-		                                        			<img src="../img/no-result-img.jpg"><br>	
+		                                        			<img src="img/no-result-img.jpg"><br>	
 		                                        			<b>No Activity During Date Range</b><br>
 		                                        			<button class="light-grey-btn" style="margin-top: 15px;">Change Date</button>
 		                                        	</div>	
 		                                        </div>
 		                                        <div role="tabpanel" class="tab-pane" id="spent">
 		                                        	<div class="no-result-found">
-		                                        			<img src="../img/no-result-img.jpg"><br>	
+		                                        			<img src="img/no-result-img.jpg"><br>	
 		                                        			<b>No Activity During Date Range</b><br>
 		                                        			<button class="light-grey-btn" style="margin-top: 15px;">Change Date</button>
 		                                        	</div>		
 		                                        </div>
 		                                        <div role="tabpanel" class="tab-pane" id="impression">
 		                                        	<div class="no-result-found">
-		                                        			<img src="../img/no-result-img.jpg"><br>	
+		                                        			<img src="img/no-result-img.jpg"><br>	
 		                                        			<b>No Activity During Date Range</b><br>
 		                                        			<button class="light-grey-btn" style="margin-top: 15px;">Change Date</button>
 		                                        	</div>	
 		                                        </div>
 		                                        <div role="tabpanel" class="tab-pane" id="link-clicks">
 		                                        	<div class="no-result-found">
-		                                        			<img src="../img/no-result-img.jpg"><br>	
+		                                        			<img src="img/no-result-img.jpg"><br>	
 		                                        			<b>No Activity During Date Range</b><br>
 		                                        			<button class="light-grey-btn" style="margin-top: 15px;">Change Date</button>
 		                                        	</div>	
@@ -503,7 +503,7 @@ if(isset($_SESSION['user'])) :
 
 					                                        	</div>
 					                                        	<div class="no-result-found">
-					                                        			<img src="../img/no-result-img.jpg"><br>	
+					                                        			<img src="img/no-result-img.jpg"><br>	
 					                                        			<b>No Activity During Date Range</b><br>
 					                                        			<button class="light-grey-btn" style="margin-top: 15px;">Change Date</button>
 					                                        	</div>	
@@ -538,7 +538,7 @@ if(isset($_SESSION['user'])) :
 
 					                                        	</div>
 					                                        	<div class="no-result-found">
-					                                        			<img src="../img/no-result-img.jpg"><br>	
+					                                        			<img src="img/no-result-img.jpg"><br>	
 					                                        			<b>No Activity During Date Range</b><br>
 					                                        			<button class="light-grey-btn" style="margin-top: 15px;">Change Date</button>
 					                                        	</div>
@@ -573,7 +573,7 @@ if(isset($_SESSION['user'])) :
 
 					                                        	</div>
 					                                        	<div class="no-result-found">
-					                                        			<img src="../img/no-result-img.jpg"><br>	
+					                                        			<img src="img/no-result-img.jpg"><br>	
 					                                        			<b>No Activity During Date Range</b><br>
 					                                        			<button class="light-grey-btn" style="margin-top: 15px;">Change Date</button>
 					                                        	</div>
@@ -626,7 +626,7 @@ if(isset($_SESSION['user'])) :
 
 					                                        	</div>
 					                                        	<div class="no-result-found">
-					                                        			<img src="../img/no-result-img.jpg"><br>	
+					                                        			<img src="img/no-result-img.jpg"><br>	
 					                                        			<b>No Activity During Date Range</b><br>
 					                                        			<button class="light-grey-btn" style="margin-top: 15px;">Change Date</button>
 					                                        	</div>
@@ -655,7 +655,7 @@ if(isset($_SESSION['user'])) :
 		                                					</div>
 		                                					<div class="col-md-10 location-map">
 		                                							<div class="map-result">
-		                                									<img src="../img/map-img.jpg">
+		                                									<img src="img/map-img.jpg">
 		                                							</div>
 		                                							<div class="select-on-map">
 		                                									<div class="custom-autocomplete-select">
@@ -737,7 +737,7 @@ if(isset($_SESSION['user'])) :
 		                    	<div class="col-md-2 right-area" style="padding-right: 0">
 		                    			<div class="cost-summary">
 		                    					<h5>Account Spending Limit <i class="fa fa-info-circle" aria-hidden="true"></i></h5>
-		                    					<img src="../img/amount-slider.jpg">
+		                    					<img src="img/amount-slider.jpg">
 		                    					<p><b>&#8377; 330.00</b> spent toward limit.</p>
 		                    					<p><b>&#8377; 330.00</b> limit.</p>
 		                    					<p><a href="">Manage Billing & Payments</a></p>
@@ -803,28 +803,28 @@ if(isset($_SESSION['user'])) :
 																         			Campaign Objective
 																				</label>
 																				<div class="col-md-8">
-																					<button class="light-grey-btn show-camp-obj-btn"><img src="../img/brand-awarns-icon.png">Traffic</button>
+																					<button class="light-grey-btn show-camp-obj-btn"><img src="img/brand-awarns-icon.png">Traffic</button>
 																					<div class="objective">
 																						<div class="objective-cat">
 																							<h5>Awareness</h5>
 																							<ul>
-																								<li><img src="../img/brand-awarns-icon.png"> Brand</li>
-																								<li><img src="../img/brand-awarns-icon.png"> Brand</li>
-																								<li><img src="../img/brand-awarns-icon.png"> Brand</li>
-																								<li><img src="../img/brand-awarns-icon.png"> Brand</li>	
+																								<li><img src="img/brand-awarns-icon.png"> Brand</li>
+																								<li><img src="img/brand-awarns-icon.png"> Brand</li>
+																								<li><img src="img/brand-awarns-icon.png"> Brand</li>
+																								<li><img src="img/brand-awarns-icon.png"> Brand</li>	
 																							</ul>
 																						</div>
 																						<div class="objective-cat">
 																							<h5>Awareness</h5>
 																							<ul>
-																								<li><img src="../img/brand-awarns-icon.png"> Brand</li>
-																								<li><img src="../img/brand-awarns-icon.png"> Brand</li>
+																								<li><img src="img/brand-awarns-icon.png"> Brand</li>
+																								<li><img src="img/brand-awarns-icon.png"> Brand</li>
 																							</ul>
 																						</div>
 																						<div class="objective-cat">
 																							<h5>Awareness</h5>
 																							<ul>
-																								<li><img src="../img/brand-awarns-icon.png"> Brand</li>
+																								<li><img src="img/brand-awarns-icon.png"> Brand</li>
 																							</ul>
 																						</div>
 																					</div>	
@@ -1172,7 +1172,7 @@ if(isset($_SESSION['user'])) :
 		                      			foreach ($camapaigns['data'] as $camapaign):
 		                      				
 		                      				?>
-		                      				<tr class="camp_rows" id="<?php echo $camapaign['id'];?>" data-cmp_name="<?php echo str_replace('"','&#34;',$camapaign['name']);?>">
+		                      				<tr class="camp_rows" id="<?php echo $camapaign['id'];?>">
 		                      					<td><input type="checkbox" name="" class="campaigns_checkbox"></td>
 		                      					<td>
 		                      						<input type="checkbox" <?php if($camapaign['status'] == 'ACTIVE') { echo 'checked'; } ?> class="campaigns_status" data-toggle="toggle" data-size="mini">
@@ -1282,28 +1282,28 @@ if(isset($_SESSION['user'])) :
 																         			Campaign Objective
 																				</label>
 																				<div class="col-md-8">
-																					<button class="light-grey-btn show-camp-obj-btn"><img src="../img/brand-awarns-icon.png">Traffic</button>
+																					<button class="light-grey-btn show-camp-obj-btn"><img src="img/brand-awarns-icon.png">Traffic</button>
 																					<div class="objective">
 																						<div class="objective-cat">
 																							<h5>Awareness</h5>
 																							<ul>
-																								<li><img src="../img/brand-awarns-icon.png"> Brand</li>
-																								<li><img src="../img/brand-awarns-icon.png"> Brand</li>
-																								<li><img src="../img/brand-awarns-icon.png"> Brand</li>
-																								<li><img src="../img/brand-awarns-icon.png"> Brand</li>	
+																								<li><img src="img/brand-awarns-icon.png"> Brand</li>
+																								<li><img src="img/brand-awarns-icon.png"> Brand</li>
+																								<li><img src="img/brand-awarns-icon.png"> Brand</li>
+																								<li><img src="img/brand-awarns-icon.png"> Brand</li>	
 																							</ul>
 																						</div>
 																						<div class="objective-cat">
 																							<h5>Awareness</h5>
 																							<ul>
-																								<li><img src="../img/brand-awarns-icon.png"> Brand</li>
-																								<li><img src="../img/brand-awarns-icon.png"> Brand</li>
+																								<li><img src="img/brand-awarns-icon.png"> Brand</li>
+																								<li><img src="img/brand-awarns-icon.png"> Brand</li>
 																							</ul>
 																						</div>
 																						<div class="objective-cat">
 																							<h5>Awareness</h5>
 																							<ul>
-																								<li><img src="../img/brand-awarns-icon.png"> Brand</li>
+																								<li><img src="img/brand-awarns-icon.png"> Brand</li>
 																							</ul>
 																						</div>
 																					</div>	
@@ -1656,9 +1656,9 @@ if(isset($_SESSION['user'])) :
 									  		$total_adset = count($campaign['adsets']['data']);
 									  		foreach ($campaign['adsets']['data'] as $adsets) : 
 									  	?>
-									    <tr id="<?php echo $adsets['id'];?>" data-adset_name="<?php echo str_replace('"','&#34;',$adsets['name']);?>" class="adset_rows camp_<?php echo $campaign['id'];?>">
+									    <tr id="<?php echo $adsets['id'];?>" class="adset_rows camp_<?php echo $campaign['id'];?>">
 									      <td><input type="checkbox" name="" class="adsets_checkbox"></td>
-									      <td><input type="checkbox" <?php if($adsets['status']) { echo "checked"; }?> class="adsets_status" data-toggle="toggle" data-size="mini"></td>
+									      <td><input type="checkbox" <?php if($adsets['status'] == 'ACTIVE') { echo "checked"; }?> class="adsets_status" data-toggle="toggle" data-size="mini"></td>
 									      <td>
 									      	<a href="#"><?php echo $adsets['name']; ?> <span class="edit-row-title"><i class="fa fa-pencil" aria-hidden="true"></i></span></a>
 									      	<div class="row-editing-icons">
@@ -1768,28 +1768,28 @@ if(isset($_SESSION['user'])) :
 																         			Campaign Objective
 																				</label>
 																				<div class="col-md-8">
-																					<button class="light-grey-btn show-camp-obj-btn"><img src="../img/brand-awarns-icon.png">Traffic</button>
+																					<button class="light-grey-btn show-camp-obj-btn"><img src="img/brand-awarns-icon.png">Traffic</button>
 																					<div class="objective">
 																						<div class="objective-cat">
 																							<h5>Awareness</h5>
 																							<ul>
-																								<li><img src="../img/brand-awarns-icon.png"> Brand</li>
-																								<li><img src="../img/brand-awarns-icon.png"> Brand</li>
-																								<li><img src="../img/brand-awarns-icon.png"> Brand</li>
-																								<li><img src="../img/brand-awarns-icon.png"> Brand</li>	
+																								<li><img src="img/brand-awarns-icon.png"> Brand</li>
+																								<li><img src="img/brand-awarns-icon.png"> Brand</li>
+																								<li><img src="img/brand-awarns-icon.png"> Brand</li>
+																								<li><img src="img/brand-awarns-icon.png"> Brand</li>	
 																							</ul>
 																						</div>
 																						<div class="objective-cat">
 																							<h5>Awareness</h5>
 																							<ul>
-																								<li><img src="../img/brand-awarns-icon.png"> Brand</li>
-																								<li><img src="../img/brand-awarns-icon.png"> Brand</li>
+																								<li><img src="img/brand-awarns-icon.png"> Brand</li>
+																								<li><img src="img/brand-awarns-icon.png"> Brand</li>
 																							</ul>
 																						</div>
 																						<div class="objective-cat">
 																							<h5>Awareness</h5>
 																							<ul>
-																								<li><img src="../img/brand-awarns-icon.png"> Brand</li>
+																								<li><img src="img/brand-awarns-icon.png"> Brand</li>
 																							</ul>
 																						</div>
 																					</div>	
@@ -2141,9 +2141,9 @@ if(isset($_SESSION['user'])) :
 									  		$adsets = $ads['adsets']['data'];
 									  		$total_adset = count($ads['ads']['data']);
 									  		foreach ($ads['ads']['data'] as $key => $ad) : ?>
-									  		<tr class="ad_rows camp_<?php echo $ads['id'];?> adsets_<?php echo $adsets[$key]['id'];?>" id="<?php echo $ad['id'];?>" data-adset_name="<?php echo str_replace('"','&#34;',$ad['name']);?>">
+									  		<tr class="ad_rows camp_<?php echo $ads['id'];?> adsets_<?php echo $adsets[$key]['id'];?>" id="<?php echo $ad['id'];?>">
 									  			<td><input type="checkbox" name="" class="ad_checkbox"></td>
-									  			<td><input type="checkbox" <?php if($ad['status']) { echo "checked"; }?> class="ad_status" data-toggle="toggle" data-size="mini"></td>
+									  			<td><input type="checkbox" <?php if($ad['status'] == 'ACTIVE') { echo "checked"; }?> class="ad_status" data-toggle="toggle" data-size="mini"></td>
 									  			<td>
 									  				<a href="#"><?php echo $ad['name']; ?> <span class="edit-row-title"><i class="fa fa-pencil" aria-hidden="true"></i></span></a>
 									  				<div class="row-editing-icons">
@@ -2247,28 +2247,28 @@ if(isset($_SESSION['user'])) :
 															<div class="tab-content col-md-9">
 															        <div class="tab-pane active" id="links">
 															            <div class="no-result-found">
-						                                        			<img src="../img/no-result-img.jpg"><br>	
+						                                        			<img src="img/no-result-img.jpg"><br>	
 						                                        			<b>No Activity During Date Range</b><br>
 						                                        			<button class="light-grey-btn" style="margin-top: 15px;">Change Date</button>
 						                                        		</div>
 															        </div>
 															        <div class="tab-pane" id="people">
 															            <div class="no-result-found">
-						                                        			<img src="../img/no-result-img.jpg"><br>	
+						                                        			<img src="img/no-result-img.jpg"><br>	
 						                                        			<b>No Activity During Date Range</b><br>
 						                                        			<button class="light-grey-btn" style="margin-top: 15px;">Change Date</button>
 						                                        		</div>
 															        </div>
 															        <div class="tab-pane" id="amount">
 															             <div class="no-result-found">
-						                                        			<img src="../img/no-result-img.jpg"><br>	
+						                                        			<img src="img/no-result-img.jpg"><br>	
 						                                        			<b>No Activity During Date Range</b><br>
 						                                        			<button class="light-grey-btn" style="margin-top: 15px;">Change Date</button>
 						                                        		</div>
 															        </div>
 															        <div class="tab-pane" id="custom">
 															            <div class="no-result-found">
-						                                        			<img src="../img/no-result-img.jpg"><br>	
+						                                        			<img src="img/no-result-img.jpg"><br>	
 						                                        			<b>No Activity During Date Range</b><br>
 						                                        			<button class="light-grey-btn" style="margin-top: 15px;">Change Date</button>
 						                                        		</div>
@@ -2279,14 +2279,14 @@ if(isset($_SESSION['user'])) :
 													</div>
 													<div class="tab-pane demographics" id="tab_default_2">
 														<div class="no-result-found">
-		                                        			<img src="../img/no-result-img.jpg"><br>	
+		                                        			<img src="img/no-result-img.jpg"><br>	
 		                                        			<b>No Activity During Date Range</b><br>
 		                                        			<button class="light-grey-btn" style="margin-top: 15px;">Change Date</button>
 		                                        		</div>
 													</div>
 													<div class="tab-pane placement" id="tab_default_3">
 														<div class="no-result-found">
-		                                        			<img src="../img/no-result-img.jpg"><br>	
+		                                        			<img src="img/no-result-img.jpg"><br>	
 		                                        			<b>No Activity During Date Range</b><br>
 		                                        			<button class="light-grey-btn" style="margin-top: 15px;">Change Date</button>
 		                                        		</div>
@@ -2306,7 +2306,7 @@ if(isset($_SESSION['user'])) :
 								      							<div class="row">
 								      								<div class="col-sm-4"><label for="email" class="pull-right">Campaign Name:</label></div>
 								      								<div class="col-sm-8 padding0">
-								      									<input type="email" class="form-control" id="" value="">
+								      									<input type="email" class="form-control" id="camp_name" value="">
 								      									<a href="#">Rename usign available fields</a>
 								      								</div>
 								      							</div>
@@ -2316,11 +2316,11 @@ if(isset($_SESSION['user'])) :
 								      							<div class="white-block-body">
 								      								<div class="col-sm-12">
 								      									<div class="col-sm-6"><label class="pull-right">Objective</label></div>
-								      									<div class="col-sm-6 padding0"><?php echo $camapaign['objective'];?></div>
+								      									<div class="col-sm-6 padding0" id="camp_objective"><?php echo $camapaign['objective'];?></div>
 								      								</div>
 								      								<div class="col-sm-12">
 								      									<div class="col-sm-6"><label class="pull-right">Buying Type</label></div>
-								      									<div class="col-sm-6 padding0"><?php echo $camapaign['buying_type'];?></div>
+								      									<div class="col-sm-6 padding0" id="camp_buyingtype"><?php echo $camapaign['buying_type'];?></div>
 								      								</div>
 								      								<div class="col-sm-12">
 								      									<div class="col-sm-6"><label class="pull-right">Campaign Spending Limit <i class="fa fa-info-circle" aria-hidden="true"></i></label></div>
@@ -2337,7 +2337,7 @@ if(isset($_SESSION['user'])) :
 								      					<div class="col-md-5 col-ms-4">
 								      						<div class="form-white-block" style="margin-top:20px;">
 								      							<div class="row main-heading">
-								      								<div class="col-md-9 padding10"><h5><b>Campaign id:<?php echo $camapaign['id'];?></b></h5><input type="checkbox" checked class="" value="<?php echo $camapaign['id'];?>" data-toggle="toggle" data-size="mini"> </div>
+								      								<div class="col-md-9 padding10"><h5><b>Campaign id:<span id="camp_id"></span> </b></h5><input type="checkbox" id="camp_status" value="<?php echo $camapaign['id'];?>" data-toggle="toggle" data-size="mini"> </div>
 								      								<div class="col-md-3 padding10">
 								      									<div class="btn-and-caret-icon-dropdown" style="margin-top: 6px;">
 								      										<a href="#" class="create-camp-btn">Link</a>
@@ -2356,11 +2356,11 @@ if(isset($_SESSION['user'])) :
 								      							</div>
 								      							<div class="white-block-body">
 								      								<p>
-								      									<a href="#">1 Ad Set</a><br>
+								      									<a href="#"><span id="camp_total_adsets"></span> Ad Set</a><br>
 								      									<span>Targeting, placement, budget and schedule</span>
 								      								</p>
 								      								<p>
-								      									<a href="#">1 Ad</a><br>
+								      									<a href="#"><span id="camp_total_ads"></span> Ad</a><br>
 								      									<span>Images, videos, text and links</span>
 								      								</p>
 								      								<hr>
@@ -2382,88 +2382,7 @@ if(isset($_SESSION['user'])) :
 								      						</div>
 								      					</div>
 								      				</div>
-								      			<div class="camapaign-details-list" id="cmp_mixed" style="display: none;">
-								      				<div class="col-md-7 col-sm-8">
-								      					<div class="form-white-block" style="padding: 15px; margin-top: 20px;">
-								      						<div class="row">
-								      							<div class="col-sm-4"><label for="email" class="pull-right">Campaign Name:</label></div>
-								      							<div class="col-sm-8 padding0">
-								      								<input type="email" class="form-control" id="email" value="Mixed Value">
-								      								<a href="#">Rename usign available fields</a>
-								      							</div>
-								      						</div>
-								      					</div>
-								      					<div class="form-white-block">
-								      						<h5 class="white-block-legend">Campaign Details</h5>
-								      						<div class="white-block-body">
-								      							<div class="col-sm-12">
-								      								<div class="col-sm-6"><label class="pull-right">Objective</label></div>
-								      								<div class="col-sm-6 padding0">Traffic</div>
-								      							</div>
-								      							<div class="col-sm-12">
-								      								<div class="col-sm-6"><label class="pull-right">Buying Type</label></div>
-								      								<div class="col-sm-6 padding0">Auction</div>
-								      							</div>
-								      							<div class="col-sm-12">
-								      								<div class="col-sm-6"><label class="pull-right">Campaign Spending Limit <i class="fa fa-info-circle" aria-hidden="true"></i></label></div>
-								      								<div class="col-sm-6 padding0">
-								      									<input type="text" value="Mixed Value"><span><b>₹NaN.00 Total Spent</b></span>
-								      									<p>New limit must be at least ₹5,000.00</p>
-								      									<a href="#">Remove Limit</a>
-								      								</div>
-								      							</div>
-								      						</div>
-								      					</div>
-								      				</div>
-
-								      				<div class="col-md-5 col-ms-4">
-								      					<div class="form-white-block" style="margin-top:20px;">
-								      						<div class="row main-heading">
-								      							<div class="col-md-9 padding10"><h5><b>Campaign id: <a data-toggle="modal" data-target="#cam_mixed_value">Mixed Value</a></b></h5><input type="checkbox" checked class="" value="<?php echo $camapaign['id'];?>" data-toggle="toggle" data-size="mini"> </div>
-								      							<div class="col-md-3 padding10">
-								      								<div class="btn-and-caret-icon-dropdown" style="margin-top: 6px;">
-								      									<a href="#" class="create-camp-btn">Link</a>
-								      									<div class="dropdown caret-icon-dropdown-with-btn">
-								      										<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border-left:0">
-								      											<span class="caret"></span>
-								      										</button>
-								      										<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-								      											<a class="dropdown-item" href="#">Action</a>
-								      											<a class="dropdown-item" href="#">Another action</a>
-								      											<a class="dropdown-item" href="#">Something else here</a>
-								      										</div>
-								      									</div>
-								      								</div>
-								      							</div>
-								      						</div>
-								      						<div class="white-block-body">
-								      							<p>
-								      								<a href="#"><span class="total_adsets_count">1</span> Ad Set</a><br>
-								      								<span>Targeting, placement, budget and schedule</span>
-								      							</p>
-								      							<p>
-								      								<a href="#"><span class="total_ads_count"> Ad</a><br>
-								      								<span>Images, videos, text and links</span>
-								      							</p>
-								      							<hr>
-								      							<p><b>Rule</b></p>
-								      							<div class="btn-and-caret-icon-dropdown" style="margin-top: 6px;">
-								      								<a href="#" class="create-camp-btn">Create Rule</a>
-								      								<div class="dropdown caret-icon-dropdown-with-btn">
-								      									<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border-left:0">
-								      										<span class="caret"></span>
-								      									</button>
-								      									<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-								      										<a class="dropdown-item" href="#">Action</a>
-								      										<a class="dropdown-item" href="#">Another action</a>
-								      										<a class="dropdown-item" href="#">Something else here</a>
-								      									</div>
-								      								</div>
-								      							</div>
-								      						</div>
-								      					</div>
-								      				</div>
-								      			</div>
+								      			
 								      		</div>
 								      		<!-- end of campaigns -->
 								      		<!-- start of adsets -->
@@ -2473,7 +2392,7 @@ if(isset($_SESSION['user'])) :
 								      					<div class="edit-camp-left-blocks">
 								      						<div class="form-white-block" style="padding: 15px;">
 								      							<label>Ad Set Name</label>
-								      							<input type="text" name="" class="form-control" value="<?php echo str_replace('"','&#34;',$adset['name']);?>">
+								      							<input type="text" name="" class="form-control" id="adset_name">
 								      							<a href="#">Rename usign available fields</a>
 								      						</div>
 								      						<div class="form-white-block">
@@ -2716,7 +2635,7 @@ if(isset($_SESSION['user'])) :
 								      				<div class="col-md-5 col-sm-5">
 								      					<div class="form-white-block" style="margin-top:20px;">
 								      						<div class="row main-heading">
-								      							<div class="col-md-9 padding10"><h5 class="white-block-legend"><b>Ad Set id:<?php echo $adset['id'];?></b></h5><input type="checkbox" checked class="" value="<?php echo $adset['id'];?>" data-toggle="toggle" data-size="mini"> </div>
+								      							<div class="col-md-9 padding10"><h5 class="white-block-legend"><b>Ad Set id:<span id="adset_id"></span></b></h5><input type="checkbox" id="adset_status" value="<?php echo $adset['id'];?>" data-toggle="toggle" data-size="mini"> </div>
 								      							<div class="col-md-3 padding10">
 								      								<div class="btn-and-caret-icon-dropdown" style="margin-top: 6px;">
 								      									<a href="#" class="create-camp-btn">Link</a>
@@ -2735,11 +2654,11 @@ if(isset($_SESSION['user'])) :
 								      						</div>
 								      						<div class="white-block-body">
 								      							<p>
-								      								<a href="#">1 Ad Set</a><br>
+								      								<a href="#"><span id="camp_total_camps">1</span> Campaigns</a><br>
 								      								<span>Targeting, placement, budget and schedule</span>
 								      							</p>
 								      							<p>
-								      								<a href="#">1 Ad</a><br>
+								      								<a href="#"><span id="camp_total_ads">1</span> Ad</a><br>
 								      								<span>Images, videos, text and links</span>
 								      							</p>
 								      							<hr>
@@ -2763,7 +2682,7 @@ if(isset($_SESSION['user'])) :
 								      						<div class="form-white-block">
 								      							<h5 class="white-block-legend">Audience Definition</h5>
 								      							<div class="white-block-body">
-								      								<img src="../img/audience.jpg"> <p>Your audience selection is fairly broad</p> 
+								      								<img src="img/audience.jpg"> <p>Your audience selection is fairly broad</p> 
 
 								      							</div>
 								      						</div>
@@ -2771,7 +2690,7 @@ if(isset($_SESSION['user'])) :
 								      							<h5 class="white-block-legend">Estimated Daily Results</h5>
 								      							<div class="white-block-body">
 								      								 <div class="col-md-12" style="padding-left: 0"><b>Reach</b> 33,000 - 210,000 (of 110,000,000)<br>
-								      								 	<img src="../img/reach-img.jpg">
+								      								 	<img src="img/reach-img.jpg">
 								      								 </div>
 								      								<div class="radio">
  								      									<p>Your ads will automatically be shown to your audience in the places they're likely to perform best. For this objective, placements may include Facebook, Instagram, Audience Network and Messenger.</p>
@@ -2793,7 +2712,7 @@ if(isset($_SESSION['user'])) :
 										      				<div class="edit-camp-left-blocks">
 										      					<div class="form-white-block" style="padding: 15px;">
 										      						<label>Ad Set Name</label>
-										      						<input type="text" name="" class="form-control" value="<?php echo str_replace('"','&#34;',$ads['name']);?>">
+										      						<input type="text" name="" class="form-control" id="ad_name">
 										      						<a href="#">Rename usign available fields</a>
 										      					</div>
 
@@ -2822,7 +2741,7 @@ if(isset($_SESSION['user'])) :
 										      								<label class="light-grey-label">Instagram Account  <i class="fa fa-info-circle" aria-hidden="true"></i></label>
 										      								<p>The selected Page has no Instagram account connected. Your ad will use the Page name and profile picture.</p>
 										      								<div class="identity-instagram">
-										      									<button class="light-grey-btn"><img src="../img/ident-acc-icon.jpg">Revinfotech (Page) <i class="fa fa-check" aria-hidden="true"></i></button>
+										      									<button class="light-grey-btn"><img src="img/ident-acc-icon.jpg">Revinfotech (Page) <i class="fa fa-check" aria-hidden="true"></i></button>
 										      									<span>OR</span>
 										      									<button class="light-grey-btn" data-toggle="modal" data-target="#add-insta-acct-btn"><i class="fa fa-instagram" aria-hidden="true"></i> Add an Account</button>
 										      									
@@ -2844,14 +2763,14 @@ if(isset($_SESSION['user'])) :
 																	    <ul>
 																	    	<li>
 																	    		<input type="radio" id="img-vid" name="crt"> 
-																	    		<img src="../img/single-img-icon.jpg">
+																	    		<img src="img/single-img-icon.jpg">
 																	    		<label for="img-vid">Ad with an image or video</label>
 																	    	</li>
 																	    	
 																	    	<li>
 																		    	<div class="crt-ad-radio-and-img">	
 																		    		<input type="radio" id="mul-img" name="crt"> 
-																		    		<img src="../img/single-img-icon.jpg">
+																		    		<img src="img/single-img-icon.jpg">
 																		    	</div>	
 																		    	<div class="crt-ad-label-and-p">	
 																		    		<label for="mul-img">
@@ -2864,7 +2783,7 @@ if(isset($_SESSION['user'])) :
 																	    	<li>
 																	    	<div class="crt-ad-radio-and-img">		
 																	    		<input type="radio" id="img-coll" name="crt"> 
-																	    		<img src="../img/single-img-icon.jpg">
+																	    		<img src="img/single-img-icon.jpg">
 																	    	</div>	
 																	    	<div class="crt-ad-label-and-p">	
 																	    		<label for="img-coll">
@@ -2891,7 +2810,7 @@ if(isset($_SESSION['user'])) :
 																		    				<div class="three-new-customers-list">
 																		    					<div class="s-r">	
 																		    						<div class="s-r-left">
-																		    							<img src="../img/new-cus-img.png">
+																		    							<img src="img/new-cus-img.png">
 																		    						</div>
 																		    						<div class="s-r-right">
 																		    							<b>Get New Customers</b><p>Drive conversions with a mobile landing page that encourages action.</p>
@@ -2899,7 +2818,7 @@ if(isset($_SESSION['user'])) :
 																		    					</div>
 																		    					<div class="s-r">	
 																		    						<div class="s-r-left">
-																		    							<img src="../img/new-cus-img.png">
+																		    							<img src="img/new-cus-img.png">
 																		    						</div>
 																		    						<div class="s-r-right">
 																		    							<b>Get New Customers</b><p>Drive conversions with a mobile landing page that encourages action.</p>
@@ -2907,7 +2826,7 @@ if(isset($_SESSION['user'])) :
 																		    					</div>
 																		    					<div class="s-r">	
 																		    						<div class="s-r-left">
-																		    							<img src="../img/new-cus-img.png">
+																		    							<img src="img/new-cus-img.png">
 																		    						</div>
 																		    						<div class="s-r-right">
 																		    							<b>Get New Customers</b><p>Drive conversions with a mobile landing page that encourages action.</p>
@@ -3171,7 +3090,7 @@ if(isset($_SESSION['user'])) :
 										      			<div class="col-md-6 col-sm-5">
 									      					<div class="form-white-block" style="margin-top:20px;">
 									      						<div class="row main-heading">
-									      							<div class="col-md-9 padding10"><h5><b>Ad id:<?php echo $ads['id'];?></b></h5><input type="checkbox" checked class="" value="<?php echo $ads['id'];?>" data-toggle="toggle" data-size="mini"> </div>
+									      							<div class="col-md-9 padding10"><h5><b>Ad id<span id="ad_id"></span></b></h5><input type="checkbox" checked id="ad_status" value="" data-toggle="toggle" data-size="mini"> </div>
 									      							<div class="col-md-3 padding10">
 									      								<div class="btn-and-caret-icon-dropdown" style="margin-top: 6px;">
 									      									<a href="#" class="create-camp-btn">Link</a>
@@ -3190,11 +3109,11 @@ if(isset($_SESSION['user'])) :
 									      						</div>
 									      						<div class="white-block-body">
 									      							<p>
-									      								<a href="#">1 Campaigns</a><br>
+									      								<a href="#"><span id="camp_total_camps">1</span> Campaigns</a><br>
 									      								<span>Targeting, placement, budget and schedule</span>
 									      							</p>
 									      							<p>
-									      								<a href="#">1 Ad Set</a><br>
+									      								<a href="#"><span id="camp_total_adsets"></span> Ad Set</a><br>
 									      								<span>Images, videos, text and links</span>
 									      							</p>
 									      						</div>
@@ -3224,12 +3143,12 @@ if(isset($_SESSION['user'])) :
 									      								<div class="col-md-6 ads-preview-dropd-down-list">
 									      									<a href="#" class="light-grey-btn">Feature Phone <i class="fa fa-caret-down" aria-hidden="true"></i></a>
 									      									<ul>
-									      										<li><img src="../img/ads-list-icon1.jpg"> Mobile News Feed</li>
-									      										<li><img src="../img/ads-list-icon1.jpg"> Feature Phone</li>
-									      										<li class="active"><img src="../img/ads-list-icon1.jpg"> Desktop New Feed</li>
-									      										<li><img src="../img/ads-list-icon1.jpg"> Mobile News Feed</li>
-									      										<li><img src="../img/ads-list-icon1.jpg"> Feature Phone</li>
-									      										<li><img src="../img/ads-list-icon1.jpg"> Desktop New Feed</li>
+									      										<li><img src="img/ads-list-icon1.jpg"> Mobile News Feed</li>
+									      										<li><img src="img/ads-list-icon1.jpg"> Feature Phone</li>
+									      										<li class="active"><img src="img/ads-list-icon1.jpg"> Desktop New Feed</li>
+									      										<li><img src="img/ads-list-icon1.jpg"> Mobile News Feed</li>
+									      										<li><img src="img/ads-list-icon1.jpg"> Feature Phone</li>
+									      										<li><img src="img/ads-list-icon1.jpg"> Desktop New Feed</li>
 									      									</ul>
 									      								</div>
 									      								<div class="col-md-6 text-right" style="padding-right: 50px;">5 of 10</div>
@@ -3239,17 +3158,17 @@ if(isset($_SESSION['user'])) :
 									      									<div id="ads-preview-crsl" class="carousel slide" data-ride="carousel">	
 																			    <div class="carousel-inner">
 																			      <div class="item active">
-																			      		<img src="../img/ads-preview-icon.jpg">
+																			      		<img src="img/ads-preview-icon.jpg">
 																			         	<p>Please select a Facebook Page post to show this type of ad</p>
 																			      </div>
 
 																			      <div class="item">
-																			       		<img src="../img/ads-preview-icon.jpg">
+																			       		<img src="img/ads-preview-icon.jpg">
 																			         	<p>Please select a Facebook Page post to show this type of ad</p>
 																			      </div>
 																			    
 																			      <div class="item">
-																			      		<img src="../img/ads-preview-icon.jpg">
+																			      		<img src="img/ads-preview-icon.jpg">
 																			         	<p>Please select a Facebook Page post to show this type of ad</p>
 																			      </div>
 																			    </div>

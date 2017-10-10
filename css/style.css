@@ -566,7 +566,8 @@ color:#FFFFFF;
 .use-temp-let-sec {float: left; width: 50%; } 
 .use-temp-right-sec {float: left; width: 50%; }
 #useTemplate .modal-body{border-bottom: 1px solid #ccc;float: left;width: 100%;}
-
+.hide-row { display: none; }
+.show-row { display: table-row; }
 
 
 

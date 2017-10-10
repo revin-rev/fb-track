@@ -1,7 +1,7 @@
 <?php 
 ob_start();
 session_start();
-$db = new Mysqli("localhost", "fbpowereditor", "india@123", "fbpowereditor");
+$db = new Mysqli("localhost", "fbpowereditor", "india@123", "fb2");
 if($db->connect_errno){
   die('Connect Error: ' . $db->connect_errno);
 } 

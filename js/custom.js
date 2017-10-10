@@ -1,4 +1,5 @@
 jQuery(document).ready(function(){
+	console.log('camapaign',_camapaigns);
 	jQuery('code a').click(function() {
 		jQuery('#myModal .modal-body p').text(jQuery(this).data('reason'));
 	});
@@ -238,33 +239,42 @@ $(document).ready(function(){
 
 	/*Campaigns checkbox*/
 	$('.campaigns_checkbox').click(function() {
-		$('#ads-full-details').hide();
-		var data = camapaigns;
 		if(!$(this).is(':checked')) {
 			$('.all_camapaign_checkbox').prop('checked',false);
 		}
-		$('#adset_table tbody tr,#ad_table tbody tr').hide();
+
+		$('#adset_table tbody tr,#ad_table tbody tr').addClass('hide-row');
 		var checked_count = $('.campaigns_checkbox:checked').length;
+
 		$('.campaigns_checkbox:checked').each(function() {
 			var cmp_id = $(this).parent().parent().attr('id');
-			var cmp_name = $(this).parent().parent().data('cmp_name');
-			$('#adset_table tbody tr.camp_'+cmp_id+', #ad_table tbody tr.camp_'+cmp_id).show();
+			$('#adset_table tbody tr.camp_'+cmp_id+', #ad_table tbody tr.camp_'+cmp_id).removeClass('hide-row').addClass('show-row');
 			$('#camapaign-full-details').show();
-			$('#adsets-full-details').hide();
-			$('.right-fix-drawer-outr span.camapaign_name').text(cmp_name);
+			$('#ads-full-details,#adsets-full-details').hide();
 			$('#camapaign_selected span').text(checked_count);
 			$('#camapaign_selected').show();
-			//$('.camapaign-details-list').hide();
 			$('.dummy_text').text('Campaign');
 			if(checked_count > 1) {
-				$('#cmp_mixed').show();
 				$('.mixed_value').show();
 				$('.mixed_value').text(checked_count+ ' Campaigns');
-				$('.total_adsets_count').text($('#adset_table tbody .adset_rows').length);
-				$('.total_ads_count').text($('#ad_table tbody .ad_rows').length);
+				$('#camp_total_adsets').text($('#adset_table tbody .adset_rows.show-row').length);
+				$('#camp_total_ads').text($('#ad_table tbody .ad_rows.show-row').length);
 				$('.right-fix-drawer-outr span.camapaign_name,.dummy_text').hide();
+				$('#camp_name').val('Mixed Value');
+				$('#camp_status').parent().hide();
 			} else {
-				var newData = _.find(data, function(o) { return o.id == cmp_id;  });
+				var newData = _.find(_camapaigns, function(o) { return o.id == cmp_id;  });
+				$('#camp_status').parent().show();
+				$('.right-fix-drawer-outr span.camapaign_name').text(newData.name);
+				$('#camp_name').val(newData.name);
+				$('#camp_objective').text(newData.objective);
+				$('#camp_buyingtype').text(newData.buying_type);
+				$('#camp_id').text(newData.id);
+				$('#camp_status').val(newData.id);
+				$('#camp_status').parent().attr('class','');
+				$('#camp_status').parent().attr('class',$('table tr#'+newData.id+' .campaigns_status').parent().attr('class'));
+				$('#camp_total_adsets').text(newData.adsets.data.length);
+				$('#camp_total_ads').text(newData.ads.data.length);
 				$('.mixed_value').hide();
 				$('.right-fix-drawer-outr span.camapaign_name,.dummy_text').show();
 			}
@@ -291,12 +301,13 @@ $(document).ready(function(){
 			var campaigns_count = $('.campaigns_checkbox:checked').length;
 			$('#camapaign_selected span').text(campaigns_count);
 			$('#camapaign_selected').show();
-			$('.total_adsets_count').text($('#adset_table tbody .adset_rows').length);
-			$('.total_ads_count').text($('#ad_table tbody .ad_rows').length);
+			$('#camp_total_adsets').text($('#adset_table tbody .adset_rows').length);
+			$('#camp_total_ads').text($('#ad_table tbody .ad_rows').length);
 			if(!$('#adsets_selected').is(':visible')) {
 				$('li.ad-sets a span').text('for '+campaigns_count+' Campaign');
 				$('li.ads a span').text('for '+campaigns_count+' Campaign');
 			}
+
 		} else {
 			if(!$('#adsets_selected').is(':visible')) {
 				$('li.ad-sets a span').text('');
@@ -308,12 +319,11 @@ $(document).ready(function(){
 		}
 
 		if(campaigns_count > 1) {
-			//$('.camapaign-details-list').hide();
-			$('#cmp_mixed').show();
 			$('.mixed_value').show();
 			$('.mixed_value').text(campaigns_count+ ' Campaigns');
-			$('.total_campaigns_count').text(campaigns_count);
 			$('.right-fix-drawer-outr span.camapaign_name,.dummy_text').hide();
+			$('#camp_name').val('Mixed Value');
+			$('#camp_status').parent().hide();
 		} else {
 			$('.mixed_value').hide();
 			$('.right-fix-drawer-outr span.camapaign_name,.dummy_text').show();
@@ -321,9 +331,20 @@ $(document).ready(function(){
 			$('#adsets-full-details').hide();
 			$('#ads-full-details').hide();
 			var camp_id = $('.campaigns_checkbox:checked').parent().parent().attr('id');
-			var cmp_name =  $('.campaigns_checkbox:checked').parent().parent().data('cmp_name');
-			$('#cmp_'+camp_id).show();
-			$('.right-fix-drawer-outr span.camapaign_name').text(cmp_name);
+			var newData = _.find(_camapaigns, function(o) { return o.id == cmp_id;  });
+			$('#camp_status').parent().show();
+			$('.right-fix-drawer-outr span.camapaign_name').text(newData.name);
+			$('#camp_name').val(newData.name);
+			$('#camp_objective').text(newData.objective);
+			$('#camp_buyingtype').text(newData.buying_type);
+			$('#camp_id').text(newData.id);
+			$('#camp_status').val(newData.id);
+			$('#camp_status').parent().attr('class','');
+			$('#camp_status').parent().attr('class',$('table tr#'+newData.id+' .campaigns_status').parent().attr('class'));
+			$('#camp_total_adsets').text(newData.adsets.data.length);
+			$('#camp_total_ads').text(newData.ads.data.length);
+			$('.mixed_value').hide();
+			$('.right-fix-drawer-outr span.camapaign_name,.dummy_text').show();
 		}
 	});
 
@@ -334,46 +355,56 @@ $(document).ready(function(){
 		$('li.ads a span').text('');
 		$('.all_camapaign_checkbox').prop('checked',false);
 		$(".right-fix-drawer-outr").removeClass("drawer-open-content");
-		$('#adset_table tbody tr,#ad_table tbody tr').show();
+		$('#adset_table tbody tr,#ad_table tbody tr').removeClass('hide-row');
 	});
 	/*Campaigns checkbox*/
 
 	
 	/*adset checkbox*/
 	$('.adsets_checkbox').click(function() {
-		$('#camapaign-full-details').hide();
+		$('#camapaign-full-details, #ads-full-details').hide();
 		$('#adsets-full-details').show();
-		$('#ads-full-details').hide();
 		$('li.ad-sets a span').hide();
 		if(!$(this).is(':checked')) {
 			$('.all_adsets_checkbox').prop('checked',false);
 		}
-		$('#ad_table tbody tr').hide();
+
+		$('#ad_table tbody tr').addClass('hide-row');
 		var checked_count = $('.adsets_checkbox:checked').length;
 		$('.adsets_checkbox:checked').each(function() {
 			var adsets_id = $(this).parent().parent().attr('id');
-			var adsets_name = $(this).parent().parent().data('adset_name');
-			$('#ad_table tbody tr.adsets_'+adsets_id).show();
-			$('.right-fix-drawer-outr span.camapaign_name').text(adsets_name);
+			$('#ad_table tbody tr.adsets_'+adsets_id).addClass('show-row');
 			$('#adsets_selected span').text(checked_count);
 			$('#adsets_selected').show();
-			//$('.adsets-details-list').hide();
 			$('.dummy_text').text('Ad Sets');
-			$('#adset_'+adsets_id).show();
 			if(checked_count > 1) {
 				$('.mixed_value').show();
 				$('.right-fix-drawer-outr span.camapaign_name,.dummy_text').hide();
 				$('.mixed_value').text(checked_count+ ' Ad Sets');
-				//$('.adsets-details-list').hide();
 				$('#adsets-full-details').show();
-				//$('#adset_mixed').show();
-				$('.total_ads_count').text($('#ad_table tbody tr.ad_rows').length);
-				$('.total_campaigns_count').text($('#camapaign_table tbody tr.camp_rows').length);
-
+				$('#camp_total_adsets').text($('#ad_table tbody tr.ad_rows').length);
+				$('#camp_total_camps').text($('#camapaign_table tbody tr.camp_rows').length);
+				$('#adset_name').val('Mixed Value');
+				$('#adset_status').parent().hide();
 			} else {
+				$('#adset_status').parent().show();
 				$('.mixed_value').hide();
 				$('.right-fix-drawer-outr span.camapaign_name,.dummy_text').show();
 				$('.adsets-details-list').show();
+				_camapaigns.forEach(function(item,index) {
+					var adsets = _.find(item.adsets.data, function(o) { return o.id == adsets_id;  });
+					if(adsets != undefined) {
+						$('.right-fix-drawer-outr span.camapaign_name').text(adsets.name);
+						$('#adset_name').val(adsets.name);
+						$('#adset_id').text(adsets.id);
+						$('#adset_status').val(adsets.id);
+						$('#adset_status').parent().attr('class','');
+						$('#adset_status').parent().attr('class',$('table tr#'+adsets.id+' .adsets_status').parent().attr('class'));
+						$('#camp_total_ads').text(item.ads.data.length);
+						$('#camp_total_camps').text(1);
+					}
+				});
+
 			}
 		});
 
@@ -405,9 +436,10 @@ $(document).ready(function(){
 			$('#adsets_selected span').text(adsets_count);
 			$('#adsets_selected').show();
 			$('li.ads a span').text('for '+adsets_count+' Ad Set');
-			//$('.adsets-details-list').hide();
 			$('#adsets-full-details').show();
-			//$('#adset_mixed').show();
+			$('#camapaign-full-details, #ads-full-details').hide();
+			$('#adset_name').val('Mixed Value');
+			$('#adset_status').parent().hide();
 		} else {
 			$('.adsets_checkbox').prop('checked', false);
 			$(".right-fix-drawer-outr").removeClass("drawer-open-content");
@@ -429,19 +461,15 @@ $(document).ready(function(){
 			$('.mixed_value').show();
 			$('.right-fix-drawer-outr span.camapaign_name,.dummy_text').hide();
 			$('.mixed_value').text(adsets_count+ ' Ad Sets');
-			//$('.adsets-details-list').hide();
 			$('#adsets-full-details').show();
-			//$('#adset_mixed').show();
-			$('.total_ads_count').text($('#ad_table tbody tr.ad_rows').length);
-			$('.total_campaigns_count').text($('#camapaign_table tbody tr.camp_rows').length);
+			$('#camp_total_ads').text($('#ad_table tbody tr.ad_rows').length);
+			$('#camp_total_camps').text($('#camapaign_table tbody tr.camp_rows').length);
+			$('#adset_name').val('Mixed Value');
+			$('#adset_status').parent().hide();
 		} else {
 			$('#camapaign-full-details').hide();
 			$('#adsets-full-details').show();
 			$('#ads-full-details').hide();
-			var adsets_id = $('.adsets_checkbox:checked').parent().parent().attr('id');
-			var adsets_name =  $('.adsets_checkbox:checked').parent().parent().data('adset_name');
-			$('#adset_'+adsets_id).show();
-			$('.right-fix-drawer-outr span.camapaign_name').text(adsets_name);
 		}
 	});
 
@@ -452,7 +480,7 @@ $(document).ready(function(){
 		$('li.ad-sets a span').show();
 		$('.all_adsets_checkbox').prop('checked',false);
 		$(".right-fix-drawer-outr").removeClass("drawer-open-content");
-		$('#ad_table tbody tr').hide();
+		$('#ad_table tbody tr').removeClass('hide-row').removeClass('show-row');
 	});
 	/*end adset checkbox*/
 
@@ -463,25 +491,37 @@ $(document).ready(function(){
 			$('.all_ad_checkbox').prop('checked',false);
 		}
 
-		$('#camapaign-full-details').hide();
-		$('#adsets-full-details').hide();
+		$('#camapaign-full-details, #adsets-full-details').hide();
 		$('#ads-full-details').show();
-		//$('.adsets-details-list').hide();
+		
 		$('#ads_selected').show();
+		var checked_count = $('.ad_checkbox:checked').length;
 		$('.ad_checkbox:checked').each(function() {
 			var ads_id = $(this).parent().parent().attr('id');
-			var ads_name = $(this).parent().parent().data('adset_name');
-			var checked_count = $('.ad_checkbox:checked').length;
 			$('.right-fix-drawer-outr span.camapaign_name').text(ads_name);
 			$('#ads_selected span').text(checked_count);
 			$('.dummy_text').text('Ads');
 			$('li.ads a span').hide();
 			if(checked_count > 1) {
 				$('#ad_mixed').show();
-				$('.total_campaigns_count').text($('#camapaign_table tbody tr.camp_rows').length);
-				$('.total_adsets_count').text($('#adset_table tbody tr.adset_rows').length);
+				$('#camp_total_camps').text($('#camapaign_table tbody tr.camp_rows').length);
+				$('#camp_total_adsets').text($('#adset_table tbody tr.adset_rows').length);
+				$('#ad_name').val('Mixed Value');
+				$('#adset_status').parent().hide();
 			} else {
-				$('#ad_'+ads_id).show();
+				_camapaigns.forEach(function(item,index) {
+					var ads = _.find(item.ads.data, function(o) { return o.id == ads_id;  });
+					if(ads != undefined) {
+						$('.right-fix-drawer-outr span.camapaign_name').text(ads.name);
+						$('#ad_name').val(ads.name);
+						$('#adset_id').text(ads.id);
+						$('#adset_status').val(ads.id);
+						$('#adset_status').parent().attr('class','');
+						$('#adset_status').parent().attr('class',$('table tr#'+ads.id+' .adsets_status').parent().attr('class'));
+						$('#camp_total_adsets').text(item.adsets.data.length);
+						$('#camp_total_camps').text(1);
+					}
+				});
 			}
 		});
 
@@ -505,6 +545,7 @@ $(document).ready(function(){
 			$('#ads_selected span').text(ads_count);
 			$('#ads_selected').show();
 			$('#ads_selected span').text(ads_count);
+
 		} else {
 			$('.ad_checkbox').prop('checked', false);
 			$('li.ads a span').show();
@@ -514,10 +555,25 @@ $(document).ready(function(){
 		if(ads_count > 1) {
 			//$('.adsets-details-list').hide();
 			$('#ad_mixed').show();
-			$('.total_campaigns_count').text($('#camapaign_table tbody tr.camp_rows').length);
-			$('.total_adsets_count').text($('#adset_table tbody tr.adset_rows').length);
+			$('#camp_total_camps').text($('#camapaign_table tbody tr.camp_rows').length);
+			$('#camp_total_adsets').text($('#adset_table tbody tr.adset_rows').length);
+			$('#ad_name').val('Mixed Value');
+			$('#adset_status').parent().hide();
 		} else {
-			$(".right-fix-drawer-outr").removeClass("drawer-open-content");
+			_camapaigns.forEach(function(item,index) {
+				var ads = _.find(item.ads.data, function(o) { return o.id == ads_id;  });
+				if(ads != undefined) {
+					$('.right-fix-drawer-outr span.camapaign_name').text(ads.name);
+					$('#ad_name').val(ads.name);
+					$('#adset_id').text(ads.id);
+					$('#adset_status').val(ads.id);
+					$('#adset_status').parent().attr('class','');
+					$('#adset_status').parent().attr('class',$('table tr#'+ads.id+' .adsets_status').parent().attr('class'));
+					$('#camp_total_adsets').text(item.adsets.data.length);
+					$('#camp_total_camps').text(1);
+				}
+			});
+			//$(".right-fix-drawer-outr").removeClass("drawer-open-content");
 		}
 	});
 
