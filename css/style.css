@@ -568,6 +568,47 @@ color:#FFFFFF;
 #useTemplate .modal-body{border-bottom: 1px solid #ccc;float: left;width: 100%;}
 .hide-row { display: none; }
 .show-row { display: table-row; }
+.use-temp-let-sec {float: left; width: 50%;height: 750px; overflow-y: scroll;} 
+.use-temp-right-sec {float: left; width: 50%;height: 750px; overflow-y: scroll; text-align: center;}
+#useTemplate .modal-body{border-bottom: 1px solid #ccc;float: left;width: 100%; padding: 0}
+
+/* custom radio buttons css starts */
+.use-temp-radio-tabs .nav-tabs{border-bottom: 1px solid #ccc; padding-bottom: 0px !important} 
+.use-temp-radio-tabs .nav-tabs li{display: inline-block; float: left;margin-right: 15px;padding-bottom: 8px; margin-bottom: 0 !important}
+.use-temp-radio-tabs .nav-tabs li.active a,
+.use-temp-radio-tabs .nav-tabs li a{border: 0 none; padding: 0; margin: 0; background-color: transparent;}
+.use-temp-radio-tabs .nav-tabs li a:hover,
+.use-temp-radio-tabs .nav-tabs li a:focus{background-color: transparent; border: 0 !important}
+.use-temp-radio-tabs label.radio-inline input[type=radio]{position:absolute; visibility:hidden; }
+.use-temp-radio-tabs label.radio-inline label{display:block; position:relative; font-weight:300; padding-left:10px; margin:0 auto; height:26px; z-index:0; cursor:pointer; -webkit-transition:all 0.25s linear;line-height: 26px; font-size: 13px; font-weight: bold; color: #666} 
+.use-temp-radio-tabs label.radio-inline .check{display:block; position:absolute; border:2px solid #ddd; border-radius:50%; height:20px; width:20px; top:3px; left:0; z-index:0; transition:border .25s linear; -webkit-transition:border .25s linear; background-color:#FFFFFF; }
+.use-temp-radio-tabs label.radio-inline .check::before{bottom: 0; display:block; position:absolute; content:''; border-radius:50%; height:10px; width:10px; top:3px; left:0; right: 0; margin: 0 auto; transition:background 0.25s linear; -webkit-transition:background 0.25s linear; } 
+.use-temp-radio-tabs label.radio-inline input[type=radio]:checked ~ .check{border:5px solid #ddd;}
+.use-temp-radio-tabs label.radio-inline input[type=radio]:checked ~ .check::before{background:#222;}
+.use-temp-radio-tabs  ul.nav.nav-tabs li.active label.radio-inline .check::before{background:#222; }
+.use-temp-radio-tabs {margin-top: 10px;float: left; width: 100%;}
+.use-temp-radio-tabs  .nav-tabs li.active, .use-temp-radio-tabs .nav-tabs li a:focus{ background-image: url(../img/radio-tab-arrow.jpg); background-position:30px 25px; background-repeat: no-repeat; background-size: 17px; }
+.use-temp-pop-row h5{font-weight: bold;font-size:14px; color: #000;}
+.use-temp-pop-row p{margin: 0 0 10px; color: rgb(144, 148, 156); font-size: 12px;}
+.use-temp-pop-row .tab-content .tab-pane{ border: 0; border-radius: 0; border-top: 1px solid #ccc; margin-top: -1px; }
+.use-temp-pop-row .tab-content{ float: left; width: 100% }
+.left-img {float: left; overflow: hidden; width: 72px; } 
+.left-img img {width: 72px; } 
+.right-detail {float: left; width:72%; margin-left: 5%; } 
+.right-detail p{font-size: 13px;}
+.use-temp-pop-row {float: left; width: 100%; border-bottom: 1px solid #ccc;padding: 15px}
+.crsl-slide{padding: 0; margin: 0; }
+.crsl-slide li{ display: inline-block;margin-bottom:18px; }
+.crsl-slide li a{background: #F5F7F8; padding: 7px 12px; color: #333; font-weight: bold;border:2px solid #ccc}
+.crsl-slide li a:hover, .crsl-slide li a.active{color: #2887E6; border-color: #2887E6}
+.crsl-slide li:last-child a{ padding: 3px 8px;border:1px solid #ccc}
+.edit-selected-slide {float: left; width: 100%; background: #F5F7F8; padding: 15px; }
+#useTemplate .modal-footer{display: inline-block; width: 100%}
+.use-temp-right-sec h1{font-size: 21px;}
+.use-temp-right-sec p{color: #666}
+
+
+
 
 
 
