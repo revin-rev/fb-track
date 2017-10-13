@@ -40,6 +40,7 @@ if(isset($_SESSION['user'])) :
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/moment.min.js"></script>
+<script type="text/javascript" src="js/jscolor.js"></script>
 <!-- Include Date Range Picker -->
 <script type="text/javascript" src="js/daterangepicker.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
@@ -83,6 +84,10 @@ if(isset($_SESSION['user'])) :
 			$(".three-new-customers-list").toggle();   	  	
 		});
 	});
+</script>
+<!-- canvas popup script -->
+<script type="text/javascript">
+	
 </script>
 </head>
 <body>
@@ -2812,7 +2817,7 @@ if(isset($_SESSION['user'])) :
 																	    	<ul>
 																	    		<li>
 																	    			<div class="r">
-																	    				<input type="radio" name="">
+																	    				<input type="radio" name="full-scrn-options">
 																	    			</div>
 																	    			<div class="des">
 																	    				Quick creation from a template
@@ -2852,16 +2857,224 @@ if(isset($_SESSION['user'])) :
 																	    		</li>
 																	    		<li>
 																	    			<div class="r">
-																	    				<input type="radio" name="">
+																	    				<input type="radio" name="full-scrn-options">
 																	    			</div>
 																	    			<div class="des">
 																	    				Create a Canvas using advanced creation
+																	    				<div class="create-canv">
+																	    					<button class="blue-btn" data-toggle="modal" data-target="#create-canv-popup">Create</button>
+																	    					<div id="create-canv-popup" class="modal fade" role="dialog">
+																								  <div class="modal-dialog">
 
+																								    <!-- Modal content-->
+																								    <div class="modal-content">
+																								      <div class="modal-header">
+																								        <button type="button" class="close" data-dismiss="modal">&times;</button>
+																								        <h4 class="modal-title">Canvas Builder</h4>
+																								      </div>
+																								      <div class="modal-body">
+																								        <div class="canvs-popup-header-optns">	
+																								        	<a href="#add-cnvs-component-popup" class="round-cmpnt-btn" data-toggle="modal"><i class="fa fa-plus-circle"></i>Component</a>
+																								        	<ul>
+																								        		<li><i class="fa fa-mobile"></i><br/>Preview</li>
+																								        		<li><i class="fa fa-mobile"></i><br/>Share</li>
+																								        		<li><i class="fa fa-save"></i><br/>Save</li>
+																								        		<li><i class="fa fa-check-square"></i><br/>Finish</li>
+																								        	</ul>
+																								        </div> 
+																								        <div class="canvs-components">
+																								        	<div class="canvs-components-left-sec">
+																									        	<div class="canvs-row">
+																									        		<input type="text" name="" placeholder="Give our canvas a name ..." class="canvs-title-field">
+																									        	</div>
+																									        	<div class="canvs-row he-cnvs-row se-cnvs-row">
+																									        		  <div class="panel-group" id="accordion">
+																														  <div class="panel panel-default">
+																														    <div class="panel-heading">
+																														      <h4 class="panel-title">
+																														        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#cnvs-settings">
+																														          Settings
+																														        </a>
+																														      </h4>
+																														    </div>
+																														    <div id="cnvs-settings" class="panel-collapse collapse">
+																														      <div class="panel-body">
+																														        <div class="common-row"> 
+																														        	<div class="col-md-3">
+																														        		<label>Theme</label>
+																														        	</div>
+																														        	<div class="col-md-9 theme-optn">
+																														        			<div class="tra-bg"><input type="radio" name="theme-optn"><a href="#">T</a></div>
+																														        			<div class="grey-bg"><input type="radio" name="theme-optn"><a href="#">T</a></div>
+																														        			<div class="cust-bg"><input type="radio" name="theme-optn">
+																														        				<button
+    class="jscolor"
+    style="width:50px; height:20px;"></button>Custom</div>
+																														        	</div>
+																														        </div>
+																														        <div class="common-row"> 
+																														        	<div class="col-md-3">
+																														        		<label>Swipe to open final link <i class="fa fa-info-circle"></i></label>
+																														        	</div>
+																														        	<div class="col-md-9 theme-optn">
+																														        			<input type="checkbox" class="ad_status" data-toggle="toggle" data-size="mini">
+																														        	</div>
+																														        </div>
+																														        <div class="common-row"> 
+																														        	<div class="col-md-3">
+																														        		<label>Support Instagram <i class="fa fa-info-circle"></i></label>
+																														        	</div>
+																														        	<div class="col-md-9 theme-optn">
+																														        			<input type="checkbox" class="ad_status" data-toggle="toggle" data-size="mini">
+																														        	</div>
+																														        </div>
+																														      </div>
+																														    </div>
+																														  </div>																														   
+																														</div>
+																									        	</div>
+																									        	<div class="canvs-row he-cnvs-row">
+																									        		  <div class="panel-group" id="header-accordion">
+																														  <div class="panel panel-default">
+																														    <div class="panel-heading">
+																														      <h4 class="panel-title">
+																														      	<span>Header <i class="fa fa-pencil" class="edit-cnvs-title"></i></span>
+																														        <a class="accordion-toggle" data-toggle="collapse" data-parent="#header-accordion" href="#cnvs-header">
+																														          &nbsp;
+																														        </a>
+																														         <div class="dropdown comp-option-drp">
+																																    <button id="comp-option" type="button" data-toggle="dropdown"><i aria-hidden="true" class="fa fa-ellipsis-h"></i></button>
+																																    <ul class="dropdown-menu" role="menu" aria-labelledby="comp-option">
+																																      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Delete</a></li>
+																																      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Show Advanced Settings</a></li>																																       
+																																    </ul>
+																																  </div>
+																														      </h4>
+																														    </div>
+																														    <div id="cnvs-header" class="panel-collapse collapse">
+																														      <div class="panel-body header-component">
+																														        <div class="common-row">
+																														        	<div class="col-md-3 left">
+																														        		<img src="../img/dummy-img-thumbnail.jpg">
+																														        	</div>
+																														        	<div class="col-md-9 right">
+																														        		Upload a logo for your Canvas. For best results, images should be 882 x 66 pixels<br/>
+																														        		<button class="light-grey-btn">Upload Photo</button>
+																														        	</div>
+																														        </div>
+																														         <div class="common-row">
+																														        	<div class="col-md-3 left">
+																														        		<label>Background Color</label>
+																														        	</div>
+																														        	<div class="col-md-9 right">
+																														        		abc
+																														        	</div>
+																														        </div>
+																														        <div class="common-row">
+																														        	<div class="col-md-3 left">
+																														        		<label>Background Opacity</label>
+																														        	</div>
+																														        	<div class="col-md-9 right">
+																														        		<option>
+																														        			<select>Select</select>
+																														        		</option>
+																														        	</div>
+																														        </div>
+																														      </div>
+																														    </div>
+																														  </div>																														   
+																														</div>
+																									        	</div>
+																									        	<div class="canvs-row cr-cnvs-row">
+																									        		  <div class="panel-group" id="carousel-accordion">
+																														  <div class="panel panel-default">
+																														    <div class="panel-heading">
+																														      <h4 class="panel-title">
+																														      	<span>Carousel <i class="fa fa-pencil" class="edit-cnvs-title"></i></span>
+																														        <a class="accordion-toggle" data-toggle="collapse" data-parent="#carousel-accordion" href="#carousel-header">
+																														          &nbsp;
+																														        </a>
+																														         <div class="dropdown comp-option-drp">
+																																    <button id="comp-option" type="button" data-toggle="dropdown"><i aria-hidden="true" class="fa fa-ellipsis-h"></i></button>
+																																    <ul class="dropdown-menu" role="menu" aria-labelledby="comp-option">
+																																      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Delete</a></li>
+																																      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Show Advanced Settings</a></li>																																       
+																																    </ul>
+																																  </div>
+																														      </h4>
+																														    </div>
+																														    <div id="carousel-header" class="panel-collapse collapse">
+																														      <div class="panel-body header-component">
+																														        
+																														         <div class="common-row">
+																														        	<p>Upload 2-10 images to show them in a carousel format. If images are not the same size, they will be cropped to match your first image.</p>
+																														        </div>
+																														        <div class="common-row">
+																														        	<div class="col-md-3 left">
+																														        		<label>Layout</label>
+																														        	</div>
+																														        	<div class="col-md-9 right">
+																														        		 <div>
+																														        		 	<input type="radio" name="layout-opt"><i class="fa fa-mobile"></i>Fit to Width (Linkable)
+																														        		 </div>
+																														        		 <div>
+																														        		 	<input type="radio" name="layout-opt"><i class="fa fa-mobile"></i>FFit to Height (Tilt to Pan)
+																														        		 </div>
+																														        	</div>
+																														        </div>
+																														        <div class="common-row">
+																														        	<ul class="crsl-slide">
+																																		<li><a href="#">1</a></li>
+																																		<li><a href="#"  class="active">2</a></li>																												
+																																		<li><a href="#">+</a></li>
+																																	</ul>
+																																	<div class="edit-selected-slide">
+																																		<div class="common-row">	
+																															    			<div class="left-img">
+																															    				<img src="../img/use-temp-img-thumb.jpg">
+																															    			</div>
+																															    			<div class="right-detail">
+																															    				 <button class="light-grey-btn">Upload Photo</button>
+																															    				 <button class="light-grey-btn pull-right"><i class="fa fa-trash"></i></button>
+																															    			</div>
+																															    		</div>
+																															    		<div class="common-row">
+																																			<label>Destination</label>
+																																			<div class="custom-autocomplete-select">															 
+																																				<select class="selectpicker show-tick" data-size="3">	 
+																																				                 <option data-tokens="ketchup mustard">Columns</option>	
+																																				                 <option data-tokens="mustard">Lorem</option>	  
+																																				                 <option data-tokens="frosting">Dummy text printing</option>											
+																																				</select>													
+																																			</div>
+
+																																			<input type="text" name="" class="form-control">
+																																		</div>
+																																	</div>
+																														        </div>
+																														      </div>
+																														    </div>
+																														  </div>																														   
+																														</div>
+																									        	</div>
+																									        	<div class="canvs-row add-more text-center">																									        	
+																									        		<a href="#add-cnvs-component-popup" class="plus-add-more-c" data-toggle="modal">+ Add more component</a>
+																									        	</div>
+																								        	</div>
+																								        	<div class="canvs-components-right-sec">
+																									        	dddd
+																								        	</div>
+																								        </div>
+																								      </div>
+																								    </div>
+																								  </div>
+																							</div>
+																	    				</div>
 																	    			</div>
 																	    		</li>
 																	    		<li>
 																	    			<div class="r">
-																	    				<input type="radio" name="">
+																	    				<input type="radio" name="full-scrn-options">
 																	    			</div>
 																	    			<div class="des">
 																	    				Use existing Canvas
@@ -3480,13 +3693,9 @@ if(isset($_SESSION['user'])) :
 						    			</div>
 						    			<div class="right-detail">
 						    				<p>Recommended: Image width of 1080 pixels</p>
-						    				<button class="light-grey-btn">Replace Photo</button>
+						    				<button class="light-grey-btn">Upload Video</button>
 						    			</div>
-						    		</div>	
-						    		<div class="common-row">
-						    			<label>Destination URL (optional)</label>
-						    			<input type="text" name="" class="form-control">
-						    		</div>
+						    		</div>							    		 
 								</div>
 							</div>
 						</div>
@@ -3560,13 +3769,22 @@ if(isset($_SESSION['user'])) :
 					 
 				</div>
 				<div class="use-temp-right-sec">
+					<div class="common-row" style="margin-top: 0">
+						<div class="img-or-video-prev">
+							<img src="../img/use-temp-img-prev.jpg">
+						</div>
+						<h1>Add Context</h1>
+						<p>Change the text and use this space to tell people about your product, brand, or service. </p>
+						<button class="big-black-bordered-btn">Write something ...</button>
+					</div>
+
 					<div class="common-row">
 						<div class="img-or-video-prev">
 							<img src="../img/use-temp-img-prev.jpg">
 						</div>
 						<h1>Add Context</h1>
 						<p>Change the text and use this space to tell people about your product, brand, or service. </p>
-						<button>Write something ...</button>
+						<button class="big-black-bordered-btn">Write something ...</button>
 					</div>
 
 				</div>	
@@ -3581,6 +3799,117 @@ if(isset($_SESSION['user'])) :
 		</div>
 
 	</div>
+</div>
+
+
+<div id="add-cnvs-component-popup" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Select components to add</h4>
+      </div>
+      <div class="modal-body">
+        <div class="single-cnvs-cpmponent">
+        	<div class="cc">
+                <div class="items">
+                    <div class="info-block block-info clearfix">                      
+                        <div data-toggle="buttons" class="btn-group bizmoduleselect">
+                            <label class="btn btn-default">
+                                <div class="bizcontent">
+                                    <input type="checkbox" name="a" autocomplete="off" value="">
+                                    <img src="../img/button_unselected.png">
+                                    <!-- <span class="glyphicon glyphicon-ok glyphicon-lg"></span> -->
+                                    <h5>Button</h5>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="single-cnvs-cpmponent">
+        	<div class="cc">
+                <div class="items">
+                    <div class="info-block block-info clearfix">                      
+                        <div data-toggle="buttons" class="btn-group bizmoduleselect">
+                            <label class="btn btn-default" style="padding-top: 33px;">
+                                <div class="bizcontent">
+                                    <input type="checkbox" name="a" autocomplete="off" value="">
+                                    <img src="../img/carousel_unselected.png">
+                                    <!-- <span class="glyphicon glyphicon-ok glyphicon-lg"></span> -->
+                                    <h5>Carousel</h5>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="single-cnvs-cpmponent">
+        	<div class="cc">
+                <div class="items">
+                    <div class="info-block block-info clearfix">                      
+                        <div data-toggle="buttons" class="btn-group bizmoduleselect">
+                            <label class="btn btn-default">
+                                <div class="bizcontent">
+                                    <input type="checkbox" name="a" autocomplete="off" value="">
+                                    <img src="../img/photo_unselected.png">
+                                    <!-- <span class="glyphicon glyphicon-ok glyphicon-lg"></span> -->
+                                    <h5>Photo</h5>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="single-cnvs-cpmponent">
+        	<div class="cc">
+                <div class="items">
+                    <div class="info-block block-info clearfix">                      
+                        <div data-toggle="buttons" class="btn-group bizmoduleselect">
+                            <label class="btn btn-default">
+                                <div class="bizcontent">
+                                    <input type="checkbox" name="a" autocomplete="off" value="">
+                                    <img src="../img/text_unselected.png">
+                                    <!-- <span class="glyphicon glyphicon-ok glyphicon-lg"></span> -->
+                                    <h5>Text Block</h5>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="single-cnvs-cpmponent">
+        	<div class="cc">
+                <div class="items">
+                    <div class="info-block block-info clearfix">                      
+                        <div data-toggle="buttons" class="btn-group bizmoduleselect">
+                            <label class="btn btn-default">
+                                <div class="bizcontent">
+                                    <input type="checkbox" name="a" autocomplete="off" value="">
+                                    <img src="../img/video_unselected.png">
+                                    <!-- <span class="glyphicon glyphicon-ok glyphicon-lg"></span> -->
+                                    <h5>Video</h5>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="light-grey-btn" data-dismiss="modal">Cancel</button>
+        <button type="button" class="blue-btn" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+
+  </div>
 </div>
 </body>
 </html>
