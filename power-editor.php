@@ -3029,15 +3029,20 @@ if(isset($_SESSION['user'])) :
 																															    		</div>
 																															    		<div class="common-row">
 																																			<label>Destination</label>
-																																			<div class="custom-autocomplete-select">															 
-																																				<select class="selectpicker show-tick" data-size="3">	 
-																																				                 <option data-tokens="ketchup mustard">Columns</option>	
-																																				                 <option data-tokens="mustard">Lorem</option>	  
-																																				                 <option data-tokens="frosting">Dummy text printing</option>											
-																																				</select>													
-																																			</div>
-
-																																			<input type="text" name="" class="form-control">
+																																			<div class="row">
+																																				<div class="col-md-4">
+																																					<div class="custom-autocomplete-select">															 
+																																						<select class="selectpicker show-tick" data-size="3">	 
+																																			                 <option data-tokens="ketchup mustard">Columns</option>	
+																																			                 <option data-tokens="mustard">Lorem</option>	  
+																																			                 <option data-tokens="frosting">Dummy text printing</option>											
+																																						</select>													
+																																					</div>
+																																				</div>
+																																				<div class="col-md-8">			
+																																					<input type="text" name="" class="form-control">
+																																				</div>	
+																																			</div>		
 																																		</div>
 																																	</div>
 																														        </div>
