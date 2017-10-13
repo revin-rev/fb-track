@@ -13,13 +13,16 @@ if(isset($_SESSION['user'])) :
 
 	/*get camapagins*/
 	$cSession = curl_init(); 
-	curl_setopt($cSession,CURLOPT_URL,"https://graph.facebook.com/v2.10/".$_REQUEST['act']."/campaigns?access_token=".$_REQUEST['code']."&fields=name,buying_type,objective,id,objective_for_results,objective_for_cost,status,delivery_info,adsets{id,name,status,delivery_info,lifetime_budget,daily_budget,start_time,objective_for_results,objective_for_cost},account_id,ads{name,id,delivery_info,objective_for_results,objective_for_cost,status}");
+	curl_setopt($cSession,CURLOPT_URL,"https://graph.facebook.com/v2.10/".$_REQUEST['act']."/campaigns?access_token=".$_REQUEST['code']."&fields=name,buying_type,objective,id,objective_for_results,objective_for_cost,status,delivery_info,start_time,stop_time,insights{reach,impressions,frequency,unique_clicks,spend},adsets{id,name,status,delivery_info,lifetime_budget,daily_budget,start_time,end_time,objective_for_results,objective_for_cost,targeting_age_min,targeting_age_max,targeting_genders,targeting_countries,activities{actor_name,event_time,application_name,translated_event_type,extra_data},insights{reach,frequency,impressions,unique_clicks,spend}},account_id,ads{name,id,delivery_info,objective_for_results,objective_for_cost,status,insights{frequency,impressions,spend,unique_clicks,total_unique_actions,relevance_score,reach}}");
 	curl_setopt($cSession,CURLOPT_RETURNTRANSFER,true);
 	curl_setopt($cSession,CURLOPT_HEADER, false); 
 	$result=curl_exec($cSession);
 	curl_close($cSession);
 	$camapaigns = json_decode($result, true);
-	
+    /* echo '<pre>';
+     print_r($camapaigns);
+     die;
+	*/
 	/*get camapagins*/
 ?>
 <!DOCTYPE html>
@@ -1192,13 +1195,14 @@ if(isset($_SESSION['user'])) :
 		                      					</td>
 		                      					<td><?php echo $camapaign['delivery_info']['status'];?></td>
 		                      					<td><?php echo $camapaign['objective_for_results'];?></td>
-		                      					<td>-</td>
+		                      					<td><?php if(isset($camapaign['insights'])){echo $camapaign['insights']['data'][0]['reach'];}else{ echo '-';}?></td>
 		                      					<td><?php echo $camapaign['objective_for_cost'];?></td>	
-		                      					<td>&#8377; 0.0</td>
-		                      					<td>Ongoing</td>
-		                      					<td>-</td>
-		                      					<td>-</td>
-		                      					<td>-</td>
+		                      					<td> <?php if(isset($camapaign['insights'])){echo '&#8377;'.$camapaign['insights']['data'][0]['spend'];}else{ echo '-';}?></td></td>
+		                      					<td>
+												<?php if(isset($camapaign['stop_time'])){echo $start_date=date_format(date_create($camapaign['stop_time']),' j F, Y');}else{ echo 'Ongoing';}?></td>
+		                      					<td><?php if(isset($camapaign['insights'])){echo $camapaign['insights']['data'][0]['frequency'];}else{ echo '-';}?></td>
+		                      					<td><?php if(isset($camapaign['insights'])){echo $camapaign['insights']['data'][0]['impressions'];}else{ echo '-';}?></td>
+		                      					<td><?php if(isset($camapaign['insights'])){echo $camapaign['insights']['data'][0]['unique_clicks'];}else{ echo '-';}?></td>
 		                      					<td></td>
 		                      				</tr>
 		                      			<?php endforeach; ?>
@@ -1660,6 +1664,8 @@ if(isset($_SESSION['user'])) :
 									  	foreach($camapaigns['data'] as $campaign) : 
 									  		$total_adset = count($campaign['adsets']['data']);
 									  		foreach ($campaign['adsets']['data'] as $adsets) : 
+									  			//echo '<pre>';
+									  			//print_r($adsets);
 									  	?>
 									    <tr id="<?php echo $adsets['id'];?>" class="adset_rows camp_<?php echo $campaign['id'];?>">
 									      <td><input type="checkbox" name="" class="adsets_checkbox"></td>
@@ -1674,15 +1680,18 @@ if(isset($_SESSION['user'])) :
 									      </td>
 									      <td><?php echo $adsets['delivery_info']['status'];?></td>
 									      <td><?php echo $adsets['objective_for_results'];?></td>
-									      <td>-</td>
+									      <td><?php echo $adsets['insights']['data'][0]['reach']; ?> </td> <!-- reach -->
 									      <td><?php echo $adsets['objective_for_cost'];?></td>	
 									      <td><?php echo $adsets['daily_budget'];?><span>Daily</span></td>
-									      <td>&#8377; 0.00</td>
-									      <td>Ongoing-</td>
-									      <td>Sep 15, 2017 - Ongoing</td>
-									      <td>-</td>
-									      <td>-</td>
-									      <td>-</td>
+									      <td>&#8377; <?php echo $adsets['insights']['data'][0]['spend']; ?></td>
+									      <td><?php if(isset($adsets['end_time'])){echo $start_date=date_format(date_create($adsets['end_time']),' j F, Y');}else{ echo 'Ongoing';}?></td>
+									      <td>
+												<?php echo $start_date=date_format(date_create($adsets['start_time']),' j F, Y');?>-
+												<?php if(isset($adsets['end_time'])){echo $start_date=date_format(date_create($adsets['end_time']),' j F, Y');}else{ echo 'Ongoing';}?>
+									      </td>
+									      <td><?php if(isset($adsets['insights'])){echo $adsets['insights']['data'][0]['frequency']; }else echo '-';?></td>
+									      <td> <?php if(isset($adsets['insights'])){echo $adsets['insights']['data'][0]['impressions']; }else echo '-'; ?> </td>
+									      <td><?php if(isset($adsets['insights'])){ echo $adsets['insights']['data'][0]['unique_clicks'];  }else echo '-';?> </td>
 									      <td></td>
 									    </tr>
 										<?php endforeach; endforeach; ?>
@@ -2159,15 +2168,15 @@ if(isset($_SESSION['user'])) :
 									  			</td>
 									  			<td><?php echo $ad['delivery_info']['status'];?></td>
 									  			<td><?php echo $ad['objective_for_results'];?></td>
-									  			<td>-</td>
+									  			<td><?php if(isset($ad['insights'])){echo $ad['insights']['data'][0]['reach'];}else{ echo '-';}?></td>
 									  			<td><?php echo $ad['objective_for_cost'];?></td>	
-									  			<td>-</td>
+									  			<td><?php if(isset($ad['insights'])){echo $ad['insights']['data'][0]['spend'];}else{ echo '-';}?></td>
 									  			<td>Ongoing-</td>
-									  			<td>-</td>
-									  			<td>-</td>
-									  			<td>-</td>
-									  			<td>-</td>
-									  			<td>-</td>
+									  			<td><?php if(isset($ad['insights'])){echo $ad['insights']['data'][0]['relevance_score']['score'];}else{ echo '-';}?></td>
+									  			<td><?php if(isset($ad['insights'])){echo $ad['insights']['data'][0]['frequency'];}else{ echo '-';}?></td>
+									  			<td><?php if(isset($ad['insights'])){echo $ad['insights']['data'][0]['impressions'];}else{ echo '-';}?></td>
+									  			<td><?php if(isset($ad['insights'])){echo $ad['insights']['data'][0]['unique_clicks'];}else{ echo '-';}?></td>
+									  			<td><?php if(isset($ad['insights'])){echo $ad['insights']['data'][0]['total_unique_actions'];}else{ echo '-';}?></td>
 									  			<td></td>
 									  		</tr>
 									  	<?php endforeach; endforeach; ?>	
@@ -2361,11 +2370,11 @@ if(isset($_SESSION['user'])) :
 								      							</div>
 								      							<div class="white-block-body">
 								      								<p>
-								      									<a href="#"><span id="camp_total_adsets"></span> Ad Set</a><br>
+								      									<a href="#"><span class="camp_total_adsets"></span> Ad Set</a><br>
 								      									<span>Targeting, placement, budget and schedule</span>
 								      								</p>
 								      								<p>
-								      									<a href="#"><span id="camp_total_ads"></span> Ad</a><br>
+								      									<a href="#"><span class="camp_total_ads"></span> Ad</a><br>
 								      									<span>Images, videos, text and links</span>
 								      								</p>
 								      								<hr>
@@ -2422,14 +2431,14 @@ if(isset($_SESSION['user'])) :
 								      									<div class="row">
 								      										<div class="col-md-5"><label>Daily Budget</label></div>
 								      										<div class="col-md-6">
-								      											<input type="text" name="" value="<?php echo $adset[daily_budget]; ?>" style=" margin-right: 10px;width:100px;">
+								      											<input type="text" name="" value="<?php echo $adset['daily_budget']; ?>" style=" margin-right: 10px;width:100px;" id="addsets_daily_bugdet">
 								      											<button class="light-grey-btn" data-toggle="modal" data-target="#adjust_button">Adjust Budget</button>
 								      										</div>
 								      									</div>
 								      									<div class="row">
 								      										<div class="col-md-5"><label>Schedule Start</label></div>
 								      										<div class="col-md-6">
-								      											<p><?php echo date_format(date_create($adset['start_time']), 'l, F d, Y h:i a');?></p>
+								      											<p class="addsets_start_time"><?php echo date_format(date_create($adset['start_time']), 'l, F d, Y h:i a');?></p>
 								      										</div>
 								      									</div>
 								      									<div class="row">
@@ -2467,22 +2476,24 @@ if(isset($_SESSION['user'])) :
 								      									<div class="row">
 								      										<div class="col-md-5"><label>Location <i class="fa fa-info-circle" aria-hidden="true"></i></label></div>
 								      										<div class="col-md-6">
-								      											<textarea class="form-control"></textarea>
+								      											<textarea class="form-control" id="addsets_location"></textarea>
 								      										</div>
 								      									</div>
 								      									<div class="row">
 								      										<div class="col-md-5"><label>Age <i class="fa fa-info-circle" aria-hidden="true"></i></label></div>
 								      										<div class="col-md-6">
 								      											<div class="custom-autocomplete-select">
-									                                        		<select class="selectpicker show-tick" data-size="3">
-																					  <option data-tokens="ketchup mustard">45</option>
-																					  <option data-tokens="mustard">56</option>
-																					  <option data-tokens="frosting">25</option>
+									                                        		<select class="selectpicker show-tick " data-size="3" id="addsets_min_age" name="addsets_min_age">
+									                                        		<?php for($j=13;$j<=65;$j++):?>
+																					  <option  value="<?php echo $j; ?>" class="addsets_min_age"><?php echo $j;?></option>
+																					<?php endfor;?>
+																					 
 																					</select>	
-																					<select class="selectpicker show-tick" data-size="3">
-																					  <option data-tokens="ketchup mustard">63+</option>
-																					  <option data-tokens="mustard">20+</option>
-																					  <option data-tokens="frosting">12+</option>
+																					<select class="selectpicker show-tick" data-size="3" name="addsets_max_age">
+																					<?php for($j=13;$j<=65;$j++):?>
+																					  <option data-tokens="ketchup mustard" value="<?php echo $j;?>"><?php echo $j;?></option>
+																					<?php endfor;?>
+																					 
 																					</select>													
 									                                        	</div>
 								      										</div>
@@ -2659,11 +2670,11 @@ if(isset($_SESSION['user'])) :
 								      						</div>
 								      						<div class="white-block-body">
 								      							<p>
-								      								<a href="#"><span id="camp_total_camps">1</span> Campaigns</a><br>
+								      								<a href="#"><span class="camp_total_camps">1</span> Campaigns</a><br>
 								      								<span>Targeting, placement, budget and schedule</span>
 								      							</p>
 								      							<p>
-								      								<a href="#"><span id="camp_total_ads">1</span> Ad</a><br>
+								      								<a href="#"><span class="camp_total_ads">1</span> Ad</a><br>
 								      								<span>Images, videos, text and links</span>
 								      							</p>
 								      							<hr>
@@ -3327,11 +3338,11 @@ if(isset($_SESSION['user'])) :
 									      						</div>
 									      						<div class="white-block-body">
 									      							<p>
-									      								<a href="#"><span id="camp_total_camps">1</span> Campaigns</a><br>
+									      								<a href="#"><span class="camp_total_camps">1</span> Campaigns</a><br>
 									      								<span>Targeting, placement, budget and schedule</span>
 									      							</p>
 									      							<p>
-									      								<a href="#"><span id="camp_total_adsets"></span> Ad Set</a><br>
+									      								<a href="#"><span class="camp_total_adsets"></span> Ad Set</a><br>
 									      								<span>Images, videos, text and links</span>
 									      							</p>
 									      						</div>
