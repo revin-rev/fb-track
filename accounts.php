@@ -21,6 +21,29 @@ echo "</pre>";die;*/
 ?>
 <div class="col-md-12 marginTop3">
 	<div class="col-md-12">
+		<form class="form-inline">
+			<div class="col-md-2">
+				<div class="form-group">
+					<label for="email">Disabled:</label>
+					<select class="form-control" id="disable">
+						<option>Hide</option>
+						<option>Unhide</option>
+					</select>
+				</div>
+			</div>
+			<div class="col-md-2">
+				<div class="form-group">
+					<label for="email">Accounts:</label>
+					<select class="form-control" id="accounts">
+						<option>All</option>
+						<option>Personal</option>
+						<option>Business</option>
+					</select>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="col-md-12">
 		<table class="table table-striped table-bordered" id="myTable2">
 			<thead>
 				<tr>
@@ -33,6 +56,8 @@ echo "</pre>";die;*/
 					<td>Payment Method</td>
 					<td>Timezone</td>
 					<td>Pixel Id</td>
+					<td>TSpend</td>
+					<td>LSpend</td>
 					<td>Type</td>
 					<td>Account Id</td>
 					<td>Payment</td>
@@ -45,7 +70,7 @@ echo "</pre>";die;*/
 					$get = $db->query("SELECT * FROM fb_user_details WHERE user_id = '".$user['nsp_account_id']."' ");
 					$data = $get->fetch_assoc();
 				?>
-				<tr>
+				<tr data-disable="<?php if($user['ad_account_info']['account_status'] == 2 ) { echo 'Hide';} else { echo 'Unhide';}?>" data-accounts="<?php if($user['ad_account_info']['business']) { echo "Business"; } else { echo "Personal"; } ?>">
 					<td>
 						<a target="_blank" href="power-editor.php?act=<?php echo $user['ad_account_info']['id'];?>&email-id=<?php echo $user['facebook_details']['facebook_email'];?>&code=<?php echo $user['access_token'];?>"><?php echo $user['ad_account_info']['name']; ?></a>
 					</td>
@@ -89,6 +114,8 @@ echo "</pre>";die;*/
 						if($pixel_id['data'][0]['id'] == '') { echo 'none'; } else { echo $pixel_id['data'][0]['id']; }
 						?>
 					</td>
+					<td></td>
+					<td>$<?php $lspend = $user['ad_account_info']['amount_spent']/100; echo number_format($lspend,2);?></td>
 					<td><?php if($user['ad_account_info']['business']) { echo "Business"; } else { echo "Personal"; } ?></td>
 					<td><?php echo $user['ad_account_info']['id']; ?></td>
 					<td><a data-toggle="modal" data-target="#credit_card">Add a credit card</a></td>
@@ -227,6 +254,36 @@ echo "</pre>";die;*/
 			"autoWidth": false,
 			"pageLength": 15,
 			"order": [[ 0, "desc" ]]
+		});
+		var table = $('#myTable2').DataTable();
+		jQuery('#disable').change(function(){
+			var value = jQuery(this).val();
+			$.fn.dataTable.ext.search.pop();
+			$.fn.dataTable.ext.search.push(
+				function(settings, data, dataIndex) {
+					if(value == 'Hide') {
+						return $(table.row(dataIndex).node()).attr('data-disable') != value;
+					} else {
+						return $(table.row(dataIndex).node()).attr('data-disable') != '';
+					}
+				}
+				);
+			table.draw();
+		});
+
+		jQuery('#accounts').change(function(){
+			var value = jQuery(this).val();
+			$.fn.dataTable.ext.search.pop();
+			$.fn.dataTable.ext.search.push(
+				function(settings, data, dataIndex) {
+					if(value == 'All') {
+						return $(table.row(dataIndex).node()).attr('data-accounts') != value;
+					} else {
+						return $(table.row(dataIndex).node()).attr('data-accounts') == value;
+					}
+				}
+				);
+			table.draw();
 		});
 	});
 </script>
