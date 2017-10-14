@@ -1177,8 +1177,15 @@ if(isset($_SESSION['user'])) :
 		                      		<tbody id="camapaign_listing">
 		                      			<?php 
 		                      			if(count($camapaigns['data']) > 0):
+		                      				$total_spent = 0;
+		                      				$total_freq = 0;
+		                      				$total_impression = 0;
+		                      				$total_uniq_click = 0;
 		                      			foreach ($camapaigns['data'] as $camapaign):
-		                      				
+		                      				if(isset($camapaign['insights'])) { $total_spent+= $camapaign['insights']['data'][0]['spend']; }
+		                      				if(isset($camapaign['insights'])){ $total_freq+ = $camapaign['insights']['data'][0]['frequency'];}
+		                      				if(isset($camapaign['insights'])){ $total_impression+= $camapaign['insights']['data'][0]['impressions'];}
+		                      				if(isset($camapaign['insights'])){ $total_uniq_click+= $camapaign['insights']['data'][0]['unique_clicks'];}
 		                      				?>
 		                      				<tr class="camp_rows" id="<?php echo $camapaign['id'];?>">
 		                      					<td><input type="checkbox" name="" class="campaigns_checkbox"></td>
@@ -1188,8 +1195,8 @@ if(isset($_SESSION['user'])) :
 		                      					<td class="editable-row">
 		                      						<a href="#"><?php echo $camapaign['name']; ?> <span class="edit-row-title"><i class="fa fa-pencil" aria-hidden="true"></i></span></a>
 		                      						<div class="row-editing-icons">
-		                      							<a href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i> View Chart</a>
-		                      							<a href="#"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
+		                      							<a href="#" class="view-charts" data-id="view-tab"><i class="fa fa-bar-chart" aria-hidden="true"></i> View Chart</a>
+		                      							<a href="#" data-id="edit-tab" class="edit-charts"><i class="fa fa-pencil" aria-hidden="true" ></i> Edit</a>
 		                      							<a href="#duplicate-campaign" data-toggle="modal"><i class="fa fa-copy" aria-hidden="true"></i> Duplicate</a>
 		                      						</div>
 		                      					</td>
@@ -1197,7 +1204,7 @@ if(isset($_SESSION['user'])) :
 		                      					<td><?php echo $camapaign['objective_for_results'];?></td>
 		                      					<td><?php if(isset($camapaign['insights'])){echo $camapaign['insights']['data'][0]['reach'];}else{ echo '-';}?></td>
 		                      					<td><?php echo $camapaign['objective_for_cost'];?></td>	
-		                      					<td> <?php if(isset($camapaign['insights'])){echo '&#8377;'.$camapaign['insights']['data'][0]['spend'];}else{ echo '-';}?></td></td>
+		                      					<td> <?php if(isset($camapaign['insights'])){echo '$'.$camapaign['insights']['data'][0]['spend'];}else{ echo '-';}?></td></td>
 		                      					<td>
 												<?php if(isset($camapaign['stop_time'])){echo $start_date=date_format(date_create($camapaign['stop_time']),' j F, Y');}else{ echo 'Ongoing';}?></td>
 		                      					<td><?php if(isset($camapaign['insights'])){echo $camapaign['insights']['data'][0]['frequency'];}else{ echo '-';}?></td>
@@ -1213,11 +1220,11 @@ if(isset($_SESSION['user'])) :
 		                      					<td>—Link Click</td>
 		                      					<td>—People</td>
 		                      					<td>—Per Link Click</td>
-		                      					<td>&#8377; 0.0</td>
+		                      					<td><?php if($total_spent) { echo $total_spent;  } else { echo '-Total'; }?></td>
 		                      					<td></td>
-		                      					<td>—Per Person</td>
-		                      					<td>-Total</td>
-		                      					<td>-Total</td>
+		                      					<td><?php if($total_freq) {  echo $total_freq; } else { echo '-Per Person'; }?></td>
+		                      					<td><?php if($total_impression) { echo $total_impression;  } else { echo '-Total'; }?></td>
+		                      					<td><?php if($total_uniq_click) { echo $total_uniq_click;  } else { echo '-Total'; }?></td>
 		                      					<td></td>
 
 		                      				</tr>
@@ -1673,8 +1680,8 @@ if(isset($_SESSION['user'])) :
 									      <td>
 									      	<a href="#"><?php echo $adsets['name']; ?> <span class="edit-row-title"><i class="fa fa-pencil" aria-hidden="true"></i></span></a>
 									      	<div class="row-editing-icons">
-									      			<a href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i> View Chart</a>
-									      			<a href="#"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
+									      		<a href="#" class="view-charts" data-id="view-tab"><i class="fa fa-bar-chart" aria-hidden="true"></i> View Chart</a>
+									      		<a href="#" data-id="edit-tab" class="edit-charts"><i class="fa fa-pencil" aria-hidden="true" ></i> Edit</a>
 									      			<a href="#duplicate-adSet" data-toggle="modal"><i class="fa fa-copy" aria-hidden="true"></i> Duplicate</a>	
 									      	</div>
 									      </td>
@@ -2161,8 +2168,8 @@ if(isset($_SESSION['user'])) :
 									  			<td>
 									  				<a href="#"><?php echo $ad['name']; ?> <span class="edit-row-title"><i class="fa fa-pencil" aria-hidden="true"></i></span></a>
 									  				<div class="row-editing-icons">
-									  					<a href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i> View Chart</a>
-									  					<a href="#"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
+									  					<a href="#" class="view-charts" data-id="view-tab"><i class="fa fa-bar-chart" aria-hidden="true"></i> View Chart</a>
+									  					<a href="#" data-id="edit-tab" class="edit-charts"><i class="fa fa-pencil" aria-hidden="true" ></i> Edit</a>
 									  					<a href="#duplicate-adSet" data-toggle="modal"><i class="fa fa-copy" aria-hidden="true"></i> Duplicate</a>	
 									  				</div>
 									  			</td>
@@ -2955,7 +2962,7 @@ if(isset($_SESSION['user'])) :
 																														      <div class="panel-body header-component">
 																														        <div class="common-row">
 																														        	<div class="col-md-3 left">
-																														        		<img src="../img/dummy-img-thumbnail.jpg">
+																														        		<img src="img/dummy-img-thumbnail.jpg">
 																														        	</div>
 																														        	<div class="col-md-9 right">
 																														        		Upload a logo for your Canvas. For best results, images should be 882 x 66 pixels<br/>
@@ -3031,7 +3038,7 @@ if(isset($_SESSION['user'])) :
 																																	<div class="edit-selected-slide">
 																																		<div class="common-row">	
 																															    			<div class="left-img">
-																															    				<img src="../img/use-temp-img-thumb.jpg">
+																															    				<img src="img/use-temp-img-thumb.jpg">
 																															    			</div>
 																															    			<div class="right-detail">
 																															    				 <button class="light-grey-btn">Upload Photo</button>
@@ -3314,7 +3321,7 @@ if(isset($_SESSION['user'])) :
 										      			<div class="col-md-6 col-sm-5">
 									      					<div class="form-white-block" style="margin-top:20px;">
 									      						<div class="row main-heading">
-									      							<div class="col-md-9 padding10"><h5><b>Ad id<span id="ad_id"></span></b></h5><input type="checkbox" checked id="ad_status" value="" data-toggle="toggle" data-size="mini"> </div>
+									      							<div class="col-md-9 padding10"><h5><b>Ad id : <span id="ad_id"></span></b></h5><input type="checkbox" checked id="ad_status" value="" class="ads_status" data-toggle="toggle" data-size="mini"> </div>
 									      							<div class="col-md-3 padding10">
 									      								<div class="btn-and-caret-icon-dropdown" style="margin-top: 6px;">
 									      									<a href="#" class="create-camp-btn">Link</a>
@@ -3674,7 +3681,7 @@ if(isset($_SESSION['user'])) :
 						    	<div class="img-radio-tab-cont tab-pane active" id="temp-radio-tab1">
 						    		<div class="common-row">	
 						    			<div class="left-img">
-						    				<img src="../img/use-temp-img-thumb.jpg">
+						    				<img src="img/use-temp-img-thumb.jpg">
 						    			</div>
 						    			<div class="right-detail">
 						    				<p>Recommended: Image width of 1080 pixels</p>
@@ -3689,7 +3696,7 @@ if(isset($_SESSION['user'])) :
 								<div class="video-slideshow-radio-tab-cont tab-pane" id="temp-radio-tab2">
 					    			<div class="common-row">	
 						    			<div class="left-img">
-						    				<img src="../img/use-temp-img-thumb.jpg">
+						    				<img src="img/use-temp-img-thumb.jpg">
 						    			</div>
 						    			<div class="right-detail">
 						    				<p>Recommended: Image width of 1080 pixels</p>
@@ -3735,7 +3742,7 @@ if(isset($_SESSION['user'])) :
 						<div class="edit-selected-slide">
 							<div class="common-row">	
 				    			<div class="left-img">
-				    				<img src="../img/use-temp-img-thumb.jpg">
+				    				<img src="img/use-temp-img-thumb.jpg">
 				    			</div>
 				    			<div class="right-detail">
 				    				 <button class="light-grey-btn">Replace Photo</button>
@@ -3771,7 +3778,7 @@ if(isset($_SESSION['user'])) :
 				<div class="use-temp-right-sec">
 					<div class="common-row" style="margin-top: 0">
 						<div class="img-or-video-prev">
-							<img src="../img/use-temp-img-prev.jpg">
+							<img src="img/use-temp-img-prev.jpg">
 						</div>
 						<h1>Add Context</h1>
 						<p>Change the text and use this space to tell people about your product, brand, or service. </p>
@@ -3780,7 +3787,7 @@ if(isset($_SESSION['user'])) :
 
 					<div class="common-row">
 						<div class="img-or-video-prev">
-							<img src="../img/use-temp-img-prev.jpg">
+							<img src="img/use-temp-img-prev.jpg">
 						</div>
 						<h1>Add Context</h1>
 						<p>Change the text and use this space to tell people about your product, brand, or service. </p>
@@ -3820,7 +3827,7 @@ if(isset($_SESSION['user'])) :
                             <label class="btn btn-default">
                                 <div class="bizcontent">
                                     <input type="checkbox" name="a" autocomplete="off" value="">
-                                    <img src="../img/button_unselected.png">
+                                    <img src="img/button_unselected.png">
                                     <!-- <span class="glyphicon glyphicon-ok glyphicon-lg"></span> -->
                                     <h5>Button</h5>
                                 </div>
@@ -3838,7 +3845,7 @@ if(isset($_SESSION['user'])) :
                             <label class="btn btn-default" style="padding-top: 33px;">
                                 <div class="bizcontent">
                                     <input type="checkbox" name="a" autocomplete="off" value="">
-                                    <img src="../img/carousel_unselected.png">
+                                    <img src="img/carousel_unselected.png">
                                     <!-- <span class="glyphicon glyphicon-ok glyphicon-lg"></span> -->
                                     <h5>Carousel</h5>
                                 </div>
@@ -3856,7 +3863,7 @@ if(isset($_SESSION['user'])) :
                             <label class="btn btn-default">
                                 <div class="bizcontent">
                                     <input type="checkbox" name="a" autocomplete="off" value="">
-                                    <img src="../img/photo_unselected.png">
+                                    <img src="img/photo_unselected.png">
                                     <!-- <span class="glyphicon glyphicon-ok glyphicon-lg"></span> -->
                                     <h5>Photo</h5>
                                 </div>
@@ -3874,7 +3881,7 @@ if(isset($_SESSION['user'])) :
                             <label class="btn btn-default">
                                 <div class="bizcontent">
                                     <input type="checkbox" name="a" autocomplete="off" value="">
-                                    <img src="../img/text_unselected.png">
+                                    <img src="img/text_unselected.png">
                                     <!-- <span class="glyphicon glyphicon-ok glyphicon-lg"></span> -->
                                     <h5>Text Block</h5>
                                 </div>
@@ -3892,7 +3899,7 @@ if(isset($_SESSION['user'])) :
                             <label class="btn btn-default">
                                 <div class="bizcontent">
                                     <input type="checkbox" name="a" autocomplete="off" value="">
-                                    <img src="../img/video_unselected.png">
+                                    <img src="img/video_unselected.png">
                                     <!-- <span class="glyphicon glyphicon-ok glyphicon-lg"></span> -->
                                     <h5>Video</h5>
                                 </div>
