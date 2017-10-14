@@ -599,7 +599,7 @@ color:#FFFFFF;
 .right-detail {float: left; width:72%; margin-left: 5%; } 
 .right-detail p{font-size: 13px;}
 .use-temp-pop-row {float: left; width: 100%; border-bottom: 1px solid #ccc;padding: 15px}
-.crsl-slide{padding: 0; margin: 0; }
+.crsl-slide{padding:4px !important; margin: 0; }
 .crsl-slide li{ display: inline-block;margin-bottom:18px; }
 .crsl-slide li a{background: #F5F7F8; padding: 7px 12px; color: #333; font-weight: bold;border:2px solid #ccc}
 .crsl-slide li a:hover, .crsl-slide li a.active{color: #2887E6; border-color: #2887E6}
@@ -612,7 +612,7 @@ color:#FFFFFF;
 
 /* create canvas popup */
 .create-canv{ float:left;width: 100% }
-#create-canv-popup .modal-dialog{ width: 1080px;}
+#create-canv-popup .modal-dialog{ width: 1250px;}
 .canvs-popup-header-optns{ float: left; width: 100%; background-color: #fff; padding: 10px; border-bottom: 1px solid #ccc;}
 .round-cmpnt-btn{ float: left; width: auto; padding:5px; background-color: transparent; font-size: 11px !important; color: #999; text-align: center;}
 .round-cmpnt-btn i{ color: #066cd2;display: block; font-size: 16px;} 
@@ -623,8 +623,8 @@ color:#FFFFFF;
 .canvs-popup-header-optns ul li i {color: #999999; font-size: 15px; }
 #crt-ad .canvs-popup-header-optns ul li:hover{ background-color: #f3f4f4; cursor: default; }
 .canvs-components{ float: left;width: 100% }
-.canvs-components-left-sec{ float: left;width: 50% }
-.canvs-components-right-sec{ float: left;width: 50% }
+.canvs-components-left-sec{ float: left;width:55%; height: 675px; overflow: scroll;}
+.canvs-components-right-sec{ float: left;width:45%; height: 675px; overflow: scroll; text-align:center;}
 .canvs-row{ float: left;width: 100%; padding: 15px 10px; border-bottom: 1px solid #ccc;}
 .canvs-title-field{ border: 0; padding: 5px; box-shadow: none; width: 100%; font-size: 16px;}
 #create-canv-popup .modal-content{ height: 800px; }
@@ -668,9 +668,25 @@ color:#FFFFFF;
 #add-cnvs-component-popup .modal-footer{ float: left;width: 100%; background-color: #fff; }
 #add-cnvs-component-popup img{ width: 60px; }
 .plus-add-more-c{ font-size: 17px !important; color: #066cd2 }
-
-
-
+#crt-ad .canvs-row .cnvs-destination-dropdown .dropdown-menu {left: auto; right: 0}
+#crt-ad .canvs-row .cnvs-destination-dropdown .dropdown-menu{ padding: 0 !important}
+#crt-ad .canvs-row .cnvs-destination-dropdown .dropdown-menu li{ width: 100% !important;margin-bottom: 0}
+#crt-ad .canvs-row .cnvs-destination-dropdown.custom-autocomplete-select .dropdown-menu li a{padding: 3px 7px; font-size: 12px}
+#crt-ad .canvs-row .cnvs-destination-dropdown.custom-autocomplete-select .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus{ background-color: #4267B2; color: #fff }
+#crt-ad .canvs-row .cnvs-destination-dropdown.custom-autocomplete-select .dropdown-menu > li.selected a{ background-color: #4267B2; color: #fff }
+.canvs-components-right-sec .img-or-video-prev{ width: 100%; height: 400px; overflow: hidden;}
+.canvs-components-right-sec .img-or-video-prev img{ width: 100%; margin:0; }
+.canvs-components-right-sec h1{ font-size: 21px; }
+.two-tabs-first-radio {float: left; width: 100%; }
+.two-tabs-second-radio {float: left; width: 100%; }
+.two-tabs-third-radio {float: left; width: 100%; }
+.manual-and-dynamic-cont {float: left; padding: 30px 10px; width: 100%; } 
+.manual-and-dynamic-cont h5 {float: left; font-size: 13px; font-weight: bold; width: 100%; } 
+#crt-ad .manual-and-dynamic-first-ul {display: inline-block; margin: 0; padding: 0; width: 100%; }
+#crt-ad .manual-and-dynamic-first-ul  li {color: #666666; margin-bottom: 0; float: left;width: 100%}
+#crt-ad .manual-and-dynamic-first-ul li input[type="radio"] {margin-right: 5px; margin-top: 0;float: left; }
+#crt-ad .manual-and-dynamic-first-ul li label {font-weight: normal;float: left; margin-bottom:10px; margin-top:-2px; line-height: normal;}
+.manual-imgs-radio-opt {float: left; width: 100%; }
 
 
 
