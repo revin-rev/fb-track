@@ -756,14 +756,11 @@ color:#FFFFFF;
 .upload-inst{ margin-left: 12%; width: 77%; margin-bottom: 50px;}
 .upload-inst img{ float: left;}
 .upload-inst span {color: #666666; float: left; margin-left: 15px; width: 80%; }
-
-
-
-
-
-
-
-
+.single-video-thumb-view {float: left; height: 125px; overflow: hidden; width: 100%;position: relative; }
+.single-video-thumb-view img{ width: 100%; object-fit: cover; }
+.single-video-thumb-view .detail {bottom: 5px;padding: 0 5px; position: absolute; width: 100%;} 
+.single-video-thumb-view .detail p {color: #ffffff; float: left; font-size: 14px; margin: 0; padding-left: 5px; width: 180px; }
+.single-video-thumb-view .detail span {background-color: rgba(0, 0, 0, 0.4); border-radius: 5px; color: #ffffff; float: left; font-size: 11px; padding: 0 5px; }
 
 
 

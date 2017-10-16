@@ -3561,7 +3561,38 @@ if(isset($_SESSION['user'])) :
 																												                      	</table>
 																															    	</div>
 																															    	<div class="video-grid-view">
-																															    			sdsvv
+																															    		<div class="common-row">
+																															    			<div class="col-md-4">
+																															    				<div class="single-video-thumb-view">
+																															    						<img src="../img/a.jpg">
+																															    						<div class="detail">							
+																															    							<p>Video (1956329526...</p>
+																															    							<span>0.06</span>
+																															    						</div>
+																															    						<input type="radio" name="">
+																															    				</div>
+																															    			</div>
+																															    			<div class="col-md-4">
+																															    				<div class="single-video-thumb-view">
+																															    						<img src="../img/a.jpg">
+																															    						<div class="detail">							
+																															    							<p>Video (1956329526...</p>
+																															    							<span>0.06</span>
+																															    						</div>
+																															    						<input type="radio" name="">
+																															    				</div>
+																															    			</div>
+																															    			<div class="col-md-4">
+																															    				<div class="single-video-thumb-view">
+																															    						<img src="../img/a.jpg">
+																															    						<div class="detail">							
+																															    							<p>Video (1956329526...</p>
+																															    							<span>0.06</span>
+																															    						</div>
+																															    						<input type="radio" name="">
+																															    				</div>
+																															    			</div>
+																															    		</div>
 																															    	</div>
 																															    </div>
 																														  </div>
