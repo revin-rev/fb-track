@@ -108,6 +108,20 @@ if(isset($_SESSION['user'])) :
         });
      });    
  </script>
+
+ <!-- add image in popup radio option script -->
+ <script type="text/javascript">
+ $(document).ready(function() {
+	 $('.thumbCheck').click(function () {
+        if ($('input:not(:checked)')) {
+            $('div').removeClass('selected-img-thumb');
+        }
+        if ($('input').is(':checked')) {
+            $(this).parent().addClass('selected-img-thumb');           
+        }
+    });
+});
+ </script>
 </head>
 <body>
 
@@ -3406,6 +3420,7 @@ if(isset($_SESSION['user'])) :
 																						    	<div class="img-radio-tab-cont tab-pane active" id="radio-tab1">
 																						    			<div class="select-img-row">
 																						    				<button class="light-grey-btn common-select-img-popup" data-target="#common-select-img-popup" data-toggle="modal">Select Image</button>
+
 																						    			</div>
 																						    			<div class="img-specification">
 																						    				<h5>IMAGE SPECIFICATIONS</h5>
@@ -3468,7 +3483,126 @@ if(isset($_SESSION['user'])) :
 																								<div class="video-slideshow-radio-tab-cont tab-pane" id="radio-tab2">
 
 																									<div class="common-row">
-																										<button class="light-grey-btn select-video-btn">Slect Video</button>
+																										<button class="light-grey-btn common-select-video-popup" data-target="#common-select-video-popup" data-toggle="modal">Select Video</button>
+																											<div id="common-select-video-popup" class="modal fade" role="dialog">
+																											  <div class="modal-dialog">
+
+																											    <!-- Modal content-->
+																											    <div class="modal-content">
+																											      <div class="modal-header">
+																											        
+																											        <ul class="nav nav-tabs">
+																													  <li class="active"><a data-toggle="tab" href="#browse-lib"><i class="fa fa-file-video-o"></i> Browse Library</a></li>
+																													  <li><a data-toggle="tab" href="#paste-link"><i class="fa fa-link"></i> Paste a Link</a></li>
+																													  <li><a data-toggle="tab" href="#upload-video"><i class="fa fa-upload"></i> Upload Videos</a></li>
+																													</ul>
+																											      </div>
+																											      <div class="modal-body">																											       
+																														<div class="tab-content">
+																														  <div id="browse-lib" class="tab-pane fade in active">
+																															    <div class="filtering-and-grid-view-optns">
+																															    	<a href="#" class="list-view-link"><i aria-hidden="true" class="fa fa-th-list"></i></a>
+																															    	<a href="#" class="grid-view-link"><i aria-hidden="true" class="fa fa-th-large"></i></a>
+																															    </div>
+																															    <div class="video-views-outr">
+																															    	<div class="simple-custom-upload-btn">
+																																    	<button class="light-grey-btn"><i class="fa fa-upload"></i> Upload</button>
+																																    	<input type="file" name="">
+																																    </div>	
+																															    	<div class="video-list-video">
+																																			<table  class="table table-bordered table-inverse table-striped table-hover">
+																												                      		<thead class="thead-default">
+																												                      			<tr>
+																												                      				<th></th>																												                      				 
+																												                      				<th>Video Name</th>
+																												                      				<th>Duration</th>
+																												                      				<th>Last Used</th>
+																												                      				<th>Resolution</th>
+																												                      			</tr>
+																												                      		</thead>
+																												                      		<tbody>
+																												                      			<tr class="video_rows">
+																												                      				<td><input type="checkbox" name=""></td>	
+																												                      				<td>
+																												                      					<img src="../img/ident-acc-icon.jpg"> <span>Video (1958816381040581)</span>
+																												                      				</td>
+																												                      				<td>0.03</td> 
+																												                      				<td>2017-10-14</td>
+																												                      				<td>566x690</td>
+																												                      			</tr>
+																												                      			<tr class="video_rows">
+																												                      				<td><input type="checkbox" name=""></td>	
+																												                      				<td>
+																												                      					<img src="../img/ident-acc-icon.jpg"> <span>Video (1958816381040581)</span>
+																												                      				</td>
+																												                      				<td>0.03</td> 
+																												                      				<td>2017-10-14</td>
+																												                      				<td>566x690</td>
+																												                      			</tr>
+																												                      			<tr class="video_rows">
+																												                      				<td><input type="checkbox" name=""></td>	
+																												                      				<td>
+																												                      					<img src="../img/ident-acc-icon.jpg"> <span>Video (1958816381040581)</span>
+																												                      				</td>
+																												                      				<td>0.03</td> 
+																												                      				<td>2017-10-14</td>
+																												                      				<td>566x690</td>
+																												                      			</tr>
+																												                      			<tr class="video_rows">
+																												                      				<td><input type="checkbox" name=""></td>	
+																												                      				<td>
+																												                      					<img src="../img/ident-acc-icon.jpg"> <span>Video (1958816381040581)</span>
+																												                      				</td>
+																												                      				<td>0.03</td> 
+																												                      				<td>2017-10-14</td>
+																												                      				<td>566x690</td>
+																												                      			</tr>
+																												                      		</tbody>
+																												                      	</table>
+																															    	</div>
+																															    	<div class="video-grid-view">
+																															    			sdsvv
+																															    	</div>
+																															    </div>
+																														  </div>
+																														  <div id="paste-link" class="tab-pane fade">
+																														    <div class="paste-link-left">
+																														    	<div class="common-row upload-inst">
+																														    		<img src="../img/paste-link-dummy-img.png"> <span>Quickly upload a video by pasting the link of a hosted video file.</span>
+																														    	</div>
+																														    	<div class="common-row">
+																														    		<div class="col-md-3 text-right"><label>Video URL</label></div>
+																														    		<div class="col-md-8"><input type="text" name="" class="form-control"></div>
+																														    	</div>
+																														    	<div class="common-row">
+																														    		<div class="col-md-3 text-right"><label>Title</label></div>
+																														    		<div class="col-md-8"><input type="text" name="" class="form-control"></div>
+																														    	</div>
+																														    </div>
+																														    <div class="paste-link-right">
+																														    	<b>Paste a Direct Download Link to Your Video</b>
+																														    	<p>Your video file must be directly downloadable from the link. We currently don't support shareable links or links that need to be authenticated.</p>
+																														    	<p>If you are having trouble uploading, make sure you are pasting a direct download link from wherever it is hosted. You can test if it is downloadable by pasting the link in your browser. If supported, the video file will automatically download.</p>
+																														    </div>
+																														  </div>
+																														  <div id="upload-video" class="tab-pane fade">
+																														     	<div class="upload-btn-wrapper">
+																																  <button class="btn"><i class="fa fa-upload"></i> Drag and drop a video or click to upload</button>
+																																  <input type="file" name="myfile" />
+																																</div>
+																														  </div>
+																														</div>
+																											      </div>
+																											      <div class="modal-footer">
+																											        <button type="button" class="light-grey-btn" data-dismiss="modal">Cancel</button>
+																											        <button type="button" class="blue-btn" data-dismiss="modal">Confirm</button>
+																											      </div>
+																											    </div>
+
+																											  </div>
+																											</div>
+
+
 																										<button class="crt-slideshow-btn light-grey-btn">
 																											Create Slideshow 
 																										</button>
@@ -3627,6 +3761,7 @@ if(isset($_SESSION['user'])) :
 																											    	<div id="radio-tab3" class="img-radio-tab-cont tab-pane active">
 																											    			<div class="select-img-row">
 																											    				<button class="light-grey-btn">Select Image</button>
+																											    				<button data-toggle="modal" data-target="#common-select-img-popup" class="light-grey-btn common-select-img-popup">Select Image</button>
 																											    			</div>
 																											    			<div class="img-specification">
 																											    				<h5>IMAGE SPECIFICATIONS</h5>
@@ -3659,6 +3794,7 @@ if(isset($_SESSION['user'])) :
 
 																														<div class="common-row">
 																															<button class="light-grey-btn select-video-btn">Slect Video</button>
+																															<button class="light-grey-btn select-video-btn">Select Video</button>
 																															<button class="crt-slideshow-btn light-grey-btn">
 																																Create Slideshow 
 																															</button>
@@ -4154,7 +4290,7 @@ if(isset($_SESSION['user'])) :
 						    	<div class="img-radio-tab-cont tab-pane active" id="temp-radio-tab1">
 						    		<div class="common-row">	
 						    			<div class="left-img">
-						    				<img src="img/use-temp-img-thumb.jpg">
+						    				<img src="../img/use-temp-img-thumb.jpg">
 						    			</div>
 						    			<div class="right-detail">
 						    				<p>Recommended: Image width of 1080 pixels</p>
@@ -4169,7 +4305,7 @@ if(isset($_SESSION['user'])) :
 								<div class="video-slideshow-radio-tab-cont tab-pane" id="temp-radio-tab2">
 					    			<div class="common-row">	
 						    			<div class="left-img">
-						    				<img src="img/use-temp-img-thumb.jpg">
+						    				<img src="../img/use-temp-img-thumb.jpg">
 						    			</div>
 						    			<div class="right-detail">
 						    				<p>Recommended: Image width of 1080 pixels</p>
@@ -4215,7 +4351,7 @@ if(isset($_SESSION['user'])) :
 						<div class="edit-selected-slide">
 							<div class="common-row">	
 				    			<div class="left-img">
-				    				<img src="img/use-temp-img-thumb.jpg">
+				    				<img src="../img/use-temp-img-thumb.jpg">
 				    			</div>
 				    			<div class="right-detail">
 				    				 <button class="light-grey-btn">Replace Photo</button>
@@ -4251,7 +4387,7 @@ if(isset($_SESSION['user'])) :
 				<div class="use-temp-right-sec">
 					<div class="common-row" style="margin-top: 0">
 						<div class="img-or-video-prev">
-							<img src="img/use-temp-img-prev.jpg">
+							<img src="../img/use-temp-img-prev.jpg">
 						</div>
 						<h1>Add Context</h1>
 						<p>Change the text and use this space to tell people about your product, brand, or service. </p>
@@ -4260,7 +4396,7 @@ if(isset($_SESSION['user'])) :
 
 					<div class="common-row">
 						<div class="img-or-video-prev">
-							<img src="img/use-temp-img-prev.jpg">
+							<img src="../img/use-temp-img-prev.jpg">
 						</div>
 						<h1>Add Context</h1>
 						<p>Change the text and use this space to tell people about your product, brand, or service. </p>
@@ -4300,7 +4436,7 @@ if(isset($_SESSION['user'])) :
                             <label class="btn btn-default">
                                 <div class="bizcontent">
                                     <input type="checkbox" name="a" autocomplete="off" value="">
-                                    <img src="img/button_unselected.png">
+                                    <img src="../img/button_unselected.png">
                                     <!-- <span class="glyphicon glyphicon-ok glyphicon-lg"></span> -->
                                     <h5>Button</h5>
                                 </div>
@@ -4318,7 +4454,7 @@ if(isset($_SESSION['user'])) :
                             <label class="btn btn-default" style="padding-top: 33px;">
                                 <div class="bizcontent">
                                     <input type="checkbox" name="a" autocomplete="off" value="">
-                                    <img src="img/carousel_unselected.png">
+                                    <img src="../img/carousel_unselected.png">
                                     <!-- <span class="glyphicon glyphicon-ok glyphicon-lg"></span> -->
                                     <h5>Carousel</h5>
                                 </div>
@@ -4336,7 +4472,7 @@ if(isset($_SESSION['user'])) :
                             <label class="btn btn-default">
                                 <div class="bizcontent">
                                     <input type="checkbox" name="a" autocomplete="off" value="">
-                                    <img src="img/photo_unselected.png">
+                                    <img src="../img/photo_unselected.png">
                                     <!-- <span class="glyphicon glyphicon-ok glyphicon-lg"></span> -->
                                     <h5>Photo</h5>
                                 </div>
@@ -4354,7 +4490,7 @@ if(isset($_SESSION['user'])) :
                             <label class="btn btn-default">
                                 <div class="bizcontent">
                                     <input type="checkbox" name="a" autocomplete="off" value="">
-                                    <img src="img/text_unselected.png">
+                                    <img src="../img/text_unselected.png">
                                     <!-- <span class="glyphicon glyphicon-ok glyphicon-lg"></span> -->
                                     <h5>Text Block</h5>
                                 </div>
@@ -4372,7 +4508,7 @@ if(isset($_SESSION['user'])) :
                             <label class="btn btn-default">
                                 <div class="bizcontent">
                                     <input type="checkbox" name="a" autocomplete="off" value="">
-                                    <img src="img/video_unselected.png">
+                                    <img src="../img/video_unselected.png">
                                     <!-- <span class="glyphicon glyphicon-ok glyphicon-lg"></span> -->
                                     <h5>Video</h5>
                                 </div>
@@ -4392,7 +4528,6 @@ if(isset($_SESSION['user'])) :
   </div>
 </div>
 
-
 <div id="common-select-img-popup" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
@@ -4408,12 +4543,108 @@ if(isset($_SESSION['user'])) :
       <div class="modal-footer">
         <button type="button" class="light-grey-btn" data-dismiss="modal">Cancel</button>
         <button type="button" class="blue-btn" data-dismiss="modal">Ok</button>
+        <ul class="nav nav-tabs">
+		  <li class="active"><a data-toggle="tab" href="#upload-img-tab"><i class="fa fa-upload"></i> Upload Image</a></li>
+		  <li><a data-toggle="tab" href="#img-library"><i class="fa fa-file-image-o"></i> Image Library</a></li>
+		  <li><a data-toggle="tab" href="#stock-imgs"><i class="fa fa-file-image-o"></i> Stock Images</a></li>
+		</ul>
+      </div>
+      <div class="modal-body">																											       
+			<div class="tab-content">
+			  <div id="upload-img-tab" class="tab-pane fade in active" style="text-align:center;">
+			   <div class="upload-btn-wrapper">
+				  <button class="btn"><i class="fa fa-upload"></i> Drag and drop an image or click to upload</button>
+				  <input type="file" name="myfile" />
+				</div>
+			  </div>
+			  <div id="img-library" class="tab-pane fade">
+			     <div class="img-filtering-tags">
+			     		<a href="#">All 23</a> <a href="#" class="active">Add Images 23</a> <a href="#">Instagram Images</a>
+			     </div>
+			     <div class="img-gallery-thumb">
+			     	<div class="thumb">
+			     		<span><img src="../img/ident-acc-icon.jpg"></span>	
+			     		<input type="radio" name="img-thumb" class="thumbCheck">																														     	
+			     	</div>
+			     	<div class="thumb">
+			     		<span><img src="../img/ident-acc-icon.jpg"></span>	
+			     		<input type="radio" name="img-thumb" class="thumbCheck">
+			     	</div>
+			     	<div class="thumb">
+			     		<span><img src="../img/ident-acc-icon.jpg"></span>	
+			     		<input type="radio" name="img-thumb" class="thumbCheck">
+			     	</div>
+			     	<div class="thumb">
+			     		<span><img src="../img/ident-acc-icon.jpg"></span>	
+			     		<input type="radio" name="img-thumb" class="thumbCheck">
+			     	</div>
+			     	<div class="thumb">
+			     		<span><img src="../img/ident-acc-icon.jpg"></span>	
+			     		<input type="radio" name="img-thumb" class="thumbCheck">
+			     	</div>
+			     	<div class="thumb">
+			     		<span><img src="../img/ident-acc-icon.jpg"></span>	
+			     		<input type="radio" name="img-thumb" class="thumbCheck">
+			     	</div>
+			     	<div class="thumb">
+			     		<span><img src="../img/ident-acc-icon.jpg"></span>	
+			     		<input type="radio" name="img-thumb" class="thumbCheck">
+			     	</div>
+			     	<div class="thumb">
+			     		<span><img src="../img/ident-acc-icon.jpg"></span>	
+			     		<input type="radio" name="img-thumb" class="thumbCheck">
+			     	</div>
+			     	<div class="thumb">
+			     		<span><img src="../img/ident-acc-icon.jpg"></span>	
+			     		<input type="radio" name="img-thumb" class="thumbCheck">
+			     	</div>
+			     	<div class="thumb">
+			     		<span><img src="../img/ident-acc-icon.jpg"></span>	
+			     		<input type="radio" name="img-thumb" class="thumbCheck">
+			     	</div>
+			     	<div class="thumb">
+			     		<span><img src="../img/ident-acc-icon.jpg"></span>	
+			     		<input type="radio" name="img-thumb" class="thumbCheck">
+			     	</div>
+			     	<div class="thumb">
+			     		<span><img src="../img/ident-acc-icon.jpg"></span>	
+			     		<input type="radio" name="img-thumb" class="thumbCheck">
+			     	</div>
+			     	<div class="thumb">
+			     		<span><img src="../img/ident-acc-icon.jpg"></span>	
+			     		<input type="radio" name="img-thumb" class="thumbCheck">
+			     	</div>
+			     	<div class="thumb">
+			     		<span><img src="../img/ident-acc-icon.jpg"></span>	
+			     		<input type="radio" name="img-thumb" class="thumbCheck">
+			     	</div>
+			     	<div class="thumb">
+			     		<span><img src="../img/ident-acc-icon.jpg"></span>	
+			     		<input type="radio" name="img-thumb" class="thumbCheck">
+			     	</div>
+			     </div>
+			  </div>
+			  <div id="stock-imgs" class="tab-pane fade">
+			    <div class="common-row img-search-field">
+			    	<input type="text" name="" class="form-control" placeholder="Search Free Stock Images">
+			    </div>
+			    <div class="stock-imgs-gallery-thumb">
+			    	<div class="no-stock-search">
+			    		<img src="../img/no-stock-dummy-img.png">
+			    		<p>Search for professional images to use in your ads.<br>Any images you select will be saved in your image library.</p>
+			    	</div>
+			    </div>
+			  </div>
+			</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="light-grey-btn" data-dismiss="modal">Cancel</button>
+        <button type="button" class="blue-btn" data-dismiss="modal">Confirm</button>
       </div>
     </div>
 
   </div>
 </div>
-
 </body>
 </html>
 <script src="https://cdn.ckeditor.com/4.7.3/standard/ckeditor.js"></script>
