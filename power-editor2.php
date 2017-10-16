@@ -10,6 +10,7 @@ if(isset($_SESSION['user'])) :
 	curl_close($cSession);
 	$accounts = json_decode($result, true);
 	/*get accounts of selected user*/
+
 	/*get camapagins*/
 	$cSession = curl_init(); 
 	curl_setopt($cSession,CURLOPT_URL,"https://graph.facebook.com/v2.10/".$_REQUEST['act']."/campaigns?access_token=".$_REQUEST['code']."&fields=name,buying_type,objective,id,objective_for_results,objective_for_cost,status,delivery_info,start_time,stop_time,insights{reach,impressions,frequency,unique_clicks,spend},adsets{id,name,status,delivery_info,lifetime_budget,daily_budget,start_time,end_time,objective_for_results,objective_for_cost,targeting_age_min,targeting_age_max,targeting_genders,targeting_countries,activities{actor_name,event_time,application_name,translated_event_type,extra_data},insights{reach,frequency,impressions,unique_clicks,spend}},account_id,ads{name,id,delivery_info,objective_for_results,objective_for_cost,status,insights{frequency,impressions,spend,unique_clicks,total_unique_actions,relevance_score,reach}}");
@@ -107,20 +108,6 @@ if(isset($_SESSION['user'])) :
             $('.two-tabs-third-radio').show();
         });
      });    
- </script>
-
- <!-- add image in popup radio option script -->
- <script type="text/javascript">
- $(document).ready(function() {
-	 $('.thumbCheck').click(function () {
-        if ($('input:not(:checked)')) {
-            $('div').removeClass('selected-img-thumb');
-        }
-        if ($('input').is(':checked')) {
-            $(this).parent().addClass('selected-img-thumb');           
-        }
-    });
-});
  </script>
 </head>
 <body>
@@ -1210,8 +1197,15 @@ if(isset($_SESSION['user'])) :
 		                      		<tbody id="camapaign_listing">
 		                      			<?php 
 		                      			if(count($camapaigns['data']) > 0):
+		                      				$total_spent = 0;
+		                      				$total_freq = 0;
+		                      				$total_impression = 0;
+		                      				$total_uniq_click = 0;
 		                      			foreach ($camapaigns['data'] as $camapaign):
-		                      				
+		                      				if(isset($camapaign['insights'])) { $total_spent+= $camapaign['insights']['data'][0]['spend']; }
+		                      				if(isset($camapaign['insights'])){ $total_freq+= $camapaign['insights']['data'][0]['frequency'];}
+		                      				if(isset($camapaign['insights'])){ $total_impression+= $camapaign['insights']['data'][0]['impressions'];}
+		                      				if(isset($camapaign['insights'])){ $total_uniq_click+= $camapaign['insights']['data'][0]['unique_clicks'];}
 		                      				?>
 		                      				<tr class="camp_rows" id="<?php echo $camapaign['id'];?>">
 		                      					<td><input type="checkbox" name="" class="campaigns_checkbox"></td>
@@ -1221,8 +1215,8 @@ if(isset($_SESSION['user'])) :
 		                      					<td class="editable-row">
 		                      						<a href="#"><?php echo $camapaign['name']; ?> <span class="edit-row-title"><i class="fa fa-pencil" aria-hidden="true"></i></span></a>
 		                      						<div class="row-editing-icons">
-		                      							<a href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i> View Chart</a>
-		                      							<a href="#"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
+		                      							<a href="#" class="view-charts" data-id="view-tab"><i class="fa fa-bar-chart" aria-hidden="true"></i> View Chart</a>
+		                      							<a href="#" data-id="edit-tab" class="edit-charts"><i class="fa fa-pencil" aria-hidden="true" ></i> Edit</a>
 		                      							<a href="#duplicate-campaign" data-toggle="modal"><i class="fa fa-copy" aria-hidden="true"></i> Duplicate</a>
 		                      						</div>
 		                      					</td>
@@ -1230,7 +1224,7 @@ if(isset($_SESSION['user'])) :
 		                      					<td><?php echo $camapaign['objective_for_results'];?></td>
 		                      					<td><?php if(isset($camapaign['insights'])){echo $camapaign['insights']['data'][0]['reach'];}else{ echo '-';}?></td>
 		                      					<td><?php echo $camapaign['objective_for_cost'];?></td>	
-		                      					<td> <?php if(isset($camapaign['insights'])){echo '&#8377;'.$camapaign['insights']['data'][0]['spend'];}else{ echo '-';}?></td></td>
+		                      					<td> <?php if(isset($camapaign['insights'])){echo '$'.$camapaign['insights']['data'][0]['spend'];}else{ echo '-';}?></td></td>
 		                      					<td>
 												<?php if(isset($camapaign['stop_time'])){echo $start_date=date_format(date_create($camapaign['stop_time']),' j F, Y');}else{ echo 'Ongoing';}?></td>
 		                      					<td><?php if(isset($camapaign['insights'])){echo $camapaign['insights']['data'][0]['frequency'];}else{ echo '-';}?></td>
@@ -1246,11 +1240,11 @@ if(isset($_SESSION['user'])) :
 		                      					<td>—Link Click</td>
 		                      					<td>—People</td>
 		                      					<td>—Per Link Click</td>
-		                      					<td>&#8377; 0.0</td>
+		                      					<td><?php if($total_spent) { echo $total_spent;  } else { echo '-Total'; }?></td>
 		                      					<td></td>
-		                      					<td>—Per Person</td>
-		                      					<td>-Total</td>
-		                      					<td>-Total</td>
+		                      					<td><?php if($total_freq) {  echo $total_freq; } else { echo '-Per Person'; }?></td>
+		                      					<td><?php if($total_impression) { echo $total_impression;  } else { echo '-Total'; }?></td>
+		                      					<td><?php if($total_uniq_click) { echo $total_uniq_click;  } else { echo '-Total'; }?></td>
 		                      					<td></td>
 
 		                      				</tr>
@@ -1706,8 +1700,8 @@ if(isset($_SESSION['user'])) :
 									      <td>
 									      	<a href="#"><?php echo $adsets['name']; ?> <span class="edit-row-title"><i class="fa fa-pencil" aria-hidden="true"></i></span></a>
 									      	<div class="row-editing-icons">
-									      			<a href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i> View Chart</a>
-									      			<a href="#"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
+									      		<a href="#" class="view-charts" data-id="view-tab"><i class="fa fa-bar-chart" aria-hidden="true"></i> View Chart</a>
+									      		<a href="#" data-id="edit-tab" class="edit-charts"><i class="fa fa-pencil" aria-hidden="true" ></i> Edit</a>
 									      			<a href="#duplicate-adSet" data-toggle="modal"><i class="fa fa-copy" aria-hidden="true"></i> Duplicate</a>	
 									      	</div>
 									      </td>
@@ -2194,8 +2188,8 @@ if(isset($_SESSION['user'])) :
 									  			<td>
 									  				<a href="#"><?php echo $ad['name']; ?> <span class="edit-row-title"><i class="fa fa-pencil" aria-hidden="true"></i></span></a>
 									  				<div class="row-editing-icons">
-									  					<a href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i> View Chart</a>
-									  					<a href="#"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
+									  					<a href="#" class="view-charts" data-id="view-tab"><i class="fa fa-bar-chart" aria-hidden="true"></i> View Chart</a>
+									  					<a href="#" data-id="edit-tab" class="edit-charts"><i class="fa fa-pencil" aria-hidden="true" ></i> Edit</a>
 									  					<a href="#duplicate-adSet" data-toggle="modal"><i class="fa fa-copy" aria-hidden="true"></i> Duplicate</a>	
 									  				</div>
 									  			</td>
@@ -2846,6 +2840,105 @@ if(isset($_SESSION['user'])) :
 																														    	<b>Fullscreen Experience</b>
 																														    	<p>Add a fullscreen Canvas, a mobile experience that opens instantly from your ad. Start with a template or create a custom layout with photos, videos and links to get people to engage with your business and encourage them to take action.</p>
 																														    </div>
+																														    <div id="cnvs-header" class="panel-collapse collapse">
+																														      <div class="panel-body header-component">
+																														        <div class="common-row">
+																														        	<div class="col-md-3 left">
+																														        		<img src="img/dummy-img-thumbnail.jpg">
+																														        	</div>
+																														        	<div class="col-md-9 right">
+																														        		Upload a logo for your Canvas. For best results, images should be 882 x 66 pixels<br/>
+																														        		<button class="light-grey-btn">Upload Photo</button>
+																														        	</div>
+																														        </div>
+																														         <div class="common-row">
+																														        	<div class="col-md-3 left">
+																														        		<label>Background Color</label>
+																														        	</div>
+																														        	<div class="col-md-9 right">
+																														        		abc
+																														        	</div>
+																														        </div>
+																														        <div class="common-row">
+																														        	<div class="col-md-3 left">
+																														        		<label>Background Opacity</label>
+																														        	</div>
+																														        	<div class="col-md-9 right">
+																														        		<option>
+																														        			<select>Select</select>
+																														        		</option>
+																														        	</div>
+																														        </div>
+																														      </div>
+																														    </div>
+																														  </div>																														   
+																														</div>
+																									        	</div>
+																									        	<div class="canvs-row cr-cnvs-row">
+																									        		  <div class="panel-group" id="carousel-accordion">
+																														  <div class="panel panel-default">
+																														    <div class="panel-heading">
+																														      <h4 class="panel-title">
+																														      	<span>Carousel <i class="fa fa-pencil" class="edit-cnvs-title"></i></span>
+																														        <a class="accordion-toggle" data-toggle="collapse" data-parent="#carousel-accordion" href="#carousel-header">
+																														          &nbsp;
+																														        </a>
+																														         <div class="dropdown comp-option-drp">
+																																    <button id="comp-option" type="button" data-toggle="dropdown"><i aria-hidden="true" class="fa fa-ellipsis-h"></i></button>
+																																    <ul class="dropdown-menu" role="menu" aria-labelledby="comp-option">
+																																      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Delete</a></li>
+																																      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Show Advanced Settings</a></li>																																       
+																																    </ul>
+																																  </div>
+																														      </h4>
+																														    </div>
+																														    <div id="carousel-header" class="panel-collapse collapse">
+																														      <div class="panel-body header-component">
+																														        
+																														         <div class="common-row">
+																														        	<p>Upload 2-10 images to show them in a carousel format. If images are not the same size, they will be cropped to match your first image.</p>
+																														        </div>
+																														        <div class="common-row">
+																														        	<div class="col-md-3 left">
+																														        		<label>Layout</label>
+																														        	</div>
+																														        	<div class="col-md-9 right">
+																														        		 <div>
+																														        		 	<input type="radio" name="layout-opt"><i class="fa fa-mobile"></i>Fit to Width (Linkable)
+																														        		 </div>
+																														        		 <div>
+																														        		 	<input type="radio" name="layout-opt"><i class="fa fa-mobile"></i>FFit to Height (Tilt to Pan)
+																														        		 </div>
+																														        	</div>
+																														        </div>
+																														        <div class="common-row">
+																														        	<ul class="crsl-slide">
+																																		<li><a href="#">1</a></li>
+																																		<li><a href="#"  class="active">2</a></li>																												
+																																		<li><a href="#">+</a></li>
+																																	</ul>
+																																	<div class="edit-selected-slide">
+																																		<div class="common-row">	
+																															    			<div class="left-img">
+																															    				<img src="img/use-temp-img-thumb.jpg">
+																															    			</div>
+																															    			<div class="right-detail">
+																															    				 <button class="light-grey-btn">Upload Photo</button>
+																															    				 <button class="light-grey-btn pull-right"><i class="fa fa-trash"></i></button>
+																															    			</div>
+																															    		</div>
+																															    		<div class="common-row">
+																																			<label>Destination</label>
+																																			<div class="custom-autocomplete-select">															 
+																																				<select class="selectpicker show-tick" data-size="3">	 
+																																				                 <option data-tokens="ketchup mustard">Columns</option>	
+																																				                 <option data-tokens="mustard">Lorem</option>	  
+																																				                 <option data-tokens="frosting">Dummy text printing</option>											
+																																				</select>													
+																																			</div>
+
+																																			<input type="text" name="" class="form-control">
+																																		</div>
 																														    <div class="full-scrn-canvs-opt">
 																		    												<input type="checkbox" name=""><label>Add a fullscreen Canvas</label>
 																													    	<ul>
@@ -2989,7 +3082,7 @@ if(isset($_SESSION['user'])) :
 																																	      <div class="panel-body header-component">
 																																	        <div class="common-row">
 																																	        	<div class="col-md-3 left">
-																																	        		<img src="img/dummy-img-thumbnail.jpg">
+																																	        		<img src="../img/dummy-img-thumbnail.jpg">
 																																	        	</div>
 																																	        	<div class="col-md-9 right">
 																																	        		Upload a logo for your Canvas. For best results, images should be 882 x 66 pixels<br/>
@@ -3017,6 +3110,7 @@ if(isset($_SESSION['user'])) :
 																																	      </div>
 																																	    </div>
 																																	  </div>																														   
+>>>>>>> 60d7ee47d49b4bfbf590b66110cb367e5d01cf35
 																																	</div>
 																												        	</div>
 																												        	<div class="canvs-row cr-cnvs-row">
@@ -3065,7 +3159,7 @@ if(isset($_SESSION['user'])) :
 																																				<div class="edit-selected-slide">
 																																					<div class="common-row">	
 																																		    			<div class="left-img">
-																																		    				<img src="img/use-temp-img-thumb.jpg">
+																																		    				<img src="../img/use-temp-img-thumb.jpg">
 																																		    			</div>
 																																		    			<div class="right-detail">
 																																		    				 <button class="light-grey-btn">Upload Photo</button>
@@ -3228,7 +3322,7 @@ if(isset($_SESSION['user'])) :
 																																				<div class="edit-selected-slide">
 																																					<div class="common-row">	
 																																		    			<div class="left-img">
-																																		    				<img src="img/use-temp-img-thumb.jpg">
+																																		    				<img src="../img/use-temp-img-thumb.jpg">
 																																		    			</div>
 																																		    			<div class="right-detail">
 																																		    				<p>Recommended: Image height of 1920 pixels</p>
@@ -3338,7 +3432,7 @@ if(isset($_SESSION['user'])) :
 																																				<div class="edit-selected-slide">
 																																					<div class="common-row">	
 																																		    			<div class="left-img">
-																																		    				<img src="img/use-temp-img-thumb.jpg">
+																																		    				<img src="../img/use-temp-img-thumb.jpg">
 																																		    			</div>
 																																		    			<div class="right-detail">
 																																		    				<p>Upload a video file (.mp4 or .mov). Recommended: keep your videos under 2 minutes and use captions so that people can still engage without audio.</p>
@@ -3360,7 +3454,7 @@ if(isset($_SESSION['user'])) :
 																											        	<div class="canvs-components-right-sec">
 																												        	<div style="margin-top: 0" class="common-row">
 																																<div class="img-or-video-prev">
-																																	<img src="img/use-temp-img-prev.jpg">
+																																	<img src="../img/use-temp-img-prev.jpg">
 																																</div>
 																																<h1>Add Context</h1>
 																																<p>Change the text and use this space to tell people about your product, brand, or service. </p>
@@ -3368,7 +3462,7 @@ if(isset($_SESSION['user'])) :
 																															</div>
 																															<div class="common-row">
 																																<div class="img-or-video-prev">
-																																	<img src="img/use-temp-img-prev.jpg">
+																																	<img src="../img/use-temp-img-prev.jpg">
 																																</div>
 																																<h1>Add Context</h1>
 																																<p>Change the text and use this space to tell people about your product, brand, or service. </p>
@@ -3419,8 +3513,7 @@ if(isset($_SESSION['user'])) :
 																							<div class="tab-content">
 																						    	<div class="img-radio-tab-cont tab-pane active" id="radio-tab1">
 																						    			<div class="select-img-row">
-																						    				<button class="light-grey-btn common-select-img-popup" data-target="#common-select-img-popup" data-toggle="modal">Select Image</button>
-
+																						    				<button class="light-grey-btn">Select Image</button>
 																						    			</div>
 																						    			<div class="img-specification">
 																						    				<h5>IMAGE SPECIFICATIONS</h5>
@@ -3483,157 +3576,7 @@ if(isset($_SESSION['user'])) :
 																								<div class="video-slideshow-radio-tab-cont tab-pane" id="radio-tab2">
 
 																									<div class="common-row">
-																										<button class="light-grey-btn common-select-video-popup" data-target="#common-select-video-popup" data-toggle="modal">Select Video</button>
-																											<div id="common-select-video-popup" class="modal fade" role="dialog">
-																											  <div class="modal-dialog">
-
-																											    <!-- Modal content-->
-																											    <div class="modal-content">
-																											      <div class="modal-header">
-																											        
-																											        <ul class="nav nav-tabs">
-																													  <li class="active"><a data-toggle="tab" href="#browse-lib"><i class="fa fa-file-video-o"></i> Browse Library</a></li>
-																													  <li><a data-toggle="tab" href="#paste-link"><i class="fa fa-link"></i> Paste a Link</a></li>
-																													  <li><a data-toggle="tab" href="#upload-video"><i class="fa fa-upload"></i> Upload Videos</a></li>
-																													</ul>
-																											      </div>
-																											      <div class="modal-body">																											       
-																														<div class="tab-content">
-																														  <div id="browse-lib" class="tab-pane fade in active">
-																															    <div class="filtering-and-grid-view-optns">
-																															    	<a href="#" class="list-view-link"><i aria-hidden="true" class="fa fa-th-list"></i></a>
-																															    	<a href="#" class="grid-view-link"><i aria-hidden="true" class="fa fa-th-large"></i></a>
-																															    </div>
-																															    <div class="video-views-outr">
-																															    	<div class="simple-custom-upload-btn">
-																																    	<button class="light-grey-btn"><i class="fa fa-upload"></i> Upload</button>
-																																    	<input type="file" name="">
-																																    </div>	
-																															    	<div class="video-list-video">
-																																			<table  class="table table-bordered table-inverse table-striped table-hover">
-																												                      		<thead class="thead-default">
-																												                      			<tr>
-																												                      				<th></th>																												                      				 
-																												                      				<th>Video Name</th>
-																												                      				<th>Duration</th>
-																												                      				<th>Last Used</th>
-																												                      				<th>Resolution</th>
-																												                      			</tr>
-																												                      		</thead>
-																												                      		<tbody>
-																												                      			<tr class="video_rows">
-																												                      				<td><input type="checkbox" name=""></td>	
-																												                      				<td>
-																												                      					<img src="../img/ident-acc-icon.jpg"> <span>Video (1958816381040581)</span>
-																												                      				</td>
-																												                      				<td>0.03</td> 
-																												                      				<td>2017-10-14</td>
-																												                      				<td>566x690</td>
-																												                      			</tr>
-																												                      			<tr class="video_rows">
-																												                      				<td><input type="checkbox" name=""></td>	
-																												                      				<td>
-																												                      					<img src="../img/ident-acc-icon.jpg"> <span>Video (1958816381040581)</span>
-																												                      				</td>
-																												                      				<td>0.03</td> 
-																												                      				<td>2017-10-14</td>
-																												                      				<td>566x690</td>
-																												                      			</tr>
-																												                      			<tr class="video_rows">
-																												                      				<td><input type="checkbox" name=""></td>	
-																												                      				<td>
-																												                      					<img src="../img/ident-acc-icon.jpg"> <span>Video (1958816381040581)</span>
-																												                      				</td>
-																												                      				<td>0.03</td> 
-																												                      				<td>2017-10-14</td>
-																												                      				<td>566x690</td>
-																												                      			</tr>
-																												                      			<tr class="video_rows">
-																												                      				<td><input type="checkbox" name=""></td>	
-																												                      				<td>
-																												                      					<img src="../img/ident-acc-icon.jpg"> <span>Video (1958816381040581)</span>
-																												                      				</td>
-																												                      				<td>0.03</td> 
-																												                      				<td>2017-10-14</td>
-																												                      				<td>566x690</td>
-																												                      			</tr>
-																												                      		</tbody>
-																												                      	</table>
-																															    	</div>
-																															    	<div class="video-grid-view">
-																															    		<div class="common-row">
-																															    			<div class="col-md-4">
-																															    				<div class="single-video-thumb-view">
-																															    						<img src="../img/a.jpg">
-																															    						<div class="detail">							
-																															    							<p>Video (1956329526...</p>
-																															    							<span>0.06</span>
-																															    						</div>
-																															    						<input type="radio" name="">
-																															    				</div>
-																															    			</div>
-																															    			<div class="col-md-4">
-																															    				<div class="single-video-thumb-view">
-																															    						<img src="../img/a.jpg">
-																															    						<div class="detail">							
-																															    							<p>Video (1956329526...</p>
-																															    							<span>0.06</span>
-																															    						</div>
-																															    						<input type="radio" name="">
-																															    				</div>
-																															    			</div>
-																															    			<div class="col-md-4">
-																															    				<div class="single-video-thumb-view">
-																															    						<img src="../img/a.jpg">
-																															    						<div class="detail">							
-																															    							<p>Video (1956329526...</p>
-																															    							<span>0.06</span>
-																															    						</div>
-																															    						<input type="radio" name="">
-																															    				</div>
-																															    			</div>
-																															    		</div>
-																															    	</div>
-																															    </div>
-																														  </div>
-																														  <div id="paste-link" class="tab-pane fade">
-																														    <div class="paste-link-left">
-																														    	<div class="common-row upload-inst">
-																														    		<img src="../img/paste-link-dummy-img.png"> <span>Quickly upload a video by pasting the link of a hosted video file.</span>
-																														    	</div>
-																														    	<div class="common-row">
-																														    		<div class="col-md-3 text-right"><label>Video URL</label></div>
-																														    		<div class="col-md-8"><input type="text" name="" class="form-control"></div>
-																														    	</div>
-																														    	<div class="common-row">
-																														    		<div class="col-md-3 text-right"><label>Title</label></div>
-																														    		<div class="col-md-8"><input type="text" name="" class="form-control"></div>
-																														    	</div>
-																														    </div>
-																														    <div class="paste-link-right">
-																														    	<b>Paste a Direct Download Link to Your Video</b>
-																														    	<p>Your video file must be directly downloadable from the link. We currently don't support shareable links or links that need to be authenticated.</p>
-																														    	<p>If you are having trouble uploading, make sure you are pasting a direct download link from wherever it is hosted. You can test if it is downloadable by pasting the link in your browser. If supported, the video file will automatically download.</p>
-																														    </div>
-																														  </div>
-																														  <div id="upload-video" class="tab-pane fade">
-																														     	<div class="upload-btn-wrapper">
-																																  <button class="btn"><i class="fa fa-upload"></i> Drag and drop a video or click to upload</button>
-																																  <input type="file" name="myfile" />
-																																</div>
-																														  </div>
-																														</div>
-																											      </div>
-																											      <div class="modal-footer">
-																											        <button type="button" class="light-grey-btn" data-dismiss="modal">Cancel</button>
-																											        <button type="button" class="blue-btn" data-dismiss="modal">Confirm</button>
-																											      </div>
-																											    </div>
-
-																											  </div>
-																											</div>
-
-
+																										<button class="light-grey-btn select-video-btn">Slect Video</button>
 																										<button class="crt-slideshow-btn light-grey-btn">
 																											Create Slideshow 
 																										</button>
@@ -3748,158 +3691,8 @@ if(isset($_SESSION['user'])) :
 																						</div>
 																						<div class="common-row">
 																							<input type="radio" name="web-url" id="mess-setup"><label for="mess-setup">Messenger Setup </label>
-																							<p>Create the first few messages people see in Messenger after they click on your ad</p> 
+																							<p>Create the first few messages people see in Messenger after they click on your ad</p><br>
 																							<button class="light-grey-btn">Set up message</button>
-																						</div>
-																						<div class="common-row">
-																							<input type="checkbox" name=""> <label>Add a card at end with your Page profile picture</label>
-																						</div>
-																						<div class="common-row cards-imgs">
-																							<a href="#" class="select-card-link">Select card from previous ads</a>
-																							<ul class="crsl-slide">
-																								<li><a href="#">1</a></li>
-																								<li><a href="#">2</a></li>
-																								<li><a href="#">3</a></li>
-																								<li><a href="#">4</a></li>
-																								<li><a href="#">5</a></li>
-																								<li><a class="active" href="#">6</a></li>
-																								<li><a href="#">+</a></li>
-																							</ul>
-																								<div class="img-and-video-radio-opt-for-cards">
-																									    	<div class="img-video-radio-tabs">
-																												<ul class="nav nav-tabs">
-																													<li class="active">
-																														<a data-toggle="tab" href="#radio-tab3" aria-expanded="true">
-																															<label class="radio-inline">
-																																<input type="radio" name="selector" id="f-option">
-																																<label for="f-option">Image</label>
-																																<div class="check"></div>
-																															</label>
-																														</a>
-																													</li>
-																													<li class="">
-																														<a data-toggle="tab" href="#radio-tab4" aria-expanded="false">
-																															<label class="radio-inline">
-																																<input type="radio" name="selector" id="f-option">
-																																<label for="f-option">Video / Slideshow</label>
-																																<div class="check"></div>
-																															</label>
-																														</a>
-																													</li>
-																												</ul>
-																													
-																												<div class="tab-content">
-																											    	<div id="radio-tab3" class="img-radio-tab-cont tab-pane active">
-																											    			<div class="select-img-row">
-																											    				<button class="light-grey-btn">Select Image</button>
-																											    				<button data-toggle="modal" data-target="#common-select-img-popup" class="light-grey-btn common-select-img-popup">Select Image</button>
-																											    			</div>
-																											    			<div class="img-specification">
-																											    				<h5>IMAGE SPECIFICATIONS</h5>
-																											    				<ul>
-																											    					<li>Recommended image size: 1200 × 628 pixels</li>
-																											    					<li>Recommended image ratio: 1.91:1</li>
-																											    					<li>To maximize ad delivery, use an image that contains little or no overlaid text.</li>
-																											    				</ul>
-																											    			</div>
-																											    			<div class="destination-row">
-																											    				<div class="common-row">
-																												    				<h5>Destination URL  <i class="fa fa-info-circle"></i></h5>
-																												    				<input type="text" class="form-control" name="">
-																												    			</div>
-																											    			</div>
-																											    			<div class="destination-row">
-																											    				<div class="common-row">
-																												    				<h5>Headline <i class="fa fa-info-circle"></i></h5>
-																												    				<input type="text" class="form-control" name="">
-																												    			</div>
-																											    			</div>
-																											    			<div class="destination-row">
-																											    				<div class="common-row">
-																												    				<h5>Description  <i class="fa fa-info-circle"></i></h5>
-																												    				<input type="text" class="form-control" name="">
-																												    			</div>
-																											    			</div>
-																											    	</div>
-																													<div id="radio-tab4" class="video-slideshow-radio-tab-cont tab-pane">
-
-																														<div class="common-row">
-																															<button class="light-grey-btn select-video-btn">Slect Video</button>
-																															<button class="light-grey-btn select-video-btn">Select Video</button>
-																															<button class="crt-slideshow-btn light-grey-btn">
-																																Create Slideshow 
-																															</button>
-																														</div>
-																														<div class="video-specification">
-
-																											    				<h5>Video Recommendations:</h5>
-																											    				<ul>
-																											    					<li>Recommended Length: Up to 15 seconds</li>
-																											    					<li>Recommended Aspect Ratio: Vertical (4:5)</li>
-																											    					<li>Sound: Enabled with captions included</li>
-																											    				</ul>
-
-																											    				<h5>Video Specifications:</h5>
-																											    				<ul>
-																											    					<li>Recommended format: .mp4, .mov or .gif</li>
-																											    					<li>Required Lengths By Placement:
-																											    						<ul style="padding-top: 15px;padding-bottom: 5px;">
-																											    							<li>Facebook: 240 minutes max</li>
-																											    							<li>Audience Network: 5 - 120 seconds</li>
-																											    							<li>Instagram Feed: Up to 60 seconds</li>
-																											    						</ul>	
-
-																											    					</li>
-																											    					<li>Resolution: 600px minimum width</li>
-																											    					<li>File size: Up to 4 GB max</li>
-																											    				</ul>
-
-																											    				<h5>Slideshow Specifications:</h5>
-																											    				<ul>
-																											    					<li>Use high resolution images or a video file to create a slideshow</li>
-																											    					<li>Facebook and Instagram: 50 seconds max</li>
-																											    					<li>Slideshows will loop</li>
-																											    				</ul>
-																											    			 
-																														</div>
-
-																														<div class="destination-row">
-																											    				<div class="common-row">
-																												    				<h5>Destination URL  <i class="fa fa-info-circle"></i></h5>
-																												    				<input type="text" class="form-control" name="">
-																												    			</div>
-																											    			</div>
-																											    			<div class="destination-row">
-																											    				<div class="common-row">
-																												    				<h5>Display Link  <i class="fa fa-info-circle"></i></h5>
-																												    				<input type="text" class="form-control" name="">
-																												    			</div>
-																											    			</div>
-																											    			
-																											    			<div class="destination-row">
-																											    				<div class="common-row">
-																												    				<h5>Headline <i class="fa fa-info-circle"></i></h5>
-																												    				<input type="text" class="form-control" name="">
-																												    			</div>
-																											    			</div>
-																											    			<div class="destination-row">
-																											    				<div class="common-row">
-																												    				<h5>Description  <i class="fa fa-info-circle"></i></h5>
-																												    				<input type="text" class="form-control" name="">
-																												    			</div>
-																											    			</div>
-																													</div>
-																												</div>
-																											</div>
-																									    </div>
-
-
-
-
-
-
-
-
 																						</div>
 																					</div>
 																				</div>
@@ -3961,7 +3754,7 @@ if(isset($_SESSION['user'])) :
 										      			<div class="col-md-6 col-sm-5">
 									      					<div class="form-white-block" style="margin-top:20px;">
 									      						<div class="row main-heading">
-									      							<div class="col-md-9 padding10"><h5><b>Ad id<span id="ad_id"></span></b></h5><input type="checkbox" checked id="ad_status" value="" data-toggle="toggle" data-size="mini"> </div>
+									      							<div class="col-md-9 padding10"><h5><b>Ad id : <span id="ad_id"></span></b></h5><input type="checkbox" checked id="ad_status" value="" class="ads_status" data-toggle="toggle" data-size="mini"> </div>
 									      							<div class="col-md-3 padding10">
 									      								<div class="btn-and-caret-icon-dropdown" style="margin-top: 6px;">
 									      									<a href="#" class="create-camp-btn">Link</a>
@@ -4321,7 +4114,7 @@ if(isset($_SESSION['user'])) :
 						    	<div class="img-radio-tab-cont tab-pane active" id="temp-radio-tab1">
 						    		<div class="common-row">	
 						    			<div class="left-img">
-						    				<img src="../img/use-temp-img-thumb.jpg">
+						    				<img src="img/use-temp-img-thumb.jpg">
 						    			</div>
 						    			<div class="right-detail">
 						    				<p>Recommended: Image width of 1080 pixels</p>
@@ -4336,7 +4129,7 @@ if(isset($_SESSION['user'])) :
 								<div class="video-slideshow-radio-tab-cont tab-pane" id="temp-radio-tab2">
 					    			<div class="common-row">	
 						    			<div class="left-img">
-						    				<img src="../img/use-temp-img-thumb.jpg">
+						    				<img src="img/use-temp-img-thumb.jpg">
 						    			</div>
 						    			<div class="right-detail">
 						    				<p>Recommended: Image width of 1080 pixels</p>
@@ -4382,7 +4175,7 @@ if(isset($_SESSION['user'])) :
 						<div class="edit-selected-slide">
 							<div class="common-row">	
 				    			<div class="left-img">
-				    				<img src="../img/use-temp-img-thumb.jpg">
+				    				<img src="img/use-temp-img-thumb.jpg">
 				    			</div>
 				    			<div class="right-detail">
 				    				 <button class="light-grey-btn">Replace Photo</button>
@@ -4418,7 +4211,7 @@ if(isset($_SESSION['user'])) :
 				<div class="use-temp-right-sec">
 					<div class="common-row" style="margin-top: 0">
 						<div class="img-or-video-prev">
-							<img src="../img/use-temp-img-prev.jpg">
+							<img src="img/use-temp-img-prev.jpg">
 						</div>
 						<h1>Add Context</h1>
 						<p>Change the text and use this space to tell people about your product, brand, or service. </p>
@@ -4427,7 +4220,7 @@ if(isset($_SESSION['user'])) :
 
 					<div class="common-row">
 						<div class="img-or-video-prev">
-							<img src="../img/use-temp-img-prev.jpg">
+							<img src="img/use-temp-img-prev.jpg">
 						</div>
 						<h1>Add Context</h1>
 						<p>Change the text and use this space to tell people about your product, brand, or service. </p>
@@ -4467,7 +4260,7 @@ if(isset($_SESSION['user'])) :
                             <label class="btn btn-default">
                                 <div class="bizcontent">
                                     <input type="checkbox" name="a" autocomplete="off" value="">
-                                    <img src="../img/button_unselected.png">
+                                    <img src="img/button_unselected.png">
                                     <!-- <span class="glyphicon glyphicon-ok glyphicon-lg"></span> -->
                                     <h5>Button</h5>
                                 </div>
@@ -4485,7 +4278,7 @@ if(isset($_SESSION['user'])) :
                             <label class="btn btn-default" style="padding-top: 33px;">
                                 <div class="bizcontent">
                                     <input type="checkbox" name="a" autocomplete="off" value="">
-                                    <img src="../img/carousel_unselected.png">
+                                    <img src="img/carousel_unselected.png">
                                     <!-- <span class="glyphicon glyphicon-ok glyphicon-lg"></span> -->
                                     <h5>Carousel</h5>
                                 </div>
@@ -4503,7 +4296,7 @@ if(isset($_SESSION['user'])) :
                             <label class="btn btn-default">
                                 <div class="bizcontent">
                                     <input type="checkbox" name="a" autocomplete="off" value="">
-                                    <img src="../img/photo_unselected.png">
+                                    <img src="img/photo_unselected.png">
                                     <!-- <span class="glyphicon glyphicon-ok glyphicon-lg"></span> -->
                                     <h5>Photo</h5>
                                 </div>
@@ -4521,7 +4314,7 @@ if(isset($_SESSION['user'])) :
                             <label class="btn btn-default">
                                 <div class="bizcontent">
                                     <input type="checkbox" name="a" autocomplete="off" value="">
-                                    <img src="../img/text_unselected.png">
+                                    <img src="img/text_unselected.png">
                                     <!-- <span class="glyphicon glyphicon-ok glyphicon-lg"></span> -->
                                     <h5>Text Block</h5>
                                 </div>
@@ -4539,7 +4332,7 @@ if(isset($_SESSION['user'])) :
                             <label class="btn btn-default">
                                 <div class="bizcontent">
                                     <input type="checkbox" name="a" autocomplete="off" value="">
-                                    <img src="../img/video_unselected.png">
+                                    <img src="img/video_unselected.png">
                                     <!-- <span class="glyphicon glyphicon-ok glyphicon-lg"></span> -->
                                     <h5>Video</h5>
                                 </div>
@@ -4553,124 +4346,6 @@ if(isset($_SESSION['user'])) :
       <div class="modal-footer">
         <button type="button" class="light-grey-btn" data-dismiss="modal">Cancel</button>
         <button type="button" class="blue-btn" data-dismiss="modal">Ok</button>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<div id="common-select-img-popup" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Select components to add</h4>
-      </div>
-      <div class="modal-body">
-       hmhmgm
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="light-grey-btn" data-dismiss="modal">Cancel</button>
-        <button type="button" class="blue-btn" data-dismiss="modal">Ok</button>
-        <ul class="nav nav-tabs">
-		  <li class="active"><a data-toggle="tab" href="#upload-img-tab"><i class="fa fa-upload"></i> Upload Image</a></li>
-		  <li><a data-toggle="tab" href="#img-library"><i class="fa fa-file-image-o"></i> Image Library</a></li>
-		  <li><a data-toggle="tab" href="#stock-imgs"><i class="fa fa-file-image-o"></i> Stock Images</a></li>
-		</ul>
-      </div>
-      <div class="modal-body">																											       
-			<div class="tab-content">
-			  <div id="upload-img-tab" class="tab-pane fade in active" style="text-align:center;">
-			   <div class="upload-btn-wrapper">
-				  <button class="btn"><i class="fa fa-upload"></i> Drag and drop an image or click to upload</button>
-				  <input type="file" name="myfile" />
-				</div>
-			  </div>
-			  <div id="img-library" class="tab-pane fade">
-			     <div class="img-filtering-tags">
-			     		<a href="#">All 23</a> <a href="#" class="active">Add Images 23</a> <a href="#">Instagram Images</a>
-			     </div>
-			     <div class="img-gallery-thumb">
-			     	<div class="thumb">
-			     		<span><img src="../img/ident-acc-icon.jpg"></span>	
-			     		<input type="radio" name="img-thumb" class="thumbCheck">																														     	
-			     	</div>
-			     	<div class="thumb">
-			     		<span><img src="../img/ident-acc-icon.jpg"></span>	
-			     		<input type="radio" name="img-thumb" class="thumbCheck">
-			     	</div>
-			     	<div class="thumb">
-			     		<span><img src="../img/ident-acc-icon.jpg"></span>	
-			     		<input type="radio" name="img-thumb" class="thumbCheck">
-			     	</div>
-			     	<div class="thumb">
-			     		<span><img src="../img/ident-acc-icon.jpg"></span>	
-			     		<input type="radio" name="img-thumb" class="thumbCheck">
-			     	</div>
-			     	<div class="thumb">
-			     		<span><img src="../img/ident-acc-icon.jpg"></span>	
-			     		<input type="radio" name="img-thumb" class="thumbCheck">
-			     	</div>
-			     	<div class="thumb">
-			     		<span><img src="../img/ident-acc-icon.jpg"></span>	
-			     		<input type="radio" name="img-thumb" class="thumbCheck">
-			     	</div>
-			     	<div class="thumb">
-			     		<span><img src="../img/ident-acc-icon.jpg"></span>	
-			     		<input type="radio" name="img-thumb" class="thumbCheck">
-			     	</div>
-			     	<div class="thumb">
-			     		<span><img src="../img/ident-acc-icon.jpg"></span>	
-			     		<input type="radio" name="img-thumb" class="thumbCheck">
-			     	</div>
-			     	<div class="thumb">
-			     		<span><img src="../img/ident-acc-icon.jpg"></span>	
-			     		<input type="radio" name="img-thumb" class="thumbCheck">
-			     	</div>
-			     	<div class="thumb">
-			     		<span><img src="../img/ident-acc-icon.jpg"></span>	
-			     		<input type="radio" name="img-thumb" class="thumbCheck">
-			     	</div>
-			     	<div class="thumb">
-			     		<span><img src="../img/ident-acc-icon.jpg"></span>	
-			     		<input type="radio" name="img-thumb" class="thumbCheck">
-			     	</div>
-			     	<div class="thumb">
-			     		<span><img src="../img/ident-acc-icon.jpg"></span>	
-			     		<input type="radio" name="img-thumb" class="thumbCheck">
-			     	</div>
-			     	<div class="thumb">
-			     		<span><img src="../img/ident-acc-icon.jpg"></span>	
-			     		<input type="radio" name="img-thumb" class="thumbCheck">
-			     	</div>
-			     	<div class="thumb">
-			     		<span><img src="../img/ident-acc-icon.jpg"></span>	
-			     		<input type="radio" name="img-thumb" class="thumbCheck">
-			     	</div>
-			     	<div class="thumb">
-			     		<span><img src="../img/ident-acc-icon.jpg"></span>	
-			     		<input type="radio" name="img-thumb" class="thumbCheck">
-			     	</div>
-			     </div>
-			  </div>
-			  <div id="stock-imgs" class="tab-pane fade">
-			    <div class="common-row img-search-field">
-			    	<input type="text" name="" class="form-control" placeholder="Search Free Stock Images">
-			    </div>
-			    <div class="stock-imgs-gallery-thumb">
-			    	<div class="no-stock-search">
-			    		<img src="../img/no-stock-dummy-img.png">
-			    		<p>Search for professional images to use in your ads.<br>Any images you select will be saved in your image library.</p>
-			    	</div>
-			    </div>
-			  </div>
-			</div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="light-grey-btn" data-dismiss="modal">Cancel</button>
-        <button type="button" class="blue-btn" data-dismiss="modal">Confirm</button>
       </div>
     </div>
 

@@ -72,7 +72,7 @@ echo "</pre>";die;*/
 				?>
 				<tr data-disable="<?php if($user['ad_account_info']['account_status'] == 2 ) { echo 'Hide';} else { echo 'Unhide';}?>" data-accounts="<?php if($user['ad_account_info']['business']) { echo "Business"; } else { echo "Personal"; } ?>">
 					<td>
-						<a target="_blank" href="power-editor.php?act=<?php echo $user['ad_account_info']['id'];?>&email-id=<?php echo $user['facebook_details']['facebook_email'];?>&code=<?php echo $user['access_token'];?>"><?php echo $user['ad_account_info']['name']; ?></a>
+						<a target="_blank" href="new-editor.php?act=<?php echo $user['ad_account_info']['id'];?>&email-id=<?php echo $user['facebook_details']['facebook_email'];?>&code=<?php echo $user['access_token'];?>"><?php echo $user['ad_account_info']['name']; ?></a>
 					</td>
 					<td><a class="add-reference" data-toggle="modal" data-target="#add-reference" data-accountid="<?php echo $user['nsp_account_id'];?>" data-reference="<?php echo $data['reference'];?>"><?php if($data['reference'] == '') : ?>Add reference <?php else : echo $data['reference']; endif; ?> </a> </td>
 					<td class="fb_email"><?php echo $user['facebook_details']['facebook_email']; ?></td>

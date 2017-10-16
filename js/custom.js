@@ -7,6 +7,35 @@ jQuery(document).ready(function(){
 
 //<!-- date range -->
 $(document).ready(function(){
+
+	$(".ads-preview-dropd-down-list a").click(function(event) {
+		$(".ads-preview-dropd-down-list ul").toggle();   	  	
+	});
+
+	$(".show-camp-obj-btn").click(function(event) {
+		$(".objective").toggle();   	  	
+	});
+
+	$(".get-new-customer").click(function(event) {
+		$(".three-new-customers-list").toggle();   	  	
+	});
+
+	$('#img-vid').click(function () {
+		$('.two-tabs-first-radio').show();
+		$('.two-tabs-second-radio').hide();
+		$('.two-tabs-third-radio').hide();
+	});
+	$('#mul-img').click(function () {
+		$('.two-tabs-first-radio').hide();
+		$('.two-tabs-second-radio').show();
+		$('.two-tabs-third-radio').hide();
+	});
+	$('#img-coll').click(function () {
+		$('.two-tabs-first-radio').hide();
+		$('.two-tabs-second-radio').hide();
+		$('.two-tabs-third-radio').show();
+	});
+
 	$('#demo').daterangepicker({
 		"showDropdowns": true, 
 		"showWeekNumbers": true,
@@ -613,7 +642,7 @@ $(document).ready(function(){
 			$(this).parent().parent().parent().find('.ad_checkbox').prop('checked',true);	
 			getAdData(id);
 		}
-		$('a[href="#'+href_id+'"]').click();
+		$('a[href="'+href_id+'"]').click();
 		
 	});
 });
