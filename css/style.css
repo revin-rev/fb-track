@@ -222,7 +222,7 @@ table th{color:#1d2129; font-size: 12px; font-weight: bold; font-family: arial; 
 .account-category > img {float: left; margin-right: 10px; }
 .account-category p {color: #666666; float: left; font-size: 12px; margin: 0; padding-top: 0; } 
 .account-category b {color: #333333; display: block; }
-.personal-acc-by-id .listing {height:500px; overflow-y: scroll; }
+.personal-acc-by-id .listing {/*height:500px; */ padding:10px; overflow-y: scroll; }
 .account-category.active{ background-color: #eef6fd}
 .row-editing-icons{visibility: hidden; font-size:10px; }
 .edit-row-title{ visibility: hidden;}
@@ -364,13 +364,13 @@ input:checked + .slider:before {-webkit-transform: translateX(13px); -ms-transfo
 .create-camp-btn{ background: #f3f4f4 none repeat scroll 0 0; border: 1px solid #cccccc; border-radius: 0; color: #333333; float: left; font-family: arial; font-size: 12px; font-weight: bold; padding: 0 10px;}
 .create-camp-btn:hover, .create-camp-btn:focus{ border: 1px solid #cccccc;}
 .caret-icon-dropdown-with-btn {float: left;}
-.caret-icon-dropdown-with-btn button { border-radius: 0; border:1px solid #ccc;  padding: 1px 7px; float: left;}
+.caret-icon-dropdown-with-btn button { border-radius: 0; border:1px solid #ccc;  padding: 9px 7px; float: left;}
 .caret-icon-dropdown-with-btn .dropdown-menu{ right: 0; left: auto; }
 .caret-icon-dropdown-with-btn .dropdown-menu a {color: #333333; float: left; font-family: arial; font-size: 13px; padding: 0 10px; text-align: left; width: 100%; }
 .btn-and-caret-icon-dropdown{ float: left; width: auto; }
 .simple-default-icons-group {float: left; width: auto; }
 .simple-default-icons-group > ul {margin: 0; padding: 0; }
-.simple-default-icons-group li {border: 1px solid #cccccc; cursor: pointer; display: table-cell; list-style: outside none none; padding: 0 8px; }
+.simple-default-icons-group li {border: 1px solid #cccccc; cursor: pointer; display: table-cell; list-style: outside none none; padding: 4px 8px; }
 .single-btn-div{ float: left; width: auto; }
 .right-fil1{ float: right; }
 .thress-tabs-table-top-filters{ float: left;width: 100% }
