@@ -104,6 +104,33 @@
 </div>
 <!--camp Mixed Value -->
 
+<!--delete camapigns -->
+<div id="delete_campaigns_popup" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+    	<form method="post">
+    		<div class="modal-header">
+    			<button type="button" class="close" data-dismiss="modal">×</button>
+    			<h4 class="modal-title">Delete Campaign</h4>
+    		</div>
+    		<div class="modal-body">
+    			<input type="hidden" name="campaign_id" id="delete_camp_id">
+    			<p>Are you sure you want to delete this campaign? This cannot be undone.</p>
+    		</div>
+    		<div class="modal-footer">
+    			<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+    			<button type="submit" class="btn btn-primary" name="delete_campaigns">Delete</button>
+    		</div>
+    	</form>
+    </div>
+
+  </div>
+</div>
+<!--delete camapigns -->
+
+
 <div id="add-insta-acct-btn" class="modal fade" role="dialog">
 	<div class="modal-dialog">
 

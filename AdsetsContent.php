@@ -431,6 +431,7 @@
         <tbody>
             <?php foreach($camapaigns[ 'data'] as $campaign) : 
                 $total_adset+= count($campaign['adsets']['data']); 
+                if($campaign['adsets']['data']) :
                 foreach ($campaign['adsets']['data'] as $adsets) : 
                     if(isset($adsets['insights'])){ $total_amount+= $adsets['insights']['data'][0]['spend']; }
                     if(isset($adsets['insights'])){ $total_freqency+= $adsets['insights']['data'][0]['frequency'];}
@@ -468,7 +469,7 @@
                     <?php echo $adsets['daily_budget'];?><span>Daily</span>
                 </td>
                 <td>
-                    <?php echo '$'.$adsets['insights']['data'][0]['spend']; ?>
+                    <?php if($adsets['insights']['data'][0]['spend']){ echo '$'.$adsets['insights']['data'][0]['spend']; } else { echo '$0'; } ?>
                 </td>
                 <td>
                     <?php if(isset($adsets['end_time'])){echo $start_date=date_format(date_create($adsets['end_time']), ' j F, Y');}else{ echo 'Ongoing';}?>
@@ -486,7 +487,7 @@
                     <?php if(isset($adsets['insights'])){ echo $adsets['insights']['data'][0]['unique_clicks']; }else echo '-';?> </td>
                 <td></td>
             </tr>
-            <?php endforeach; endforeach; ?>
+            <?php endforeach; endif; endforeach;  ?>
             <?php if($total_adset> 0 ) : ?>
             <tr>
                 <td colspan="2"></td>

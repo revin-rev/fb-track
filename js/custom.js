@@ -3,6 +3,28 @@ jQuery(document).ready(function(){
 		jQuery('#myModal .modal-body p').text(jQuery(this).data('reason'));
 	});
 	
+	/*set dropdown value in input in create campaign popup*/
+	jQuery('.camp_objective li').click(function() {
+		jQuery('#camp_objective').val(jQuery(this).data('value'));
+		jQuery('.camp_objective').prev().text(jQuery(this).text().trim());
+		jQuery(".camp_objective").toggle();  
+	});
+	/*set dropdown value in input in create campaign popup*/
+	/*delete campaign*/
+	jQuery('#delete_camp').click(function(){
+		var length = jQuery('.campaigns_checkbox:checked').length;
+		var array = [];
+		if(length > 1) {
+			jQuery('.campaigns_checkbox:checked').each(function() {
+				array.push(jQuery(this).parent().parent().attr('id'));
+			});	
+			jQuery('#delete_camp_id').val(JSON.stringify(array));
+		} else {
+			array.push(jQuery('.campaigns_checkbox:checked').parent().parent().attr('id'));
+			jQuery('#delete_camp_id').val(JSON.stringify(array));
+		}
+	});
+	/*delete campaign*/
 });
 
 //<!-- date range -->
@@ -13,6 +35,7 @@ $(document).ready(function(){
 	});
 
 	$(".show-camp-obj-btn").click(function(event) {
+		event.preventDefault();
 		$(".objective").toggle();   	  	
 	});
 
@@ -283,14 +306,11 @@ $(document).ready(function(){
 
 	/*Campaigns checkbox*/
 	$('.campaigns_checkbox').click(function() {
-
 		if(!$(this).is(':checked')) {
 			$('.all_camapaign_checkbox').prop('checked',false);
 		}
-
 		$('#adset_table tbody tr,#ad_table tbody tr').addClass('hide-row');
 		var checked_count = $('.campaigns_checkbox:checked').length;
-
 		$('.campaigns_checkbox:checked').each(function() {
 			var cmp_id = $(this).parent().parent().attr('id');
 			$('#adset_table tbody tr.camp_'+cmp_id+', #ad_table tbody tr.camp_'+cmp_id).removeClass('hide-row').addClass('show-row');
@@ -669,7 +689,9 @@ function getCampaginsData(cmp_id) {
 	$('#camp_status').parent().attr('class','');
 	$('#camp_status').parent().attr('class',$('table tr#'+newData.id+' .campaigns_status').parent().attr('class'));
 	$('.camp_total_adsets').text(newData.adsets.data.length);
-	$('.camp_total_ads').text(newData.ads.data.length);
+	if(newData.ads) {
+		$('.camp_total_ads').text(newData.ads.data.length);
+	}
 	$('.mixed_value').hide();
 	$('.right-fix-drawer-outr span.camapaign_name,.dummy_text').show();
 }
