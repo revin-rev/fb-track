@@ -418,22 +418,260 @@
   </div>
 </div>
 
-
+<!-- common select image popup -->
 <div id="common-select-img-popup" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Select components to add</h4>
+        
+        <ul class="nav nav-tabs">
+		  <li class="active"><a data-toggle="tab" href="#upload-img-tab"><i class="fa fa-upload"></i> Upload Image</a></li>
+		  <li><a data-toggle="tab" href="#img-library"><i class="fa fa-file-image-o"></i> Image Library</a></li>
+		  <li><a data-toggle="tab" href="#stock-imgs"><i class="fa fa-file-image-o"></i> Stock Images</a></li>
+		</ul>
       </div>
-      <div class="modal-body">
-       hmhmgm
+      <div class="modal-body">																											       
+			<div class="tab-content">
+			  <div id="upload-img-tab" class="tab-pane fade in active" style="text-align:center;">
+			   <div class="upload-btn-wrapper">
+				  <button class="btn"><i class="fa fa-upload"></i> Drag and drop an image or click to upload</button>
+				  <input type="file" name="myfile" />
+				</div>
+			  </div>
+			  <div id="img-library" class="tab-pane fade">
+			     <div class="img-filtering-tags">
+			     		<a href="#">All 23</a> <a href="#" class="active">Add Images 23</a> <a href="#">Instagram Images</a>
+			     </div>
+			     <div class="img-gallery-thumb">
+			     	<div class="thumb">
+			     		<span><img src="../img/ident-acc-icon.jpg"></span>	
+			     		<input type="radio" name="img-thumb" class="thumbCheck">																														     	
+			     	</div>
+			     	<div class="thumb">
+			     		<span><img src="../img/ident-acc-icon.jpg"></span>	
+			     		<input type="radio" name="img-thumb" class="thumbCheck">
+			     	</div>
+			     	<div class="thumb">
+			     		<span><img src="../img/ident-acc-icon.jpg"></span>	
+			     		<input type="radio" name="img-thumb" class="thumbCheck">
+			     	</div>
+			     	<div class="thumb">
+			     		<span><img src="../img/ident-acc-icon.jpg"></span>	
+			     		<input type="radio" name="img-thumb" class="thumbCheck">
+			     	</div>
+			     	<div class="thumb">
+			     		<span><img src="../img/ident-acc-icon.jpg"></span>	
+			     		<input type="radio" name="img-thumb" class="thumbCheck">
+			     	</div>
+			     	<div class="thumb">
+			     		<span><img src="../img/ident-acc-icon.jpg"></span>	
+			     		<input type="radio" name="img-thumb" class="thumbCheck">
+			     	</div>
+			     	<div class="thumb">
+			     		<span><img src="../img/ident-acc-icon.jpg"></span>	
+			     		<input type="radio" name="img-thumb" class="thumbCheck">
+			     	</div>
+			     	<div class="thumb">
+			     		<span><img src="../img/ident-acc-icon.jpg"></span>	
+			     		<input type="radio" name="img-thumb" class="thumbCheck">
+			     	</div>
+			     	<div class="thumb">
+			     		<span><img src="../img/ident-acc-icon.jpg"></span>	
+			     		<input type="radio" name="img-thumb" class="thumbCheck">
+			     	</div>
+			     	<div class="thumb">
+			     		<span><img src="../img/ident-acc-icon.jpg"></span>	
+			     		<input type="radio" name="img-thumb" class="thumbCheck">
+			     	</div>
+			     	<div class="thumb">
+			     		<span><img src="../img/ident-acc-icon.jpg"></span>	
+			     		<input type="radio" name="img-thumb" class="thumbCheck">
+			     	</div>
+			     	<div class="thumb">
+			     		<span><img src="../img/ident-acc-icon.jpg"></span>	
+			     		<input type="radio" name="img-thumb" class="thumbCheck">
+			     	</div>
+			     	<div class="thumb">
+			     		<span><img src="../img/ident-acc-icon.jpg"></span>	
+			     		<input type="radio" name="img-thumb" class="thumbCheck">
+			     	</div>
+			     	<div class="thumb">
+			     		<span><img src="../img/ident-acc-icon.jpg"></span>	
+			     		<input type="radio" name="img-thumb" class="thumbCheck">
+			     	</div>
+			     	<div class="thumb">
+			     		<span><img src="../img/ident-acc-icon.jpg"></span>	
+			     		<input type="radio" name="img-thumb" class="thumbCheck">
+			     	</div>
+			     </div>
+			  </div>
+			  <div id="stock-imgs" class="tab-pane fade">
+			    <div class="common-row img-search-field">
+			    	<input type="text" name="" class="form-control" placeholder="Search Free Stock Images">
+			    </div>
+			    <div class="stock-imgs-gallery-thumb">
+			    	<div class="no-stock-search">
+			    		<img src="../img/no-stock-dummy-img.png">
+			    		<p>Search for professional images to use in your ads.<br>Any images you select will be saved in your image library.</p>
+			    	</div>
+			    </div>
+			  </div>
+			</div>
       </div>
       <div class="modal-footer">
         <button type="button" class="light-grey-btn" data-dismiss="modal">Cancel</button>
-        <button type="button" class="blue-btn" data-dismiss="modal">Ok</button>
+        <button type="button" class="blue-btn" data-dismiss="modal">Confirm</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div id="common-select-video-popup" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        
+        <ul class="nav nav-tabs">
+		  <li class="active"><a data-toggle="tab" href="#browse-lib"><i class="fa fa-file-video-o"></i> Browse Library</a></li>
+		  <li><a data-toggle="tab" href="#paste-link"><i class="fa fa-link"></i> Paste a Link</a></li>
+		  <li><a data-toggle="tab" href="#upload-video"><i class="fa fa-upload"></i> Upload Videos</a></li>
+		</ul>
+      </div>
+      <div class="modal-body">																											       
+			<div class="tab-content">
+			  <div id="browse-lib" class="tab-pane fade in active">
+				    <div class="filtering-and-grid-view-optns">
+				    	<a href="#" class="list-view-link"><i aria-hidden="true" class="fa fa-th-list"></i></a>
+				    	<a href="#" class="grid-view-link"><i aria-hidden="true" class="fa fa-th-large"></i></a>
+				    </div>
+				    <div class="video-views-outr">
+				    	<div class="simple-custom-upload-btn">
+					    	<button class="light-grey-btn"><i class="fa fa-upload"></i> Upload</button>
+					    	<input type="file" name="">
+					    </div>	
+				    	<div class="video-list-video">
+								<table  class="table table-bordered table-inverse table-striped table-hover">
+	                      		<thead class="thead-default">
+	                      			<tr>
+	                      				<th></th>																												                      				 
+	                      				<th>Video Name</th>
+	                      				<th>Duration</th>
+	                      				<th>Last Used</th>
+	                      				<th>Resolution</th>
+	                      			</tr>
+	                      		</thead>
+	                      		<tbody>
+	                      			<tr class="video_rows">
+	                      				<td><input type="checkbox" name=""></td>	
+	                      				<td>
+	                      					<img src="../img/ident-acc-icon.jpg"> <span>Video (1958816381040581)</span>
+	                      				</td>
+	                      				<td>0.03</td> 
+	                      				<td>2017-10-14</td>
+	                      				<td>566x690</td>
+	                      			</tr>
+	                      			<tr class="video_rows">
+	                      				<td><input type="checkbox" name=""></td>	
+	                      				<td>
+	                      					<img src="../img/ident-acc-icon.jpg"> <span>Video (1958816381040581)</span>
+	                      				</td>
+	                      				<td>0.03</td> 
+	                      				<td>2017-10-14</td>
+	                      				<td>566x690</td>
+	                      			</tr>
+	                      			<tr class="video_rows">
+	                      				<td><input type="checkbox" name=""></td>	
+	                      				<td>
+	                      					<img src="../img/ident-acc-icon.jpg"> <span>Video (1958816381040581)</span>
+	                      				</td>
+	                      				<td>0.03</td> 
+	                      				<td>2017-10-14</td>
+	                      				<td>566x690</td>
+	                      			</tr>
+	                      			<tr class="video_rows">
+	                      				<td><input type="checkbox" name=""></td>	
+	                      				<td>
+	                      					<img src="../img/ident-acc-icon.jpg"> <span>Video (1958816381040581)</span>
+	                      				</td>
+	                      				<td>0.03</td> 
+	                      				<td>2017-10-14</td>
+	                      				<td>566x690</td>
+	                      			</tr>
+	                      		</tbody>
+	                      	</table>
+				    	</div>
+				    	<div class="video-grid-view">
+				    		<div class="common-row">
+				    			<div class="col-md-4">
+				    				<div class="single-video-thumb-view">
+				    						<img src="../img/a.jpg">
+				    						<div class="detail">							
+				    							<p>Video (1956329526...</p>
+				    							<span>0.06</span>
+				    						</div>
+				    						<input type="radio" name="">
+				    				</div>
+				    			</div>
+				    			<div class="col-md-4">
+				    				<div class="single-video-thumb-view">
+				    						<img src="../img/a.jpg">
+				    						<div class="detail">							
+				    							<p>Video (1956329526...</p>
+				    							<span>0.06</span>
+				    						</div>
+				    						<input type="radio" name="">
+				    				</div>
+				    			</div>
+				    			<div class="col-md-4">
+				    				<div class="single-video-thumb-view">
+				    						<img src="../img/a.jpg">
+				    						<div class="detail">							
+				    							<p>Video (1956329526...</p>
+				    							<span>0.06</span>
+				    						</div>
+				    						<input type="radio" name="">
+				    				</div>
+				    			</div>
+				    		</div>
+				    	</div>
+				    </div>
+			  </div>
+			  <div id="paste-link" class="tab-pane fade">
+			    <div class="paste-link-left">
+			    	<div class="common-row upload-inst">
+			    		<img src="../img/paste-link-dummy-img.png"> <span>Quickly upload a video by pasting the link of a hosted video file.</span>
+			    	</div>
+			    	<div class="common-row">
+			    		<div class="col-md-3 text-right"><label>Video URL</label></div>
+			    		<div class="col-md-8"><input type="text" name="" class="form-control"></div>
+			    	</div>
+			    	<div class="common-row">
+			    		<div class="col-md-3 text-right"><label>Title</label></div>
+			    		<div class="col-md-8"><input type="text" name="" class="form-control"></div>
+			    	</div>
+			    </div>
+			    <div class="paste-link-right">
+			    	<b>Paste a Direct Download Link to Your Video</b>
+			    	<p>Your video file must be directly downloadable from the link. We currently don't support shareable links or links that need to be authenticated.</p>
+			    	<p>If you are having trouble uploading, make sure you are pasting a direct download link from wherever it is hosted. You can test if it is downloadable by pasting the link in your browser. If supported, the video file will automatically download.</p>
+			    </div>
+			  </div>
+			  <div id="upload-video" class="tab-pane fade">
+			     	<div class="upload-btn-wrapper">
+					  <button class="btn"><i class="fa fa-upload"></i> Drag and drop a video or click to upload</button>
+					  <input type="file" name="myfile" />
+					</div>
+			  </div>
+			</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="light-grey-btn" data-dismiss="modal">Cancel</button>
+        <button type="button" class="blue-btn" data-dismiss="modal">Confirm</button>
       </div>
     </div>
 

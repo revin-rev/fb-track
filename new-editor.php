@@ -37,6 +37,20 @@ if(isset($_SESSION['user'])) :
 		});
 	});
 </script>
+
+ <!-- add image in popup radio option script -->
+ <script type="text/javascript">
+ $(document).ready(function() {
+	 $('.thumbCheck').click(function () {
+        if ($('input:not(:checked)')) {
+            $('div').removeClass('selected-img-thumb');
+        }
+        if ($('input').is(':checked')) {
+            $(this).parent().addClass('selected-img-thumb');           
+        }
+    });
+});
+ </script>
 <div class="web-outr">
 	<!--header-part-->
 	<div class="header-outr">
@@ -312,7 +326,7 @@ if(isset($_SESSION['user'])) :
 	</div>
 	<!--end main section -->
 	<!-- all pop ups -->
-	<?php include 'AllPops.php';?>
+	
 	<!-- all pop ups -->
 </div>
 <?php else : header('location:index.php'); endif ?>

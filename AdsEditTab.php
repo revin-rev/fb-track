@@ -734,7 +734,7 @@
                                             <div class="video-slideshow-radio-tab-cont tab-pane" id="radio-tab2">
 
                                                 <div class="common-row">
-                                                    <button class="light-grey-btn select-video-btn">Slect Video</button>
+                                                    <button class="light-grey-btn common-select-video-popup" data-target="#common-select-video-popup" data-toggle="modal">Select Video</button>
                                                     <button class="crt-slideshow-btn light-grey-btn">
                                                         Create Slideshow
                                                     </button>
@@ -903,7 +903,7 @@
                                                         <div class="tab-content">
                                                             <div id="radio-tab3" class="img-radio-tab-cont tab-pane active">
                                                                 <div class="select-img-row">
-                                                                    <button class="light-grey-btn">Select Image</button>
+                                                                    <button class="light-grey-btn common-select-img-popup" data-target="#common-select-img-popup" data-toggle="modal">Select Image</button>
                                                                 </div>
                                                                 <div class="img-specification">
                                                                     <h5>IMAGE SPECIFICATIONS</h5>
@@ -935,7 +935,7 @@
                                                             <div id="radio-tab4" class="video-slideshow-radio-tab-cont tab-pane">
 
                                                                 <div class="common-row">
-                                                                    <button class="light-grey-btn select-video-btn">Slect Video</button>
+                                                                    <button class="light-grey-btn select-video-btn">Select Video</button>
                                                                     <button class="crt-slideshow-btn light-grey-btn">
                                                                         Create Slideshow
                                                                     </button>
