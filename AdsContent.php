@@ -433,6 +433,7 @@
             <?php foreach($camapaigns['data'] as $ads) : 
                 $adsets= $ads['adsets']['data']; 
                 $total_adset+= count($ads['ads']['data']); 
+                if($ads['ads']['data']) :
                 foreach ($ads['ads']['data'] as $key=> $ad) : 
                     if(isset($ad['insights'])){ $total_amount+= $ad['insights']['data'][0]['spend']; }
                     if(isset($ad['insights'])){ $total_freqency+= $ad['insights']['data'][0]['frequency'];}
@@ -487,7 +488,7 @@
                 </td>
                 <td></td>
             </tr>
-            <?php endforeach; endforeach; ?>
+            <?php endforeach; endif; endforeach; ?>
             <?php if($total_adset> 0) : ?>
             <tr>
                 <td colspan="2"></td>

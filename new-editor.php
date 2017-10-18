@@ -1,6 +1,73 @@
 <?php 
 include 'header.php';
 if(isset($_SESSION['user'])) :
+
+	/*create campaigns and adsets and ads*/
+	if(isset($_REQUEST['camp_save_draft'])) {
+		/*create a campaigns*/
+		$ch = curl_init();
+		$url = "https://graph.facebook.com/v2.10/".$_REQUEST['act']."/campaigns";
+		$fields = array(
+			'name' => $_REQUEST['campaign_name'],
+			'objective' =>  'LINK_CLICKS',
+			'access_token' => $_REQUEST['code']
+		);
+		curl_setopt($ch, CURLOPT_URL, $url);
+		curl_setopt($ch, CURLOPT_POST, true);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $fields);
+		$result = curl_exec($ch);
+		curl_close($ch);
+		$camp = json_decode($result, true);
+		/*create a campaigns*/
+		/*create a adset inside created campaign*/
+		if($camp) {
+			if($_REQUEST['adset_name'] != '') { 
+				$adset_name = $_REQUEST['ad'];
+			} else {
+				$adset_name = 'Untitled AdSet';
+			}
+			$ch = curl_init();
+			$url = "https://graph.facebook.com/v2.10/".$_REQUEST['act']."/adsets";
+			$fields = array(
+				'name' 				=> 	$adset_name,
+				'billing_event' 	=>  'IMPRESSIONS',
+				'access_token' 		=> 	$_REQUEST['code'],
+				'campaign_id'  		=> 	$camp['id'],
+				'targeting'    		=> 	'{"geo_locations":{"countries":["US"]}}',
+				'bid_amount'		=> 	2,
+				'daily_budget'		=> 	1000
+			);
+			curl_setopt($ch, CURLOPT_URL, $url);
+			curl_setopt($ch, CURLOPT_POST, true);
+			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+			curl_setopt($ch, CURLOPT_POSTFIELDS, $fields);
+			$result = curl_exec($ch);
+			curl_close($ch);
+			$adsets = json_decode($result, true);
+			/*create a adset inside created campaign*/
+		}
+	}
+	/*create campaigns and adsets and ads*/
+
+	/*delete campaigns*/
+	if(isset($_REQUEST['delete_campaigns'])) {
+		$campaigns_ids = json_decode($_REQUEST['campaign_id'], true);
+		foreach ($campaigns_ids as $val ) {
+			$url = 'https://graph.facebook.com/v2.10/'.$val.'/?access_token='.$_REQUEST['code'];
+			$ch = curl_init();
+			curl_setopt($ch, CURLOPT_URL, $url);
+			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
+			$result = curl_exec($ch);
+			$httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+			curl_close($ch);
+			$data = json_decode($result, true);
+		}
+	}
+	/*delete campaigns*/
+
 	/*get all accounts of selected user*/
 	$cSession = curl_init(); 
 	curl_setopt($cSession,CURLOPT_URL,"https://graph.facebook.com/v2.10/me/adaccounts?fields=account_status,name,account_id,business&access_token=".$_REQUEST['code']);
@@ -9,6 +76,7 @@ if(isset($_SESSION['user'])) :
 	$result=curl_exec($cSession);
 	curl_close($cSession);
 	$accounts = json_decode($result, true);
+	
 	/*get all accounts of selected user*/
 	/*get camapagins, adsets and ads*/
 	$cSession = curl_init(); 
@@ -18,6 +86,7 @@ if(isset($_SESSION['user'])) :
 	$result=curl_exec($cSession);
 	curl_close($cSession);
 	$camapaigns = json_decode($result, true);
+
 	/*get camapagins, adsets and ads*/
 ?>
 <script type="text/javascript">
@@ -37,8 +106,7 @@ if(isset($_SESSION['user'])) :
 		});
 	});
 </script>
-
- <!-- add image in popup radio option script -->
+ <!-- add image and video in popup radio option script -->
  <script type="text/javascript">
  $(document).ready(function() {
 	 $('.thumbCheck').click(function () {
@@ -51,6 +119,31 @@ if(isset($_SESSION['user'])) :
     });
 });
  </script>
+
+ <!-- video poups list and grid view script -->
+ <script type="text/javascript">
+ $(document).ready(function() {
+	 $('.video-list-view-link').click(function () {
+         $('.video-list-video').show();
+         $('.video-grid-view').hide();
+    });
+	 $('.video-grid-view-link').click(function () {
+         $('.video-list-video').hide();
+         $('.video-grid-view').show();
+    });
+});
+ </script>
+
+ <!-- auto complete search script -->
+ <script type="text/javascript">
+ $(document).ready(function() {
+	 $('.custom-auto-complete').click(function () {
+         $('.custom-auto-complete-data').toggle();
+         
+    });
+});
+ </script>
+
 <div class="web-outr">
 	<!--header-part-->
 	<div class="header-outr">
@@ -326,7 +419,7 @@ if(isset($_SESSION['user'])) :
 	</div>
 	<!--end main section -->
 	<!-- all pop ups -->
-	
+	<?php include 'AllPops.php';?>
 	<!-- all pop ups -->
 </div>
 <?php else : header('location:index.php'); endif ?>

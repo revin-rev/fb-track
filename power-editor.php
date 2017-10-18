@@ -2989,7 +2989,7 @@ if(isset($_SESSION['user'])) :
 																																	      <div class="panel-body header-component">
 																																	        <div class="common-row">
 																																	        	<div class="col-md-3 left">
-																																	        		<img src="img/dummy-img-thumbnail.jpg">
+																																	        		<img src="../img/dummy-img-thumbnail.jpg">
 																																	        	</div>
 																																	        	<div class="col-md-9 right">
 																																	        		Upload a logo for your Canvas. For best results, images should be 882 x 66 pixels<br/>
@@ -3065,7 +3065,7 @@ if(isset($_SESSION['user'])) :
 																																				<div class="edit-selected-slide">
 																																					<div class="common-row">	
 																																		    			<div class="left-img">
-																																		    				<img src="img/use-temp-img-thumb.jpg">
+																																		    				<img src="../img/use-temp-img-thumb.jpg">
 																																		    			</div>
 																																		    			<div class="right-detail">
 																																		    				 <button class="light-grey-btn">Upload Photo</button>
@@ -3228,7 +3228,7 @@ if(isset($_SESSION['user'])) :
 																																				<div class="edit-selected-slide">
 																																					<div class="common-row">	
 																																		    			<div class="left-img">
-																																		    				<img src="img/use-temp-img-thumb.jpg">
+																																		    				<img src="../img/use-temp-img-thumb.jpg">
 																																		    			</div>
 																																		    			<div class="right-detail">
 																																		    				<p>Recommended: Image height of 1920 pixels</p>
@@ -3338,7 +3338,7 @@ if(isset($_SESSION['user'])) :
 																																				<div class="edit-selected-slide">
 																																					<div class="common-row">	
 																																		    			<div class="left-img">
-																																		    				<img src="img/use-temp-img-thumb.jpg">
+																																		    				<img src="../img/use-temp-img-thumb.jpg">
 																																		    			</div>
 																																		    			<div class="right-detail">
 																																		    				<p>Upload a video file (.mp4 or .mov). Recommended: keep your videos under 2 minutes and use captions so that people can still engage without audio.</p>
@@ -3360,7 +3360,7 @@ if(isset($_SESSION['user'])) :
 																											        	<div class="canvs-components-right-sec">
 																												        	<div style="margin-top: 0" class="common-row">
 																																<div class="img-or-video-prev">
-																																	<img src="img/use-temp-img-prev.jpg">
+																																	<img src="../img/use-temp-img-prev.jpg">
 																																</div>
 																																<h1>Add Context</h1>
 																																<p>Change the text and use this space to tell people about your product, brand, or service. </p>
@@ -3368,7 +3368,7 @@ if(isset($_SESSION['user'])) :
 																															</div>
 																															<div class="common-row">
 																																<div class="img-or-video-prev">
-																																	<img src="img/use-temp-img-prev.jpg">
+																																	<img src="../img/use-temp-img-prev.jpg">
 																																</div>
 																																<h1>Add Context</h1>
 																																<p>Change the text and use this space to tell people about your product, brand, or service. </p>
@@ -3420,7 +3420,7 @@ if(isset($_SESSION['user'])) :
 																						    	<div class="img-radio-tab-cont tab-pane active" id="radio-tab1">
 																						    			<div class="select-img-row">
 																						    				<button class="light-grey-btn common-select-img-popup" data-target="#common-select-img-popup" data-toggle="modal">Select Image</button>
-
+																						    				
 																						    			</div>
 																						    			<div class="img-specification">
 																						    				<h5>IMAGE SPECIFICATIONS</h5>
@@ -3791,7 +3791,6 @@ if(isset($_SESSION['user'])) :
 																												<div class="tab-content">
 																											    	<div id="radio-tab3" class="img-radio-tab-cont tab-pane active">
 																											    			<div class="select-img-row">
-																											    				<button class="light-grey-btn">Select Image</button>
 																											    				<button data-toggle="modal" data-target="#common-select-img-popup" class="light-grey-btn common-select-img-popup">Select Image</button>
 																											    			</div>
 																											    			<div class="img-specification">
@@ -3824,7 +3823,6 @@ if(isset($_SESSION['user'])) :
 																													<div id="radio-tab4" class="video-slideshow-radio-tab-cont tab-pane">
 
 																														<div class="common-row">
-																															<button class="light-grey-btn select-video-btn">Slect Video</button>
 																															<button class="light-grey-btn select-video-btn">Select Video</button>
 																															<button class="crt-slideshow-btn light-grey-btn">
 																																Create Slideshow 
@@ -4565,15 +4563,7 @@ if(isset($_SESSION['user'])) :
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Select components to add</h4>
-      </div>
-      <div class="modal-body">
-       hmhmgm
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="light-grey-btn" data-dismiss="modal">Cancel</button>
-        <button type="button" class="blue-btn" data-dismiss="modal">Ok</button>
+        
         <ul class="nav nav-tabs">
 		  <li class="active"><a data-toggle="tab" href="#upload-img-tab"><i class="fa fa-upload"></i> Upload Image</a></li>
 		  <li><a data-toggle="tab" href="#img-library"><i class="fa fa-file-image-o"></i> Image Library</a></li>
@@ -4676,6 +4666,9 @@ if(isset($_SESSION['user'])) :
 
   </div>
 </div>
+
+
+
 </body>
 </html>
 <script src="https://cdn.ckeditor.com/4.7.3/standard/ckeditor.js"></script>

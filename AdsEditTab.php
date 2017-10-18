@@ -735,9 +735,10 @@
 
                                                 <div class="common-row">
                                                     <button class="light-grey-btn common-select-video-popup" data-target="#common-select-video-popup" data-toggle="modal">Select Video</button>
-                                                    <button class="crt-slideshow-btn light-grey-btn">
+                                                    <button class="crt-slideshow-btn light-grey-btn common-create-slideshow-popup" data-target="#common-create-slideshow-popup" data-toggle="modal">
                                                         Create Slideshow
                                                     </button>
+                                                    
                                                 </div>
                                                 <div class="video-specification">
 
@@ -935,7 +936,8 @@
                                                             <div id="radio-tab4" class="video-slideshow-radio-tab-cont tab-pane">
 
                                                                 <div class="common-row">
-                                                                    <button class="light-grey-btn select-video-btn">Select Video</button>
+                                                                    <!-- <button class="light-grey-btn select-video-btn">Select Video</button> -->
+                                                                    <button class="light-grey-btn common-select-video-popup" data-target="#common-select-video-popup" data-toggle="modal">Select Video</button>
                                                                     <button class="crt-slideshow-btn light-grey-btn">
                                                                         Create Slideshow
                                                                     </button>

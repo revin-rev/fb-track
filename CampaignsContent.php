@@ -8,136 +8,167 @@
 
                     <!-- Modal content-->
                     <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Create Campaign</h4>
-                        </div>
-                        <div class="modal-body">
-                            <div class="popup-left-form">
-                                <div class="sec1">
-                                    <div class="row" style="margin-bottom:30px;">
-                                        <div class="col-md-12">
-                                            <div class="custom-autocomplete-select">
-                                                <select class="selectpicker show-tick">
-                                                    <option data-tokens="ketchup mustard">Create New Campaign</option>
-                                                    <option data-tokens="mustard">Use Existing Campaign</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <label class="col-md-4">
-                                                Campaign Name
-                                            </label>
-                                            <div class="col-md-8">
-                                                <input type="text" name="" placeholder="Enter a campaign name" class="form-control">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <label class="col-md-4">
-                                                Buying Type
-                                            </label>
-                                            <div class="col-md-8">
+                        <form method="post">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Create Campaign</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="popup-left-form">
+                                    <div class="sec1">
+                                        <div class="row" style="margin-bottom:30px;">
+                                            <div class="col-md-12">
                                                 <div class="custom-autocomplete-select">
                                                     <select class="selectpicker show-tick">
-                                                        <option data-tokens="ketchup mustard">Auction</option>
+                                                        <option data-tokens="ketchup mustard">Create New Campaign</option>
+                                                        <option data-tokens="mustard">Use Existing Campaign</option>
                                                     </select>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <label class="col-md-4">
-                                                Campaign Objective
-                                            </label>
-                                            <div class="col-md-8">
-                                                <button class="light-grey-btn show-camp-obj-btn"><img src="img/brand-awarns-icon.png">Traffic</button>
-                                                <div class="objective">
-                                                    <div class="objective-cat">
-                                                        <h5>Awareness</h5>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <label class="col-md-4">
+                                                    Campaign Name
+                                                </label>
+                                                <div class="col-md-8">
+                                                    <input type="text" name="campaign_name" placeholder="Enter a campaign name" class="form-control">
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <label class="col-md-4">
+                                                    Csutom auto complete
+                                                </label>
+                                                <div class="col-md-8 custom-auto-complete">
+                                                    <input type="text" name="campaign_name" placeholder="Enter a campaign name" class="form-control">
+                                                    <div class="custom-auto-complete-data" style="width: 94%">
                                                         <ul>
-                                                            <li><img src="img/brand-awarns-icon.png"> Brand</li>
-                                                            <li><img src="img/brand-awarns-icon.png"> Brand</li>
-                                                            <li><img src="img/brand-awarns-icon.png"> Brand</li>
-                                                            <li><img src="img/brand-awarns-icon.png"> Brand</li>
+                                                            <li><b>Demo</b><p>60359871236 <i class="fa fa-circle"></i> Traffic <i class="fa fa-circle"></i> Auction</p></li>
+                                                            <li><b>Demo</b><p>60359871236 <i class="fa fa-circle"></i> Traffic <i class="fa fa-circle"></i> Auction</p></li>
+                                                            <li><b>Demo</b><p>60359871236 <i class="fa fa-circle"></i> Traffic <i class="fa fa-circle"></i> Auction</p></li>
+                                                            <li><b>Demo</b><p>60359871236 <i class="fa fa-circle"></i> Traffic <i class="fa fa-circle"></i> Auction</p></li>
+                                                            <li><b>Demo</b><p>60359871236 <i class="fa fa-circle"></i> Traffic <i class="fa fa-circle"></i> Auction</p></li>
+                                                            <li><b>Demo</b><p>60359871236 <i class="fa fa-circle"></i> Traffic <i class="fa fa-circle"></i> Auction</p></li>
                                                         </ul>
                                                     </div>
-                                                    <div class="objective-cat">
-                                                        <h5>Awareness</h5>
-                                                        <ul>
-                                                            <li><img src="img/brand-awarns-icon.png"> Brand</li>
-                                                            <li><img src="img/brand-awarns-icon.png"> Brand</li>
-                                                        </ul>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <label class="col-md-4">
+                                                    Buying Type
+                                                </label>
+                                                <div class="col-md-8">
+                                                    <div class="custom-autocomplete-select">
+                                                        <select class="selectpicker show-tick">
+                                                            <option data-tokens="ketchup mustard" name="buying_type">Auction</option>
+                                                        </select>
                                                     </div>
-                                                    <div class="objective-cat">
-                                                        <h5>Awareness</h5>
-                                                        <ul>
-                                                            <li><img src="img/brand-awarns-icon.png"> Brand</li>
-                                                        </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <input type="hidden" value="objective" id="camp_objective" value="LINK_CLICKS">
+                                            <div class="col-md-12">
+                                                <label class="col-md-4">
+                                                    Campaign Objective
+                                                </label>
+                                                <div class="col-md-8">
+                                                    <button class="light-grey-btn show-camp-obj-btn"><img src="img/brand-awarns-icon.png">Traffic</button>
+                                                    <div class="objective camp_objective">
+                                                        <div class="objective-cat">
+                                                            <h5>Awareness</h5>
+                                                            <ul>
+                                                                <li data-value="BRAND_AWARENESS"><img src="img/brand-awarns-icon.png"> Brand awareness</li>
+                                                                <li data-value="REACH"><img src="img/brand-awarns-icon.png"> Reach</li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="objective-cat">
+                                                            <h5>Consideration</h5>
+                                                            <ul>
+                                                                <li data-value="LINK_CLICKS"><img src="img/brand-awarns-icon.png"> Traffic</li>
+                                                                <li data-value="APP_INSTALLS"><img src="img/brand-awarns-icon.png"> App installs</li>
+                                                                <li data-value="VIDEO_VIEWS"><img src="img/brand-awarns-icon.png"> Video views</li>
+                                                                <li data-value="LEAD_GENERATION"><img src="img/brand-awarns-icon.png"> Lead generation</li>
+                                                                <li data-value="POST_ENGAGEMENT"><img src="img/brand-awarns-icon.png"> Post enagagement</li>
+                                                                <li data-value="PAGE_LIKES"><img src="img/brand-awarns-icon.png"> Page likes</li>
+                                                                <li data-value="EVENT_RESPONSES"><img src="img/brand-awarns-icon.png"> Event responses</li>
+                                                                <li data-value="LINK_CLICKS"><img src="img/brand-awarns-icon.png"> Messages</li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="objective-cat">
+                                                            <h5>Conversion</h5>
+                                                            <ul>
+                                                                <li data-value="CONVERSIONS"><img src="img/brand-awarns-icon.png"> Conversions</li>
+                                                                <li data-value="PRODUCT_CATALOG_SALES"><img src="img/brand-awarns-icon.png"> Product catalog sales</li>
+                                                                <li data-value="LINK_CLICKS"><img src="img/brand-awarns-icon.png"> Store visits</li>
+                                                            </ul>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="sec1">
-                                    <div class="row" style="margin-bottom:30px;">
-                                        <div class="col-md-12">
-                                            <div class="custom-autocomplete-select">
-                                                <select class="selectpicker show-tick">
-                                                    <option data-tokens="ketchup mustard">Create New Campaign</option>
-                                                    <option data-tokens="mustard">Use Existing Campaign</option>
-                                                </select>
+                                    <div class="sec1">
+                                        <div class="row" style="margin-bottom:30px;">
+                                            <div class="col-md-12">
+                                                <div class="custom-autocomplete-select">
+                                                    <select class="selectpicker show-tick">
+                                                        <option data-tokens="ketchup mustard">Create New Campaign</option>
+                                                        <option data-tokens="mustard">Use Existing Campaign</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <label class="col-md-4">
+                                                    Ad Set Name
+                                                </label>
+                                                <div class="col-md-8">
+                                                    <input type="text" name="adset_name" placeholder="Enter an ad set name" class="form-control">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <label class="col-md-4">
-                                                Ad Set Name
-                                            </label>
-                                            <div class="col-md-8">
-                                                <input type="text" name="" placeholder="Enter an ad set name" class="form-control">
+                                    <div class="sec1">
+                                        <div class="row" style="margin-bottom:30px;">
+                                            <div class="col-md-12">
+                                                <div class="custom-autocomplete-select">
+                                                    <select class="selectpicker show-tick">
+                                                        <option data-tokens="ketchup mustard">Create New Campaign</option>
+                                                        <option data-tokens="mustard">Use Existing Campaign</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <label class="col-md-4">
+                                                    Ad Name
+                                                </label>
+                                                <div class="col-md-8">
+                                                    <input type="text" name="ad_name" placeholder="Enter an ad name" class="form-control">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="sec1">
-                                    <div class="row" style="margin-bottom:30px;">
-                                        <div class="col-md-12">
-                                            <div class="custom-autocomplete-select">
-                                                <select class="selectpicker show-tick">
-                                                    <option data-tokens="ketchup mustard">Create New Campaign</option>
-                                                    <option data-tokens="mustard">Use Existing Campaign</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <label class="col-md-4">
-                                                Ad Name
-                                            </label>
-                                            <div class="col-md-8">
-                                                <input type="text" name="" placeholder="Enter an ad name" class="form-control">
-                                            </div>
-                                        </div>
+                                    <div class="sec1">
+                                        <p class="no-of-camp">Creating 1 campaign, 1 ad set and 1 ad</p>
                                     </div>
                                 </div>
-                                <div class="sec1">
-                                    <p class="no-of-camp">Creating 1 campaign, 1 ad set and 1 ad</p>
-                                </div>
+                                <!--  <div class="popup-right-form col-md-4">sds</div> -->
                             </div>
-                            <!--  <div class="popup-right-form col-md-4">sds</div> -->
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="light-grey-btn" data-dismiss="modal" style="float: left;">Cancel</button>
-                            <button class="blue-btn">Save to Draft</button>
-                        </div>
+                            <div class="modal-footer">
+                                <button type="button" class="light-grey-btn" data-dismiss="modal" style="float: left;">Cancel</button>
+                                <button class="blue-btn" type="submit" name="camp_save_draft">Save to Draft</button>
+                            </div>
+                        </form>
                     </div>
 
                 </div>
@@ -183,7 +214,7 @@
         <div class="simple-default-icons-group " style="margin-left:10px">
             <ul>
                 <li><i class="fa fa-refresh disable-me"></i></li>
-                <li><i class="fa fa-trash disable-me"></i></li>
+                <li data-toggle="modal" data-target="#delete_campaigns_popup" id="delete_camp"><i class="fa fa-trash disable-me"></i></li>
                 <li><i class="fa fa-edit"></i></li>
                 <li><i class="fa fa-tag disable-me"></i></li>
             </ul>
@@ -502,4 +533,28 @@
 	</table>
 </div>
 
+<!--delete camapigns -->
+<div id="delete_campaigns_popup" class="modal fade" role="dialog">
+  <div class="modal-dialog">
 
+    <!-- Modal content-->
+    <div class="modal-content">
+        <form method="post">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <h4 class="modal-title">Delete Campaign</h4>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" name="campaign_id" id="delete_camp_id">
+                <p>Are you sure you want to delete this campaign? This cannot be undone.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button type="submit" class="btn btn-primary" name="delete_campaigns">Delete</button>
+            </div>
+        </form>
+    </div>
+
+  </div>
+</div>
+<!--delete camapigns -->
