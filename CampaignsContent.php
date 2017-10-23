@@ -19,108 +19,127 @@
                                         <div class="row" style="margin-bottom:30px;">
                                             <div class="col-md-12">
                                                 <div class="custom-autocomplete-select">
-                                                    <select class="selectpicker show-tick">
-                                                        <option data-tokens="ketchup mustard">Create New Campaign</option>
-                                                        <option data-tokens="mustard">Use Existing Campaign</option>
+                                                    <select class="selectpicker show-tick" id="choose_campaigns" name="choose_campaigns">
+                                                        <option data-tokens="ketchup mustard" value="new">Create New Campaign</option>
+                                                        <option data-tokens="mustard" value="existing">Use Existing Campaign</option>
                                                     </select>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <label class="col-md-4">
-                                                    Campaign Name
-                                                </label>
-                                                <div class="col-md-8">
-                                                    <input type="text" name="campaign_name" placeholder="Enter a campaign name" class="form-control">
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <label class="col-md-4">
-                                                    Csutom auto complete
-                                                </label>
-                                                <div class="col-md-8 custom-auto-complete">
-                                                    <input type="text" name="campaign_name" placeholder="Enter a campaign name" class="form-control">
-                                                    <div class="custom-auto-complete-data" style="width: 94%">
-                                                        <ul>
-                                                            <li><b>Demo</b><p>60359871236 <i class="fa fa-circle"></i> Traffic <i class="fa fa-circle"></i> Auction</p></li>
-                                                            <li><b>Demo</b><p>60359871236 <i class="fa fa-circle"></i> Traffic <i class="fa fa-circle"></i> Auction</p></li>
-                                                            <li><b>Demo</b><p>60359871236 <i class="fa fa-circle"></i> Traffic <i class="fa fa-circle"></i> Auction</p></li>
-                                                            <li><b>Demo</b><p>60359871236 <i class="fa fa-circle"></i> Traffic <i class="fa fa-circle"></i> Auction</p></li>
-                                                            <li><b>Demo</b><p>60359871236 <i class="fa fa-circle"></i> Traffic <i class="fa fa-circle"></i> Auction</p></li>
-                                                            <li><b>Demo</b><p>60359871236 <i class="fa fa-circle"></i> Traffic <i class="fa fa-circle"></i> Auction</p></li>
-                                                        </ul>
+                                        
+                                        <div id="new_campaign">
+                                            <div class="row" id="new_campaign">
+                                                <div class="col-md-12">
+                                                    <label class="col-md-4">
+                                                        Campaign Name
+                                                    </label>
+                                                    <div class="col-md-8">
+                                                        <input type="text" name="campaign_name" placeholder="Enter a campaign name" class="form-control">
                                                     </div>
                                                 </div>
                                             </div>
 
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <label class="col-md-4">
-                                                    Buying Type
-                                                </label>
-                                                <div class="col-md-8">
-                                                    <div class="custom-autocomplete-select">
-                                                        <select class="selectpicker show-tick">
-                                                            <option data-tokens="ketchup mustard" name="buying_type">Auction</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <input type="hidden" value="objective" id="camp_objective" value="LINK_CLICKS">
-                                            <div class="col-md-12">
-                                                <label class="col-md-4">
-                                                    Campaign Objective
-                                                </label>
-                                                <div class="col-md-8">
-                                                    <button class="light-grey-btn show-camp-obj-btn"><img src="img/brand-awarns-icon.png">Traffic</button>
-                                                    <div class="objective camp_objective">
-                                                        <div class="objective-cat">
-                                                            <h5>Awareness</h5>
-                                                            <ul>
-                                                                <li data-value="BRAND_AWARENESS"><img src="img/brand-awarns-icon.png"> Brand awareness</li>
-                                                                <li data-value="REACH"><img src="img/brand-awarns-icon.png"> Reach</li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="objective-cat">
-                                                            <h5>Consideration</h5>
-                                                            <ul>
-                                                                <li data-value="LINK_CLICKS"><img src="img/brand-awarns-icon.png"> Traffic</li>
-                                                                <li data-value="APP_INSTALLS"><img src="img/brand-awarns-icon.png"> App installs</li>
-                                                                <li data-value="VIDEO_VIEWS"><img src="img/brand-awarns-icon.png"> Video views</li>
-                                                                <li data-value="LEAD_GENERATION"><img src="img/brand-awarns-icon.png"> Lead generation</li>
-                                                                <li data-value="POST_ENGAGEMENT"><img src="img/brand-awarns-icon.png"> Post enagagement</li>
-                                                                <li data-value="PAGE_LIKES"><img src="img/brand-awarns-icon.png"> Page likes</li>
-                                                                <li data-value="EVENT_RESPONSES"><img src="img/brand-awarns-icon.png"> Event responses</li>
-                                                                <li data-value="LINK_CLICKS"><img src="img/brand-awarns-icon.png"> Messages</li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="objective-cat">
-                                                            <h5>Conversion</h5>
-                                                            <ul>
-                                                                <li data-value="CONVERSIONS"><img src="img/brand-awarns-icon.png"> Conversions</li>
-                                                                <li data-value="PRODUCT_CATALOG_SALES"><img src="img/brand-awarns-icon.png"> Product catalog sales</li>
-                                                                <li data-value="LINK_CLICKS"><img src="img/brand-awarns-icon.png"> Store visits</li>
-                                                            </ul>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label class="col-md-4">
+                                                        Buying Type
+                                                    </label>
+                                                    <div class="col-md-8">
+                                                        <div class="custom-autocomplete-select">
+                                                            <select class="selectpicker show-tick">
+                                                                <option data-tokens="ketchup mustard" name="buying_type">Auction</option>
+                                                            </select>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
+
+                                            <div class="row">
+                                                <input type="hidden" value="objective" id="camp_objective" value="LINK_CLICKS">
+                                                <div class="col-md-12">
+                                                    <label class="col-md-4">
+                                                        Campaign Objective
+                                                    </label>
+                                                    <div class="col-md-8">
+                                                        <button class="light-grey-btn show-camp-obj-btn"><img src="img/brand-awarns-icon.png">Traffic</button>
+                                                        <div class="objective camp_objective">
+                                                            <div class="objective-cat">
+                                                                <h5>Awareness</h5>
+                                                                <ul>
+                                                                    <li data-value="BRAND_AWARENESS"><img src="img/brand-awarns-icon.png"> Brand awareness</li>
+                                                                    <li data-value="REACH"><img src="img/brand-awarns-icon.png"> Reach</li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="objective-cat">
+                                                                <h5>Consideration</h5>
+                                                                <ul>
+                                                                    <li data-value="LINK_CLICKS"><img src="img/brand-awarns-icon.png"> Traffic</li>
+                                                                    <li data-value="APP_INSTALLS"><img src="img/brand-awarns-icon.png"> App installs</li>
+                                                                    <li data-value="VIDEO_VIEWS"><img src="img/brand-awarns-icon.png"> Video views</li>
+                                                                    <li data-value="LEAD_GENERATION"><img src="img/brand-awarns-icon.png"> Lead generation</li>
+                                                                    <li data-value="POST_ENGAGEMENT"><img src="img/brand-awarns-icon.png"> Post enagagement</li>
+                                                                    <li data-value="PAGE_LIKES"><img src="img/brand-awarns-icon.png"> Page likes</li>
+                                                                    <li data-value="EVENT_RESPONSES"><img src="img/brand-awarns-icon.png"> Event responses</li>
+                                                                    <li data-value="LINK_CLICKS"><img src="img/brand-awarns-icon.png"> Messages</li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="objective-cat">
+                                                                <h5>Conversion</h5>
+                                                                <ul>
+                                                                    <li data-value="CONVERSIONS"><img src="img/brand-awarns-icon.png"> Conversions</li>
+                                                                    <li data-value="PRODUCT_CATALOG_SALES"><img src="img/brand-awarns-icon.png"> Product catalog sales</li>
+                                                                    <li data-value="LINK_CLICKS"><img src="img/brand-awarns-icon.png"> Store visits</li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
+
+                                        <div id="existing_campaign" style="display: none;">
+                                            <input type="hidden" name="exit_camapaign_id" id="exit_camapaign_id">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label class="col-md-4">
+                                                        Use Existing
+                                                    </label>
+                                                    <div class="col-md-8 custom-auto-complete using-existing-camp-input">
+                                                        <input type="text" id="exit_campaign_name" placeholder="choose camapaign" readonly class="form-control">
+                                                        <i class="fa fa-remove cross-existing-camp-icon"></i>
+                                                        <div class="custom-auto-complete-data custom-dropdown" style="width: 94%">
+                                                            <ul>
+                                                                <?php foreach ($camapaigns['data'] as $camapaign) :?>
+                                                                <li data-id="<?php echo $camapaign['id'];?>" data-name="<?php echo $camapaign['name']; ?>">
+                                                                    <b><?php echo $camapaign['name']; ?></b>
+                                                                    <p><?php echo $camapaign['id'];?> 
+                                                                        <?php if($campaign['objective']) { ?><i class="fa fa-circle"></i> <?php echo $campaign['objective']; } ?> 
+                                                                        <?php if($camapaign['buying_type']) { ?><i class="fa fa-circle"></i> <?php echo $camapaign['buying_type']; } ?>
+                                                                    </p>
+                                                                </li>
+                                                                <!-- <li><b>Demo</b><p>60359871236 <i class="fa fa-circle"></i> Traffic <i class="fa fa-circle"></i> Auction</p></li>
+                                                                <li><b>Demo</b><p>60359871236 <i class="fa fa-circle"></i> Traffic <i class="fa fa-circle"></i> Auction</p></li>
+                                                                <li><b>Demo</b><p>60359871236 <i class="fa fa-circle"></i> Traffic <i class="fa fa-circle"></i> Auction</p></li>
+                                                                <li><b>Demo</b><p>60359871236 <i class="fa fa-circle"></i> Traffic <i class="fa fa-circle"></i> Auction</p></li>
+                                                                <li><b>Demo</b><p>60359871236 <i class="fa fa-circle"></i> Traffic <i class="fa fa-circle"></i> Auction</p></li> -->
+                                                                <?php endforeach;?>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        
                                     </div>
                                     <div class="sec1">
                                         <div class="row" style="margin-bottom:30px;">
                                             <div class="col-md-12">
                                                 <div class="custom-autocomplete-select">
-                                                    <select class="selectpicker show-tick">
-                                                        <option data-tokens="ketchup mustard">Create New Campaign</option>
-                                                        <option data-tokens="mustard">Use Existing Campaign</option>
+                                                    <select class="selectpicker show-tick" name="choose_adsets">
+                                                        <option value="new" >Create New AdSet</option>
+                                                        <option  value="existing" disabled>Use Existing AdSet</option>
+                                                        <option value="skip" >Skip AdSet</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -140,9 +159,9 @@
                                         <div class="row" style="margin-bottom:30px;">
                                             <div class="col-md-12">
                                                 <div class="custom-autocomplete-select">
-                                                    <select class="selectpicker show-tick">
-                                                        <option data-tokens="ketchup mustard">Create New Campaign</option>
-                                                        <option data-tokens="mustard">Use Existing Campaign</option>
+                                                    <select class="selectpicker show-tick" name="choose_ads">
+                                                        <option value="new">Create New Ad</option>
+                                                        <option value="skip">Skip Ad</option>
                                                     </select>
                                                 </div>
                                             </div>

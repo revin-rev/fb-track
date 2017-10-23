@@ -5,26 +5,43 @@ if(isset($_SESSION['user'])) :
 	/*create campaigns and adsets and ads*/
 	if(isset($_REQUEST['camp_save_draft'])) {
 		/*create a campaigns*/
-		$ch = curl_init();
-		$url = "https://graph.facebook.com/v2.10/".$_REQUEST['act']."/campaigns";
-		$fields = array(
-			'name' => $_REQUEST['campaign_name'],
-			'objective' =>  'LINK_CLICKS',
-			'access_token' => $_REQUEST['code']
-		);
-		curl_setopt($ch, CURLOPT_URL, $url);
-		curl_setopt($ch, CURLOPT_POST, true);
-		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($ch, CURLOPT_POSTFIELDS, $fields);
-		$result = curl_exec($ch);
-		curl_close($ch);
-		$camp = json_decode($result, true);
+		if($_REQUEST['choose_campaigns'] == 'new') {
+			$ch = curl_init();
+			$url = "https://graph.facebook.com/v2.10/".$_REQUEST['act']."/campaigns";
+			$fields = array(
+				'name' => $_REQUEST['campaign_name'],
+				'objective' =>  'LINK_CLICKS',
+				'access_token' => $_REQUEST['code']
+			);
+			curl_setopt($ch, CURLOPT_URL, $url);
+			curl_setopt($ch, CURLOPT_POST, true);
+			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+			curl_setopt($ch, CURLOPT_POSTFIELDS, $fields);
+			$result = curl_exec($ch);
+			curl_close($ch);
+			$camp = json_decode($result, true);
+			?>
+			<script type="text/javascript">
+				jQuery(document).ready(function(){
+					setTimeout(function() {
+						var camp_id = '<?php echo $camp['id']?>';
+						jQuery("#camapaign_table tr#"+camp_id+' .campaigns_checkbox').prop('checked',true);
+						jQuery("#camapaign_table tr#"+camp_id+' .edit-charts').click();
+					},500);
+				});
+			</script>
+			<?php 
+		}
+
+		if($_REQUEST['choose_campaigns'] == 'existing') {
+			$camp['id'] = $_REQUEST['exit_camapaign_id'];
+		}
 		/*create a campaigns*/
 		/*create a adset inside created campaign*/
 		if($camp) {
 			if($_REQUEST['adset_name'] != '') { 
-				$adset_name = $_REQUEST['ad'];
+				$adset_name = $_REQUEST['adset_name'];
 			} else {
 				$adset_name = 'Untitled AdSet';
 			}
@@ -47,6 +64,18 @@ if(isset($_SESSION['user'])) :
 			$result = curl_exec($ch);
 			curl_close($ch);
 			$adsets = json_decode($result, true);
+			if($_REQUEST['choose_campaigns'] == 'existing') : ?>
+			<script type="text/javascript">
+				jQuery(document).ready(function(){
+					setTimeout(function() {
+						jQuery('a[href="#ad-sets"]').click();
+						var adset_id = '<?php echo $adsets['id']?>';
+						jQuery("#adset_table tr#"+adset_id+' .adsets_checkbox').prop('checked',true);
+						jQuery("#adset_table tr#"+adset_id+' .edit-charts').click();
+					},500);
+				});
+			</script>
+			<?php endif;
 			/*create a adset inside created campaign*/
 		}
 	}
@@ -60,13 +89,32 @@ if(isset($_SESSION['user'])) :
 			$ch = curl_init();
 			curl_setopt($ch, CURLOPT_URL, $url);
 			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
-			$result = curl_exec($ch);
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+			$response = curl_exec($ch);
 			$httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 			curl_close($ch);
-			$data = json_decode($result, true);
+			//$data = json_decode($result, true);
 		}
 	}
 	/*delete campaigns*/
+
+	/*delete adsets*/
+	if(isset($_REQUEST['delete_adsets'])) {
+		$adsets_id = json_decode($_REQUEST['delete_adset_id'], true);
+		foreach ($adsets_id as $val ) {
+			$url = 'https://graph.facebook.com/v2.10/'.$val.'/?access_token='.$_REQUEST['code'];
+			$ch = curl_init();
+			curl_setopt($ch, CURLOPT_URL, $url);
+			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+			$response = curl_exec($ch);
+			$httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+			curl_close($ch);
+			//$data = json_decode($result, true);
+		}
+	}
+
+	/*delete adsets*/
 
 	/*get all accounts of selected user*/
 	$cSession = curl_init(); 
@@ -86,7 +134,6 @@ if(isset($_SESSION['user'])) :
 	$result=curl_exec($cSession);
 	curl_close($cSession);
 	$camapaigns = json_decode($result, true);
-
 	/*get camapagins, adsets and ads*/
 ?>
 <script type="text/javascript">

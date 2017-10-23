@@ -63,7 +63,7 @@
 		</div>	
 		<div class="slideshow-right-sec">		
 			<div class="common-row">
-				<img src="../img/img-video-thumb.png">
+				<img src="img/img-video-thumb.png">
 				<p>Use photos or video stills to create a slideshow</p>
 			</div>
 			<div class="common-row">
@@ -661,63 +661,63 @@
 			     </div>
 			     <div class="img-gallery-thumb">
 			     	<div class="thumb">
-			     		<span><img src="../img/ident-acc-icon.jpg"></span>	
+			     		<span><img src="img/ident-acc-icon.jpg"></span>	
 			     		<input type="radio" name="img-thumb" class="thumbCheck">																														     	
 			     	</div>
 			     	<div class="thumb">
-			     		<span><img src="../img/ident-acc-icon.jpg"></span>	
+			     		<span><img src="img/ident-acc-icon.jpg"></span>	
 			     		<input type="radio" name="img-thumb" class="thumbCheck">
 			     	</div>
 			     	<div class="thumb">
-			     		<span><img src="../img/ident-acc-icon.jpg"></span>	
+			     		<span><img src="img/ident-acc-icon.jpg"></span>	
 			     		<input type="radio" name="img-thumb" class="thumbCheck">
 			     	</div>
 			     	<div class="thumb">
-			     		<span><img src="../img/ident-acc-icon.jpg"></span>	
+			     		<span><img src="img/ident-acc-icon.jpg"></span>	
 			     		<input type="radio" name="img-thumb" class="thumbCheck">
 			     	</div>
 			     	<div class="thumb">
-			     		<span><img src="../img/ident-acc-icon.jpg"></span>	
+			     		<span><img src="img/ident-acc-icon.jpg"></span>	
 			     		<input type="radio" name="img-thumb" class="thumbCheck">
 			     	</div>
 			     	<div class="thumb">
-			     		<span><img src="../img/ident-acc-icon.jpg"></span>	
+			     		<span><img src="img/ident-acc-icon.jpg"></span>	
 			     		<input type="radio" name="img-thumb" class="thumbCheck">
 			     	</div>
 			     	<div class="thumb">
-			     		<span><img src="../img/ident-acc-icon.jpg"></span>	
+			     		<span><img src="img/ident-acc-icon.jpg"></span>	
 			     		<input type="radio" name="img-thumb" class="thumbCheck">
 			     	</div>
 			     	<div class="thumb">
-			     		<span><img src="../img/ident-acc-icon.jpg"></span>	
+			     		<span><img src="img/ident-acc-icon.jpg"></span>	
 			     		<input type="radio" name="img-thumb" class="thumbCheck">
 			     	</div>
 			     	<div class="thumb">
-			     		<span><img src="../img/ident-acc-icon.jpg"></span>	
+			     		<span><img src="img/ident-acc-icon.jpg"></span>	
 			     		<input type="radio" name="img-thumb" class="thumbCheck">
 			     	</div>
 			     	<div class="thumb">
-			     		<span><img src="../img/ident-acc-icon.jpg"></span>	
+			     		<span><img src="img/ident-acc-icon.jpg"></span>	
 			     		<input type="radio" name="img-thumb" class="thumbCheck">
 			     	</div>
 			     	<div class="thumb">
-			     		<span><img src="../img/ident-acc-icon.jpg"></span>	
+			     		<span><img src="img/ident-acc-icon.jpg"></span>	
 			     		<input type="radio" name="img-thumb" class="thumbCheck">
 			     	</div>
 			     	<div class="thumb">
-			     		<span><img src="../img/ident-acc-icon.jpg"></span>	
+			     		<span><img src="img/ident-acc-icon.jpg"></span>	
 			     		<input type="radio" name="img-thumb" class="thumbCheck">
 			     	</div>
 			     	<div class="thumb">
-			     		<span><img src="../img/ident-acc-icon.jpg"></span>	
+			     		<span><img src="img/ident-acc-icon.jpg"></span>	
 			     		<input type="radio" name="img-thumb" class="thumbCheck">
 			     	</div>
 			     	<div class="thumb">
-			     		<span><img src="../img/ident-acc-icon.jpg"></span>	
+			     		<span><img src="img/ident-acc-icon.jpg"></span>	
 			     		<input type="radio" name="img-thumb" class="thumbCheck">
 			     	</div>
 			     	<div class="thumb">
-			     		<span><img src="../img/ident-acc-icon.jpg"></span>	
+			     		<span><img src="img/ident-acc-icon.jpg"></span>	
 			     		<input type="radio" name="img-thumb" class="thumbCheck">
 			     	</div>
 			     </div>
@@ -728,7 +728,7 @@
 			    </div>
 			    <div class="stock-imgs-gallery-thumb">
 			    	<div class="no-stock-search">
-			    		<img src="../img/no-stock-dummy-img.png">
+			    		<img src="img/no-stock-dummy-img.png">
 			    		<p>Search for professional images to use in your ads.<br>Any images you select will be saved in your image library.</p>
 			    	</div>
 			    </div>
@@ -784,7 +784,7 @@
 	                      			<tr class="video_rows">
 	                      				<td><input type="checkbox" name=""></td>	
 	                      				<td>
-	                      					<img src="../img/ident-acc-icon.jpg"> <span>Video (1958816381040581)</span>
+	                      					<img src="img/ident-acc-icon.jpg"> <span>Video (1958816381040581)</span>
 	                      				</td>
 	                      				<td>0.03</td> 
 	                      				<td>2017-10-14</td>
@@ -793,7 +793,7 @@
 	                      			<tr class="video_rows">
 	                      				<td><input type="checkbox" name=""></td>	
 	                      				<td>
-	                      					<img src="../img/ident-acc-icon.jpg"> <span>Video (1958816381040581)</span>
+	                      					<img src="img/ident-acc-icon.jpg"> <span>Video (1958816381040581)</span>
 	                      				</td>
 	                      				<td>0.03</td> 
 	                      				<td>2017-10-14</td>
@@ -802,7 +802,7 @@
 	                      			<tr class="video_rows">
 	                      				<td><input type="checkbox" name=""></td>	
 	                      				<td>
-	                      					<img src="../img/ident-acc-icon.jpg"> <span>Video (1958816381040581)</span>
+	                      					<img src="img/ident-acc-icon.jpg"> <span>Video (1958816381040581)</span>
 	                      				</td>
 	                      				<td>0.03</td> 
 	                      				<td>2017-10-14</td>
@@ -811,7 +811,7 @@
 	                      			<tr class="video_rows">
 	                      				<td><input type="checkbox" name=""></td>	
 	                      				<td>
-	                      					<img src="../img/ident-acc-icon.jpg"> <span>Video (1958816381040581)</span>
+	                      					<img src="img/ident-acc-icon.jpg"> <span>Video (1958816381040581)</span>
 	                      				</td>
 	                      				<td>0.03</td> 
 	                      				<td>2017-10-14</td>
@@ -833,7 +833,7 @@
 				    			</div>
 				    			<div class="col-md-4">				    				
 				    				<div class="single-video-thumb-view thumb">
-				    						<span><img src="../img/a.jpg"></span>
+				    						<span><img src="img/a.jpg"></span>
 				    						<input type="radio" name="img-thumb" class="thumbCheck">
 				    						<div class="detail">							
 				    							<p>Video (1956329526...</p>
@@ -844,7 +844,7 @@
 				    			</div>
 				    			<div class="col-md-4">
 				    				<div class="single-video-thumb-view thumb">
-				    						<span><img src="../img/a.jpg"></span>
+				    						<span><img src="img/a.jpg"></span>
 				    						<input type="radio" name="" class="thumbCheck">
 				    						<div class="detail">							
 				    							<p>Video (1956329526...</p>
@@ -857,7 +857,7 @@
 				    		<div class="common-row">
 				    			<div class="col-md-4">
 				    				<div class="single-video-thumb-view thumb">
-				    						<span><img src="../img/a.jpg"></span>
+				    						<span><img src="img/a.jpg"></span>
 				    						<input type="radio" name="" class="thumbCheck">
 				    						<div class="detail">							
 				    							<p>Video (1956329526...</p>
@@ -868,7 +868,7 @@
 				    			</div>
 				    			<div class="col-md-4">				    				
 				    				<div class="single-video-thumb-view thumb">
-				    						<span><img src="../img/a.jpg"></span>
+				    						<span><img src="img/a.jpg"></span>
 				    						<input type="radio" name="img-thumb" class="thumbCheck">
 				    						<div class="detail">							
 				    							<p>Video (1956329526...</p>
@@ -879,7 +879,7 @@
 				    			</div>
 				    			<div class="col-md-4">
 				    				<div class="single-video-thumb-view thumb">
-				    						<span><img src="../img/a.jpg"></span>
+				    						<span><img src="img/a.jpg"></span>
 				    						<input type="radio" name="" class="thumbCheck">
 				    						<div class="detail">							
 				    							<p>Video (1956329526...</p>
@@ -895,7 +895,7 @@
 			  <div id="paste-link" class="tab-pane fade">
 			    <div class="paste-link-left">
 			    	<div class="common-row upload-inst">
-			    		<img src="../img/paste-link-dummy-img.png"> <span>Quickly upload a video by pasting the link of a hosted video file.</span>
+			    		<img src="img/paste-link-dummy-img.png"> <span>Quickly upload a video by pasting the link of a hosted video file.</span>
 			    	</div>
 			    	<div class="common-row">
 			    		<div class="col-md-3 text-right"><label>Video URL</label></div>
