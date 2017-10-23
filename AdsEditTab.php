@@ -938,7 +938,7 @@
                                                                 <div class="common-row">
                                                                     <!-- <button class="light-grey-btn select-video-btn">Select Video</button> -->
                                                                     <button class="light-grey-btn common-select-video-popup" data-target="#common-select-video-popup" data-toggle="modal">Select Video</button>
-                                                                    <button class="crt-slideshow-btn light-grey-btn">
+                                                                     <button class="crt-slideshow-btn light-grey-btn common-create-slideshow-popup" data-target="#common-create-slideshow-popup" data-toggle="modal">
                                                                         Create Slideshow
                                                                     </button>
                                                                 </div>
@@ -1022,9 +1022,9 @@
                             <label>Page Post</label>
                             <br>
                             <p class="no-post-exist"><i class="fa fa-info-circle" aria-hidden="true"></i> No eligible posts exist.</p>
-                            <button class="light-grey-btn plus-popup">+</button>
+                            <button class="light-grey-btn plus-popup" data-target="#create-new-post-popup" data-toggle="modal">+</button>
                             <br>
-                            <a href="#">Enter Post ID</a>
+                            <div style="float: left; width: 100%; text-align: left;"><a href="#">Enter Post ID</a></div>
                         </div>
                     </div>
                 </div>

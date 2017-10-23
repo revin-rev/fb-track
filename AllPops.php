@@ -49,8 +49,15 @@
                  </div> 
 			  </div>
 			  <div id="slideshow-music" class="tab-pane fade">
-			    <h3>Menu 1</h3>
-			    <p>Some content in menu 1.</p>
+			  	<div class="common-row">
+				   	<div class="selected-audio">
+				   		<span><i class="fa fa-play-circle"></i> lorem ipsum</span><a href="#"> <i class="fa fa-remove"></i></a>
+				   	</div>
+				   	<div class="custom-audio-select">
+				   		<input type="file" name="">
+				   		<button class="light-grey-btn">Upload</button>
+				   	</div>
+				</div>   	
 			  </div>
 			</div>
 		</div>	
@@ -64,10 +71,142 @@
 				<button class="add-video-for-video-btn" data-target="#common-select-video-popup" data-toggle="modal"><i class="fa fa-file-video-o"></i> Add Video</button>
 			</div>
 		</div>
+		<div class="slideshow-slides-gallery">
+			<ul>
+				<li class="with-img-slide">
+					<a href="#edit-slide-show-slide" data-toggle="modal"><i class="fa fa-pencil"></i></a>
+					<img src="../img/ident-acc-icon.jpg">
+					<div class="slide-show-overlay">
+						<i class="fa fa-remove"></i>
+					</div>
+				</li>
+				<li class="with-img-slide">
+					<a href="#edit-slide-show-slide" data-toggle="modal"><i class="fa fa-pencil"></i></a>
+					<img src="../img/ident-acc-icon.jpg">
+					<div class="slide-show-overlay">
+						<i class="fa fa-remove"></i>
+					</div>
+				</li>
+				<li class="upload-img-slide">
+					<i class="fa fa-plus"></i>
+					<input type="file" name="">
+				</li>
+				<li class="with-img-slide">&nbsp;</li>
+				<li class="with-img-slide">&nbsp;</li>
+				<li class="with-img-slide">&nbsp;</li>
+				<li class="with-img-slide">&nbsp;</li>
+				<li class="with-img-slide">&nbsp;</li>
+				<li class="with-img-slide">&nbsp;</li>
+				<li class="with-img-slide">&nbsp;</li>				 
+			</ul>
+		</div>
       </div>
       <div class="modal-footer">
         <button type="button" class="light-grey-btn" data-dismiss="modal">Cancel</button>
         <button type="button" class="blue-btn" data-dismiss="modal">Create Slideshow</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- edit slide show slide text-->
+<div id="edit-slide-show-slide" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Edit Photo</h4>
+      </div>
+      <div class="modal-body">
+        <div class="edit-slide-left-sec">
+        	<div class="common-row">
+        		<textarea class="form-control"></textarea>
+        		<span>60</span>
+        	</div>
+        	<div class="common-row">
+        		<label>Font</label>
+        		<div class="custom-autocomplete-select">
+					<select class="selectpicker show-tick" data-size="5">
+						<option data-tokens="ketchup mustard">Helvatica</option>
+						<option data-tokens="mustard">Helvatica</option>
+						<option data-tokens="frosting">Helvatica</option>
+						<option data-tokens="ketchup mustard">Helvatica</option>
+					</select>													
+				</div>
+				<div class="font-style">
+			       	<div class="thumb f-child">
+			     		<span>Regular</span>	
+			     		<input type="radio" name="img-thumb" class="thumbCheck">
+			     	</div>
+			     	<div class="thumb l-child selected-img-thumb">
+			     		<span>Bold</span>	
+			     		<input type="radio" name="img-thumb" class="thumbCheck">
+			     	</div>
+			    </div>
+        	</div>
+        	<div class="row common-row">
+        		<label class="col-md-6">Colors</label>
+        		<div class="col-md-6">Text color</div>
+        	</div>
+        	<div class="row common-row">
+        		<label class="col-md-6">Alognment</label>
+        		<div class="col-md-6">Text alignment</div>
+        	</div>
+        </div>
+        <div class="edit-slide-right-sec">
+        	<img src="../img/ident-acc-icon.jpg">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="light-grey-btn" data-dismiss="modal">Cancel</button>
+        <button type="button" class="blue-btn" data-dismiss="modal">Save</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- use existing poup-->
+<div id="create-new-post-popup" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Create New Page Post</h4>
+      </div>
+      <div class="modal-body">
+        	<ul class="nav nav-tabs">
+			  <li class="active"><a data-toggle="tab" href="#status"><i class="fa fa-pencil"></i> Staus</a></li>
+			  <li><a data-toggle="tab" href="#photo"><i class="fa fa-camera"></i> Photo</a></li>
+			</ul>
+			<div class="tab-content">
+			  <div id="status" class="tab-pane fade in active">
+			   <textarea class="form-control" placeholder="Write something ..."></textarea>
+			  </div>
+			  <div id="photo" class="tab-pane fade">
+			   	<ul>
+			   		<li class="add-photo-to-status">
+			   			<div class="left">
+			   				<img src="../img/upload-img-to-status.png">
+			   			</div>
+			   			<div class="right">
+			   				<b>Upload Photo/Video</b>
+			   				<p>Add photo or video to your staus.</p>
+			   			</div>
+			   			<input type="file" name="">
+			   		</li>
+			   	</ul>
+			  </div>
+			</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="light-grey-btn" data-dismiss="modal">Cancel</button>
+        <button type="button" class="blue-btn" data-dismiss="modal">Save</button>
       </div>
     </div>
 
