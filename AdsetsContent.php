@@ -185,7 +185,7 @@
         <div class="simple-default-icons-group" style="margin-left:10px">
             <ul>
                 <li><i class="fa fa-refresh disable-me"></i></li>
-                <li><i class="fa fa-trash disable-me"></i></li>
+                <li data-toggle="modal" data-target="#delete_adsets_popup" id="delete_adsets"><i class="fa fa-trash disable-me"></i></li>
                 <li><i class="fa fa-edit"></i></li>
                 <li><i class="fa fa-tag disable-me"></i></li>
             </ul>
@@ -518,3 +518,29 @@
         </tbody>    
     </table>
 </div>
+
+<!--delete camapigns -->
+<div id="delete_adsets_popup" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+        <form method="post">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <h4 class="modal-title">Delete Adset</h4>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" name="delete_adset_id" id="delete_adset_id">
+                <p>Are you sure you want to delete this adset?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button type="submit" class="btn btn-primary" name="delete_adsets">Delete</button>
+            </div>
+        </form>
+    </div>
+
+  </div>
+</div>
+<!--delete camapigns -->
