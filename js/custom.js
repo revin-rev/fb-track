@@ -12,33 +12,22 @@ jQuery(document).ready(function(){
 	/*set dropdown value in input in create campaign popup*/
 	/*delete campaign*/
 	jQuery('#delete_camp').click(function(){
-		var length = jQuery('.campaigns_checkbox:checked').length;
 		var array = [];
-		if(length > 1) {
-			jQuery('.campaigns_checkbox:checked').each(function() {
-				array.push(jQuery(this).parent().parent().attr('id'));
-			});	
-			jQuery('#delete_camp_id').val(JSON.stringify(array));
-		} else {
-			array.push(jQuery('.campaigns_checkbox:checked').parent().parent().attr('id'));
-			jQuery('#delete_camp_id').val(JSON.stringify(array));
-		}
+		jQuery('.campaigns_checkbox:checked').each(function() {
+			array.push(jQuery(this).parent().parent().attr('id'));
+		});	
+		jQuery('#delete_camp_id').val(JSON.stringify(array));
 	});
 	/*delete campaign*/
 
 	/*delete adsets*/
 	jQuery('#delete_adsets').click(function() {
-		var length = jQuery('.adsets_checkbox:checked').length;
 		var array = [];
-		if(length > 1) {
-			jQuery('.adsets_checkbox:checked').each(function() {
-				array.push(jQuery(this).parent().parent().attr('id'));
-			});	
-			jQuery('#delete_adset_id').val(JSON.stringify(array));
-		} else {
-			array.push(jQuery('.adsets_checkbox:checked').parent().parent().attr('id'));
-			jQuery('#delete_adset_id').val(JSON.stringify(array));
-		}
+		var length = jQuery('.adsets_checkbox:checked').length;
+		jQuery('.adsets_checkbox:checked').each(function() {
+			array.push(jQuery(this).parent().parent().attr('id'));
+		});	
+		jQuery('#delete_adset_id').val(JSON.stringify(array));
 	});
 	/*delete adsets*/
 
@@ -76,6 +65,16 @@ jQuery(document).ready(function(){
 		jQuery('#exit_campaign_name').attr('readonly',false);
 	});
 	/*choose campaign state new or existing*/
+
+	/*duplicate campaigns*/
+	jQuery('.duplicate-campaign').click(function (){
+		var array = [];
+		jQuery('.campaigns_checkbox:checked').each(function() {
+			array.push(jQuery(this).parent().parent().attr('id'));
+		});	
+		jQuery('#duplicate_campaign_id').val(JSON.stringify(array));
+	});
+	/*duplicate campaigns*/
 });
 
 //<!-- date range -->
@@ -252,12 +251,14 @@ $(document).ready(function(){
 });
 
 //<!-- second tab duplicate entry popup script -->
-$(document).ready(function(){		 
+$(document).ready(function(){	
 	$('.spinner .btn:first-of-type').on('click', function() {
-		$('.spinner input').val( parseInt($('.spinner input').val(), 10) + 1);
+		$(this).parent().prev().val(parseInt($(this).parent().prev().val())+parseInt(1));
 	});
 	$('.spinner .btn:last-of-type').on('click', function() {
-		$('.spinner input').val( parseInt($('.spinner input').val(), 10) - 1);
+		if($(this).parent().prev().val() > 1) {
+			$(this).parent().prev().val(parseInt($(this).parent().prev().val())-parseInt(1));
+		}
 	});		 
 });
 
