@@ -205,7 +205,7 @@
             </div>
         </div>
         <div class="btn-and-caret-icon-dropdown disable-me" style="margin-left:10px">
-            <a href="#" class="create-camp-btn"><i class="fa fa-copy"></i> Duplicate</a>
+            <a class="create-camp-btn duplicate-campaign" href="#duplicate-campaign" data-toggle="modal"><i class="fa fa-copy"></i> Duplicate</a>
             <div class="dropdown caret-icon-dropdown-with-btn">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border-left:0">
                     <span class="caret"></span>
@@ -428,28 +428,30 @@
 	<div id="duplicate-campaign" class="modal fade duplicate-row-popup" role="dialog">
 		<div class="modal-dialog">
 			<div class="modal-content">
+                <form class="form-inline" method="post">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title">Duplicate Campaign</h4>
 				</div>
 				<div class="modal-body">
-					<form class="form-inline">
 						<div class="form-group">
 							<label for="email">Number of duplicates</label>
 							<div class="input-group spinner">
-								<input type="text" class="form-control" value="42">
+								<input type="hidden" class="form-control" name="duplicate_campaign_id" id="duplicate_campaign_id">
+                                <input type="text" class="form-control" value="1" name="duplicate_campaign_count" min="1">
 								<div class="input-group-btn-vertical">
 									<button class="btn btn-default" type="button"><i class="fa fa-caret-up"></i></button>
 									<button class="btn btn-default" type="button"><i class="fa fa-caret-down"></i></button>
 								</div>
 							</div>
 						</div>
-					</form>
+					
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="light-grey-btn" data-dismiss="modal">Cancel</button>
-					<button type="button" class="blue-btn" data-dismiss="modal">Save to Draft</button>
+					<button type="submit" class="blue-btn" name="duplicates_campaigns">Save to Draft</button>
 				</div>
+            </form>
 			</div>
 		</div>
 	</div>
@@ -494,7 +496,7 @@
 	                <div class="row-editing-icons">
 	                    <a href="#" class="view-charts" data-id="#view-tab"><i class="fa fa-bar-chart" aria-hidden="true"></i> View Chart</a>
 	                    <a href="#" class="edit-charts" data-id="#edit-tab"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
-	                    <a href="#duplicate-campaign" data-toggle="modal"><i class="fa fa-copy" aria-hidden="true"></i> Duplicate</a>
+	                    <a href="#duplicate-campaign" data-toggle="modal" class="duplicate-campaign"><i class="fa fa-copy" aria-hidden="true"></i> Duplicate</a>
 	                </div>
 	            </td>
 	            <td>
