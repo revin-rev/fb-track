@@ -9,7 +9,7 @@
 	<!--Ads edit-tab content -->
 	<?php include 'AdsEditTab.php';?>
 	<!--end Ads edit-tab content -->
-	<?php include 'AllPops.php';?>
+	<?php //include 'AllPops.php';?>
 </div>
 <div class="save-editing-fix-bar">	
 	<span>1 item to review</span>     

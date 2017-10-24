@@ -811,3 +811,53 @@ function getAdData(ads_id) {
 	});
 }
 
+
+$(document).ready(function(){
+	$('#select-manual').click(function () {
+		$('.manual-imgs-radio-opt').show();
+		$('.dynamic-template-radio-opt').hide();
+		 
+	});
+	$('#dynamic-temp').click(function () {
+		$('.manual-imgs-radio-opt').hide();
+		$('.dynamic-template-radio-opt').show();
+		 
+	});
+})
+
+$(document).ready(function(){
+	$('#fixed-img-begining').click(function () {
+		if ($('#fixed-img-begining').is(":checked"))
+		{ 
+			$('.fixed-img-begining').show();
+			$('.fixed-img-end').hide();
+		}
+		else
+		{ 
+			$('.fixed-img-end').show();
+			$('.fixed-img-begining').hide();
+		}
+	});
+	$('#fixed-img-end').click(function () {
+		if ($('#fixed-img-end').is(":checked"))
+		{ 
+			$('.fixed-img-end').show();
+			$('.fixed-img-begining').hide();
+		}
+		else
+		{ 
+			$('.fixed-img-begining').show();
+			$('.fixed-img-end').hide();
+		}
+	});
+	
+});
+
+$(document).ready(function(){
+	$('.input-field-common-plus').click(function () {
+		//$('.input-field-common-plus-ul').toggle();
+		$(this).parent().find(".input-field-common-plus-ul").toggle();
+	});
+	 
+})
+

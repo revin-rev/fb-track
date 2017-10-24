@@ -810,7 +810,6 @@ color:#FFFFFF;
 .add-video-for-video-btn:hover{background: #ddd}
 #common-create-slideshow-popup .slideshow-left-sec #slideshow-settings .dropdown-menu{z-index: 9999999}
 #common-create-slideshow-popup .slideshow-right-sec i{ margin-right: 10px; }
-<<<<<<< HEAD
 .selected-audio {background: #f2f2f2; border: 1px solid #cccccc; border-radius: 3px; float: left; margin-right: 3%; padding: 5px; width: 76%; }
 .selected-audio span {color: #333333; float: left; font-size: 12px; font-weight: bold; width: 90%; } 
 .selected-audio span i {color: #999999; margin-right: 5px; } 
@@ -864,21 +863,33 @@ color:#FFFFFF;
 .add-photo-to-status .left {float: left; width: 20%; } 
 .add-photo-to-status .right {float: left; width: 80%; }
 .add-photo-to-status  input {cursor: pointer; height: 100%; opacity: 0; position: absolute; top: 0; width: 98%; }
-
-
-
-
-
-
-
-=======
 .cross-existing-camp{}
 .using-existing-camp-input .cross-existing-camp-icon{ display: none; }
 .using-existing-camp-input.cross-existing-camp .cross-existing-camp-icon{ display: block;position: absolute; top: 10px; right: 25px; cursor: pointer; }
-.cross-existing-camp .custom-auto-complete-data.custom-dropdown {
-    display: none !important;
-}
->>>>>>> 2d7bb30a945c2699bc61bbe07cf98f786c4da82d
+.cross-existing-camp .custom-auto-complete-data.custom-dropdown {display: none !important;}
+.fixed-img-begining input, .fixed-img-begining label{ float: left; }
+.fixed-img-begining{ float: left;width: 100% }
+.fixed-img-begining label{ float: left;width: 100%;color: #666}
+.fixed-img-end{ display: none; }
+.product-set .custom-autocomplete-select{ float: left;width: auto; margin-right:10px; }
+#crt-ad .fixed-img-begining .custom-autocomplete-select .dropdown-menu{ padding: 0 }
+#crt-ad .fixed-img-begining .custom-autocomplete-select .dropdown-menu > .active > a, #crt-ad .fixed-img-begining .dropdown-menu > .active > a:hover, #crt-ad .fixed-img-begining .dropdown-menu > .active > a:focus
+{ background-color: #F6F7F9; color: #333 }
+.light-grey-btn.product-set-plus-btn {font-size: 15px; font-weight: bold; height: 25px; }
+.holder{ position: relative;float: left;width: 100%}
+.holder .input-field-common-plus{ position: absolute;top:3px; right: 5px; }
+.holder ul {background: #ffffff;box-shadow: 0 2px 2px #cccccc; float: left; padding: 0 !important; position: absolute; right: -83px; top: 31px; width: 120px; z-index: 999; display: none;} 
+.holder li {cursor: pointer; margin: 0 !important; padding: 2px 10px; }
+.holder li:hover{background-color: #4267B2; color: #fff;}
+.selected-tags span {background: #c6c9cc ; font-size: 12px; padding: 3px 5px; }
+.holder input[type="text"], .holder textarea{ position: relative; }
+.selected-tags {left: 5px; position: absolute; top: 5px;width: 88%}
+
+
+
+
+
+
 
 @media only screen and (max-width:1368px) {
 	.four-tabs.tab .acc-data-tabs .nav-tabs.four-sub-tabs li {width: 263px;}

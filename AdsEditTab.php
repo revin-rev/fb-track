@@ -1008,6 +1008,153 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="dynamic-template-radio-opt">
+                                        <div class="common-row">
+                                             <input type="checkbox" name="" id="fixed-img-begining" class="col-md-1"><label for="fixed-img-begining" class="col-md-10" style="padding: 0; margin: 0">Add a card with a fixed image, video or slideshow at the beginning</label>
+                                        </div>
+                                         <div class="common-row">    
+                                            <input type="checkbox" name="" id="fixed-img-end" class="col-md-1"><label for="fixed-img-end" class="col-md-10" style="padding: 0">Add a card at the end with your Page profile picture</label>
+                                        </div>
+                                        <div class="fixed-img-begining">
+                                            <div class="common-row">
+                                                <label>Product Catalog </label>
+                                                <div class="custom-autocomplete-select">    
+                                                    <select class="selectpicker show-tick" data-live-search="true" data-size="3">   
+                                                        <option data-tokens="ketchup mustard">Columns</option> 
+                                                        <option data-tokens="mustard">Lorem</option>     
+                                                        <option data-tokens="mustard">Lorem</option>     
+                                                        <option data-tokens="frosting">Dummy text printing</option>
+                                                        <option data-tokens="frosting">Dummy text printing</option>
+                                                    </select>                                                   
+                                                </div>
+                                            </div>
+                                            <div class="common-row product-set">
+                                                <label>Product Set </label><br>
+                                                <div class="custom-autocomplete-select">    
+                                                    <select class="selectpicker show-tick" data-live-search="true" data-size="3">   
+                                                        <option data-tokens="ketchup mustard">Columns</option> 
+                                                        <option data-tokens="mustard">Lorem</option>     
+                                                        <option data-tokens="mustard">Lorem</option>     
+                                                        <option data-tokens="frosting">Dummy text printing</option>
+                                                        <option data-tokens="frosting">Dummy text printing</option>
+                                                    </select>                                                   
+                                                </div>
+                                                <button class="light-grey-btn product-set-plus-btn">+</button>
+                                            </div>
+                                            <div class="common-row common-input-with-plus-inside">
+                                                <label>Text</label>
+                                                <div class="holder">
+                                                    <textarea class="form-control"></textarea>
+                                                    <button class="light-grey-btn input-field-common-plus">+</button>
+                                                    <ul class="input-field-common-plus-ul">
+                                                        <li>Name</li>
+                                                        <li>Brand</li>
+                                                        <li>Description</li>
+                                                        <li>Name</li>
+                                                        <li>Brand</li>
+                                                        <li>Description</li>
+                                                        <li>Name</li>
+                                                        <li>Brand</li>
+                                                        <li>Description</li>
+                                                    </ul>
+                                                    <div class="selected-tags">
+                                                        <span>Name <a href="#"><i class="fa fa-remove"></i></a></span> <span>Brand <a href="#"><i class="fa fa-remove"></i></a></span> <span>Description <a href="#"><i class="fa fa-remove"></i></a></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="common-row common-input-with-plus-inside">
+                                                <label>Headline</label>
+                                                <div class="holder">
+                                                    <textarea class="form-control" row="1"></textarea>
+                                                    <button class="light-grey-btn input-field-common-plus">+</button>
+                                                    <ul class="input-field-common-plus-ul">
+                                                        <li>Name</li>
+                                                        <li>Brand</li>
+                                                        <li>Description</li>
+                                                        <li>Name</li>
+                                                        <li>Brand</li>
+                                                        <li>Description</li>
+                                                        <li>Name</li>
+                                                        <li>Brand</li>
+                                                        <li>Description</li>
+                                                    </ul>
+                                                </div>    
+                                            </div>
+                                            <div class="common-row common-input-with-plus-inside">
+                                                <label>News Feed Link Description</label>
+                                                <div class="holder">
+                                                    <textarea class="form-control" row="1"></textarea>
+                                                    <button class="light-grey-btn input-field-common-plus">+</button>
+                                                    <ul class="input-field-common-plus-ul">
+                                                        <li>Name</li>
+                                                        <li>Brand</li>
+                                                        <li>Description</li>
+                                                        <li>Name</li>
+                                                        <li>Brand</li>
+                                                        <li>Description</li>
+                                                        <li>Name</li>
+                                                        <li>Brand</li>
+                                                        <li>Description</li>
+                                                    </ul>
+                                                </div>    
+                                            </div>
+                                            <div class="common-row">
+                                                <label>See More URL</label>
+                                                <input type="text" name="" class="form-control">
+                                            </div>
+                                            <div class="common-row">
+                                                <label>See More Display Link (optional)</label>
+                                                <input type="text" name="" class="form-control">
+                                            </div>
+                                            <div class="common-row product-set">
+                                                <label>Call To Action</label><br>
+                                                <div class="custom-autocomplete-select">    
+                                                    <select class="selectpicker show-tick">   
+                                                        <option data-tokens="ketchup mustard">Columns</option> 
+                                                        <option data-tokens="mustard">Lorem</option>     
+                                                        <option data-tokens="mustard">Lorem</option>     
+                                                        <option data-tokens="frosting">Dummy text printing</option>
+                                                        <option data-tokens="frosting">Dummy text printing</option>
+                                                    </select>                                                   
+                                                </div>
+                                                
+                                            </div>
+                                            <div class="common-row common-input-with-plus-inside">
+                                                <label>Deep link to website </label>
+                                                <div class="holder">
+                                                   <textarea class="form-control" row="1"></textarea>
+                                                    <button class="light-grey-btn input-field-common-plus">+</button>
+                                                    <ul class="input-field-common-plus-ul">
+                                                        <li>Name</li>
+                                                        <li>Brand</li>
+                                                        <li>Description</li>
+                                                        <li>Name</li>
+                                                        <li>Brand</li>
+                                                        <li>Description</li>
+                                                        <li>Name</li>
+                                                        <li>Brand</li>
+                                                        <li>Description</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="common-row product-set">
+                                                <label>Mobile app</label><br>
+                                                <div class="custom-autocomplete-select">    
+                                                    <select class="selectpicker show-tick">   
+                                                        <option data-tokens="ketchup mustard">Columns</option> 
+                                                        <option data-tokens="mustard">Lorem</option>     
+                                                        <option data-tokens="mustard">Lorem</option>     
+                                                        <option data-tokens="frosting">Dummy text printing</option>
+                                                        <option data-tokens="frosting">Dummy text printing</option>
+                                                    </select>                                                   
+                                                </div>
+                                               
+                                            </div>
+                                        </div>
+                                         <div class="fixed-img-end">
+                                           2
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <!-- two tabs second radio button content -->
