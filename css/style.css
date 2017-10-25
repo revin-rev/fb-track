@@ -884,8 +884,9 @@ color:#FFFFFF;
 .selected-tags span {background: #c6c9cc ; font-size: 12px; padding: 3px 5px; }
 .holder input[type="text"], .holder textarea{ position: relative; }
 .selected-tags {left: 5px; position: absolute; top: 5px;width: 88%}
-
-
+#duplicate-adsets .custom-label { display: inline-block; float: left; margin-right: 15px; line-height: 32px; }
+#duplicate-adsets hr { border-top: 2px solid #eee; }
+#duplicate-adsets .marginAll { margin-left: 30px; margin-top:10px; }
 
 
 

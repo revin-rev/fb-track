@@ -9,9 +9,9 @@ if(isset($_SESSION['user'])) :
 			$ch = curl_init();
 			$url = "https://graph.facebook.com/v2.10/".$_REQUEST['act']."/campaigns";
 			$fields = array(
-				'name' => $_REQUEST['campaign_name'],
-				'objective' =>  'LINK_CLICKS',
-				'access_token' => $_REQUEST['code']
+				'name' 			=> 	$_REQUEST['campaign_name'],
+				'objective' 	=>  $_REQUEST['objective'],
+				'access_token' 	=> 	$_REQUEST['code']
 			);
 			curl_setopt($ch, CURLOPT_URL, $url);
 			curl_setopt($ch, CURLOPT_POST, true);
@@ -203,6 +203,92 @@ if(isset($_SESSION['user'])) :
 	}
 	/*duplicates_campaigns*/
 
+	/* duplicates adsets*/
+	if(isset($_REQUEST['duplicates_adsets_saved'])) {
+		
+		$adsets_id = json_decode($_REQUEST['duplicate_adsets_id'], true);
+		foreach ($adsets_id as $adset) {
+			$camp_style = $_REQUEST['campaign_for_adset'];
+			/*create new campaing first if New campaign set*/
+			if($camp_style == 'New campaign') {
+				$ch = curl_init();
+				$url = "https://graph.facebook.com/v2.10/".$_REQUEST['act']."/campaigns";
+				$fields = array(
+					'name' 			=> 	$_REQUEST['campaign_name'],
+					'objective' 	=>  $_REQUEST['objective'],
+					'access_token' 	=> 	$_REQUEST['code']
+				);
+				curl_setopt($ch, CURLOPT_URL, $url);
+				curl_setopt($ch, CURLOPT_POST, true);
+				curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+				curl_setopt($ch, CURLOPT_POSTFIELDS, $fields);
+				$result = curl_exec($ch);
+				curl_close($ch);
+				$newCampData = json_decode($result, true);
+				$new_camp_id = $newCampData['id'];
+				
+			}
+			/*create new campaing first*/
+
+			/*get seleceted adsets data*/
+			$cSession = curl_init(); 
+			curl_setopt($cSession,CURLOPT_URL,"https://graph.facebook.com/v2.10/".$adset."/?access_token=".$_REQUEST['code']."&fields=id,name,campaign_id,status,delivery_info,billing_event,targeting,bid_amount,optimization_goal,lifetime_budget,daily_budget,start_time,end_time,objective_for_results,objective_for_cost,targeting_age_min,targeting_age_max,targeting_genders,targeting_countries,activities{actor_name,event_time,application_name,translated_event_type,extra_data},insights{reach,frequency,impressions,unique_clicks,spend}");
+			curl_setopt($cSession,CURLOPT_RETURNTRANSFER,true);
+			curl_setopt($cSession,CURLOPT_HEADER, false); 
+			$result=curl_exec($cSession);
+			curl_close($cSession);
+			$adsets_data = json_decode($result, true);
+			if($adsets_data['optimization_goal'] == '') {
+				$optimization_goal = 'NONE';
+			} else {
+				$optimization_goal = $adsets_data['optimization_goal'];
+			}
+			/*get seleceted adsets data*/
+
+			if($camp_style == 'Original campaign') {
+				$new_camp_id = $adsets_data['campaign_id'];
+			} 
+			if($camp_style == 'Existing campaign') {
+				$new_camp_id = $_REQUEST['already_campaign_id'];	
+			}
+			/*made duplicatte copy of adsets in camapaigns*/
+			$total_copies = $_REQUEST['duplicate_adsets_count'];
+			for ($i=0; $i<$total_copies; $i++) {
+				$ch = curl_init();
+				$url = "https://graph.facebook.com/v2.10/".$_REQUEST['act']."/adsets";
+				$fields = array(
+					'access_token' 				=> 	$_REQUEST['code'],
+					'campaign_id'  				=> 	$new_camp_id,
+					'name' 						=> 	$adsets_data['name'],
+					'billing_event' 			=>  $adsets_data['billing_event'],
+					'targeting'    				=> 	json_encode($adsets_data['targeting']),
+					'bid_amount'				=> 	$adsets_data['bid_amount'],
+					'daily_budget'				=> 	$adsets_data['daily_budget'],
+					'status'					=>  $adsets_data['status'],
+					'delivery_info'				=>  json_encode($adsets_datas['delivery_info']),
+					'lifetime_budget'			=>  $adsets_data['lifetime_budget'],
+					'start_time'				=>  $adsets_data['start_time'],
+					'objective_for_results'		=>  $adsets_data['objective_for_results'],
+					'objective_for_cost'		=>  $adsets_data['objective_for_cost'],
+					'activities'				=>  json_encode($adsets_data['activities']),
+					'optimization_goal'			=>  $optimization_goal
+				);
+				curl_setopt($ch, CURLOPT_URL, $url);
+				curl_setopt($ch, CURLOPT_POST, true);
+				curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+				curl_setopt($ch, CURLOPT_POSTFIELDS, $fields);
+				$result = curl_exec($ch);
+				curl_close($ch);
+				$new_adsets = json_decode($result, true);
+			}
+			/*made duplicatte copy of adsets in camapaigns*/
+
+		}
+	}
+	/* duplicates adsets*/
+
 	/*get all accounts of selected user*/
 	$cSession = curl_init(); 
 	curl_setopt($cSession,CURLOPT_URL,"https://graph.facebook.com/v2.10/me/adaccounts?fields=account_status,name,account_id,business&access_token=".$_REQUEST['code']);
@@ -215,12 +301,15 @@ if(isset($_SESSION['user'])) :
 	/*get all accounts of selected user*/
 	/*get camapagins, adsets and ads*/
 	$cSession = curl_init(); 
-	curl_setopt($cSession,CURLOPT_URL,"https://graph.facebook.com/v2.10/".$_REQUEST['act']."/campaigns?access_token=".$_REQUEST['code']."&fields=name,buying_type,objective,id,objective_for_results,objective_for_cost,status,delivery_info,start_time,stop_time,insights{reach,impressions,frequency,unique_clicks,spend},adsets{id,name,status,delivery_info,billing_event,targeting,bid_amount,lifetime_budget,daily_budget,start_time,end_time,objective_for_results,objective_for_cost,targeting_age_min,targeting_age_max,targeting_genders,targeting_countries,activities{actor_name,event_time,application_name,translated_event_type,extra_data},insights{reach,frequency,impressions,unique_clicks,spend}},account_id,ads{name,id,delivery_info,objective_for_results,objective_for_cost,status,insights{frequency,impressions,spend,unique_clicks,total_unique_actions,relevance_score,reach}}");
+	curl_setopt($cSession,CURLOPT_URL,"https://graph.facebook.com/v2.10/".$_REQUEST['act']."/campaigns?access_token=".$_REQUEST['code']."&fields=name,account_id,buying_type,objective,id,objective_for_results,objective_for_cost,status,delivery_info,start_time,stop_time,insights{reach,impressions,frequency,unique_clicks,spend},adsets{id,name,status,delivery_info,billing_event,targeting,bid_amount,lifetime_budget,daily_budget,start_time,end_time,objective_for_results,objective_for_cost,targeting_age_min,targeting_age_max,targeting_genders,targeting_countries,activities{actor_name,event_time,application_name,translated_event_type,extra_data},insights{reach,frequency,impressions,unique_clicks,spend}},ads{name,id,delivery_info,objective_for_results,objective_for_cost,status,insights{frequency,impressions,spend,unique_clicks,total_unique_actions,relevance_score,reach}}");
 	curl_setopt($cSession,CURLOPT_RETURNTRANSFER,true);
 	curl_setopt($cSession,CURLOPT_HEADER, false); 
 	$result=curl_exec($cSession);
 	curl_close($cSession);
 	$camapaigns = json_decode($result, true);
+	/*echo "<pre>";
+	print_r($camapaigns);
+	echo "</pre>";*/
 	/*get camapagins, adsets and ads*/
 ?>
 <script type="text/javascript">

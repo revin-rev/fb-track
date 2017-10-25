@@ -157,7 +157,7 @@
             </div>
         </div>
         <div class="btn-and-caret-icon-dropdown disable-me" style="margin-left:10px">
-            <a href="#" class="create-camp-btn"><i class="fa fa-copy"></i> Duplicate</a>
+            <a class="create-camp-btn duplicate-adset-click" href="#duplicate-adsets" data-toggle="modal"><i class="fa fa-copy"></i> Duplicate</a>
             <div class="dropdown caret-icon-dropdown-with-btn">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border-left:0">
                     <span class="caret"></span>
@@ -429,7 +429,8 @@
             </tr>
         </thead>
         <tbody>
-            <?php foreach($camapaigns[ 'data'] as $campaign) : 
+            <?php 
+            foreach($camapaigns[ 'data'] as $campaign) : 
                 $total_adset+= count($campaign['adsets']['data']); 
                 if($campaign['adsets']['data']) :
                 foreach ($campaign['adsets']['data'] as $adsets) : 
@@ -544,3 +545,138 @@
   </div>
 </div>
 <!--delete camapigns -->
+<!-- duplicate adsets -->
+<div id="duplicate-adsets" class="modal fade duplicate-row-popup" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form class="form" method="post">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Duplicate Ad Set Into:</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <div id="original_camapaigns" class="marginAll">
+                            <input type="radio" name="campaign_for_adset" checked value="Original campaign"> Original campaign
+                        </div>
+                        <div id="already_all_camapaigns" class="marginAll">
+                            <input type="radio" name="campaign_for_adset" value="Existing campaign"> Existing campaign
+                            <div id="already_campaign" style="display: none; margin-top: 5px;">
+                                <input type="hidden" name="already_campaign_id" id="already_campaign_id">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="col-md-12 custom-auto-complete using-existing-camp-input">
+                                            <input type="text" id="already_campaign_name" placeholder="select a camapaign" readonly class="form-control">
+                                            <i class="fa fa-remove cross-existing-camp-icon"></i>
+                                            <div class="custom-auto-complete-data custom-dropdown" style="width: 94%">
+                                                <ul>
+                                                    <?php foreach ($camapaigns['data'] as $camapaign) :?>
+                                                        <li data-id="<?php echo $camapaign['id'];?>" data-name="<?php echo $camapaign['name']; ?>">
+                                                            <b><?php echo $camapaign['name']; ?></b>
+                                                            <p><?php echo $camapaign['id'];?> 
+                                                                <?php if($campaign['objective']) { ?><i class="fa fa-circle"></i> <?php echo $campaign['objective']; } ?> 
+                                                                <?php if($camapaign['buying_type']) { ?><i class="fa fa-circle"></i> <?php echo $camapaign['buying_type']; } ?>
+                                                            </p>
+                                                        </li>
+                                                    <?php endforeach;?>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div id="new_camapaigns" class="marginAll">
+                            <input type="radio" name="campaign_for_adset" value="New campaign"> New campaign
+                            <div id="new_camp" style="display: none; margin-top: 5px;"> 
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="col-md-12">
+                                            <input type="text" name="campaign_name" placeholder="Enter a campaign name" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row" style="margin-top: 10px;">
+                                    <div class="col-md-12">
+                                        <label class="col-md-4">
+                                            Buying Type
+                                        </label>
+                                        <div class="col-md-8">
+                                            <div class="custom-autocomplete-select">
+                                                <select class="selectpicker show-tick" name="buying_type">
+                                                    <option data-tokens="ketchup mustard">Auction</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row" style="margin-top: 10px;">
+                                    <input type="hidden" id="camp_objective" name="objective" value="LINK_CLICKS">
+                                    <div class="col-md-12">
+                                        <label class="col-md-4">
+                                            Campaign Objective
+                                        </label>
+                                        <div class="col-md-8">
+                                            <button class="light-grey-btn show-camp-obj-btn camp_obj_name"><img src="img/brand-awarns-icon.png">Traffic</button>
+                                            <div class="objective camp_objective">
+                                                <div class="objective-cat">
+                                                    <h5>Awareness</h5>
+                                                    <ul>
+                                                        <li data-value="BRAND_AWARENESS"><img src="img/brand-awarns-icon.png"> Brand awareness</li>
+                                                        <li data-value="REACH"><img src="img/brand-awarns-icon.png"> Reach</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="objective-cat">
+                                                    <h5>Consideration</h5>
+                                                    <ul>
+                                                        <li data-value="LINK_CLICKS"><img src="img/brand-awarns-icon.png"> Traffic</li>
+                                                        <li data-value="APP_INSTALLS"><img src="img/brand-awarns-icon.png"> App installs</li>
+                                                        <li data-value="VIDEO_VIEWS"><img src="img/brand-awarns-icon.png"> Video views</li>
+                                                        <li data-value="LEAD_GENERATION"><img src="img/brand-awarns-icon.png"> Lead generation</li>
+                                                        <li data-value="POST_ENGAGEMENT"><img src="img/brand-awarns-icon.png"> Post enagagement</li>
+                                                        <li data-value="PAGE_LIKES"><img src="img/brand-awarns-icon.png"> Page likes</li>
+                                                        <li data-value="EVENT_RESPONSES"><img src="img/brand-awarns-icon.png"> Event responses</li>
+                                                        <li data-value="LINK_CLICKS"><img src="img/brand-awarns-icon.png"> Messages</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="objective-cat">
+                                                    <h5>Conversion</h5>
+                                                    <ul>
+                                                        <li data-value="CONVERSIONS"><img src="img/brand-awarns-icon.png"> Conversions</li>
+                                                        <li data-value="PRODUCT_CATALOG_SALES"><img src="img/brand-awarns-icon.png"> Product catalog sales</li>
+                                                        <li data-value="LINK_CLICKS"><img src="img/brand-awarns-icon.png"> Store visits</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="form-group">
+                        <label for="email" class="custom-label">Number of copies of each ad set </label>
+                        <div class="input-group spinner">
+                            <input type="hidden" class="form-control" name="duplicate_adsets_id" id="duplicate_adsets_id">
+                            <input type="text" class="form-control" value="1" name="duplicate_adsets_count" min="1">
+                            <div class="input-group-btn-vertical">
+                                <button class="btn btn-default" type="button"><i class="fa fa-caret-up"></i></button>
+                                <button class="btn btn-default" type="button"><i class="fa fa-caret-down"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="light-grey-btn" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="blue-btn" name="duplicates_adsets_saved">Save to Draft</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+    <!-- duplicate adsets -->

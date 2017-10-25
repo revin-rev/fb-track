@@ -28,7 +28,7 @@
                                         </div>
                                         
                                         <div id="new_campaign">
-                                            <div class="row" id="new_campaign">
+                                            <div class="row">
                                                 <div class="col-md-12">
                                                     <label class="col-md-4">
                                                         Campaign Name
@@ -46,8 +46,8 @@
                                                     </label>
                                                     <div class="col-md-8">
                                                         <div class="custom-autocomplete-select">
-                                                            <select class="selectpicker show-tick">
-                                                                <option data-tokens="ketchup mustard" name="buying_type">Auction</option>
+                                                            <select class="selectpicker show-tick" name="buying_type">
+                                                                <option data-tokens="ketchup mustard" >Auction</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -55,7 +55,7 @@
                                             </div>
 
                                             <div class="row">
-                                                <input type="hidden" value="objective" id="camp_objective" value="LINK_CLICKS">
+                                                <input type="hidden" name="objective" id="camp_objective" value="LINK_CLICKS">
                                                 <div class="col-md-12">
                                                     <label class="col-md-4">
                                                         Campaign Objective
@@ -198,9 +198,8 @@
                     <span class="caret"></span>
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
+                    <a class="dropdown-item create-existing-campaign" href="#" data-toggle="modal" data-target="#create-camp-btn">Create Adset</a>
+                    <a class="dropdown-item create-existing-campaign" href="#" data-toggle="modal" data-target="#create-camp-btn">Create Ad</a>
                 </div>
             </div>
         </div>

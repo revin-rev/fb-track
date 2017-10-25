@@ -15,9 +15,6 @@ if (isset($_SESSION['user'])) :
 	$result=curl_exec($cSession);
 	curl_close($cSession);
 	$users = json_decode($result, true);
-/*echo "<pre>";
-print_r($users);
-echo "</pre>";die;*/
 ?>
 <div class="col-md-12 marginTop3">
 	<div class="col-md-12">
