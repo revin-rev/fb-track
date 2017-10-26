@@ -2,7 +2,7 @@
     <div class="left-fil1">
         <div class="btn-and-caret-icon-dropdown">
 
-            <a href="#" class="create-camp-btn" data-toggle="modal" data-target="#create-ad-btn">+ Create Ad</a>
+            <a href="#" class="create-camp-btn create-ad-popup" data-toggle="modal" data-target="#create-camp-btn">+ Create Ad</a>
 
             <!-- crate ad popup  -->
             <div id="create-ad-btn" class="modal fade common-three-tabs-popup" role="dialog">
@@ -151,9 +151,8 @@
                     <span class="caret"></span>
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
+                   <a class="dropdown-item create-existing-campaign create-camp-popup" href="#" data-toggle="modal" data-target="#create-camp-btn">Create Campaign</a>
+                    <a class="dropdown-item create-existing-campaign create-adset-popup" href="#" data-toggle="modal" data-target="#create-camp-btn">Create Adset</a>
                 </div>
             </div>
         </div>
@@ -171,7 +170,7 @@
             </div>
         </div>
         <div class="btn-and-caret-icon-dropdown disable-me" style="margin-left:10px">
-            <a href="#" class="create-camp-btn"><i class="fa fa-pencil"></i> Edit</a>
+            <a href="#" class="create-camp-btn edit-campaigns"><i class="fa fa-pencil"></i> Edit</a>
             <div class="dropdown caret-icon-dropdown-with-btn">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border-left:0">
                     <span class="caret"></span>
@@ -426,7 +425,6 @@
                 <th>Impressions <i class="fa fa-info-circle" aria-hidden="true"></i></th>
                 <th>Unique Link Clicks <i class="fa fa-info-circle" aria-hidden="true"></i></th>
                 <th>Button Clicks <i class="fa fa-info-circle" aria-hidden="true"></i></th>
-                <th class="more-plus"><a href="#">+</a></th>
             </tr>
         </thead>
         <tbody>
@@ -486,7 +484,6 @@
                 <td>
                     <?php if(isset($ad['insights'])){echo $ad[ 'insights'][ 'data'][0][ 'total_unique_actions'];}else{ echo '-';}?>
                 </td>
-                <td></td>
             </tr>
             <?php endforeach; endif; endforeach; ?>
             <?php if($total_adset> 0) : ?>
@@ -507,11 +504,10 @@
                 <td><?php if($total_freqency) { echo $total_freqency; } else { echo '—Per Person'; } ?></td>
                 <td><?php if($total_impression) { echo $total_impression; } else { echo '—Total'; } ?></td>
                 <td><?php if($total_unq_click) { echo $total_unq_click; } else { echo '—Total'; } ?></td>
-                <td></td>
             </tr>
             <?php else : ?>
             <tr>
-                <td colspan="16" align="center"><b>No Result Found</b>
+                <td colspan="15" align="center"><b>No Result Found</b>
                 </td>
             </tr>
             <?php endif; ?>

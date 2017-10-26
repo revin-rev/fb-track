@@ -1,4 +1,219 @@
+ <!-- craete camp popup  -->
+            <div id="create-camp-btn" class="modal fade common-three-tabs-popup" role="dialog">
+                <div class="modal-dialog">
 
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <form method="post">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Create Campaign</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="popup-left-form">
+                                    <div class="sec1">
+                                        <div class="row" style="margin-bottom:30px;">
+                                            <div class="col-md-12">
+                                                <div class="custom-autocomplete-select">
+                                                    <select class="selectpicker show-tick" id="choose_campaigns" name="choose_campaigns">
+                                                        <option  value="new">Create New Campaign</option>
+                                                        <option  value="existing">Use Existing Campaign</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div id="new_campaign">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label class="col-md-4">
+                                                        Campaign Name
+                                                    </label>
+                                                    <div class="col-md-8">
+                                                        <input type="text" name="campaign_name" placeholder="Enter a campaign name" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label class="col-md-4">
+                                                        Buying Type
+                                                    </label>
+                                                    <div class="col-md-8">
+                                                        <div class="custom-autocomplete-select">
+                                                            <select class="selectpicker show-tick" name="buying_type">
+                                                                <option data-tokens="ketchup mustard" >Auction</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <input type="hidden" name="objective" id="camp_objective" value="LINK_CLICKS">
+                                                <div class="col-md-12">
+                                                    <label class="col-md-4">
+                                                        Campaign Objective
+                                                    </label>
+                                                    <div class="col-md-8">
+                                                        <button class="light-grey-btn show-camp-obj-btn"><img src="img/brand-awarns-icon.png">Traffic</button>
+                                                        <div class="objective camp_objective">
+                                                            <div class="objective-cat">
+                                                                <h5>Awareness</h5>
+                                                                <ul>
+                                                                    <li data-value="BRAND_AWARENESS"><img src="img/brand-awarns-icon.png"> Brand awareness</li>
+                                                                    <li data-value="REACH"><img src="img/brand-awarns-icon.png"> Reach</li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="objective-cat">
+                                                                <h5>Consideration</h5>
+                                                                <ul>
+                                                                    <li data-value="LINK_CLICKS"><img src="img/brand-awarns-icon.png"> Traffic</li>
+                                                                    <li data-value="APP_INSTALLS"><img src="img/brand-awarns-icon.png"> App installs</li>
+                                                                    <li data-value="VIDEO_VIEWS"><img src="img/brand-awarns-icon.png"> Video views</li>
+                                                                    <li data-value="LEAD_GENERATION"><img src="img/brand-awarns-icon.png"> Lead generation</li>
+                                                                    <li data-value="POST_ENGAGEMENT"><img src="img/brand-awarns-icon.png"> Post enagagement</li>
+                                                                    <li data-value="PAGE_LIKES"><img src="img/brand-awarns-icon.png"> Page likes</li>
+                                                                    <li data-value="EVENT_RESPONSES"><img src="img/brand-awarns-icon.png"> Event responses</li>
+                                                                    <li data-value="LINK_CLICKS"><img src="img/brand-awarns-icon.png"> Messages</li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="objective-cat">
+                                                                <h5>Conversion</h5>
+                                                                <ul>
+                                                                    <li data-value="CONVERSIONS"><img src="img/brand-awarns-icon.png"> Conversions</li>
+                                                                    <li data-value="PRODUCT_CATALOG_SALES"><img src="img/brand-awarns-icon.png"> Product catalog sales</li>
+                                                                    <li data-value="LINK_CLICKS"><img src="img/brand-awarns-icon.png"> Store visits</li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div id="existing_campaign" style="display: none;">
+                                            <input type="hidden" name="exit_camapaign_id" id="exit_camapaign_id">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label class="col-md-4">
+                                                        Use Existing
+                                                    </label>
+                                                    <div class="col-md-8 custom-auto-complete using-existing-camp-input">
+                                                        <input type="text" id="exit_campaign_name" placeholder="choose camapaign" readonly class="form-control">
+                                                        <i class="fa fa-remove cross-existing-camp-icon"></i>
+                                                        <div class="custom-auto-complete-data custom-dropdown" style="width: 94%">
+                                                            <ul>
+                                                                <?php foreach ($camapaigns['data'] as $camapaign) :?>
+                                                                <li data-id="<?php echo $camapaign['id'];?>" data-name="<?php echo $camapaign['name']; ?>">
+                                                                    <b><?php echo $camapaign['name']; ?></b>
+                                                                    <p><?php echo $camapaign['id'];?> 
+                                                                        <?php if($camapaign['objective']) { ?><i class="fa fa-circle"></i> <?php echo $camapaign['objective']; } ?> 
+                                                                        <?php if($camapaign['buying_type']) { ?><i class="fa fa-circle"></i> <?php echo $camapaign['buying_type']; } ?>
+                                                                    </p>
+                                                                </li>
+                                                                <?php endforeach;?>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="sec1">
+                                        <div class="row" style="margin-bottom:30px;">
+                                            <div class="col-md-12">
+                                                <div class="custom-autocomplete-select">
+                                                    <select class="selectpicker show-tick" name="choose_adsets" id="choose_adsets">
+                                                        <option value="new" >Create New AdSet</option>
+                                                        <option  value="existing" disabled>Use Existing AdSet</option>
+                                                        <option value="skip" >Skip AdSet</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="new_adsets">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label class="col-md-4">
+                                                        Ad Set Name
+                                                    </label>
+                                                    <div class="col-md-8">
+                                                        <input type="text" name="adset_name" placeholder="Enter an ad set name" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="exist_adsets" style="display: none;">
+                                            <input type="hidden" name="exit_adset_id" id="exit_adset_id">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label class="col-md-4">
+                                                        Use Existing
+                                                    </label>
+                                                    <div class="col-md-8 custom-auto-complete using-existing-camp-input">
+                                                        <input type="text" id="exit_adset_name" placeholder="choose camapaign" readonly class="form-control">
+                                                        <i class="fa fa-remove cross-existing-camp-icon"></i>
+                                                        <div class="custom-auto-complete-data custom-dropdown" style="width: 94%">
+                                                            <ul>
+                                                                <?php foreach ($camapaigns['data'] as $camapaign) 
+                                                                    foreach($camapaign['adsets']['data'] as $adset) :?>
+                                                                <li data-id="<?php echo $adset['id'];?>" data-name="<?php echo $adset['name']; ?>">
+                                                                    <b><?php echo $adset['name']; ?></b>
+                                                                    <p><?php echo $adset['id'];?> 
+                                                                        <i class="fa fa-circle"></i> Campaign: <?php echo $camapaign['name'];?>
+                                                                    </p>
+                                                                </li>
+                                                                <?php endforeach;?>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="sec1">
+                                        <div class="row" style="margin-bottom:30px;">
+                                            <div class="col-md-12">
+                                                <div class="custom-autocomplete-select">
+                                                    <select class="selectpicker show-tick" name="choose_ads" id="choose_ads">
+                                                        <option value="new">Create New Ad</option>
+                                                        <option value="skip">Skip Ad</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row" id="ad_input_box">
+                                            <div class="col-md-12">
+                                                <label class="col-md-4">
+                                                    Ad Name
+                                                </label>
+                                                <div class="col-md-8">
+                                                    <input type="text" name="ad_name" placeholder="Enter an ad name" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="sec1">
+                                        <p class="no-of-camp">Creating 1 campaign, 1 ad set and 1 ad</p>
+                                    </div>
+                                </div>
+                                <!--  <div class="popup-right-form col-md-4">sds</div> -->
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="light-grey-btn" data-dismiss="modal" style="float: left;">Cancel</button>
+                                <button class="blue-btn" type="submit" name="camp_save_draft">Save to Draft</button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+            <!-- craete camp popup ends  -->
 <!-- common create slide show popup -->
 <div id="common-create-slideshow-popup" class="modal fade" role="dialog">
   <div class="modal-dialog">
