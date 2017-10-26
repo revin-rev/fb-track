@@ -45,37 +45,83 @@ if(isset($_SESSION['user'])) :
 			} else {
 				$adset_name = 'Untitled AdSet';
 			}
-			$ch = curl_init();
-			$url = "https://graph.facebook.com/v2.10/".$_REQUEST['act']."/adsets";
-			$fields = array(
-				'name' 				=> 	$adset_name,
-				'billing_event' 	=>  'IMPRESSIONS',
-				'access_token' 		=> 	$_REQUEST['code'],
-				'campaign_id'  		=> 	$camp['id'],
-				'targeting'    		=> 	'{"geo_locations":{"countries":["US"]}}',
-				'bid_amount'		=> 	2,
-				'daily_budget'		=> 	1000
-			);
-			curl_setopt($ch, CURLOPT_URL, $url);
-			curl_setopt($ch, CURLOPT_POST, true);
-			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-			curl_setopt($ch, CURLOPT_POSTFIELDS, $fields);
-			$result = curl_exec($ch);
-			curl_close($ch);
-			$adsets = json_decode($result, true);
-			if($_REQUEST['choose_campaigns'] == 'existing') : ?>
-			<script type="text/javascript">
-				jQuery(document).ready(function(){
-					setTimeout(function() {
-						jQuery('a[href="#ad-sets"]').click();
-						var adset_id = '<?php echo $adsets['id']?>';
-						jQuery("#adset_table tr#"+adset_id+' .adsets_checkbox').prop('checked',true);
-						jQuery("#adset_table tr#"+adset_id+' .edit-charts').click();
-					},500);
-				});
-			</script>
-			<?php endif;
+
+			if($_REQUEST['choose_adsets'] == 'new') {
+
+				$ch = curl_init();
+				$url = "https://graph.facebook.com/v2.10/".$_REQUEST['act']."/adsets";
+				$fields = array(
+					'name' 				=> 	$adset_name,
+					'billing_event' 	=>  'IMPRESSIONS',
+					'access_token' 		=> 	$_REQUEST['code'],
+					'campaign_id'  		=> 	$camp['id'],
+					'targeting'    		=> 	'{"geo_locations":{"countries":["US"]}}',
+					'bid_amount'		=> 	2,
+					'daily_budget'		=> 	1000
+				);
+				curl_setopt($ch, CURLOPT_URL, $url);
+				curl_setopt($ch, CURLOPT_POST, true);
+				curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+				curl_setopt($ch, CURLOPT_POSTFIELDS, $fields);
+				$result = curl_exec($ch);
+				curl_close($ch);
+				$adsets = json_decode($result, true);
+				if($_REQUEST['choose_campaigns'] == 'existing') : ?>
+				<script type="text/javascript">
+					jQuery(document).ready(function(){
+						setTimeout(function() {
+							jQuery('a[href="#ad-sets"]').click();
+							var adset_id = '<?php echo $adsets['id']?>';
+							jQuery("#adset_table tr#"+adset_id+' .adsets_checkbox').prop('checked',true);
+							jQuery("#adset_table tr#"+adset_id+' .edit-charts').click();
+						},500);
+					});
+				</script>
+				<?php 
+				endif;
+			}
+			if($_REQUEST['choose_adsets'] == 'existing') {
+				$cSession = curl_init(); 
+				curl_setopt($cSession,CURLOPT_URL,"https://graph.facebook.com/v2.10/".$_REQUEST['exit_adset_id']."/?access_token=".$_REQUEST['code']."&fields=id,name,campaign_id,status,delivery_info,billing_event,targeting,bid_amount,optimization_goal,lifetime_budget,daily_budget,start_time,end_time,objective_for_results,objective_for_cost,targeting_age_min,targeting_age_max,targeting_genders,targeting_countries,activities{actor_name,event_time,application_name,translated_event_type,extra_data},insights{reach,frequency,impressions,unique_clicks,spend}");
+				curl_setopt($cSession,CURLOPT_RETURNTRANSFER,true);
+				curl_setopt($cSession,CURLOPT_HEADER, false); 
+				$result=curl_exec($cSession);
+				curl_close($cSession);
+				$adsets_data = json_decode($result, true);
+				if($adsets_data['optimization_goal'] == '') {
+					$optimization_goal = 'NONE';
+				} else {
+					$optimization_goal = $adsets_data['optimization_goal'];
+				}
+				$ch = curl_init();
+				$url = "https://graph.facebook.com/v2.10/".$_REQUEST['act']."/adsets";
+				$fields = array(
+					'access_token' 				=> 	$_REQUEST['code'],
+					'campaign_id'  				=> 	$camp['id'],
+					'name' 						=> 	$adsets_data['name'],
+					'billing_event' 			=>  $adsets_data['billing_event'],
+					'targeting'    				=> 	json_encode($adsets_data['targeting']),
+					'bid_amount'				=> 	$adsets_data['bid_amount'],
+					'daily_budget'				=> 	$adsets_data['daily_budget'],
+					'status'					=>  $adsets_data['status'],
+					'delivery_info'				=>  json_encode($adsets_datas['delivery_info']),
+					'lifetime_budget'			=>  $adsets_data['lifetime_budget'],
+					'start_time'				=>  $adsets_data['start_time'],
+					'objective_for_results'		=>  $adsets_data['objective_for_results'],
+					'objective_for_cost'		=>  $adsets_data['objective_for_cost'],
+					'activities'				=>  json_encode($adsets_data['activities']),
+					'optimization_goal'			=>  $optimization_goal
+				);
+				curl_setopt($ch, CURLOPT_URL, $url);
+				curl_setopt($ch, CURLOPT_POST, true);
+				curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+				curl_setopt($ch, CURLOPT_POSTFIELDS, $fields);
+				$result = curl_exec($ch);
+				curl_close($ch);
+				$new_adsets = json_decode($result, true);
+			}
 			/*create a adset inside created campaign*/
 		}
 	}
@@ -361,7 +407,7 @@ if(isset($_SESSION['user'])) :
  <script type="text/javascript">
  $(document).ready(function() {
 	 $('.custom-auto-complete').click(function () {
-         $('.custom-auto-complete-data').toggle();
+         $(this).find('.custom-auto-complete-data').toggle();
          
     });
 });

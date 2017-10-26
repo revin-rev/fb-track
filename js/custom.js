@@ -64,6 +64,22 @@ jQuery(document).ready(function(){
 	});
 	/*choose campaign state new or existing*/
 
+	/*choose exist adsets*/
+	jQuery('#exist_adsets ul>li').click(function() {
+		jQuery('#exit_adset_name').val(jQuery(this).data('name'));
+		jQuery('#exit_adset_name').parent().addClass('cross-existing-camp');
+		jQuery('#exit_adset_name').attr('readonly',true);
+		jQuery('#exit_adset_id').val(jQuery(this).data('id'));
+	});
+
+	jQuery('#exist_adsets .cross-existing-camp-icon').click(function() {
+		jQuery('#exit_adset_name').parent().removeClass('cross-existing-camp');
+		jQuery('#exit_adset_name').val('');
+		jQuery('#exit_adset_id').val('');
+		jQuery('#exit_adset_name').attr('readonly',false);
+	});
+	/*choose exist adsets*/
+
 	/*duplicate campaigns*/
 	jQuery('.duplicate-campaign').click(function (){
 		var array = [];
@@ -121,6 +137,41 @@ jQuery(document).ready(function(){
 		jQuery('#already_campaign_name').attr('readonly',false);
 	});
 	/* duplicate adsets popup*/
+
+	jQuery('.create-adset-popup').click(function(){
+		jQuery('#choose_campaigns option:eq(1)').prop('selected',true);
+		jQuery("#choose_campaigns").selectpicker("refresh");
+		jQuery('#new_campaign').hide();
+		jQuery('#existing_campaign').show();
+		jQuery('#ad_input_box').hide();
+		jQuery('#choose_ads option[value="skip"]').prop('selected',true);
+		jQuery("#choose_ads").selectpicker("refresh");
+	});
+
+	jQuery('.create-ad-popup').click(function(){
+		jQuery('#choose_campaigns option[value="existing"]').prop('selected',true);
+		jQuery("#choose_campaigns").selectpicker("refresh");
+		jQuery('#new_campaign, #new_adsets').hide();
+		jQuery('#existing_campaign, #exist_adsets').show();
+		jQuery('#choose_adsets option[value="existing"]').prop('disabled', false);
+		jQuery('#choose_adsets option[value="skip"], #choose_ads option[value="skip"]').prop('disabled', true);
+		jQuery('#choose_adsets option[value="existing"]').prop('selected',true);
+		jQuery("#choose_adsets").selectpicker("refresh");
+		jQuery('#choose_ads option[value="new"]').prop('selected',true);
+		jQuery("#choose_ads").selectpicker("refresh");
+		jQuery('#ad_input_box').show();
+	});
+
+	jQuery('.create-camp-popup').click(function() {
+		jQuery('#choose_campaigns option[value="new"]').prop('selected',true);
+		jQuery("#choose_campaigns").selectpicker("refresh");
+		jQuery('#new_campaign, #new_adsets, #ad_input_box').show();
+		jQuery('#existing_campaign, #exist_adsets').hide();
+		jQuery('#choose_adsets option[value="existing"]').prop('disabled', true);
+		jQuery('#choose_adsets option[value="new"], #choose_ads option[value="new"]').prop('selected', true);
+		jQuery("#choose_adsets").selectpicker("refresh");
+		jQuery("#choose_ads").selectpicker("refresh");
+	});
 
 });
 
@@ -754,6 +805,10 @@ $(document).ready(function(){
 		}
 		$('a[href="'+href_id+'"]').click();
 		
+	});
+
+	$('.edit-campaigns').click(function() {
+		$('a[href="#edit-tab"]').click();
 	});
 });
 
