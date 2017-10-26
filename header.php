@@ -15,8 +15,10 @@ if($db->connect_errno){
   <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="css/daterangepicker.css" />
   <link rel="stylesheet" type="text/css" href="css/bootstrap-select.min.css" />
-  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/owl.carousel.min.css">
+  <link rel="stylesheet" type="text/css" href="css/owl.theme.default.min.css">
   <link rel="stylesheet" href="css/custom.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
   <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
   <!-- Include Date Range Picker -->
@@ -31,5 +33,6 @@ if($db->connect_errno){
   <script type="text/javascript" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
   <script type="text/javascript" src="js/daterangepicker.js"></script>
+  <script type="text/javascript" src="js/owl.carousel.js"></script>
 </head>
 <body>

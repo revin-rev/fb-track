@@ -1039,7 +1039,152 @@
                                                         <option data-tokens="frosting">Dummy text printing</option>
                                                     </select>                                                   
                                                 </div>
-                                                <button class="light-grey-btn product-set-plus-btn">+</button>
+                                                <button class="light-grey-btn product-set-plus-btn" data-target="#product-set-plus-btn" data-toggle="modal">+</button>
+<!-- product set plus popup -->
+<div id="product-set-plus-btn" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Create Product Set - Facebook catalog</h4>
+      </div>
+      <div class="modal-body">
+            <div class="common-row">
+                <label style="font-weight: normal;">Create a product set using filters to better control which products appear in your ads.</label>
+                <input type="text" name="" class="form-control" placeholder="Name">
+            </div>
+            <div class="common-row match-all-or-single">
+                <label>Match items for </label>
+                <div class="custom-autocomplete-select">                                                             
+                    <select class="selectpicker show-tick" data-size="3">    
+                         <option data-tokens="ketchup mustard">All</option> 
+                         <option data-tokens="mustard">At leat one</option>     
+                    </select>                                                   
+                </div>
+                <label>of the following rules:</label>
+            </div>
+            <div class="common-row add-another-row">
+                <label>Add another </label>
+               <div class="dropdown" style="display: inline-block;">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Select <i class="fa fa-caret-down"></i>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li><a href="#">Category</a></li>
+                        <li><a href="#">Product Type</a></li>
+                        <li><a href="#">Brand</a></li>
+                        <li><a href="#">Price</a></li>
+                        <li><a href="#">Current Price</a></li>
+                        <li><a href="#">Product</a></li>
+                        <li><a href="#">Retailer Product Gropu ID</a></li>
+                        <li><a href="#">Gender</a></li>
+                        <li><a href="#">Condition</a></li>
+                        <li><a href="#">Size</a></li>
+                        <li><a href="#">Age Group</a></li>
+                        <li><a href="#">Color</a></li>
+                        <li><a href="#">Material</a></li>
+                        <li><a href="#">Pattern</a></li>
+                        <li><a href="#">Custom Label 0</a></li>
+                        <li><a href="#">Custom Label 1</a></li>
+                        <li><a href="#">Custom Label 2</a></li>
+                        <li><a href="#">Custom Label 3</a></li>
+                        <li><a href="#">Custom Label 4</a></li>
+                        <li><a href="#">Availability</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="total-products-carousel">
+            
+                   <section id="demos">
+      <div class="row">
+        <div class="large-12 columns">
+          <div class="owl-carousel owl-theme">
+            <div class="item" style="width:200px">
+                <span class="crsl-img"><img src="../img/safe_image.png"></span>
+                <h1>Lorem ipsum text</h1>
+                <span>$42.00</span>
+            </div>
+             <div class="item" style="width:200px">
+                <span class="crsl-img"><img src="../img/safe_image.png"></span>
+                <h1>Lorem ipsum text</h1>
+                <span>$42.00</span>
+            </div>
+             <div class="item" style="width:200px">
+                <span class="crsl-img"><img src="../img/safe_image.png"></span>
+                <h1>Lorem ipsum text</h1>
+                <span>$42.00</span>
+            </div>
+              <div class="item" style="width:200px">
+                <span class="crsl-img"><img src="../img/safe_image.png"></span>
+                <h1>Lorem ipsum text</h1>
+                <span>$42.00</span>
+            </div>
+             <div class="item" style="width:200px">
+                <span class="crsl-img"><img src="../img/safe_image.png"></span>
+                <h1>Lorem ipsum text</h1>
+                <span>$42.00</span>
+            </div>
+             <div class="item" style="width:200px">
+                <span class="crsl-img"><img src="../img/safe_image.png"></span>
+                <h1>Lorem ipsum text</h1>
+                <span>$42.00</span>
+            </div>
+             <div class="item" style="width:200px">
+                <span class="crsl-img"><img src="../img/safe_image.png"></span>
+                <h1>Lorem ipsum text</h1>
+                <span>$42.00</span>
+            </div>
+              <div class="item" style="width:200px">
+                <span class="crsl-img"><img src="../img/safe_image.png"></span>
+                <h1>Lorem ipsum text</h1>
+                <span>$42.00</span>
+            </div>
+             <div class="item" style="width:200px">
+                <span class="crsl-img"><img src="../img/safe_image.png"></span>
+                <h1>Lorem ipsum text</h1>
+                <span>$42.00</span>
+            </div>
+             <div class="item" style="width:200px">
+                <span class="crsl-img"><img src="../img/safe_image.png"></span>
+                <h1>Lorem ipsum text</h1>
+                <span>$42.00</span>
+            </div>
+             <div class="item" style="width:200px">
+                <span class="crsl-img"><img src="../img/safe_image.png"></span>
+                <h1>Lorem ipsum text</h1>
+                <span>$42.00</span>
+            </div>
+              <div class="item" style="width:200px">
+                <span class="crsl-img"><img src="../img/safe_image.png"></span>
+                <h1>Lorem ipsum text</h1>
+                <span>$42.00</span>
+            </div>
+          </div>
+   
+          </div>
+         
+        </div>
+      </div>
+    </section>
+
+            </div>
+        <div class="modal-footer">
+        <button type="button" class="light-grey-btn" data-dismiss="modal">Cancel</button>
+        <button type="button" class="blue-btn" data-dismiss="modal">Create</button>
+      </div>
+      </div>
+      
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+
                                             </div>
                                             <div class="common-row common-input-with-plus-inside">
                                                 <label>Text</label>
@@ -1152,7 +1297,274 @@
                                             </div>
                                         </div>
                                          <div class="fixed-img-end">
-                                           2
+                                            <ul class="nav nav-tabs no-of-prd-catalogs">
+                                                <li class="active"><a data-toggle="tab" href="#existing-prd-catalog1">1</a></li>
+                                                <li><a data-toggle="tab" href="#addNew-prd-catalog"><i class="fa fa-ellipsis-h"></i></a></li>
+                                            </ul>
+                                            <div class="tab-content first-level-tab-content">
+                                              <div id="existing-prd-catalog1" class="tab-pane fade in active">
+                                                <div class="img-video-radio-tabs">
+                                                    <ul class="nav nav-tabs">
+                                                        <li class="active">
+                                                            <a data-toggle="tab" href="#radio-tab5" aria-expanded="true">
+                                                                <label class="radio-inline">
+                                                                    <input type="radio" name="selector" id="f-option">
+                                                                    <label for="f-option">Image</label>
+                                                                    <div class="check"></div>
+                                                                </label>
+                                                            </a>
+                                                        </li>
+                                                        <li class="">
+                                                            <a data-toggle="tab" href="#radio-tab6" aria-expanded="false">
+                                                                <label class="radio-inline">
+                                                                    <input type="radio" name="selector" id="f-option">
+                                                                    <label for="f-option">Video / Slideshow</label>
+                                                                    <div class="check"></div>
+                                                                </label>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+
+                                                    <div class="tab-content">
+                                                        <div id="radio-tab5" class="img-radio-tab-cont tab-pane active">
+                                                            <div class="select-img-row">
+                                                                <button class="light-grey-btn common-select-img-popup" data-target="#common-select-img-popup" data-toggle="modal">Select Image</button>
+                                                            </div>
+                                                            <div class="img-specification">
+                                                                <h5>IMAGE SPECIFICATIONS</h5>
+                                                                <ul>
+                                                                    <li>Recommended image size: 1200 × 628 pixels</li>
+                                                                    <li>Recommended image ratio: 1.91:1</li>
+                                                                    <li>To maximize ad delivery, use an image that contains little or no overlaid text.</li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="destination-row">
+                                                                <div class="common-row">
+                                                                    <h5>Destination URL  <i class="fa fa-info-circle"></i></h5>
+                                                                    <input type="text" class="form-control" name="">
+                                                                </div>
+                                                            </div>
+                                                            <div class="destination-row">
+                                                                <div class="common-row">
+                                                                    <h5>Headline <i class="fa fa-info-circle"></i></h5>
+                                                                    <input type="text" class="form-control" name="">
+                                                                </div>
+                                                            </div>
+                                                            <div class="destination-row">
+                                                                <div class="common-row">
+                                                                    <h5>Description  <i class="fa fa-info-circle"></i></h5>
+                                                                    <input type="text" class="form-control" name="">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div id="radio-tab6" class="video-slideshow-radio-tab-cont tab-pane">
+
+                                                            <div class="common-row">
+                                                                <!-- <button class="light-grey-btn select-video-btn">Select Video</button> -->
+                                                                <button class="light-grey-btn common-select-video-popup" data-target="#common-select-video-popup" data-toggle="modal">Select Video</button>
+                                                                 <button class="crt-slideshow-btn light-grey-btn common-create-slideshow-popup" data-target="#common-create-slideshow-popup" data-toggle="modal">
+                                                                    Create Slideshow
+                                                                </button>
+                                                            </div>
+                                                            <div class="video-specification">
+
+                                                                <h5>Video Recommendations:</h5>
+                                                                <ul>
+                                                                    <li>Recommended Length: Up to 15 seconds</li>
+                                                                    <li>Recommended Aspect Ratio: Vertical (4:5)</li>
+                                                                    <li>Sound: Enabled with captions included</li>
+                                                                </ul>
+
+                                                                <h5>Video Specifications:</h5>
+                                                                <ul>
+                                                                    <li>Recommended format: .mp4, .mov or .gif</li>
+                                                                    <li>Required Lengths By Placement:
+                                                                        <ul style="padding-top: 15px;padding-bottom: 5px;">
+                                                                            <li>Facebook: 240 minutes max</li>
+                                                                            <li>Audience Network: 5 - 120 seconds</li>
+                                                                            <li>Instagram Feed: Up to 60 seconds</li>
+                                                                        </ul>
+
+                                                                    </li>
+                                                                    <li>Resolution: 600px minimum width</li>
+                                                                    <li>File size: Up to 4 GB max</li>
+                                                                </ul>
+
+                                                                <h5>Slideshow Specifications:</h5>
+                                                                <ul>
+                                                                    <li>Use high resolution images or a video file to create a slideshow</li>
+                                                                    <li>Facebook and Instagram: 50 seconds max</li>
+                                                                    <li>Slideshows will loop</li>
+                                                                </ul>
+
+                                                            </div>
+
+                                                            <div class="destination-row">
+                                                                <div class="common-row">
+                                                                    <h5>Destination URL  <i class="fa fa-info-circle"></i></h5>
+                                                                    <input type="text" class="form-control" name="">
+                                                                </div>
+                                                            </div>
+                                                            <div class="destination-row">
+                                                                <div class="common-row">
+                                                                    <h5>Display Link  <i class="fa fa-info-circle"></i></h5>
+                                                                    <input type="text" class="form-control" name="">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="destination-row">
+                                                                <div class="common-row">
+                                                                    <h5>Headline <i class="fa fa-info-circle"></i></h5>
+                                                                    <input type="text" class="form-control" name="">
+                                                                </div>
+                                                            </div>
+                                                            <div class="destination-row">
+                                                                <div class="common-row">
+                                                                    <h5>Description  <i class="fa fa-info-circle"></i></h5>
+                                                                    <input type="text" class="form-control" name="">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                              </div>
+                                              <div id="addNew-prd-catalog" class="tab-pane fade">
+                                                <div class="common-row">
+                                                <label>Product Catalog </label>
+                                                <div class="custom-autocomplete-select">    
+                                                    <select class="selectpicker show-tick" data-live-search="true" data-size="3">   
+                                                        <option data-tokens="ketchup mustard">Columns</option> 
+                                                        <option data-tokens="mustard">Lorem</option>     
+                                                        <option data-tokens="mustard">Lorem</option>     
+                                                        <option data-tokens="frosting">Dummy text printing</option>
+                                                        <option data-tokens="frosting">Dummy text printing</option>
+                                                    </select>                                                   
+                                                </div>
+                                            </div>
+                                            <div class="common-row product-set">
+                                                <label>Product Set </label><br>
+                                                <div class="custom-autocomplete-select">    
+                                                    <select class="selectpicker show-tick" data-live-search="true" data-size="3">   
+                                                        <option data-tokens="ketchup mustard">Columns</option> 
+                                                        <option data-tokens="mustard">Lorem</option>     
+                                                        <option data-tokens="mustard">Lorem</option>     
+                                                        <option data-tokens="frosting">Dummy text printing</option>
+                                                        <option data-tokens="frosting">Dummy text printing</option>
+                                                    </select>                                                   
+                                                </div>
+                                                 <button class="light-grey-btn product-set-plus-btn" data-target="#product-set-plus-btn" data-toggle="modal">+</button>
+                                            </div>
+                                            <div class="common-row common-input-with-plus-inside">
+                                                <label>Text</label>
+                                                <div class="holder">
+                                                    <textarea class="form-control"></textarea>
+                                                    <button class="light-grey-btn input-field-common-plus">+</button>
+                                                    <ul class="input-field-common-plus-ul">
+                                                        <li>Name</li>
+                                                        <li>Brand</li>
+                                                        <li>Description</li>
+                                                        <li>Name</li>
+                                                        <li>Brand</li>
+                                                        <li>Description</li>
+                                                        <li>Name</li>
+                                                        <li>Brand</li>
+                                                        <li>Description</li>
+                                                    </ul>
+                                                    <div class="selected-tags">
+                                                        <span>Name <a href="#"><i class="fa fa-remove"></i></a></span> <span>Brand <a href="#"><i class="fa fa-remove"></i></a></span> <span>Description <a href="#"><i class="fa fa-remove"></i></a></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="common-row common-input-with-plus-inside">
+                                                <label>Headline</label>
+                                                <div class="holder">
+                                                    <textarea class="form-control" row="1"></textarea>
+                                                    <button class="light-grey-btn input-field-common-plus">+</button>
+                                                    <ul class="input-field-common-plus-ul">
+                                                        <li>Name</li>
+                                                        <li>Brand</li>
+                                                        <li>Description</li>
+                                                        <li>Name</li>
+                                                        <li>Brand</li>
+                                                        <li>Description</li>
+                                                        <li>Name</li>
+                                                        <li>Brand</li>
+                                                        <li>Description</li>
+                                                    </ul>
+                                                </div>    
+                                            </div>
+                                            <div class="common-row common-input-with-plus-inside">
+                                                <label>News Feed Link Description</label>
+                                                <div class="holder">
+                                                    <textarea class="form-control" row="1"></textarea>
+                                                    <button class="light-grey-btn input-field-common-plus">+</button>
+                                                    <ul class="input-field-common-plus-ul">
+                                                        <li>Name</li>
+                                                        <li>Brand</li>
+                                                        <li>Description</li>
+                                                        <li>Name</li>
+                                                        <li>Brand</li>
+                                                        <li>Description</li>
+                                                        <li>Name</li>
+                                                        <li>Brand</li>
+                                                        <li>Description</li>
+                                                    </ul>
+                                                </div>    
+                                            </div>
+                                            <div class="common-row">
+                                                <label>See More URL</label>
+                                                <input type="text" name="" class="form-control">
+                                            </div>
+                                            <div class="common-row">
+                                                <label>See More Display Link (optional)</label>
+                                                <input type="text" name="" class="form-control">
+                                            </div>
+                                            <div class="common-row product-set">
+                                                <label>Call To Action</label><br>
+                                                <div class="custom-autocomplete-select">    
+                                                    <select class="selectpicker show-tick">   
+                                                        <option data-tokens="ketchup mustard">Columns</option> 
+                                                        <option data-tokens="mustard">Lorem</option>     
+                                                        <option data-tokens="mustard">Lorem</option>     
+                                                        <option data-tokens="frosting">Dummy text printing</option>
+                                                        <option data-tokens="frosting">Dummy text printing</option>
+                                                    </select>                                                   
+                                                </div>
+                                                
+                                            </div>
+                                            <div class="common-row common-input-with-plus-inside">
+                                                <label>Deep link to website </label>
+                                                <div class="holder">
+                                                   <textarea class="form-control" row="1"></textarea>
+                                                    <button class="light-grey-btn input-field-common-plus">+</button>
+                                                    <ul class="input-field-common-plus-ul">
+                                                        <li>Name</li>
+                                                        <li>Brand</li>
+                                                        <li>Description</li>
+                                                        <li>Name</li>
+                                                        <li>Brand</li>
+                                                        <li>Description</li>
+                                                        <li>Name</li>
+                                                        <li>Brand</li>
+                                                        <li>Description</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="common-row product-set">
+                                                <label>Mobile app</label><br>
+                                                <div class="custom-autocomplete-select">    
+                                                    <select class="selectpicker show-tick">   
+                                                        <option data-tokens="ketchup mustard">Columns</option> 
+                                                        <option data-tokens="mustard">Lorem</option>     
+                                                        <option data-tokens="mustard">Lorem</option>     
+                                                        <option data-tokens="frosting">Dummy text printing</option>
+                                                        <option data-tokens="frosting">Dummy text printing</option>
+                                                    </select>                                                   
+                                                </div>
+                                               
+                                            </div>
+                                              </div>   
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
