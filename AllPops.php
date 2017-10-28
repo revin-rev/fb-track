@@ -1,5 +1,3 @@
-
-
 <!-- set up a message popup -->
 <div id="set-up-message-popup" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -20,6 +18,8 @@
                             <textarea placeholder="Welcome people with text about who you are and what you offer." rows="1" class="form-control"></textarea>
                         </div>
                         <div class="common-row second-level-radio-tabs">
+                             <label>Main Message</label><br><span class="heading-sub-span">Encourage people to reply by offering more information about the ad they clicked.</span>
+
                             <ul class="nav nav-tabs">
                               <li class="active"><a data-toggle="tab" href="#img-and-text">Image & Text</a></li>
                               <li><a data-toggle="tab" href="#video-and-text">Video & Text</a></li>
@@ -28,41 +28,191 @@
 
                             <div class="tab-content">
                               <div id="img-and-text" class="tab-pane fade in active">
-                                <h3>HOME</h3>
-                                <p>Some content.</p>
+                                        <div class="common-row">
+                                            <div class="col-md-8" style="padding-left: 0">
+                                                <label>Image</label><br>
+                                                <button data-toggle="modal" data-target="#common-select-img-popup" class="light-grey-btn common-select-img-popup">Select Image</button><br>
+                                                <span class="heading-sub-span">Recommended image size: 1200 x 628 pixels</span>
+                                            </div>
+                                            <div class="col-md-4 upload-img-grey-sec">
+                                                <a href="#common-select-img-popup" data-toggle="modal"><i class="fa fa-file-image-o"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="common-row">
+                                            <label>Message Title</label><br>
+                                            <input type="text" name="" placeholder="Enter a titile for your message" class="form-control">
+                                        </div>
+                                         <div class="common-row">
+                                            <label>Message Subtitle</label><br>
+                                            <input type="text" name="" placeholder="Optional: Enter a subtitle to provide more information" class="form-control">
+                                        </div>
+
+                                         <div class="common-row">
+                                            <label>Customer Actions</label><br>
+                                            <span class="heading-sub-span">Select the action you want people to take. Use a button to send people to your site or prompt a bot, or create suggested replies for people to choose from.</span>
+                                            <div class="custom-autocomplete-select">                                                             
+                                                <select class="selectpicker show-tick" data-size="3">    
+                                                     <option data-tokens="ketchup mustard">Buttons</option> 
+                                                     <option data-tokens="mustard">Suggested Reply</option>  
+                                                </select>                                                   
+                                            </div>
+                                            <div class="add-multiple-grey-sec">
+                                                <div class="common-row" style="margin-top: 0">
+                                                    <span class="grey-sec-heading">Button 1</span><a href="#" class="remove-text text-right">Remove</a>
+                                                </div>
+                                                <div class="common-row">
+                                                    <div class="col-md-4 text-right">
+                                                        <label>Label</label>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <input type="text" name="" class="form-control" placeholder="Enter the text for your button">
+                                                    </div>
+                                                </div>
+                                                <div class="common-row">
+                                                    <div class="col-md-4 text-right">
+                                                        <label>Action</label>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <div class="custom-autocomplete-select">     
+                                                            <select class="selectpicker show-tick" data-size="3">    
+                                                                 <option data-tokens="ketchup mustard">Open a wbesite</option>  
+                                                                 <option data-tokens="mustard">Send a postback</option>
+                                                            </select>                                                   
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="common-row">
+                                                    <div class="col-md-4 text-right">
+                                                        <label>Website URL</label>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <input type="text" name="" class="form-control" placeholder="Optional: This will be sent back to your webhook">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="common-row">
+                                            <a href="#" class="common-add-custom-field-link">+ Add another call to action</a>
+                                        </div>
                               </div>
                               <div id="video-and-text" class="tab-pane fade">
-                                <h3>Menu 1</h3>
-                                <p>Some content in menu 1.</p>
+                                        <div class="common-row">
+                                            <div class="col-md-8 left" style="padding-left: 0">
+                                                <label>Video</label><br>
+                                                <input type="file" name="" value="Select Video" class="button-type-browse">
+                                                <button class="light-grey-btn">Select Video</button>
+                                                <span class="heading-sub-span">.MOV or .MP4. At least 720p. 25MB max.</span>
+                                            </div>
+                                            <div class="col-md-4 upload-img-grey-sec">
+                                                <input type="file" class="grey-bg-type-browse">
+                                                <a href="#"><i class="fa fa-file-image-o"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="common-row">
+                                            <label>Suggested Replies</label>
+                                            <div class="add-multiple-grey-sec">
+                                                <div class="common-row" style="margin-top: 0">
+                                                    <span class="grey-sec-heading">Suggested Reply #1</span><a href="#" class="remove-text text-right">Remove</a>
+                                                </div>
+                                                <div class="common-row">
+                                                    <div class="col-md-4 text-right">
+                                                        <label>Reply Text</label>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <input type="text" name="" class="form-control" placeholder="Enter the text for your button">
+                                                    </div>
+                                                </div>
+                                                <div class="common-row">
+                                                    <div class="col-md-4 text-right">
+                                                        <label>Bot Payload</label>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <input type="text" name="" class="form-control" placeholder="Optional: This will be sent back to your webhook">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                         <div class="common-row">
+                                            <a href="#" class="common-add-custom-field-link">+ Add another suggested reply</a>
+                                        </div>
                               </div>
                               <div id="text-only" class="tab-pane fade">
-                                <h3>Menu 2</h3>
-                                <p>Some content in menu 2.</p>
+                                 <div class="common-row">
+                                    <label>Message Text</label><br>
+                                    <input type="text" name="" class="form-control">
+                                 </div>
+                                 <div class="common-row">
+                                    <label>Buttons</label>
+                                        <div class="add-multiple-grey-sec">                                             
+                                                <div class="common-row" style="margin-top: 0">
+                                                    <span class="grey-sec-heading">Button 1</span><a href="#" class="remove-text text-right">Remove</a>
+                                                </div>
+                                                <div class="common-row">
+                                                    <div class="col-md-4 text-right">
+                                                        <label>Label</label>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <input type="text" name="" class="form-control" placeholder="Enter the text for your button">
+                                                    </div>
+                                                </div>
+                                                <div class="common-row">
+                                                    <div class="col-md-4 text-right">
+                                                        <label>Action</label>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <div class="custom-autocomplete-select">     
+                                                            <select class="selectpicker show-tick" data-size="3">    
+                                                                 <option data-tokens="ketchup mustard">Open a wbesite</option>  
+                                                                 <option data-tokens="mustard">Send a postback</option>
+                                                            </select>                                                   
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="common-row">
+                                                    <div class="col-md-4 text-right">
+                                                        <label>Website URL</label>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <input type="text" name="" class="form-control" placeholder="Optional: This will be sent back to your webhook">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                 </div>
+                                 <div class="common-row">
+                                    <a href="#" class="common-add-custom-field-link">+ Add another call to action</a>
+                                </div>
                               </div>
                             </div>
                         </div>
 
                      </div>
                      <div class="standad-right-sec">
-                        fhfhf
+                        <div class="preview-white-area">
+                            <h1>Lorem Ipsum Text</h1>
+                            <div class="text-and-img-preview">
+                                <span><img src="img/ava-icon.png"></span>
+                                <div class="right-dynamic-text-img">
+                                    <span> </span>
+                                    <div style="float: left;width: 100%; position: relative; height: 100px; overflow-y: scroll;"><h1>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour,There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour,There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour,</h1></div>
+                                    <div style="float: left;width: 100%; position: relative; height:80px; overflow-y: scroll;"><h5>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour,There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour,</h5></div>
+                                </div>
+                            </div>
+                        </div>
                      </div>
               </div>
               <div id="json" class="tab-pane fade">
-                <h3>Menu 1</h3>
-                <p>Some content in menu 1.</p>
+               json
               </div>
             </div>
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="light-grey-btn" data-dismiss="modal">Cancel</button>
-        <button type="button" class="blue-btn" data-dismiss="modal">Ok</button>
+        <button type="button" class="light-grey-btn" data-dismiss="modal">Done</button>
       </div>
     </div>
 
   </div>
 </div>
-
 
 <!-- product set plus popup -->
 <div id="product-set-plus-btn" class="modal fade" role="dialog">

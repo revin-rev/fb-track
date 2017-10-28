@@ -1015,6 +1015,125 @@
                                          <div class="common-row">    
                                             <input type="checkbox" name="" id="fixed-img-end" class="col-md-1"><label for="fixed-img-end" class="col-md-10" style="padding: 0">Add a card at the end with your Page profile picture</label>
                                         </div>
+                                        <div class="common-row" style="margin-bottom: 20px">
+                                        	<label>Show More Catalog Information</label><br>
+                                        	<input type="checkbox" name=""> Add an overlay to images
+                                        	<div class="common-row">
+                                        		<div class="custom-autocomplete-select" style="display: inline-block;">	 
+													<select class="selectpicker show-tick" data-size="3">	 
+													     <option data-tokens="ketchup mustard">Price</option>	
+													     <option data-tokens="mustard">Lorem</option>	  
+													     <option data-tokens="frosting">Dummy text printing</option>		
+												    </select>													
+												</div>
+												<a href="#edit-apperance-popup" class="edit-apperance" data-toggle="modal">Edit Appearance</a>
+<!-- edit apperance popup -->
+<div id="edit-apperance-popup" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Edit Appearance</h4>
+      </div>
+      <div class="modal-body">
+       <div class="left">
+       		<div class="common-row">
+       			<label>Shape</label>
+       			<div class="common-row shape-row">
+       					<div class="shape-app">
+       						<label for="shape1"><img src="../img/apperance-img1.png"></label><br><input type="radio" name="shape" id="shape1">
+       					</div>
+       					<div class="shape-app">
+       						<label for="shape2"><img src="../img/apperance-img2.png"></label><br><input type="radio" name="shape" id="shape2">
+       					</div>
+       					<div class="shape-app">
+       						<label for="shape3"><img src="../img/apperance-img3.png"></label><br><input type="radio" name="shape" id="shape3">
+       					</div>
+       			</div>
+       		</div>
+       		<div class="common-row font-family">
+       			<label>Font</label>
+       			<div class="custom-autocomplete-select">															 
+					<select class="selectpicker show-tick" data-size="10">	 
+					     <option data-tokens="ketchup mustard">Droid Serif</option>	
+					     <option data-tokens="mustard">Lorem</option>	  
+					     <option data-tokens="frosting">Dummy text printing</option>
+					     <option data-tokens="ketchup mustard">Droid Serif</option>	
+					     <option data-tokens="mustard">Lorem</option>	  
+					     <option data-tokens="frosting">Dummy text printing</option>
+					     <option data-tokens="ketchup mustard">Droid Serif</option>	
+					     <option data-tokens="mustard">Lorem</option>	  
+					     <option data-tokens="frosting">Dummy text printing</option>
+					     <option data-tokens="ketchup mustard">Droid Serif</option>	
+					     <option data-tokens="mustard">Lorem</option>	  
+					     <option data-tokens="frosting">Dummy text printing</option>
+					     <option data-tokens="ketchup mustard">Droid Serif</option>	
+					     <option data-tokens="mustard">Lorem</option>	  
+					     <option data-tokens="frosting">Dummy text printing</option>											
+				    </select>													
+				</div>
+       		</div>
+       		<div class="common-row">
+		  		<label>Color</label><br>
+		  		<div class="color-select">
+			       	<div class="thumb f-child">
+			     		<span>Shape</span>	
+			     		<input type="radio" class="thumbCheck" name="img-thumb">
+			     	</div>
+			     	<div class="thumb l-child">
+			     		<span>Text</span>	
+			     		<input type="radio" class="thumbCheck" name="img-thumb">
+			     	</div>
+			    </div> 
+			    <div class="eight-defined-colors">	
+			    	<a href="#" class="red-color">
+			    		<input type="radio" name="">	
+			    	</a>
+			    	<a href="#" class="orange-color">
+			    		<input type="radio" name="">	
+			    	</a>
+			    	<a href="#" class="green-color">
+			    		<input type="radio" name="">	
+			    	</a>
+			    	<a href="#" class="blue-color">
+			    		<input type="radio" name="">	
+			    	</a>
+			    	<a href="#" class="purple-color">
+			    		<input type="radio" name="">	
+			    	</a>
+			    	<a href="#" class="pink-color">
+			    		<input type="radio" name="">	
+			    	</a>
+			    	<a href="#" class="grey-color">
+			    		<input type="radio" name="">	
+			    	</a>
+			    	<a href="#" class="black-color">
+			    		<input type="radio" name="">	
+			    	</a>
+			    </div>
+             </div>
+             <div class="common-row">
+             	<label>Position</label>
+
+             </div>
+       </div>
+       <div class="right">
+       </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="light-grey-btn" data-dismiss="modal">Cancel</button>
+        <button type="button" class="blue-btn" data-dismiss="modal">Save</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+                                        	</div>
+                                        </div>
                                         <div class="fixed-img-begining">
                                             <div class="common-row">
                                                 <label>Product Catalog </label>
@@ -1588,5 +1707,6 @@
         </div>
     </div>
 </div>
+ 
 
 

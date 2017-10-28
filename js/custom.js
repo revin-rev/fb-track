@@ -990,4 +990,13 @@ $(document).ready(function() {
     }
   })
 });
- 
+ // edit appearance popup code
+ $(document).ready(function(){
+		$('.eight-defined-colors input:radio').change(function(){
+		    if($(this).is(":checked")) {		    	
+		        $(this).parent().addClass("checked-checkbox");
+		    }else {
+		        $(this).parent().removeClass("checked-checkbox");
+		    }
+		});
+	});
