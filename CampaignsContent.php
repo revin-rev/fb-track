@@ -41,10 +41,22 @@
         </div>
         <div class="simple-default-icons-group " style="margin-left:10px">
             <ul>
-                <li><i class="fa fa-refresh disable-me"></i></li>
-                <li data-toggle="modal" data-target="#delete_campaigns_popup" id="delete_camp"><i class="fa fa-trash disable-me"></i></li>
-                <li><i class="fa fa-edit"></i></li>
-                <li><i class="fa fa-tag disable-me"></i></li>
+                <!-- <li><i class="fa fa-refresh disable-me"></i></li> -->
+                <li data-toggle="modal" data-target="#delete_campaigns_popup" id="delete_camp"><i class="fa fa-trash disable-me" data-toggle="tooltip" title="Delete"></i></li>
+                <li class="dropdown">
+                    <i class="fa fa-edit dropdown-toggle" type="button" data-toggle="dropdown"></i>
+                    <ul class="dropdown-menu export_campaigns">
+                      <li data-toggle="modal" data-target="#loader_div"><a href="#">Export Selected</a></li>
+                      <li data-toggle="modal" data-target="#loader_div"><a href="#" >Export Selected as Plain Text</a></li>
+                      <li data-toggle="modal" data-target="#loader_div"><a href="#">Export All</a></li>
+                      <li class="divider"></li>
+                      <li data-toggle="modal" data-target="#loader_div"><a href="#">Customize Export</a></li>
+                      <li class="divider"></li>
+                      <li data-toggle="modal" data-target="#loader_div"><a href="#">Import Ads as Bulk</a></li>
+                      <li data-toggle="modal" data-target="#loader_div"><a href="#">Download Template</a></li>
+                  </ul>
+                </li>
+                <li><i class="fa fa-tag disable-me" data-toggle="tooltip" title="Delete"></i></li>
             </ul>
         </div>
         <div class="single-btn-div" style="margin-left: 10px">

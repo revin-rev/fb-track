@@ -1,4 +1,5 @@
 jQuery(document).ready(function(){
+	jQuery('[data-toggle="tooltip"]').tooltip();
 	jQuery('code a').click(function() {
 		jQuery('#myModal .modal-body p').text(jQuery(this).data('reason'));
 	});
@@ -178,6 +179,106 @@ jQuery(document).ready(function(){
 		jQuery("#choose_adsets").selectpicker("refresh");
 		jQuery("#choose_ads").selectpicker("refresh");
 	});
+
+	/* Export funcationality*/
+	jQuery('.export_campaigns li').click(function() {
+		var text = jQuery(this).text();
+		var campaign_array = [];
+		if(text == 'Export Selected') {
+			jQuery('.campaigns_checkbox:checked').each(function() {
+				var cmp_id  = jQuery(this).parent().parent().attr('id');
+ 				var newData = _.find(_camapaigns, function(o) { return o.id == cmp_id;  });
+				campaign_array.push(newData);
+			});
+			csvImport(campaign_array);
+		} else if(text == 'Export Selected as Plain Text') {
+
+		} else {
+			csvImport(_camapaigns);
+		}
+		setTimeout(function() {
+			
+		},1500);
+	});
+
+	var finalVal = 'Campaign ID,Campaign Name,Campaign Status,Campaign Objective,Buying Type,Ad Set ID,Ad Set Run Status,Ad Set Lifetime Impressions,Ad Set Name,Ad Set Time Start,Ad Set Daily Budget,Ad Set Lifetime Budget,Countries,Location Types,Gender,Age Min,Age Max,Optimization Goal,Attribution Spec,Billing Event,Bid Amount,Ad ID,Ad Status,Preview Link,Ad Name,Title,Body'+'\n';
+	function csvImport(data) {
+		if(data.length > 0) {
+			data.forEach(function(camp, index) {
+				finalVal +=camp.id+','+camp.name+','+camp.status+','+camp.objective+','+camp.buying_type;
+				if(camp.adsets) {
+					camp.adsets.data.forEach(function(adset, innerIndex) {
+						var date = new Date(adset.start_time);
+						var newDate = (date.getMonth() + 1) + '/' + date.getDate() + '/' +  date.getFullYear()+ ' '+date.getHours()+':'+date.getMinutes()+':'+date.getSeconds();
+						
+						if($.inArray('gender',adset.targeting) > 0) {
+							var gender = adset.targeting.gender;
+						} else {
+							var gender = '';
+						}
+
+						if(adset.attribution_spec) {
+							var attribution_spec = adset.attribution_spec;
+						} else {
+							var attribution_spec = '';
+						}
+
+						if($.inArray('targeting', adset) > 0) {
+							var countries = adset.targeting.geo_locations.countries[0];
+							var location_types = adset.targeting.geo_locations.location_types[0];
+							var age_min = adset.targeting.age_min;
+							var age_max = adset.targeting.age_max;
+						} else {
+							var countries = '';
+							var location_types = '';
+							var age_min = '';
+							var age_max = '';
+						}
+
+
+						finalVal += ','+adset.id+','+adset.status+','+adset.lifetime_imps+','+adset.name+','+newDate+','+adset.daily_budget+','+adset.lifetime_budget+','+countries+','+location_types+','+gender+','+age_min+','+age_max+','+adset.optimization_goal+','+attribution_spec+','+adset.billing_event+','+adset.bid_amount;
+					});
+				}
+				if(camp.ads) {
+					camp.ads.data.forEach(function(ads, innerIndex) {
+						if(ads.creative_title) {
+							var title = ads.creative_title;
+						} else {
+							var title = '';
+						}
+
+						if(ads.creative_body) {
+							var body = ads.creative_body;
+						} else {
+							var body = '';
+						}
+
+						if(ads.status) {
+							var status = ads.status;
+						} else {
+							var status = '';
+						}
+
+						if (body.search(/("|,|\n)/g) >= 0)
+							body = '"' + body + '"';
+
+						finalVal += ','+ads.id+','+status+','+ads.preview_link+','+ads.name+','+title+','+body;
+					});
+				}
+				finalVal += '\n';
+			});
+		} 
+		setTimeout(function() {
+			jQuery('#loader_div.loaderPopup').modal('hide');
+			var pom = document.createElement('a');
+			pom.setAttribute('href', 'data:text/csv;charset=utf-8,' + encodeURIComponent(finalVal));
+			var date = new Date();
+			pom.setAttribute('download', 'export_'+date.getFullYear()+'_'+date.getMonth()+'_'+date.getDate()+'.csv');
+			pom.click(); 
+		},500);
+		
+	}
+	/* Export funcationality*/
 
 });
 
@@ -996,4 +1097,13 @@ $(document).ready(function() {
     }
   })
 });
- 
+ // edit appearance popup code
+ $(document).ready(function(){
+		$('.eight-defined-colors input:radio').change(function(){
+		    if($(this).is(":checked")) {		    	
+		        $(this).parent().addClass("checked-checkbox");
+		    }else {
+		        $(this).parent().removeClass("checked-checkbox");
+		    }
+		});
+	});

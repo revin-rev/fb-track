@@ -1030,39 +1030,6 @@ color:#FFFFFF;
 .eight-defined-colors .black-color{ float: left;width:20px; height:20px; background-color: #000}
 .eight-defined-colors a input[type="radio"]{height: 100%;margin: 0; opacity: 0; width: 100%; cursor: pointer;}
 .checked-checkbox{position: absolute;width:20px !important; height:20px; color: #fff;font-weight: bold; background-image: url(../img/colors-white-tick.png);  background-position: center center; left: 0}
-.dropdown-menu li {
-    display: block;
-    border: 0px;
-    padding: 0px;
-}
-.dropdown-menu li:hover a {
-    background-color: #22497c;
-    color: #fff;
-    border-top: 1px solid #000;
-    border-bottom: 1px solid #000;
-}
-.dropdown-menu li.divider {
-    margin: 2px auto;
-}
-#loader_div .modal-content {
-	width: 40%;
-    margin-top: 40%;
-    margin-left: 21%;
-}
-#loader_div .modal-body {
-    position: relative;
-    padding: 15px 51px;
-}
-#loader_div .modal-body p{
-	font-size: 24px;
-	font-weight: bold;
-}
-#loader_div .modal-body img{
-	width: 50px;
-	margin-left: 35px;
-}
-
-
 
 
 

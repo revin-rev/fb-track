@@ -1,219 +1,1407 @@
- <!-- craete camp popup  -->
-            <div id="create-camp-btn" class="modal fade common-three-tabs-popup" role="dialog">
-                <div class="modal-dialog">
+<!-- set up a message popup -->
+<div id="set-up-message-popup" class="modal fade" role="dialog">
+  <div class="modal-dialog">
 
-                    <!-- Modal content-->
-                    <div class="modal-content">
-                        <form method="post">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title">Create Campaign</h4>
-                            </div>
-                            <div class="modal-body">
-                                <div class="popup-left-form">
-                                    <div class="sec1">
-                                        <div class="row" style="margin-bottom:30px;">
-                                            <div class="col-md-12">
-                                                <div class="custom-autocomplete-select">
-                                                    <select class="selectpicker show-tick" id="choose_campaigns" name="choose_campaigns">
-                                                        <option  value="new">Create New Campaign</option>
-                                                        <option  value="existing">Use Existing Campaign</option>
-                                                    </select>
-                                                </div>
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+            <ul class="nav nav-tabs first-level-tabs">
+              <li class="active"><a data-toggle="tab" href="#standard">Standard</a></li>
+              <li><a data-toggle="tab" href="#json">JSON</a></li>
+            </ul>
+
+            <div class="tab-content first-level-tab-content">
+              <div id="standard" class="tab-pane fade in active">
+                     <div class="standad-left-sec">
+                        <div class="common-row">
+                            <label>Welcome Message (Recommended)</label><br><span class="heading-sub-span">This is the first message people will see in the Messenger conversation.</span>
+                            <textarea placeholder="Welcome people with text about who you are and what you offer." rows="1" class="form-control"></textarea>
+                        </div>
+                        <div class="common-row second-level-radio-tabs">
+                             <label>Main Message</label><br><span class="heading-sub-span">Encourage people to reply by offering more information about the ad they clicked.</span>
+
+                            <ul class="nav nav-tabs">
+                              <li class="active"><a data-toggle="tab" href="#img-and-text">Image & Text</a></li>
+                              <li><a data-toggle="tab" href="#video-and-text">Video & Text</a></li>
+                              <li><a data-toggle="tab" href="#text-only">Text Only</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+                              <div id="img-and-text" class="tab-pane fade in active">
+                                        <div class="common-row">
+                                            <div class="col-md-8" style="padding-left: 0">
+                                                <label>Image</label><br>
+                                                <button data-toggle="modal" data-target="#common-select-img-popup" class="light-grey-btn common-select-img-popup">Select Image</button><br>
+                                                <span class="heading-sub-span">Recommended image size: 1200 x 628 pixels</span>
+                                            </div>
+                                            <div class="col-md-4 upload-img-grey-sec">
+                                                <a href="#common-select-img-popup" data-toggle="modal"><i class="fa fa-file-image-o"></i></a>
                                             </div>
                                         </div>
-                                        
-                                        <div id="new_campaign">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <label class="col-md-4">
-                                                        Campaign Name
-                                                    </label>
+                                        <div class="common-row">
+                                            <label>Message Title</label><br>
+                                            <input type="text" name="" placeholder="Enter a titile for your message" class="form-control">
+                                        </div>
+                                         <div class="common-row">
+                                            <label>Message Subtitle</label><br>
+                                            <input type="text" name="" placeholder="Optional: Enter a subtitle to provide more information" class="form-control">
+                                        </div>
+
+                                         <div class="common-row">
+                                            <label>Customer Actions</label><br>
+                                            <span class="heading-sub-span">Select the action you want people to take. Use a button to send people to your site or prompt a bot, or create suggested replies for people to choose from.</span>
+                                            <div class="custom-autocomplete-select">                                                             
+                                                <select class="selectpicker show-tick" data-size="3">    
+                                                     <option data-tokens="ketchup mustard">Buttons</option> 
+                                                     <option data-tokens="mustard">Suggested Reply</option>  
+                                                </select>                                                   
+                                            </div>
+                                            <div class="add-multiple-grey-sec">
+                                                <div class="common-row" style="margin-top: 0">
+                                                    <span class="grey-sec-heading">Button 1</span><a href="#" class="remove-text text-right">Remove</a>
+                                                </div>
+                                                <div class="common-row">
+                                                    <div class="col-md-4 text-right">
+                                                        <label>Label</label>
+                                                    </div>
                                                     <div class="col-md-8">
-                                                        <input type="text" name="campaign_name" placeholder="Enter a campaign name" class="form-control">
+                                                        <input type="text" name="" class="form-control" placeholder="Enter the text for your button">
                                                     </div>
                                                 </div>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <label class="col-md-4">
-                                                        Buying Type
-                                                    </label>
+                                                <div class="common-row">
+                                                    <div class="col-md-4 text-right">
+                                                        <label>Action</label>
+                                                    </div>
                                                     <div class="col-md-8">
-                                                        <div class="custom-autocomplete-select">
-                                                            <select class="selectpicker show-tick" name="buying_type">
-                                                                <option data-tokens="ketchup mustard" >Auction</option>
-                                                            </select>
+                                                        <div class="custom-autocomplete-select">     
+                                                            <select class="selectpicker show-tick" data-size="3">    
+                                                                 <option data-tokens="ketchup mustard">Open a wbesite</option>  
+                                                                 <option data-tokens="mustard">Send a postback</option>
+                                                            </select>                                                   
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-
-                                            <div class="row">
-                                                <input type="hidden" name="objective" id="camp_objective" value="LINK_CLICKS">
-                                                <div class="col-md-12">
-                                                    <label class="col-md-4">
-                                                        Campaign Objective
-                                                    </label>
+                                                <div class="common-row">
+                                                    <div class="col-md-4 text-right">
+                                                        <label>Website URL</label>
+                                                    </div>
                                                     <div class="col-md-8">
-                                                        <button class="light-grey-btn show-camp-obj-btn"><img src="img/brand-awarns-icon.png">Traffic</button>
-                                                        <div class="objective camp_objective">
-                                                            <div class="objective-cat">
-                                                                <h5>Awareness</h5>
-                                                                <ul>
-                                                                    <li data-value="BRAND_AWARENESS"><img src="img/brand-awarns-icon.png"> Brand awareness</li>
-                                                                    <li data-value="REACH"><img src="img/brand-awarns-icon.png"> Reach</li>
-                                                                </ul>
-                                                            </div>
-                                                            <div class="objective-cat">
-                                                                <h5>Consideration</h5>
-                                                                <ul>
-                                                                    <li data-value="LINK_CLICKS"><img src="img/brand-awarns-icon.png"> Traffic</li>
-                                                                    <li data-value="APP_INSTALLS"><img src="img/brand-awarns-icon.png"> App installs</li>
-                                                                    <li data-value="VIDEO_VIEWS"><img src="img/brand-awarns-icon.png"> Video views</li>
-                                                                    <li data-value="LEAD_GENERATION"><img src="img/brand-awarns-icon.png"> Lead generation</li>
-                                                                    <li data-value="POST_ENGAGEMENT"><img src="img/brand-awarns-icon.png"> Post enagagement</li>
-                                                                    <li data-value="PAGE_LIKES"><img src="img/brand-awarns-icon.png"> Page likes</li>
-                                                                    <li data-value="EVENT_RESPONSES"><img src="img/brand-awarns-icon.png"> Event responses</li>
-                                                                    <li data-value="LINK_CLICKS"><img src="img/brand-awarns-icon.png"> Messages</li>
-                                                                </ul>
-                                                            </div>
-                                                            <div class="objective-cat">
-                                                                <h5>Conversion</h5>
-                                                                <ul>
-                                                                    <li data-value="CONVERSIONS"><img src="img/brand-awarns-icon.png"> Conversions</li>
-                                                                    <li data-value="PRODUCT_CATALOG_SALES"><img src="img/brand-awarns-icon.png"> Product catalog sales</li>
-                                                                    <li data-value="LINK_CLICKS"><img src="img/brand-awarns-icon.png"> Store visits</li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
+                                                        <input type="text" name="" class="form-control" placeholder="Optional: This will be sent back to your webhook">
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-
-                                        <div id="existing_campaign" style="display: none;">
-                                            <input type="hidden" name="exit_camapaign_id" id="exit_camapaign_id">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <label class="col-md-4">
-                                                        Use Existing
-                                                    </label>
-                                                    <div class="col-md-8 custom-auto-complete using-existing-camp-input">
-                                                        <input type="text" id="exit_campaign_name" placeholder="select camapaign" readonly class="form-control">
-                                                        <i class="fa fa-remove cross-existing-camp-icon"></i>
-                                                        <div class="custom-auto-complete-data custom-dropdown" style="width: 94%">
-                                                            <ul>
-                                                                <?php foreach ($camapaigns['data'] as $camapaign) :?>
-                                                                <li data-id="<?php echo $camapaign['id'];?>" data-name="<?php echo $camapaign['name']; ?>">
-                                                                    <b><?php echo $camapaign['name']; ?></b>
-                                                                    <p><?php echo $camapaign['id'];?> 
-                                                                        <?php if($camapaign['objective']) { ?><i class="fa fa-circle"></i> <?php echo $camapaign['objective']; } ?> 
-                                                                        <?php if($camapaign['buying_type']) { ?><i class="fa fa-circle"></i> <?php echo $camapaign['buying_type']; } ?>
-                                                                    </p>
-                                                                </li>
-                                                                <?php endforeach;?>
-                                                            </ul>
-                                                        </div>
+                                        <div class="common-row">
+                                            <a href="#" class="common-add-custom-field-link">+ Add another call to action</a>
+                                        </div>
+                              </div>
+                              <div id="video-and-text" class="tab-pane fade">
+                                        <div class="common-row">
+                                            <div class="col-md-8 left" style="padding-left: 0">
+                                                <label>Video</label><br>
+                                                <input type="file" name="" value="Select Video" class="button-type-browse">
+                                                <button class="light-grey-btn">Select Video</button>
+                                                <span class="heading-sub-span">.MOV or .MP4. At least 720p. 25MB max.</span>
+                                            </div>
+                                            <div class="col-md-4 upload-img-grey-sec">
+                                                <input type="file" class="grey-bg-type-browse">
+                                                <a href="#"><i class="fa fa-file-image-o"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="common-row">
+                                            <label>Suggested Replies</label>
+                                            <div class="add-multiple-grey-sec">
+                                                <div class="common-row" style="margin-top: 0">
+                                                    <span class="grey-sec-heading">Suggested Reply #1</span><a href="#" class="remove-text text-right">Remove</a>
+                                                </div>
+                                                <div class="common-row">
+                                                    <div class="col-md-4 text-right">
+                                                        <label>Reply Text</label>
                                                     </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        
-                                    </div>
-                                    <div class="sec1">
-                                        <div class="row" style="margin-bottom:30px;">
-                                            <div class="col-md-12">
-                                                <div class="custom-autocomplete-select">
-                                                    <select class="selectpicker show-tick" name="choose_adsets" id="choose_adsets">
-                                                        <option value="new" >Create New AdSet</option>
-                                                        <option  value="existing" disabled>Use Existing AdSet</option>
-                                                        <option value="skip" >Skip AdSet</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div id="new_adsets">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <label class="col-md-4">
-                                                        Ad Set Name
-                                                    </label>
                                                     <div class="col-md-8">
-                                                        <input type="text" name="adset_name" placeholder="Enter an ad set name" class="form-control">
+                                                        <input type="text" name="" class="form-control" placeholder="Enter the text for your button">
+                                                    </div>
+                                                </div>
+                                                <div class="common-row">
+                                                    <div class="col-md-4 text-right">
+                                                        <label>Bot Payload</label>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <input type="text" name="" class="form-control" placeholder="Optional: This will be sent back to your webhook">
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div id="exist_adsets" style="display: none;">
-                                            <input type="hidden" name="exit_adset_id" id="exit_adset_id">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <label class="col-md-4">
-                                                        Use Existing
-                                                    </label>
-                                                    <div class="col-md-8 custom-auto-complete using-existing-camp-input">
-                                                        <input type="text" id="exit_adset_name" placeholder="select adset" readonly class="form-control">
-                                                        <i class="fa fa-remove cross-existing-camp-icon"></i>
-                                                        <div class="custom-auto-complete-data custom-dropdown" style="width: 94%">
-                                                            <ul>
-                                                                <?php foreach ($camapaigns['data'] as $camapaign) 
-                                                                    foreach($camapaign['adsets']['data'] as $adset) :?>
-                                                                <li data-id="<?php echo $adset['id'];?>" data-name="<?php echo $adset['name']; ?>">
-                                                                    <b><?php echo $adset['name']; ?></b>
-                                                                    <p><?php echo $adset['id'];?> 
-                                                                        <i class="fa fa-circle"></i> Campaign: <?php echo $camapaign['name'];?>
-                                                                    </p>
-                                                                </li>
-                                                                <?php endforeach;?>
-                                                            </ul>
+                                         <div class="common-row">
+                                            <a href="#" class="common-add-custom-field-link">+ Add another suggested reply</a>
+                                        </div>
+                              </div>
+                              <div id="text-only" class="tab-pane fade">
+                                 <div class="common-row">
+                                    <label>Message Text</label><br>
+                                    <input type="text" name="" class="form-control">
+                                 </div>
+                                 <div class="common-row">
+                                    <label>Buttons</label>
+                                        <div class="add-multiple-grey-sec">                                             
+                                                <div class="common-row" style="margin-top: 0">
+                                                    <span class="grey-sec-heading">Button 1</span><a href="#" class="remove-text text-right">Remove</a>
+                                                </div>
+                                                <div class="common-row">
+                                                    <div class="col-md-4 text-right">
+                                                        <label>Label</label>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <input type="text" name="" class="form-control" placeholder="Enter the text for your button">
+                                                    </div>
+                                                </div>
+                                                <div class="common-row">
+                                                    <div class="col-md-4 text-right">
+                                                        <label>Action</label>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <div class="custom-autocomplete-select">     
+                                                            <select class="selectpicker show-tick" data-size="3">    
+                                                                 <option data-tokens="ketchup mustard">Open a wbesite</option>  
+                                                                 <option data-tokens="mustard">Send a postback</option>
+                                                            </select>                                                   
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <div class="sec1">
-                                        <div class="row" style="margin-bottom:30px;">
-                                            <div class="col-md-12">
-                                                <div class="custom-autocomplete-select">
-                                                    <select class="selectpicker show-tick" name="choose_ads" id="choose_ads">
-                                                        <option value="new">Create New Ad</option>
-                                                        <option value="skip">Skip Ad</option>
-                                                    </select>
+                                                <div class="common-row">
+                                                    <div class="col-md-4 text-right">
+                                                        <label>Website URL</label>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <input type="text" name="" class="form-control" placeholder="Optional: This will be sent back to your webhook">
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="row" id="ad_input_box">
-                                            <div class="col-md-12">
-                                                <label class="col-md-4">
-                                                    Ad Name
-                                                </label>
-                                                <div class="col-md-8">
-                                                    <input type="text" name="ad_name" placeholder="Enter an ad name" class="form-control">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="sec1">
-                                        <p class="no-of-camp">Creating 1 campaign, 1 ad set and 1 ad</p>
-                                    </div>
+                                 </div>
+                                 <div class="common-row">
+                                    <a href="#" class="common-add-custom-field-link">+ Add another call to action</a>
                                 </div>
-                                <!--  <div class="popup-right-form col-md-4">sds</div> -->
+                              </div>
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="light-grey-btn" data-dismiss="modal" style="float: left;">Cancel</button>
-                                <button class="blue-btn" type="submit" name="camp_save_draft">Save to Draft</button>
+                        </div>
+
+                     </div>
+                     <div class="standad-right-sec">
+                        <div class="preview-white-area">
+                            <h1>Lorem Ipsum Text</h1>
+                            <div class="text-and-img-preview">
+                                <span><img src="img/ava-icon.png"></span>
+                                <div class="right-dynamic-text-img">
+                                    <span> </span>
+                                    <div style="float: left;width: 100%; position: relative; height: 100px; overflow-y: scroll;"><h1>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour,There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour,There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour,</h1></div>
+                                    <div style="float: left;width: 100%; position: relative; height:80px; overflow-y: scroll;"><h5>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour,There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour,</h5></div>
+                                </div>
                             </div>
-                        </form>
+                        </div>
+                     </div>
+              </div>
+              <div id="json" class="tab-pane fade">
+               json
+              </div>
+            </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="light-grey-btn" data-dismiss="modal">Done</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- product set plus popup -->
+<div id="product-set-plus-btn" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Create Product Set - Facebook catalog</h4>
+      </div>
+      <div class="modal-body">
+            <div class="common-row">
+                <label style="font-weight: normal;">Create a product set using filters to better control which products appear in your ads.</label>
+                <input type="text" name="" class="form-control" placeholder="Name">
+            </div>
+            <div class="common-row match-all-or-single">
+                <label>Match items for </label>
+                <div class="custom-autocomplete-select" style="display: inline-block;">
+                    <select class="selectpicker show-tick" data-size="3">    
+                         <option data-tokens="ketchup mustard">All</option> 
+                         <option data-tokens="mustard">At leat one</option>     
+                    </select>                                                   
+                </div>
+                <label>of the following rules:</label>
+            </div>
+
+            <div class="common-row all-custom-fields-sec">
+                <div class="common-row category-field">
+                    <div class="custom-autocomplete-select">                                                             
+                        <select class="selectpicker" data-size="9">  
+                             <option data-tokens="ketchup mustard">Category</option>    
+                             <option data-tokens="mustard">Category</option>      
+                             <option data-tokens="frosting">Product Type</option>       
+                             <option>Brand</option>
+                             <option>Price</option>
+                             <option>Current Price</option>
+                             <option>Product</option>
+                             <option>Retailer Product Gropu ID</option>
+                             <option>Gender</option>
+                             <option>Condition</option>
+                             <option>Size</option>
+                             <option>Age Group</option>
+                             <option>Color</option>
+                             <option>Material</option>
+                             <option>Pattern</option>
+                             <option>Custom Label 0</option>
+                             <option>Custom Label 1</option>
+                             <option>Custom Label 2</option>
+                             <option>Custom Label 3</option>
+                             <option>Custom Label 4</option>
+                             <option>Availability</option>
+                        </select>                                                   
                     </div>
 
+                    <div class="custom-autocomplete-select">                                                             
+                        <select class="selectpicker show-tick" data-size="5">    
+                             <option data-tokens="ketchup mustard">is any of these</option> 
+                             <option data-tokens="mustard">is not</option>    
+                             <option data-tokens="frosting">contains</option>                                           
+                             <option data-tokens="frosting">does not contains</option>  
+                             <option data-tokens="frosting">starts with</option>    
+                        </select>                                                   
+                    </div>
+                    <div class="custom-field-input-value">
+                        <input type="text" name="" class="form-control" placeholder="Enter a category">
+                    </div>
+                    <a href="#" class="remove-custom-field"><i class="fa fa-trash"></i></a>
+                </div>
+                <div class="based-on-condition common-row">
+                    OR
+                </div>
+                <div class="common-row product-type-field">
+                    <div class="custom-autocomplete-select">                                                             
+                        <select class="selectpicker" data-size="9">  
+                             <option data-tokens="ketchup mustard">Product Type</option>    
+                             <option data-tokens="mustard">Category</option>      
+                             <option data-tokens="frosting">Product Type</option>       
+                             <option>Brand</option>
+                             <option>Price</option>
+                             <option>Current Price</option>
+                             <option>Product</option>
+                             <option>Retailer Product Gropu ID</option>
+                             <option>Gender</option>
+                             <option>Condition</option>
+                             <option>Size</option>
+                             <option>Age Group</option>
+                             <option>Color</option>
+                             <option>Material</option>
+                             <option>Pattern</option>
+                             <option>Custom Label 0</option>
+                             <option>Custom Label 1</option>
+                             <option>Custom Label 2</option>
+                             <option>Custom Label 3</option>
+                             <option>Custom Label 4</option>
+                             <option>Availability</option>
+                        </select>                                                   
+                    </div>
+
+                    <div class="custom-autocomplete-select">                                                             
+                        <select class="selectpicker show-tick" data-size="5">    
+                             <option data-tokens="ketchup mustard">is any of these</option> 
+                             <option data-tokens="mustard">is not</option>    
+                             <option data-tokens="frosting">contains</option>                                           
+                             <option data-tokens="frosting">does not contains</option>  
+                             <option data-tokens="frosting">starts with</option>    
+                        </select>                                                   
+                    </div>
+                    <div class="custom-field-input-value">
+                        <input type="text" name="" class="form-control" placeholder="Enter a product type">
+                    </div>
+                    <a href="#" class="remove-custom-field"><i class="fa fa-trash"></i></a>
+                </div>
+                <div class="based-on-condition common-row">
+                    OR
+                </div>
+                <div class="common-row brand-type-field">
+                    <div class="custom-autocomplete-select">                                                             
+                        <select class="selectpicker" data-size="9">  
+                             <option data-tokens="ketchup mustard">Brand</option>   
+                             <option data-tokens="mustard">Category</option>      
+                             <option data-tokens="frosting">Product Type</option>       
+                             <option>Brand</option>
+                             <option>Price</option>
+                             <option>Current Price</option>
+                             <option>Product</option>
+                             <option>Retailer Product Gropu ID</option>
+                             <option>Gender</option>
+                             <option>Condition</option>
+                             <option>Size</option>
+                             <option>Age Group</option>
+                             <option>Color</option>
+                             <option>Material</option>
+                             <option>Pattern</option>
+                             <option>Custom Label 0</option>
+                             <option>Custom Label 1</option>
+                             <option>Custom Label 2</option>
+                             <option>Custom Label 3</option>
+                             <option>Custom Label 4</option>
+                             <option>Availability</option>
+                        </select>                                                   
+                    </div>
+
+                    <div class="custom-autocomplete-select">                                                             
+                        <select class="selectpicker show-tick" data-size="5">    
+                             <option data-tokens="ketchup mustard">is any of these</option> 
+                             <option data-tokens="mustard">is not</option>    
+                             <option data-tokens="frosting">contains</option>                                           
+                             <option data-tokens="frosting">does not contains</option>  
+                             <option data-tokens="frosting">starts with</option>    
+                        </select>                                                   
+                    </div>
+                    <div class="custom-field-input-value">
+                        <input type="text" name="" class="form-control" placeholder="Add brand">
+                    </div>
+                    <a href="#" class="remove-custom-field"><i class="fa fa-trash"></i></a>
+                </div>
+                <div class="based-on-condition common-row">
+                    OR
+                </div>
+                <div class="common-row price-type-field">
+                    <div class="custom-autocomplete-select">                                                             
+
+                        <select class="selectpicker" data-size="9">  
+                             <option data-tokens="ketchup mustard">Price</option>   
+                             <option data-tokens="mustard">Category</option>      
+                             <option data-tokens="frosting">Product Type</option>       
+                             <option>Brand</option>
+                             <option>Price</option>
+                             <option>Current Price</option>
+                             <option>Product</option>
+                             <option>Retailer Product Gropu ID</option>
+                             <option>Gender</option>
+                             <option>Condition</option>
+                             <option>Size</option>
+                             <option>Age Group</option>
+                             <option>Color</option>
+                             <option>Material</option>
+                             <option>Pattern</option>
+                             <option>Custom Label 0</option>
+                             <option>Custom Label 1</option>
+                             <option>Custom Label 2</option>
+                             <option>Custom Label 3</option>
+                             <option>Custom Label 4</option>
+                             <option>Availability</option>
+                        </select>                                                   
+                    </div>
+                    <div class="custom-autocomplete-select">                                                             
+                        <select class="selectpicker show-tick" data-size="5">    
+                             <option data-tokens="ketchup mustard">is greate than</option>  
+                             <option data-tokens="mustard">is less than</option>      
+                        </select>                                                   
+                    </div>
+                    <div class="custom-field-input-value">
+                        <input type="text" name="" class="form-control" placeholder="Amount in HNL">
+                    </div>
+                     <div class="custom-autocomplete-select currency-type">                                                          
+                        <select class="selectpicker show-tick" data-size="2">    
+                             <option data-tokens="ketchup mustard">AED - UAE Dirham</option>    
+                             <option data-tokens="mustard">AED - UAE Dirham</option>      
+                        </select>                                                   
+                    </div>
+                    <a href="#" class="remove-custom-field"><i class="fa fa-trash"></i></a>
+                </div>
+                <div class="based-on-condition common-row">
+                    OR
+                </div>
+                <div class="common-row current-price-type-field">
+                    <div class="custom-autocomplete-select">                                                             
+
+                        <select class="selectpicker" data-size="9">  
+                             <option data-tokens="ketchup mustard">Current Price</option>   
+                             <option data-tokens="mustard">Category</option>      
+                             <option data-tokens="frosting">Product Type</option>       
+                             <option>Brand</option>
+                             <option>Price</option>
+                             <option>Current Price</option>
+                             <option>Product</option>
+                             <option>Retailer Product Gropu ID</option>
+                             <option>Gender</option>
+                             <option>Condition</option>
+                             <option>Size</option>
+                             <option>Age Group</option>
+                             <option>Color</option>
+                             <option>Material</option>
+                             <option>Pattern</option>
+                             <option>Custom Label 0</option>
+                             <option>Custom Label 1</option>
+                             <option>Custom Label 2</option>
+                             <option>Custom Label 3</option>
+                             <option>Custom Label 4</option>
+                             <option>Availability</option>
+                        </select>                                                   
+                    </div>
+                    <div class="custom-autocomplete-select">                                                             
+                        <select class="selectpicker show-tick" data-size="5">    
+                             <option data-tokens="ketchup mustard">is greate than</option>  
+                             <option data-tokens="mustard">is less than</option>      
+                        </select>                                                   
+                    </div>
+                    <div class="custom-field-input-value">
+                        <input type="text" name="" class="form-control" placeholder="Amount in HNL">
+                    </div>
+                     <div class="custom-autocomplete-select currency-type">                                                          
+                        <select class="selectpicker show-tick" data-size="2">    
+                             <option data-tokens="ketchup mustard">AED - UAE Dirham</option>    
+                             <option data-tokens="mustard">AED - UAE Dirham</option>      
+                        </select>                                                   
+                    </div>
+                    <a href="#" class="remove-custom-field"><i class="fa fa-trash"></i></a>
+                </div>
+                <div class="based-on-condition common-row">
+                    OR
+                </div>
+                <div class="common-row product-field">
+                    <div class="custom-autocomplete-select">                                                             
+                        <select class="selectpicker" data-size="9">  
+                             <option data-tokens="ketchup mustard">Product</option> 
+                             <option data-tokens="mustard">Category</option>      
+                             <option data-tokens="frosting">Product Type</option>       
+                             <option>Brand</option>
+                             <option>Price</option>
+                             <option>Current Price</option>
+                             <option>Product</option>
+                             <option>Retailer Product Gropu ID</option>
+                             <option>Gender</option>
+                             <option>Condition</option>
+                             <option>Size</option>
+                             <option>Age Group</option>
+                             <option>Color</option>
+                             <option>Material</option>
+                             <option>Pattern</option>
+                             <option>Custom Label 0</option>
+                             <option>Custom Label 1</option>
+                             <option>Custom Label 2</option>
+                             <option>Custom Label 3</option>
+                             <option>Custom Label 4</option>
+                             <option>Availability</option>
+                        </select>                                                   
+                    </div>
+
+                    <div class="custom-autocomplete-select">                                                             
+                        <select class="selectpicker show-tick" data-size="5">    
+                             <option data-tokens="ketchup mustard">is any of these</option> 
+                             <option data-tokens="mustard">is not</option>    
+                             <option data-tokens="frosting">contains</option>                                           
+                             <option data-tokens="frosting">does not contains</option>  
+                             <option data-tokens="frosting">starts with</option>    
+                        </select>                                                   
+                    </div>
+                    <div class="custom-field-input-value">
+                        <input type="text" name="" class="form-control" placeholder="Search by title, ID, brand">
+                    </div>
+                    <a href="#" class="remove-custom-field"><i class="fa fa-trash"></i></a>
+                </div>
+                <div class="based-on-condition common-row">
+                    OR
+                </div>
+                <div class="common-row retailer-product-id-field">
+                    <div class="custom-autocomplete-select">                                                             
+                        <select class="selectpicker" data-size="9">  
+                             <option data-tokens="ketchup mustard">Retailer Product Group ID</option>   
+                             <option data-tokens="mustard">Category</option>      
+                             <option data-tokens="frosting">Product Type</option>       
+                             <option>Brand</option>
+                             <option>Price</option>
+                             <option>Current Price</option>
+                             <option>Product</option>
+                             <option>Retailer Product Gropu ID</option>
+                             <option>Gender</option>
+                             <option>Condition</option>
+                             <option>Size</option>
+                             <option>Age Group</option>
+                             <option>Color</option>
+                             <option>Material</option>
+                             <option>Pattern</option>
+                             <option>Custom Label 0</option>
+                             <option>Custom Label 1</option>
+                             <option>Custom Label 2</option>
+                             <option>Custom Label 3</option>
+                             <option>Custom Label 4</option>
+                             <option>Availability</option>
+                        </select>                                                   
+                    </div>
+
+                    <div class="custom-autocomplete-select">                                                             
+                        <select class="selectpicker show-tick" data-size="5">    
+                             <option data-tokens="ketchup mustard">is any of these</option> 
+                             <option data-tokens="mustard">is not</option>    
+                             <option data-tokens="frosting">contains</option>                                           
+                             <option data-tokens="frosting">does not contains</option>  
+                             <option data-tokens="frosting">starts with</option>    
+                        </select>                                                   
+                    </div>
+                    <div class="custom-field-input-value">
+                        <input type="text" name="" class="form-control" placeholder="Add retailer product group ID">
+                    </div>
+                    <a href="#" class="remove-custom-field"><i class="fa fa-trash"></i></a>
+                </div>
+                <div class="based-on-condition common-row">
+                    OR
+                </div>
+                <div class="common-row gender-field">
+                    <div class="custom-autocomplete-select">                                                             
+                        <select class="selectpicker" data-size="9">  
+                             <option data-tokens="ketchup mustard">Gender</option>  
+                             <option data-tokens="mustard">Category</option>      
+                             <option data-tokens="frosting">Product Type</option>       
+                             <option>Brand</option>
+                             <option>Price</option>
+                             <option>Current Price</option>
+                             <option>Product</option>
+                             <option>Retailer Product Gropu ID</option>
+                             <option>Gender</option>
+                             <option>Condition</option>
+                             <option>Size</option>
+                             <option>Age Group</option>
+                             <option>Color</option>
+                             <option>Material</option>
+                             <option>Pattern</option>
+                             <option>Custom Label 0</option>
+                             <option>Custom Label 1</option>
+                             <option>Custom Label 2</option>
+                             <option>Custom Label 3</option>
+                             <option>Custom Label 4</option>
+                             <option>Availability</option>
+                        </select>                                                   
+                    </div>
+
+                    <div class="custom-autocomplete-select">                                                             
+                        <select class="selectpicker show-tick" data-size="2">    
+                             <option data-tokens="ketchup mustard">is</option>  
+                             <option data-tokens="mustard">is not</option>    
+                        </select>                                                   
+                    </div>
+                    <div class="custom-field-input-value">
+                        <input type="text" name="" class="form-control" placeholder="Add gender">
+                    </div>
+                    <a href="#" class="remove-custom-field"><i class="fa fa-trash"></i></a>
+                </div>
+                <div class="based-on-condition common-row">
+                    OR
+                </div>
+                <div class="common-row condition-field">
+                    <div class="custom-autocomplete-select">                                                             
+                        <select class="selectpicker" data-size="9">  
+                             <option data-tokens="ketchup mustard">Condition</option>   
+                             <option data-tokens="mustard">Category</option>      
+                             <option data-tokens="frosting">Product Type</option>       
+                             <option>Brand</option>
+                             <option>Price</option>
+                             <option>Current Price</option>
+                             <option>Product</option>
+                             <option>Retailer Product Gropu ID</option>
+                             <option>Gender</option>
+                             <option>Condition</option>
+                             <option>Size</option>
+                             <option>Age Group</option>
+                             <option>Color</option>
+                             <option>Material</option>
+                             <option>Pattern</option>
+                             <option>Custom Label 0</option>
+                             <option>Custom Label 1</option>
+                             <option>Custom Label 2</option>
+                             <option>Custom Label 3</option>
+                             <option>Custom Label 4</option>
+                             <option>Availability</option>
+                        </select>                                                   
+                    </div>
+
+                    <div class="custom-autocomplete-select">                                                             
+                        <select class="selectpicker show-tick" data-size="2">    
+                             <option data-tokens="ketchup mustard">is</option>  
+                             <option data-tokens="mustard">is not</option>    
+                        </select>                                                   
+                    </div>
+                    <div class="custom-field-input-value">
+                        <input type="text" name="" class="form-control" placeholder="Add condition">
+                    </div>
+                    <a href="#" class="remove-custom-field"><i class="fa fa-trash"></i></a>
+                </div>
+                <div class="based-on-condition common-row">
+                    OR
+                </div>
+                <div class="common-row size-field">
+                    <div class="custom-autocomplete-select">                                                             
+                        <select class="selectpicker" data-size="9">  
+                             <option data-tokens="ketchup mustard">Size</option>    
+                             <option data-tokens="mustard">Category</option>      
+                             <option data-tokens="frosting">Product Type</option>       
+                             <option>Brand</option>
+                             <option>Price</option>
+                             <option>Current Price</option>
+                             <option>Product</option>
+                             <option>Retailer Product Gropu ID</option>
+                             <option>Gender</option>
+                             <option>Condition</option>
+                             <option>Size</option>
+                             <option>Age Group</option>
+                             <option>Color</option>
+                             <option>Material</option>
+                             <option>Pattern</option>
+                             <option>Custom Label 0</option>
+                             <option>Custom Label 1</option>
+                             <option>Custom Label 2</option>
+                             <option>Custom Label 3</option>
+                             <option>Custom Label 4</option>
+                             <option>Availability</option>
+                        </select>                                                   
+                    </div>
+
+                    <div class="custom-autocomplete-select">                                                             
+                        <select class="selectpicker show-tick" data-size="5">    
+                             <option data-tokens="ketchup mustard">is</option>  
+                             <option data-tokens="mustard">is not</option>  
+                             <option data-tokens="ketchup mustard">contains</option>    
+                             <option data-tokens="ketchup mustard">does not contains</option>   
+                             <option data-tokens="ketchup mustard">starts with</option>   
+                        </select>                                                   
+                    </div>
+                    <div class="custom-field-input-value">
+                        <input type="text" name="" class="form-control" placeholder="Add size">
+                    </div>
+                    <a href="#" class="remove-custom-field"><i class="fa fa-trash"></i></a>
+                </div>
+                <div class="based-on-condition common-row">
+                    OR
+                </div>
+                <div class="common-row age-group-field">
+                    <div class="custom-autocomplete-select">                                                             
+                        <select class="selectpicker" data-size="9">  
+                             <option data-tokens="ketchup mustard">Age group</option>   
+                             <option data-tokens="mustard">Category</option>      
+                             <option data-tokens="frosting">Product Type</option>       
+                             <option>Brand</option>
+                             <option>Price</option>
+                             <option>Current Price</option>
+                             <option>Product</option>
+                             <option>Retailer Product Gropu ID</option>
+                             <option>Gender</option>
+                             <option>Condition</option>
+                             <option>Size</option>
+                             <option>Age Group</option>
+                             <option>Color</option>
+                             <option>Material</option>
+                             <option>Pattern</option>
+                             <option>Custom Label 0</option>
+                             <option>Custom Label 1</option>
+                             <option>Custom Label 2</option>
+                             <option>Custom Label 3</option>
+                             <option>Custom Label 4</option>
+                             <option>Availability</option>
+                        </select>                                                   
+                    </div>
+
+                    <div class="custom-autocomplete-select">                                                             
+                        <select class="selectpicker show-tick" data-size="2">    
+                             <option data-tokens="ketchup mustard">is</option>  
+                             <option data-tokens="mustard">is not</option>   
+                        </select>                                                   
+                    </div>
+                    <div class="custom-field-input-value">
+                        <input type="text" name="" class="form-control" placeholder="Add age group">
+                    </div>
+                    <a href="#" class="remove-custom-field"><i class="fa fa-trash"></i></a>
+                </div>
+                <div class="based-on-condition common-row">
+                    OR
+                </div>
+                <div class="common-row color-field">
+                    <div class="custom-autocomplete-select">                                                             
+                        <select class="selectpicker" data-size="9">  
+                             <option data-tokens="ketchup mustard">Color</option>   
+                             <option data-tokens="mustard">Category</option>      
+                             <option data-tokens="frosting">Product Type</option>       
+                             <option>Brand</option>
+                             <option>Price</option>
+                             <option>Current Price</option>
+                             <option>Product</option>
+                             <option>Retailer Product Gropu ID</option>
+                             <option>Gender</option>
+                             <option>Condition</option>
+                             <option>Size</option>
+                             <option>Age Group</option>
+                             <option>Color</option>
+                             <option>Material</option>
+                             <option>Pattern</option>
+                             <option>Custom Label 0</option>
+                             <option>Custom Label 1</option>
+                             <option>Custom Label 2</option>
+                             <option>Custom Label 3</option>
+                             <option>Custom Label 4</option>
+                             <option>Availability</option>
+                        </select>                                                   
+                    </div>
+
+                    <div class="custom-autocomplete-select">                                                             
+                        <select class="selectpicker show-tick" data-size="5">    
+                             <option data-tokens="ketchup mustard">is</option>  
+                             <option data-tokens="mustard">is not</option>   
+                             <option data-tokens="ketchup mustard">contains</option>    
+                             <option data-tokens="ketchup mustard">does not contains</option>
+                             <option data-tokens="ketchup mustard">starts with</option>
+                        </select>                                                   
+                    </div>
+                    <div class="custom-field-input-value">
+                        <input type="text" name="" class="form-control" placeholder="Add color">
+                    </div>
+                    <a href="#" class="remove-custom-field"><i class="fa fa-trash"></i></a>
+                </div>
+                <div class="based-on-condition common-row">
+                    OR
+                </div>
+                <div class="common-row material-field">
+                    <div class="custom-autocomplete-select">                                                             
+                        <select class="selectpicker" data-size="9">  
+                             <option data-tokens="ketchup mustard">Material</option>    
+                             <option data-tokens="mustard">Category</option>      
+                             <option data-tokens="frosting">Product Type</option>       
+                             <option>Brand</option>
+                             <option>Price</option>
+                             <option>Current Price</option>
+                             <option>Product</option>
+                             <option>Retailer Product Gropu ID</option>
+                             <option>Gender</option>
+                             <option>Condition</option>
+                             <option>Size</option>
+                             <option>Age Group</option>
+                             <option>Color</option>
+                             <option>Material</option>
+                             <option>Pattern</option>
+                             <option>Custom Label 0</option>
+                             <option>Custom Label 1</option>
+                             <option>Custom Label 2</option>
+                             <option>Custom Label 3</option>
+                             <option>Custom Label 4</option>
+                             <option>Availability</option>
+                        </select>                                                   
+                    </div>
+
+                    <div class="custom-autocomplete-select">                                                             
+                        <select class="selectpicker show-tick" data-size="5">    
+                             <option data-tokens="ketchup mustard">is</option>  
+                             <option data-tokens="mustard">is not</option>   
+                             <option data-tokens="ketchup mustard">contains</option>    
+                             <option data-tokens="ketchup mustard">does not contains</option>
+                             <option data-tokens="ketchup mustard">starts with</option>
+                        </select>                                                   
+                    </div>
+                    <div class="custom-field-input-value">
+                        <input type="text" name="" class="form-control" placeholder="Add material">
+                    </div>
+                    <a href="#" class="remove-custom-field"><i class="fa fa-trash"></i></a>
+                </div>
+                <div class="based-on-condition common-row">
+                    OR
+                </div>
+                <div class="common-row custom-label-field">
+                    <div class="custom-autocomplete-select">                                                             
+                        <select class="selectpicker" data-size="9">  
+                             <option data-tokens="ketchup mustard">Custom Label 0</option>  
+                             <option data-tokens="mustard">Category</option>      
+                             <option data-tokens="frosting">Product Type</option>       
+                             <option>Brand</option>
+                             <option>Price</option>
+                             <option>Current Price</option>
+                             <option>Product</option>
+                             <option>Retailer Product Gropu ID</option>
+                             <option>Gender</option>
+                             <option>Condition</option>
+                             <option>Size</option>
+                             <option>Age Group</option>
+                             <option>Color</option>
+                             <option>Material</option>
+                             <option>Pattern</option>
+                             <option>Custom Label 0</option>
+                             <option>Custom Label 1</option>
+                             <option>Custom Label 2</option>
+                             <option>Custom Label 3</option>
+                             <option>Custom Label 4</option>
+                             <option>Availability</option>
+                        </select>                                                   
+                    </div>
+
+                    <div class="custom-autocomplete-select">                                                             
+                        <select class="selectpicker show-tick" data-size="5">    
+                             <option data-tokens="ketchup mustard">is</option>  
+                             <option data-tokens="mustard">is not</option>   
+                             <option data-tokens="ketchup mustard">contains</option>    
+                             <option data-tokens="ketchup mustard">does not contains</option>
+                             <option data-tokens="ketchup mustard">starts with</option>
+                        </select>                                                   
+                    </div>
+                    <div class="custom-field-input-value">
+                        <input type="text" name="" class="form-control" placeholder="Enter custom label 0's value">
+                    </div>
+                    <a href="#" class="remove-custom-field"><i class="fa fa-trash"></i></a>
+                </div>
+                <div class="based-on-condition common-row">
+                    OR
+                </div>
+                <div class="common-row custom-label-field">
+                    <div class="custom-autocomplete-select">                                                             
+                        <select class="selectpicker" data-size="9">  
+                             <option data-tokens="ketchup mustard">Custom Label 1</option>  
+                             <option data-tokens="mustard">Category</option>      
+                             <option data-tokens="frosting">Product Type</option>       
+                             <option>Brand</option>
+                             <option>Price</option>
+                             <option>Current Price</option>
+                             <option>Product</option>
+                             <option>Retailer Product Gropu ID</option>
+                             <option>Gender</option>
+                             <option>Condition</option>
+                             <option>Size</option>
+                             <option>Age Group</option>
+                             <option>Color</option>
+                             <option>Material</option>
+                             <option>Pattern</option>
+                             <option>Custom Label 0</option>
+                             <option>Custom Label 1</option>
+                             <option>Custom Label 2</option>
+                             <option>Custom Label 3</option>
+                             <option>Custom Label 4</option>
+                             <option>Availability</option>
+                        </select>                                                   
+                    </div>
+
+                    <div class="custom-autocomplete-select">                                                             
+                        <select class="selectpicker show-tick" data-size="5">    
+                             <option data-tokens="ketchup mustard">is</option>  
+                             <option data-tokens="mustard">is not</option>   
+                             <option data-tokens="ketchup mustard">contains</option>    
+                             <option data-tokens="ketchup mustard">does not contains</option>
+                             <option data-tokens="ketchup mustard">starts with</option>
+                        </select>                                                   
+                    </div>
+                    <div class="custom-field-input-value">
+                        <input type="text" name="" class="form-control" placeholder="Enter custom label 1's value">
+                    </div>
+                    <a href="#" class="remove-custom-field"><i class="fa fa-trash"></i></a>
+                </div>
+                <div class="based-on-condition common-row">
+                    OR
+                </div>
+                <div class="common-row custom-label-field">
+                    <div class="custom-autocomplete-select">                                                             
+                        <select class="selectpicker" data-size="9">  
+                             <option data-tokens="ketchup mustard">Custom Label 2</option>  
+                             <option data-tokens="mustard">Category</option>      
+                             <option data-tokens="frosting">Product Type</option>       
+                             <option>Brand</option>
+                             <option>Price</option>
+                             <option>Current Price</option>
+                             <option>Product</option>
+                             <option>Retailer Product Gropu ID</option>
+                             <option>Gender</option>
+                             <option>Condition</option>
+                             <option>Size</option>
+                             <option>Age Group</option>
+                             <option>Color</option>
+                             <option>Material</option>
+                             <option>Pattern</option>
+                             <option>Custom Label 0</option>
+                             <option>Custom Label 1</option>
+                             <option>Custom Label 2</option>
+                             <option>Custom Label 3</option>
+                             <option>Custom Label 4</option>
+                             <option>Availability</option>
+                        </select>                                                   
+                    </div>
+
+                    <div class="custom-autocomplete-select">                                                             
+                        <select class="selectpicker show-tick" data-size="5">    
+                             <option data-tokens="ketchup mustard">is</option>  
+                             <option data-tokens="mustard">is not</option>   
+                             <option data-tokens="ketchup mustard">contains</option>    
+                             <option data-tokens="ketchup mustard">does not contains</option>
+                             <option data-tokens="ketchup mustard">starts with</option>
+                        </select>                                                   
+                    </div>
+                    <div class="custom-field-input-value">
+                        <input type="text" name="" class="form-control" placeholder="Enter custom label 2's value">
+                    </div>
+                    <a href="#" class="remove-custom-field"><i class="fa fa-trash"></i></a>
+                </div>
+                <div class="based-on-condition common-row">
+                    OR
+                </div>
+                <div class="common-row custom-label-field">
+                    <div class="custom-autocomplete-select">                                                             
+                        <select class="selectpicker" data-size="9">  
+                             <option data-tokens="ketchup mustard">Custom Label 3</option>  
+                             <option data-tokens="mustard">Category</option>      
+                             <option data-tokens="frosting">Product Type</option>       
+                             <option>Brand</option>
+                             <option>Price</option>
+                             <option>Current Price</option>
+                             <option>Product</option>
+                             <option>Retailer Product Gropu ID</option>
+                             <option>Gender</option>
+                             <option>Condition</option>
+                             <option>Size</option>
+                             <option>Age Group</option>
+                             <option>Color</option>
+                             <option>Material</option>
+                             <option>Pattern</option>
+                             <option>Custom Label 0</option>
+                             <option>Custom Label 1</option>
+                             <option>Custom Label 2</option>
+                             <option>Custom Label 3</option>
+                             <option>Custom Label 4</option>
+                             <option>Availability</option>
+                        </select>                                                   
+                    </div>
+
+                    <div class="custom-autocomplete-select">                                                             
+                        <select class="selectpicker show-tick" data-size="5">    
+                             <option data-tokens="ketchup mustard">is</option>  
+                             <option data-tokens="mustard">is not</option>   
+                             <option data-tokens="ketchup mustard">contains</option>    
+                             <option data-tokens="ketchup mustard">does not contains</option>
+                             <option data-tokens="ketchup mustard">starts with</option>
+                        </select>                                                   
+                    </div>
+                    <div class="custom-field-input-value">
+                        <input type="text" name="" class="form-control" placeholder="Enter custom label 3's value">
+                    </div>
+                    <a href="#" class="remove-custom-field"><i class="fa fa-trash"></i></a>
+                </div>
+                <div class="based-on-condition common-row">
+                    OR
+                </div>
+                <div class="common-row custom-label-field">
+                    <div class="custom-autocomplete-select">                                                             
+                        <select class="selectpicker" data-size="9">  
+                             <option data-tokens="ketchup mustard">Custom Label 4</option>  
+                             <option data-tokens="mustard">Category</option>      
+                             <option data-tokens="frosting">Product Type</option>       
+                             <option>Brand</option>
+                             <option>Price</option>
+                             <option>Current Price</option>
+                             <option>Product</option>
+                             <option>Retailer Product Gropu ID</option>
+                             <option>Gender</option>
+                             <option>Condition</option>
+                             <option>Size</option>
+                             <option>Age Group</option>
+                             <option>Color</option>
+                             <option>Material</option>
+                             <option>Pattern</option>
+                             <option>Custom Label 0</option>
+                             <option>Custom Label 1</option>
+                             <option>Custom Label 2</option>
+                             <option>Custom Label 3</option>
+                             <option>Custom Label 4</option>
+                             <option>Availability</option>
+                        </select>                                                   
+                    </div>
+
+                    <div class="custom-autocomplete-select">                                                             
+                        <select class="selectpicker show-tick" data-size="5">    
+                             <option data-tokens="ketchup mustard">is</option>  
+                             <option data-tokens="mustard">is not</option>   
+                             <option data-tokens="ketchup mustard">contains</option>    
+                             <option data-tokens="ketchup mustard">does not contains</option>
+                             <option data-tokens="ketchup mustard">starts with</option>
+                        </select>                                                   
+                    </div>
+                    <div class="custom-field-input-value">
+                        <input type="text" name="" class="form-control" placeholder="Enter custom label 4's value">
+                    </div>
+                    <a href="#" class="remove-custom-field"><i class="fa fa-trash"></i></a>
+                </div>
+                <div class="based-on-condition common-row">
+                    OR
+                </div>
+                <div class="common-row availability-field">
+                    <div class="custom-autocomplete-select">                                                             
+                        <select class="selectpicker" data-size="9">  
+                             <option data-tokens="ketchup mustard">Availability</option>    
+                             <option data-tokens="mustard">Category</option>      
+                             <option data-tokens="frosting">Product Type</option>       
+                             <option>Brand</option>
+                             <option>Price</option>
+                             <option>Current Price</option>
+                             <option>Product</option>
+                             <option>Retailer Product Gropu ID</option>
+                             <option>Gender</option>
+                             <option>Condition</option>
+                             <option>Size</option>
+                             <option>Age Group</option>
+                             <option>Color</option>
+                             <option>Material</option>
+                             <option>Pattern</option>
+                             <option>Custom Label 0</option>
+                             <option>Custom Label 1</option>
+                             <option>Custom Label 2</option>
+                             <option>Custom Label 3</option>
+                             <option>Custom Label 4</option>
+                             <option>Availability</option>
+                        </select>                                                   
+                    </div>
+
+                    <div class="custom-autocomplete-select">                                                             
+                        <select class="selectpicker show-tick" data-size="2">    
+                             <option data-tokens="ketchup mustard">is</option>  
+                             <option data-tokens="mustard">is not</option>   
+                        </select>                                                   
+                    </div>
+                    <div class="custom-field-input-value">
+                        <input type="text" name="" class="form-control" placeholder="Add availability">
+                    </div>
+                    <a href="#" class="remove-custom-field"><i class="fa fa-trash"></i></a>
                 </div>
             </div>
-            <!-- craete camp popup ends  -->
+
+            <div class="common-row add-another-row">
+
+                <label>Add another </label>
+               <div class="dropdown" style="display: inline-block;">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Select <i class="fa fa-caret-down"></i>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li><a href="#">Category</a></li>
+                        <li><a href="#">Product Type</a></li>
+                        <li><a href="#">Brand</a></li>
+                        <li><a href="#">Price</a></li>
+                        <li><a href="#">Current Price</a></li>
+                        <li><a href="#">Product</a></li>
+                        <li><a href="#">Retailer Product Gropu ID</a></li>
+                        <li><a href="#">Gender</a></li>
+                        <li><a href="#">Condition</a></li>
+                        <li><a href="#">Size</a></li>
+                        <li><a href="#">Age Group</a></li>
+                        <li><a href="#">Color</a></li>
+                        <li><a href="#">Material</a></li>
+                        <li><a href="#">Pattern</a></li>
+                        <li><a href="#">Custom Label 0</a></li>
+                        <li><a href="#">Custom Label 1</a></li>
+                        <li><a href="#">Custom Label 2</a></li>
+                        <li><a href="#">Custom Label 3</a></li>
+                        <li><a href="#">Custom Label 4</a></li>
+                        <li><a href="#">Availability</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="total-products-carousel">
+            
+                   <section id="demos">
+      <div class="row">
+        <div class="large-12 columns">
+          <div class="owl-carousel owl-theme">
+            <div class="item" style="width:200px">
+                <span class="crsl-img"><img src="../img/safe_image.png"></span>
+                <h1>Lorem ipsum text</h1>
+                <span>$42.00</span>
+            </div>
+             <div class="item" style="width:200px">
+                <span class="crsl-img"><img src="../img/safe_image.png"></span>
+                <h1>Lorem ipsum text</h1>
+                <span>$42.00</span>
+            </div>
+             <div class="item" style="width:200px">
+                <span class="crsl-img"><img src="../img/safe_image.png"></span>
+                <h1>Lorem ipsum text</h1>
+                <span>$42.00</span>
+            </div>
+              <div class="item" style="width:200px">
+                <span class="crsl-img"><img src="../img/safe_image.png"></span>
+                <h1>Lorem ipsum text</h1>
+                <span>$42.00</span>
+            </div>
+             <div class="item" style="width:200px">
+                <span class="crsl-img"><img src="../img/safe_image.png"></span>
+                <h1>Lorem ipsum text</h1>
+                <span>$42.00</span>
+            </div>
+             <div class="item" style="width:200px">
+                <span class="crsl-img"><img src="../img/safe_image.png"></span>
+                <h1>Lorem ipsum text</h1>
+                <span>$42.00</span>
+            </div>
+             <div class="item" style="width:200px">
+                <span class="crsl-img"><img src="../img/safe_image.png"></span>
+                <h1>Lorem ipsum text</h1>
+                <span>$42.00</span>
+            </div>
+              <div class="item" style="width:200px">
+                <span class="crsl-img"><img src="../img/safe_image.png"></span>
+                <h1>Lorem ipsum text</h1>
+                <span>$42.00</span>
+            </div>
+             <div class="item" style="width:200px">
+                <span class="crsl-img"><img src="../img/safe_image.png"></span>
+                <h1>Lorem ipsum text</h1>
+                <span>$42.00</span>
+            </div>
+             <div class="item" style="width:200px">
+                <span class="crsl-img"><img src="../img/safe_image.png"></span>
+                <h1>Lorem ipsum text</h1>
+                <span>$42.00</span>
+            </div>
+             <div class="item" style="width:200px">
+                <span class="crsl-img"><img src="../img/safe_image.png"></span>
+                <h1>Lorem ipsum text</h1>
+                <span>$42.00</span>
+            </div>
+              <div class="item" style="width:200px">
+                <span class="crsl-img"><img src="../img/safe_image.png"></span>
+                <h1>Lorem ipsum text</h1>
+                <span>$42.00</span>
+            </div>
+          </div>
+   
+          </div>
+         
+        </div>
+      </div>
+    </section>
+
+            </div>
+        <div class="modal-footer">
+        <button type="button" class="light-grey-btn" data-dismiss="modal">Cancel</button>
+        <button type="button" class="blue-btn" data-dismiss="modal">Create</button>
+      </div>
+      </div>
+      
+    </div>
+
+  </div>
+</div>
+
+ <!-- craete camp popup  -->
+<div id="create-camp-btn" class="modal fade common-three-tabs-popup" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <form method="post">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Create Campaign</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="popup-left-form">
+                        <div class="sec1">
+                            <div class="row" style="margin-bottom:30px;">
+                                <div class="col-md-12">
+                                    <div class="custom-autocomplete-select">
+                                        <select class="selectpicker show-tick" id="choose_campaigns" name="choose_campaigns">
+                                            <option  value="new">Create New Campaign</option>
+                                            <option  value="existing">Use Existing Campaign</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div id="new_campaign">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label class="col-md-4">
+                                            Campaign Name
+                                        </label>
+                                        <div class="col-md-8">
+                                            <input type="text" name="campaign_name" placeholder="Enter a campaign name" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label class="col-md-4">
+                                            Buying Type
+                                        </label>
+                                        <div class="col-md-8">
+                                            <div class="custom-autocomplete-select">
+                                                <select class="selectpicker show-tick" name="buying_type">
+                                                    <option data-tokens="ketchup mustard" >Auction</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <input type="hidden" name="objective" id="camp_objective" value="LINK_CLICKS">
+                                    <div class="col-md-12">
+                                        <label class="col-md-4">
+                                            Campaign Objective
+                                        </label>
+                                        <div class="col-md-8">
+                                            <button class="light-grey-btn show-camp-obj-btn"><img src="img/brand-awarns-icon.png">Traffic</button>
+                                            <div class="objective camp_objective">
+                                                <div class="objective-cat">
+                                                    <h5>Awareness</h5>
+                                                    <ul>
+                                                        <li data-value="BRAND_AWARENESS"><img src="img/brand-awarns-icon.png"> Brand awareness</li>
+                                                        <li data-value="REACH"><img src="img/brand-awarns-icon.png"> Reach</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="objective-cat">
+                                                    <h5>Consideration</h5>
+                                                    <ul>
+                                                        <li data-value="LINK_CLICKS"><img src="img/brand-awarns-icon.png"> Traffic</li>
+                                                        <li data-value="APP_INSTALLS"><img src="img/brand-awarns-icon.png"> App installs</li>
+                                                        <li data-value="VIDEO_VIEWS"><img src="img/brand-awarns-icon.png"> Video views</li>
+                                                        <li data-value="LEAD_GENERATION"><img src="img/brand-awarns-icon.png"> Lead generation</li>
+                                                        <li data-value="POST_ENGAGEMENT"><img src="img/brand-awarns-icon.png"> Post enagagement</li>
+                                                        <li data-value="PAGE_LIKES"><img src="img/brand-awarns-icon.png"> Page likes</li>
+                                                        <li data-value="EVENT_RESPONSES"><img src="img/brand-awarns-icon.png"> Event responses</li>
+                                                        <li data-value="LINK_CLICKS"><img src="img/brand-awarns-icon.png"> Messages</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="objective-cat">
+                                                    <h5>Conversion</h5>
+                                                    <ul>
+                                                        <li data-value="CONVERSIONS"><img src="img/brand-awarns-icon.png"> Conversions</li>
+                                                        <li data-value="PRODUCT_CATALOG_SALES"><img src="img/brand-awarns-icon.png"> Product catalog sales</li>
+                                                        <li data-value="LINK_CLICKS"><img src="img/brand-awarns-icon.png"> Store visits</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="existing_campaign" style="display: none;">
+                                <input type="hidden" name="exit_camapaign_id" id="exit_camapaign_id">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label class="col-md-4">
+                                            Use Existing
+                                        </label>
+                                        <div class="col-md-8 custom-auto-complete using-existing-camp-input">
+                                            <input type="text" id="exit_campaign_name" placeholder="choose camapaign" readonly class="form-control">
+                                            <i class="fa fa-remove cross-existing-camp-icon"></i>
+                                            <div class="custom-auto-complete-data custom-dropdown" style="width: 94%">
+                                                <ul>
+                                                    <?php foreach ($camapaigns['data'] as $camapaign) :?>
+                                                    <li data-id="<?php echo $camapaign['id'];?>" data-name="<?php echo $camapaign['name']; ?>">
+                                                        <b><?php echo $camapaign['name']; ?></b>
+                                                        <p><?php echo $camapaign['id'];?> 
+                                                            <?php if($camapaign['objective']) { ?><i class="fa fa-circle"></i> <?php echo $camapaign['objective']; } ?> 
+                                                            <?php if($camapaign['buying_type']) { ?><i class="fa fa-circle"></i> <?php echo $camapaign['buying_type']; } ?>
+                                                        </p>
+                                                    </li>
+                                                    <?php endforeach;?>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="sec1">
+                            <div class="row" style="margin-bottom:30px;">
+                                <div class="col-md-12">
+                                    <div class="custom-autocomplete-select">
+                                        <select class="selectpicker show-tick" name="choose_adsets" id="choose_adsets">
+                                            <option value="new" >Create New AdSet</option>
+                                            <option  value="existing" disabled>Use Existing AdSet</option>
+                                            <option value="skip" >Skip AdSet</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="new_adsets">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label class="col-md-4">
+                                            Ad Set Name
+                                        </label>
+                                        <div class="col-md-8">
+                                            <input type="text" name="adset_name" placeholder="Enter an ad set name" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="exist_adsets" style="display: none;">
+                                <input type="hidden" name="exit_adset_id" id="exit_adset_id">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label class="col-md-4">
+                                            Use Existing
+                                        </label>
+                                        <div class="col-md-8 custom-auto-complete using-existing-camp-input">
+                                            <input type="text" id="exit_adset_name" placeholder="choose camapaign" readonly class="form-control">
+                                            <i class="fa fa-remove cross-existing-camp-icon"></i>
+                                            <div class="custom-auto-complete-data custom-dropdown" style="width: 94%">
+                                                <ul>
+                                                    <?php foreach ($camapaigns['data'] as $camapaign) 
+                                                        foreach($camapaign['adsets']['data'] as $adset) :?>
+                                                    <li data-id="<?php echo $adset['id'];?>" data-name="<?php echo $adset['name']; ?>">
+                                                        <b><?php echo $adset['name']; ?></b>
+                                                        <p><?php echo $adset['id'];?> 
+                                                            <i class="fa fa-circle"></i> Campaign: <?php echo $camapaign['name'];?>
+                                                        </p>
+                                                    </li>
+                                                    <?php endforeach;?>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="sec1">
+                            <div class="row" style="margin-bottom:30px;">
+                                <div class="col-md-12">
+                                    <div class="custom-autocomplete-select">
+                                        <select class="selectpicker show-tick" name="choose_ads" id="choose_ads">
+                                            <option value="new">Create New Ad</option>
+                                            <option value="skip">Skip Ad</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" id="ad_input_box">
+                                <div class="col-md-12">
+                                    <label class="col-md-4">
+                                        Ad Name
+                                    </label>
+                                    <div class="col-md-8">
+                                        <input type="text" name="ad_name" placeholder="Enter an ad name" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sec1">
+                            <p class="no-of-camp">Creating 1 campaign, 1 ad set and 1 ad</p>
+                        </div>
+                    </div>
+                    <!--  <div class="popup-right-form col-md-4">sds</div> -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="light-grey-btn" data-dismiss="modal" style="float: left;">Cancel</button>
+                    <button class="blue-btn" type="submit" name="camp_save_draft">Save to Draft</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+<!-- craete camp popup ends  -->
 <!-- common create slide show popup -->
 <div id="common-create-slideshow-popup" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -1587,5 +2775,7 @@
 
   </div>
 </div>
+
+
 
 

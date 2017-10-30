@@ -693,7 +693,7 @@
                                                                 <b>Messenger Setup</b> <i class="fa fa-info-circle"></i>
                                                                 <br>
                                                                 <p>Create the first few messages people see in Messenger after they click on your ad.</p>
-                                                                <button class="light-grey-btn">Set up message</button>
+                                                                <button class="light-grey-btn set-up-message-popup" data-target="#set-up-message-popup" data-toggle="modal">Set up message</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -788,7 +788,7 @@
                                                                 <b>Messenger Setup</b> <i class="fa fa-info-circle"></i>
                                                                 <br>
                                                                 <p>Create the first few messages people see in Messenger after they click on your ad.</p>
-                                                                <button class="light-grey-btn">Set up message</button>
+                                                              <button class="light-grey-btn set-up-message-popup" data-target="#set-up-message-popup" data-toggle="modal">Set up message</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -861,7 +861,7 @@
                                                 <input type="radio" name="web-url" id="mess-setup">
                                                 <label for="mess-setup">Messenger Setup </label>
                                                 <p>Create the first few messages people see in Messenger after they click on your ad</p>
-                                                <button class="light-grey-btn">Set up message</button>
+                                                <button class="light-grey-btn set-up-message-popup" data-target="#set-up-message-popup" data-toggle="modal">Set up message</button>
                                             </div>
                                             <div class="common-row">
                                                 <input type="checkbox" name="">
@@ -1015,6 +1015,125 @@
                                          <div class="common-row">    
                                             <input type="checkbox" name="" id="fixed-img-end" class="col-md-1"><label for="fixed-img-end" class="col-md-10" style="padding: 0">Add a card at the end with your Page profile picture</label>
                                         </div>
+                                        <div class="common-row" style="margin-bottom: 20px">
+                                        	<label>Show More Catalog Information</label><br>
+                                        	<input type="checkbox" name=""> Add an overlay to images
+                                        	<div class="common-row">
+                                        		<div class="custom-autocomplete-select" style="display: inline-block;">	 
+													<select class="selectpicker show-tick" data-size="3">	 
+													     <option data-tokens="ketchup mustard">Price</option>	
+													     <option data-tokens="mustard">Lorem</option>	  
+													     <option data-tokens="frosting">Dummy text printing</option>		
+												    </select>													
+												</div>
+												<a href="#edit-apperance-popup" class="edit-apperance" data-toggle="modal">Edit Appearance</a>
+<!-- edit apperance popup -->
+<div id="edit-apperance-popup" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Edit Appearance</h4>
+      </div>
+      <div class="modal-body">
+       <div class="left">
+       		<div class="common-row">
+       			<label>Shape</label>
+       			<div class="common-row shape-row">
+       					<div class="shape-app">
+       						<label for="shape1"><img src="../img/apperance-img1.png"></label><br><input type="radio" name="shape" id="shape1">
+       					</div>
+       					<div class="shape-app">
+       						<label for="shape2"><img src="../img/apperance-img2.png"></label><br><input type="radio" name="shape" id="shape2">
+       					</div>
+       					<div class="shape-app">
+       						<label for="shape3"><img src="../img/apperance-img3.png"></label><br><input type="radio" name="shape" id="shape3">
+       					</div>
+       			</div>
+       		</div>
+       		<div class="common-row font-family">
+       			<label>Font</label>
+       			<div class="custom-autocomplete-select">															 
+					<select class="selectpicker show-tick" data-size="10">	 
+					     <option data-tokens="ketchup mustard">Droid Serif</option>	
+					     <option data-tokens="mustard">Lorem</option>	  
+					     <option data-tokens="frosting">Dummy text printing</option>
+					     <option data-tokens="ketchup mustard">Droid Serif</option>	
+					     <option data-tokens="mustard">Lorem</option>	  
+					     <option data-tokens="frosting">Dummy text printing</option>
+					     <option data-tokens="ketchup mustard">Droid Serif</option>	
+					     <option data-tokens="mustard">Lorem</option>	  
+					     <option data-tokens="frosting">Dummy text printing</option>
+					     <option data-tokens="ketchup mustard">Droid Serif</option>	
+					     <option data-tokens="mustard">Lorem</option>	  
+					     <option data-tokens="frosting">Dummy text printing</option>
+					     <option data-tokens="ketchup mustard">Droid Serif</option>	
+					     <option data-tokens="mustard">Lorem</option>	  
+					     <option data-tokens="frosting">Dummy text printing</option>											
+				    </select>													
+				</div>
+       		</div>
+       		<div class="common-row">
+		  		<label>Color</label><br>
+		  		<div class="color-select">
+			       	<div class="thumb f-child">
+			     		<span>Shape</span>	
+			     		<input type="radio" class="thumbCheck" name="img-thumb">
+			     	</div>
+			     	<div class="thumb l-child">
+			     		<span>Text</span>	
+			     		<input type="radio" class="thumbCheck" name="img-thumb">
+			     	</div>
+			    </div> 
+			    <div class="eight-defined-colors">	
+			    	<a href="#" class="red-color">
+			    		<input type="radio" name="">	
+			    	</a>
+			    	<a href="#" class="orange-color">
+			    		<input type="radio" name="">	
+			    	</a>
+			    	<a href="#" class="green-color">
+			    		<input type="radio" name="">	
+			    	</a>
+			    	<a href="#" class="blue-color">
+			    		<input type="radio" name="">	
+			    	</a>
+			    	<a href="#" class="purple-color">
+			    		<input type="radio" name="">	
+			    	</a>
+			    	<a href="#" class="pink-color">
+			    		<input type="radio" name="">	
+			    	</a>
+			    	<a href="#" class="grey-color">
+			    		<input type="radio" name="">	
+			    	</a>
+			    	<a href="#" class="black-color">
+			    		<input type="radio" name="">	
+			    	</a>
+			    </div>
+             </div>
+             <div class="common-row">
+             	<label>Position</label>
+
+             </div>
+       </div>
+       <div class="right">
+       </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="light-grey-btn" data-dismiss="modal">Cancel</button>
+        <button type="button" class="blue-btn" data-dismiss="modal">Save</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+                                        	</div>
+                                        </div>
                                         <div class="fixed-img-begining">
                                             <div class="common-row">
                                                 <label>Product Catalog </label>
@@ -1040,151 +1159,6 @@
                                                     </select>                                                   
                                                 </div>
                                                 <button class="light-grey-btn product-set-plus-btn" data-target="#product-set-plus-btn" data-toggle="modal">+</button>
-<!-- product set plus popup -->
-<div id="product-set-plus-btn" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Create Product Set - Facebook catalog</h4>
-      </div>
-      <div class="modal-body">
-            <div class="common-row">
-                <label style="font-weight: normal;">Create a product set using filters to better control which products appear in your ads.</label>
-                <input type="text" name="" class="form-control" placeholder="Name">
-            </div>
-            <div class="common-row match-all-or-single">
-                <label>Match items for </label>
-                <div class="custom-autocomplete-select">                                                             
-                    <select class="selectpicker show-tick" data-size="3">    
-                         <option data-tokens="ketchup mustard">All</option> 
-                         <option data-tokens="mustard">At leat one</option>     
-                    </select>                                                   
-                </div>
-                <label>of the following rules:</label>
-            </div>
-            <div class="common-row add-another-row">
-                <label>Add another </label>
-               <div class="dropdown" style="display: inline-block;">
-                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Select <i class="fa fa-caret-down"></i>
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                        <li><a href="#">Category</a></li>
-                        <li><a href="#">Product Type</a></li>
-                        <li><a href="#">Brand</a></li>
-                        <li><a href="#">Price</a></li>
-                        <li><a href="#">Current Price</a></li>
-                        <li><a href="#">Product</a></li>
-                        <li><a href="#">Retailer Product Gropu ID</a></li>
-                        <li><a href="#">Gender</a></li>
-                        <li><a href="#">Condition</a></li>
-                        <li><a href="#">Size</a></li>
-                        <li><a href="#">Age Group</a></li>
-                        <li><a href="#">Color</a></li>
-                        <li><a href="#">Material</a></li>
-                        <li><a href="#">Pattern</a></li>
-                        <li><a href="#">Custom Label 0</a></li>
-                        <li><a href="#">Custom Label 1</a></li>
-                        <li><a href="#">Custom Label 2</a></li>
-                        <li><a href="#">Custom Label 3</a></li>
-                        <li><a href="#">Custom Label 4</a></li>
-                        <li><a href="#">Availability</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="total-products-carousel">
-            
-                   <section id="demos">
-      <div class="row">
-        <div class="large-12 columns">
-          <div class="owl-carousel owl-theme">
-            <div class="item" style="width:200px">
-                <span class="crsl-img"><img src="../img/safe_image.png"></span>
-                <h1>Lorem ipsum text</h1>
-                <span>$42.00</span>
-            </div>
-             <div class="item" style="width:200px">
-                <span class="crsl-img"><img src="../img/safe_image.png"></span>
-                <h1>Lorem ipsum text</h1>
-                <span>$42.00</span>
-            </div>
-             <div class="item" style="width:200px">
-                <span class="crsl-img"><img src="../img/safe_image.png"></span>
-                <h1>Lorem ipsum text</h1>
-                <span>$42.00</span>
-            </div>
-              <div class="item" style="width:200px">
-                <span class="crsl-img"><img src="../img/safe_image.png"></span>
-                <h1>Lorem ipsum text</h1>
-                <span>$42.00</span>
-            </div>
-             <div class="item" style="width:200px">
-                <span class="crsl-img"><img src="../img/safe_image.png"></span>
-                <h1>Lorem ipsum text</h1>
-                <span>$42.00</span>
-            </div>
-             <div class="item" style="width:200px">
-                <span class="crsl-img"><img src="../img/safe_image.png"></span>
-                <h1>Lorem ipsum text</h1>
-                <span>$42.00</span>
-            </div>
-             <div class="item" style="width:200px">
-                <span class="crsl-img"><img src="../img/safe_image.png"></span>
-                <h1>Lorem ipsum text</h1>
-                <span>$42.00</span>
-            </div>
-              <div class="item" style="width:200px">
-                <span class="crsl-img"><img src="../img/safe_image.png"></span>
-                <h1>Lorem ipsum text</h1>
-                <span>$42.00</span>
-            </div>
-             <div class="item" style="width:200px">
-                <span class="crsl-img"><img src="../img/safe_image.png"></span>
-                <h1>Lorem ipsum text</h1>
-                <span>$42.00</span>
-            </div>
-             <div class="item" style="width:200px">
-                <span class="crsl-img"><img src="../img/safe_image.png"></span>
-                <h1>Lorem ipsum text</h1>
-                <span>$42.00</span>
-            </div>
-             <div class="item" style="width:200px">
-                <span class="crsl-img"><img src="../img/safe_image.png"></span>
-                <h1>Lorem ipsum text</h1>
-                <span>$42.00</span>
-            </div>
-              <div class="item" style="width:200px">
-                <span class="crsl-img"><img src="../img/safe_image.png"></span>
-                <h1>Lorem ipsum text</h1>
-                <span>$42.00</span>
-            </div>
-          </div>
-   
-          </div>
-         
-        </div>
-      </div>
-    </section>
-
-            </div>
-        <div class="modal-footer">
-        <button type="button" class="light-grey-btn" data-dismiss="modal">Cancel</button>
-        <button type="button" class="blue-btn" data-dismiss="modal">Create</button>
-      </div>
-      </div>
-      
-    </div>
-
-  </div>
-</div>
-
-
-
-
-
-
                                             </div>
                                             <div class="common-row common-input-with-plus-inside">
                                                 <label>Text</label>
@@ -1733,3 +1707,6 @@
         </div>
     </div>
 </div>
+ 
+
+

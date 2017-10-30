@@ -354,7 +354,7 @@ if(isset($_SESSION['user'])) :
 	/*get all accounts of selected user*/
 	/*get camapagins, adsets and ads*/
 	$cSession = curl_init(); 
-	curl_setopt($cSession,CURLOPT_URL,"https://graph.facebook.com/v2.10/".$_REQUEST['act']."/campaigns?access_token=".$_REQUEST['code']."&fields=name,account_id,buying_type,objective,id,objective_for_results,objective_for_cost,status,delivery_info,start_time,stop_time,insights{reach,impressions,frequency,unique_clicks,spend},adsets{id,name,status,delivery_info,billing_event,targeting,bid_amount,lifetime_budget,daily_budget,start_time,end_time,objective_for_results,objective_for_cost,targeting_age_min,targeting_age_max,targeting_genders,targeting_countries,activities{actor_name,event_time,application_name,translated_event_type,extra_data},insights{reach,frequency,impressions,unique_clicks,spend}},ads{name,id,delivery_info,objective_for_results,objective_for_cost,status,insights{frequency,impressions,spend,unique_clicks,total_unique_actions,relevance_score,reach}}");
+	curl_setopt($cSession,CURLOPT_URL,"https://graph.facebook.com/v2.10/".$_REQUEST['act']."/campaigns?access_token=".$_REQUEST['code']."&fields=name,account_id,buying_type,objective,id,objective_for_results,objective_for_cost,status,delivery_info,start_time,stop_time,insights{reach,impressions,frequency,unique_clicks,spend},adsets{id,name,status,delivery_info,billing_event,attribution_spec,targeting,bid_amount,lifetime_budget,daily_budget,start_time,end_time,objective_for_results,objective_for_cost,targeting_age_min,targeting_age_max,optimization_goal,targeting_genders,lifetime_imps,targeting_countries,activities{actor_name,event_time,application_name,translated_event_type,extra_data},insights{reach,frequency,impressions,unique_clicks,spend}},ads{name,id,delivery_info,preview_link,creative_title,creative_body,creative_link_url,objective_for_results,objective_for_cost,status,insights{frequency,impressions,spend,unique_clicks,total_unique_actions,relevance_score,reach}}");
 	curl_setopt($cSession,CURLOPT_RETURNTRANSFER,true);
 	curl_setopt($cSession,CURLOPT_HEADER, false); 
 	$result=curl_exec($cSession);
@@ -630,6 +630,7 @@ if(isset($_SESSION['user'])) :
 		                </ul>
 		                 <!-- Tab panes content goes here-->
 		                <div class="tab-content main-tabs-entries">
+
 		                 	<!-- Account Overview -->
 		                 	<div role="tabpanel" class="tab-pane acc-data-tabs" id="acc-rev">
 								<?php include 'AccountOverview.php';?>
@@ -693,9 +694,24 @@ if(isset($_SESSION['user'])) :
 		</div>
 		<!-- end main working area -->
 	</div>
+	<!-- loader popup-->
+	<div id="loader_div" class="modal fade loaderPopup" role="dialog">
+		<div class="modal-dialog">
+
+			<div class="modal-content">
+				<div class="modal-body">
+					<p>Please Wait</p>
+					<img src="img/Rolling.gif">
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<!-- loader popup-->
 	<!--end main section -->
 	<!-- all pop ups -->
 	<?php include 'AllPops.php';?>
+
 	<!-- all pop ups -->
 </div>
 <?php else : header('location:index.php'); endif ?>
