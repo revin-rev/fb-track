@@ -141,8 +141,12 @@ jQuery(document).ready(function(){
 	jQuery('.create-adset-popup').click(function(){
 		jQuery('#choose_campaigns option:eq(1)').prop('selected',true);
 		jQuery("#choose_campaigns").selectpicker("refresh");
+		jQuery('#exit_campaign_name').prop('readonly',false);
 		jQuery('#new_campaign').hide();
 		jQuery('#existing_campaign').show();
+		jQuery('#choose_adsets option[value="existing"]').prop('disabled', false);
+		jQuery('#choose_adsets option[value="new"]').prop('selected',true);
+		jQuery("#choose_adsets").selectpicker("refresh");
 		jQuery('#ad_input_box').hide();
 		jQuery('#choose_ads option[value="skip"]').prop('selected',true);
 		jQuery("#choose_ads").selectpicker("refresh");
@@ -151,6 +155,7 @@ jQuery(document).ready(function(){
 	jQuery('.create-ad-popup').click(function(){
 		jQuery('#choose_campaigns option[value="existing"]').prop('selected',true);
 		jQuery("#choose_campaigns").selectpicker("refresh");
+		jQuery('#exit_campaign_name,#exit_adset_name').prop('readonly',false);
 		jQuery('#new_campaign, #new_adsets').hide();
 		jQuery('#existing_campaign, #exist_adsets').show();
 		jQuery('#choose_adsets option[value="existing"]').prop('disabled', false);
@@ -165,6 +170,7 @@ jQuery(document).ready(function(){
 	jQuery('.create-camp-popup').click(function() {
 		jQuery('#choose_campaigns option[value="new"]').prop('selected',true);
 		jQuery("#choose_campaigns").selectpicker("refresh");
+		jQuery('#exit_campaign_name').prop('readonly',false);
 		jQuery('#new_campaign, #new_adsets, #ad_input_box').show();
 		jQuery('#existing_campaign, #exist_adsets').hide();
 		jQuery('#choose_adsets option[value="existing"]').prop('disabled', true);

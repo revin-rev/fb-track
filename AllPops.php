@@ -101,7 +101,7 @@
                                                         Use Existing
                                                     </label>
                                                     <div class="col-md-8 custom-auto-complete using-existing-camp-input">
-                                                        <input type="text" id="exit_campaign_name" placeholder="choose camapaign" readonly class="form-control">
+                                                        <input type="text" id="exit_campaign_name" placeholder="select camapaign" readonly class="form-control">
                                                         <i class="fa fa-remove cross-existing-camp-icon"></i>
                                                         <div class="custom-auto-complete-data custom-dropdown" style="width: 94%">
                                                             <ul>
@@ -155,7 +155,7 @@
                                                         Use Existing
                                                     </label>
                                                     <div class="col-md-8 custom-auto-complete using-existing-camp-input">
-                                                        <input type="text" id="exit_adset_name" placeholder="choose camapaign" readonly class="form-control">
+                                                        <input type="text" id="exit_adset_name" placeholder="select adset" readonly class="form-control">
                                                         <i class="fa fa-remove cross-existing-camp-icon"></i>
                                                         <div class="custom-auto-complete-data custom-dropdown" style="width: 94%">
                                                             <ul>
