@@ -5,7 +5,62 @@
                 <div class="form-white-block" style="padding: 15px;">
                     <label>Ad Set Name</label>
                     <input type="text" name="" class="form-control" id="ad_name">
-                    <a href="#">Rename usign available fields</a>
+                    <a href="#rename-ad-set-popup" data-toggle="modal">Rename usign available fields</a>
+
+
+<!-- edit ad set name popup -->
+
+<div id="rename-ad-set-popup" class="modal fade rename-ad-set-popup" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Rename 1 ad</h4>
+      </div>
+      <div class="modal-body">
+        <div class="common-row">
+            <label>For each Ad</label>
+            <div class="custom-autocomplete-select" style="display: inline-block;">                                                             
+                <select class="selectpicker show-tick set-ad-set-name" data-size="3">    
+                     <option data-tokens="ketchup mustard" class="avail-names">Rename using available fields</option> 
+                     <option data-tokens="mustard" class="set-manual-name">Set name manually</option>                                         
+                </select>                                                   
+            </div>
+        </div>
+        <div class="common-row">
+            <div class="rename-using-available">        
+                    <div class="available-fields">  
+                        <h1>Available Fields</h1>
+                        <input type="text" name="" placeholder="Enter custom field" class="form-control">
+                    </div>
+                    <div class="position-arrows">
+                        <i class="fa fa-exchange"></i>
+                    </div>
+                    <div class="fields-in-naming">dgdg
+                    </div>
+                    <div class="additional-formating">dgd
+                    </div>
+            </div>
+            <div class="set-name-manually">
+                    2
+            </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="light-grey-btn" data-dismiss="modal">Cancel</button>
+        <button type="button" class="blue-btn" data-dismiss="modal">Ok</button>
+      </div>
+    </div> 
+
+  </div>
+</div> 
+
+
+
+
+
                 </div>
 
                 <div class="form-white-block identity">
@@ -1115,8 +1170,8 @@
 			    </div>
              </div>
              <div class="common-row">
-             	<label>Position</label>
-
+             	<label>Position</label><br>
+             	<img src="../img/text-position-img.png">
              </div>
        </div>
        <div class="right">

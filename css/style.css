@@ -1019,7 +1019,7 @@ color:#FFFFFF;
 #edit-apperance-popup .left {float: left; width:40%; }
 #edit-apperance-popup .right {float: left; width:60%; }
 .eight-defined-colors{ float: left;width: 100%; margin-top: 15px;}
-.eight-defined-colors a{ position: relative; }
+.eight-defined-colors a{ position: relative;margin:2px;}
 .eight-defined-colors .red-color{ float: left;width:20px; height:20px; background-color: red}
 .eight-defined-colors .orange-color{ float: left;width:20px; height:20px; background-color: #f78400}
 .eight-defined-colors .green-color{ float: left;width:20px; height:20px; background-color: green}
@@ -1061,6 +1061,23 @@ color:#FFFFFF;
 	width: 50px;
 	margin-left: 35px;
 }
+.eight-defined-colors a.checked-checkbox{ margin-top: -1px; } 
+
+/* edit ad set name popup */
+.rename-ad-set-popup .modal-dialog{ width: 830px; }
+.rename-ad-set-popup .modal-body{ width: 100%; display: inline-block; }
+.set-name-manually{ display: none; }
+.available-fields{ float: left;width: 250px;border: 1px solid #ccc;border-radius: 5px; margin-right:6px}
+.fields-in-naming{ float: left;width: 250px;padding: 10px;border: 1px solid #ccc;border-radius: 5px; margin-right:6px}
+.additional-formating{ float: left;width: 250px;padding: 10px;border: 1px solid #ccc;border-radius: 5px;}
+.position-arrows {color: #999999; float: left; font-size: 25px; margin-right:6px}
+.rename-using-available, .set-name-manually {float: left; width: 100%; }
+.available-fields h1{font-size:12px; text-transform: uppercase;color: #666;font-weight: bold;margin: 0; padding: 10px 15px;}
+.rename-using-available input[type="text"] {margin: 0 15px; width: 88%; }
+
+
+
+
 
 
 
