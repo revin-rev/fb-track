@@ -991,12 +991,28 @@ $(document).ready(function() {
   })
 });
  // edit appearance popup code
- $(document).ready(function(){
-		$('.eight-defined-colors input:radio').change(function(){
-		    if($(this).is(":checked")) {		    	
-		        $(this).parent().addClass("checked-checkbox");
-		    }else {
-		        $(this).parent().removeClass("checked-checkbox");
-		    }
-		});
+$(document).ready(function(){
+	$('.eight-defined-colors input:radio').change(function(){
+	    if($(this).is(":checked")) {		    	
+	        $(this).parent().addClass("checked-checkbox");
+	         $(this).parent().siblings().find('input:radio').prop('checked', false);
+	         $(this).parent().siblings().removeClass("checked-checkbox");
+	    }
 	});
+});
+
+// set ad set name popup script
+$(document).ready(function(){
+	$('.set-ad-set-name').click(function () {
+		if ($('.set-ad-set-name ul li:first-child').hasClass( "selected" ))
+		{ 
+			$('.rename-using-available').show();
+			$('.set-name-manually').hide();
+		}
+		else
+		{ 
+			$('.set-name-manually').show();
+			$('.rename-using-available').hide();
+		}
+	});
+});
