@@ -708,6 +708,7 @@ if(isset($_SESSION['user'])) :
 		</div>
 	</div>
 	<!-- loader popup-->
+	
 	<!--end main section -->
 	<!-- all pop ups -->
 	<?php include 'AllPops.php';?>

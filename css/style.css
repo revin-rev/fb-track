@@ -392,7 +392,7 @@ input:checked + .slider:before {-webkit-transform: translateX(13px); -ms-transfo
 .camp-second-tab-table table td span.toggle-handle {float: unset;width: 0;}
 .disable-me { pointer-events: none; opacity: 0.5; }
 
-.camapaign-details-list .padding0 { padding-left: 0px; }
+.camapaign-details-list .padding0, { padding-left: 0px; }
 
 .form-white-block .main-heading { margin-left: 0px; margin-right: 0px; border-bottom: 1px solid #ddd; }
 .padding10 { padding:0px 5px; }
@@ -1030,18 +1030,20 @@ color:#FFFFFF;
 .eight-defined-colors .black-color{ float: left;width:20px; height:20px; background-color: #000}
 .eight-defined-colors a input[type="radio"]{height: 100%;margin: 0; opacity: 0; width: 100%; cursor: pointer;}
 .checked-checkbox{position: absolute;width:20px !important; height:20px; color: #fff;font-weight: bold; background-image: url(../img/colors-white-tick.png);  background-position: center center; left: 0}
-.dropdown-menu li {
+
+/*code by 81*/
+.export_campaigns.dropdown-menu li {
     display: block;
     border: 0px;
     padding: 0px;
 }
-.dropdown-menu li:hover a {
+.export_campaigns.dropdown-menu li:hover a {
     background-color: #22497c;
     color: #fff;
     border-top: 1px solid #000;
     border-bottom: 1px solid #000;
 }
-.dropdown-menu li.divider {
+.export_campaigns.dropdown-menu li.divider {
     margin: 2px auto;
 }
 #loader_div .modal-content {
@@ -1061,6 +1063,10 @@ color:#FFFFFF;
 	width: 50px;
 	margin-left: 35px;
 }
+.hide-camp-row { display: none; }
+.editable-row.padding0 { padding: 0; }
+input.editable-input { height: 40px; border-radius: 0px; }
+/*code by 81*/
 .eight-defined-colors a.checked-checkbox{ margin-top: -1px; } 
 
 /* edit ad set name popup */

@@ -183,9 +183,15 @@
         </div>
         <div class="simple-default-icons-group" style="margin-left:10px">
             <ul>
-                <li><i class="fa fa-refresh disable-me"></i></li>
                 <li data-toggle="modal" data-target="#delete_adsets_popup" id="delete_adsets"><i class="fa fa-trash disable-me"></i></li>
-                <li><i class="fa fa-edit"></i></li>
+                <li class="dropdown export-menu">
+                    <i class="fa fa-edit dropdown-toggle" type="button" data-toggle="dropdown"></i>
+                    <ul class="dropdown-menu export_campaigns">
+                      <li data-toggle="modal" data-target="#loader_div"><a href="#">Export Selected</a></li>
+                      <li data-toggle="modal" data-target="#loader_div"><a href="#" >Export Selected as Plain Text</a></li>
+                      <li data-toggle="modal" data-target="#loader_div"><a href="#">Export All</a></li>
+                  </ul>
+                </li>
                 <li><i class="fa fa-tag disable-me"></i></li>
             </ul>
         </div>

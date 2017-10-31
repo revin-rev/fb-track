@@ -1,3 +1,24 @@
+<!-- export as plain text -->
+<div id="export-as-plain-text" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Export as Text</h4>
+			</div>
+			<div class="modal-body">
+				<p>Use Ctrl+C to copy to clipboard:</p>
+				<textarea class="form-control" rows="10" style="resize: none;"></textarea>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="light-grey-btn" data-dismiss="modal">Cancel</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- export as plain text -- >
+
 
 
 <!-- set up a message popup -->
@@ -1109,62 +1130,62 @@
         <div class="large-12 columns">
           <div class="owl-carousel owl-theme">
             <div class="item" style="width:200px">
-                <span class="crsl-img"><img src="../img/safe_image.png"></span>
+                <span class="crsl-img"><img src="img/safe_image.png"></span>
                 <h1>Lorem ipsum text</h1>
                 <span>$42.00</span>
             </div>
              <div class="item" style="width:200px">
-                <span class="crsl-img"><img src="../img/safe_image.png"></span>
+                <span class="crsl-img"><img src="img/safe_image.png"></span>
                 <h1>Lorem ipsum text</h1>
                 <span>$42.00</span>
             </div>
              <div class="item" style="width:200px">
-                <span class="crsl-img"><img src="../img/safe_image.png"></span>
+                <span class="crsl-img"><img src="img/safe_image.png"></span>
                 <h1>Lorem ipsum text</h1>
                 <span>$42.00</span>
             </div>
               <div class="item" style="width:200px">
-                <span class="crsl-img"><img src="../img/safe_image.png"></span>
+                <span class="crsl-img"><img src="img/safe_image.png"></span>
                 <h1>Lorem ipsum text</h1>
                 <span>$42.00</span>
             </div>
              <div class="item" style="width:200px">
-                <span class="crsl-img"><img src="../img/safe_image.png"></span>
+                <span class="crsl-img"><img src="img/safe_image.png"></span>
                 <h1>Lorem ipsum text</h1>
                 <span>$42.00</span>
             </div>
              <div class="item" style="width:200px">
-                <span class="crsl-img"><img src="../img/safe_image.png"></span>
+                <span class="crsl-img"><img src="img/safe_image.png"></span>
                 <h1>Lorem ipsum text</h1>
                 <span>$42.00</span>
             </div>
              <div class="item" style="width:200px">
-                <span class="crsl-img"><img src="../img/safe_image.png"></span>
+                <span class="crsl-img"><img src="img/safe_image.png"></span>
                 <h1>Lorem ipsum text</h1>
                 <span>$42.00</span>
             </div>
               <div class="item" style="width:200px">
-                <span class="crsl-img"><img src="../img/safe_image.png"></span>
+                <span class="crsl-img"><img src="img/safe_image.png"></span>
                 <h1>Lorem ipsum text</h1>
                 <span>$42.00</span>
             </div>
              <div class="item" style="width:200px">
-                <span class="crsl-img"><img src="../img/safe_image.png"></span>
+                <span class="crsl-img"><img src="img/safe_image.png"></span>
                 <h1>Lorem ipsum text</h1>
                 <span>$42.00</span>
             </div>
              <div class="item" style="width:200px">
-                <span class="crsl-img"><img src="../img/safe_image.png"></span>
+                <span class="crsl-img"><img src="img/safe_image.png"></span>
                 <h1>Lorem ipsum text</h1>
                 <span>$42.00</span>
             </div>
              <div class="item" style="width:200px">
-                <span class="crsl-img"><img src="../img/safe_image.png"></span>
+                <span class="crsl-img"><img src="img/safe_image.png"></span>
                 <h1>Lorem ipsum text</h1>
                 <span>$42.00</span>
             </div>
               <div class="item" style="width:200px">
-                <span class="crsl-img"><img src="../img/safe_image.png"></span>
+                <span class="crsl-img"><img src="img/safe_image.png"></span>
                 <h1>Lorem ipsum text</h1>
                 <span>$42.00</span>
             </div>
@@ -1480,14 +1501,14 @@
 			<ul>
 				<li class="with-img-slide">
 					<a href="#edit-slide-show-slide" data-toggle="modal"><i class="fa fa-pencil"></i></a>
-					<img src="../img/ident-acc-icon.jpg">
+					<img src="img/ident-acc-icon.jpg">
 					<div class="slide-show-overlay">
 						<i class="fa fa-remove"></i>
 					</div>
 				</li>
 				<li class="with-img-slide">
 					<a href="#edit-slide-show-slide" data-toggle="modal"><i class="fa fa-pencil"></i></a>
-					<img src="../img/ident-acc-icon.jpg">
+					<img src="img/ident-acc-icon.jpg">
 					<div class="slide-show-overlay">
 						<i class="fa fa-remove"></i>
 					</div>
@@ -1562,7 +1583,7 @@
         	</div>
         </div>
         <div class="edit-slide-right-sec">
-        	<img src="../img/ident-acc-icon.jpg">
+        	<img src="img/ident-acc-icon.jpg">
         </div>
       </div>
       <div class="modal-footer">
@@ -1597,7 +1618,7 @@
 			   	<ul>
 			   		<li class="add-photo-to-status">
 			   			<div class="left">
-			   				<img src="../img/upload-img-to-status.png">
+			   				<img src="img/upload-img-to-status.png">
 			   			</div>
 			   			<div class="right">
 			   				<b>Upload Photo/Video</b>
@@ -2757,26 +2778,6 @@
 </div>
 
 
-<div id="common-select-img-popup" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Select components to add</h4>
-      </div>
-      <div class="modal-body">
-       hmhmgm
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="light-grey-btn" data-dismiss="modal">Cancel</button>
-        <button type="button" class="blue-btn" data-dismiss="modal">Ok</button>
-      </div>
-    </div>
-
-  </div>
-</div>
 
 
 

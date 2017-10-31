@@ -184,28 +184,71 @@ jQuery(document).ready(function(){
 	jQuery('.export_campaigns li').click(function() {
 		var text = jQuery(this).text();
 		var campaign_array = [];
-		if(text == 'Export Selected') {
-			jQuery('.campaigns_checkbox:checked').each(function() {
-				var cmp_id  = jQuery(this).parent().parent().attr('id');
- 				var newData = _.find(_camapaigns, function(o) { return o.id == cmp_id;  });
-				campaign_array.push(newData);
-			});
-			csvImport(campaign_array);
-		} else if(text == 'Export Selected as Plain Text') {
-
+		if(text == 'Export Selected' || text == 'Export Selected as Plain Text') {
+			campaign_array = checkMainDiv();
+			csvImport(campaign_array, text);
 		} else {
-			csvImport(_camapaigns);
+			csvImport(_camapaigns, text);
 		}
 		setTimeout(function() {
 			
 		},1500);
 	});
 
+	function checkMainDiv() {
+		var campaign_array = [];
+		var main_div_id = $('.nav.nav-tabs.main-tabs li.active').children().attr('href');
+		if(main_div_id == '#camp') {
+			jQuery('.campaigns_checkbox:checked').each(function() {
+				var cmp_id  = jQuery(this).parent().parent().attr('id');
+				var newData = _.find(_camapaigns, function(o) { return o.id == cmp_id;  });
+				campaign_array.push(newData);
+			});
+			return campaign_array;
+		} 
+		if(main_div_id == '#ad-sets') {
+		 	jQuery('.adsets_checkbox:checked').each(function() {
+				var adset_id  = jQuery(this).parent().parent().attr('id');
+				_camapaigns.forEach(function(item,index) {
+					if(item.adsets) {
+						var adsets = _.find(item.adsets.data, function(o) { return o.id == adset_id;  });
+						if(adsets != undefined) {
+							campaign_array.push(_camapaigns[index]);
+						}
+					}
+				});
+			});
+			return campaign_array;
+		}
+		if(main_div_id == '#ads') {
+			jQuery('.ad_checkbox:checked').each(function() {
+				var ad_id  = jQuery(this).parent().parent().attr('id');
+				_camapaigns.forEach(function(item,index) {
+					if(item.ads) {
+						var ads = _.find(item.ads.data, function(o) { return o.id == ad_id;  });
+						if(ads != undefined) {
+							campaign_array.push(_camapaigns[index]);
+						}
+					}
+				});
+			});
+			return campaign_array;
+		}
+	}
+
 	var finalVal = 'Campaign ID,Campaign Name,Campaign Status,Campaign Objective,Buying Type,Ad Set ID,Ad Set Run Status,Ad Set Lifetime Impressions,Ad Set Name,Ad Set Time Start,Ad Set Daily Budget,Ad Set Lifetime Budget,Countries,Location Types,Gender,Age Min,Age Max,Optimization Goal,Attribution Spec,Billing Event,Bid Amount,Ad ID,Ad Status,Preview Link,Ad Name,Title,Body'+'\n';
-	function csvImport(data) {
+
+	var plainVal = 'Campaign ID Campaign Name Campaign Status Campaign Objective Buying Type Ad Set ID Ad Set Run Status Ad Set Lifetime Impressions Ad Set Name Ad Set Time Start Ad Set Daily Budget Ad Set Lifetime Budget Countries Location Types Gender Age Min Age Max Optimization Goal Attribution Spec Billing Event Bid Amount Ad ID Ad Status Preview Link Ad Name Title Body'+'\n';
+
+	function csvImport(data, text) {
 		if(data.length > 0) {
 			data.forEach(function(camp, index) {
-				finalVal +=camp.id+','+camp.name+','+camp.status+','+camp.objective+','+camp.buying_type;
+				if(text == 'Export Selected as Plain Text') {
+					plainVal += camp.id+' '+camp.name+' '+camp.status+' '+camp.objective+' '+camp.buying_type;
+				} else {
+					finalVal += camp.id+','+camp.name+','+camp.status+','+camp.objective+','+camp.buying_type;
+				}
+
 				if(camp.adsets) {
 					camp.adsets.data.forEach(function(adset, innerIndex) {
 						var date = new Date(adset.start_time);
@@ -235,8 +278,12 @@ jQuery(document).ready(function(){
 							var age_max = '';
 						}
 
-
-						finalVal += ','+adset.id+','+adset.status+','+adset.lifetime_imps+','+adset.name+','+newDate+','+adset.daily_budget+','+adset.lifetime_budget+','+countries+','+location_types+','+gender+','+age_min+','+age_max+','+adset.optimization_goal+','+attribution_spec+','+adset.billing_event+','+adset.bid_amount;
+						if(text == 'Export Selected as Plain Text') {
+							plainVal += ' '+adset.id+' '+adset.status+' '+adset.lifetime_imps+' '+adset.name+' '+newDate+' '+adset.daily_budget+' '+adset.lifetime_budget+' '+countries+' '+location_types+' '+gender+' '+age_min+' '+age_max+' '+adset.optimization_goal+' '+attribution_spec+' '+adset.billing_event+' '+adset.bid_amount;
+						} else {
+							finalVal += ','+adset.id+','+adset.status+','+adset.lifetime_imps+','+adset.name+','+newDate+','+adset.daily_budget+','+adset.lifetime_budget+','+countries+','+location_types+','+gender+','+age_min+','+age_max+','+adset.optimization_goal+','+attribution_spec+','+adset.billing_event+','+adset.bid_amount;
+						}
+						
 					});
 				}
 				if(camp.ads) {
@@ -262,24 +309,50 @@ jQuery(document).ready(function(){
 						if (body.search(/("|,|\n)/g) >= 0)
 							body = '"' + body + '"';
 
-						finalVal += ','+ads.id+','+status+','+ads.preview_link+','+ads.name+','+title+','+body;
+						if(text == 'Export Selected as Plain Text') {
+							plainVal += ' '+ads.id+' '+status+' '+ads.preview_link+' '+ads.name+' '+title+' '+body;
+						} else {
+							finalVal += ','+ads.id+','+status+','+ads.preview_link+','+ads.name+','+title+','+body;
+						}
 					});
 				}
+				plainVal += '\n';
 				finalVal += '\n';
 			});
 		} 
 		setTimeout(function() {
 			jQuery('#loader_div.loaderPopup').modal('hide');
-			var pom = document.createElement('a');
-			pom.setAttribute('href', 'data:text/csv;charset=utf-8,' + encodeURIComponent(finalVal));
-			var date = new Date();
-			pom.setAttribute('download', 'export_'+date.getFullYear()+'_'+date.getMonth()+'_'+date.getDate()+'.csv');
-			pom.click(); 
+			if(text == 'Export Selected as Plain Text') {
+				jQuery('#export-as-plain-text textarea').val(plainVal);
+				jQuery('#export-as-plain-text').modal('show');
+			} else {
+				var pom = document.createElement('a');
+				pom.setAttribute('href', 'data:text/csv;charset=utf-8,' + encodeURIComponent(finalVal));
+				var date = new Date();
+				pom.setAttribute('download', 'export_'+date.getFullYear()+'_'+date.getMonth()+'_'+date.getDate()+'.csv');
+				pom.click(); 
+			}
 		},500);
 		
 	}
 	/* Export funcationality*/
 
+
+	/*Edit campaign name*/
+	jQuery('.edit-camp-btn').click(function(){
+		jQuery(this).closest('.editable-row').addClass('padding0');
+		jQuery(this).closest('.show-camp-row').hide();
+		jQuery(this).parent().parent().parent().find('.hide-camp-row').show();
+		jQuery(this).parent().parent().next().children().focus();
+		jQuery(this).parent().parent().parent().next().hide();
+	});
+
+	jQuery('.editable-input').keyup(function(ev) {
+		if(ev.which == 13) {
+			//alert('a');
+		}
+	});
+	/*Edit campaign name*/
 });
 
 //<!-- date range -->

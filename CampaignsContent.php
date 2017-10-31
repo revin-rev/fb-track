@@ -43,17 +43,12 @@
             <ul>
                 <!-- <li><i class="fa fa-refresh disable-me"></i></li> -->
                 <li data-toggle="modal" data-target="#delete_campaigns_popup" id="delete_camp"><i class="fa fa-trash disable-me" data-toggle="tooltip" title="Delete"></i></li>
-                <li class="dropdown">
+                <li class="dropdown export-menu">
                     <i class="fa fa-edit dropdown-toggle" type="button" data-toggle="dropdown"></i>
                     <ul class="dropdown-menu export_campaigns">
                       <li data-toggle="modal" data-target="#loader_div"><a href="#">Export Selected</a></li>
                       <li data-toggle="modal" data-target="#loader_div"><a href="#" >Export Selected as Plain Text</a></li>
                       <li data-toggle="modal" data-target="#loader_div"><a href="#">Export All</a></li>
-                      <li class="divider"></li>
-                      <li data-toggle="modal" data-target="#loader_div"><a href="#">Customize Export</a></li>
-                      <li class="divider"></li>
-                      <li data-toggle="modal" data-target="#loader_div"><a href="#">Import Ads as Bulk</a></li>
-                      <li data-toggle="modal" data-target="#loader_div"><a href="#">Download Template</a></li>
                   </ul>
                 </li>
                 <li><i class="fa fa-tag disable-me" data-toggle="tooltip" title="Delete"></i></li>
@@ -311,7 +306,12 @@
 	            </td>
 	            <td class="editable-row">
 	                <a href="#">
-	                    <?php echo $camapaign['name']; ?> <span class="edit-row-title"><i class="fa fa-pencil" aria-hidden="true"></i></span>
+                        <div class="show-camp-row">
+	                    <?php echo $camapaign['name']; ?> <span class="edit-row-title"><i class="fa fa-pencil edit-camp-btn" aria-hidden="true"></i></span>
+                        </div>
+                        <div class="hide-camp-row">
+                            <input class="form-control editable-input" value="<?php echo $camapaign['name']; ?>">
+                        </div>
 	                </a>
 	                <div class="row-editing-icons">
 	                    <a href="#" class="view-charts" data-id="#view-tab"><i class="fa fa-bar-chart" aria-hidden="true"></i> View Chart</a>
