@@ -21,9 +21,7 @@ if(isset($_SESSION['user'])) :
 			$result = curl_exec($ch);
 			curl_close($ch);
 			$camp = json_decode($result, true);
-			echo "<pre>";
-			print_r($camp);
-			echo "</pre>";
+			
 			?>
 			<script type="text/javascript">
 				jQuery(document).ready(function(){
@@ -71,9 +69,7 @@ if(isset($_SESSION['user'])) :
 				$result = curl_exec($ch);
 				curl_close($ch);
 				$adsets = json_decode($result, true);
-				echo "<pre>";
-				print_r($adsets);
-				echo "</pre>";
+				
 				if($_REQUEST['choose_campaigns'] == 'existing') : ?>
 				<script type="text/javascript">
 					jQuery(document).ready(function(){

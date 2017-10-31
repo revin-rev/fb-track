@@ -448,9 +448,14 @@
                 </td>
                 <td>
                     <input type="checkbox" <?php if($adsets['status']=='ACTIVE' ) { echo "checked"; }?> class="adsets_status" data-toggle="toggle" data-size="mini"></td>
-                <td>
+                <td class="editable-row">
                     <a href="#">
-                        <?php echo $adsets[ 'name']; ?> <span class="edit-row-title"><i class="fa fa-pencil" aria-hidden="true"></i></span>
+                         <div class="show-camp-row">
+                            <?php echo $adsets['name']; ?> <span class="edit-row-title"><i class="fa fa-pencil edit-camp-btn" aria-hidden="true"></i></span>
+                        </div>
+                        <div class="hide-camp-row">
+                            <input class="form-control editable-input" value="<?php echo $adsets['name']; ?>">
+                        </div>
                     </a>
                     <div class="row-editing-icons">
                         <a href="#" class="view-charts" data-id="#view-tab"><i class="fa fa-bar-chart" aria-hidden="true"></i> View Chart</a>

@@ -436,7 +436,7 @@
         <tbody>
             <?php foreach($camapaigns['data'] as $ads) : 
                 $adsets= $ads['adsets']['data']; 
-                $total_adset+= count($ads['ads']['data']); 
+                $total_ads+= count($ads['ads']['data']); 
                 if($ads['ads']['data']) :
                 foreach ($ads['ads']['data'] as $key=> $ad) : 
                     if(isset($ad['insights'])){ $total_amount+= $ad['insights']['data'][0]['spend']; }
@@ -449,9 +449,14 @@
                 </td>
                 <td>
                     <input type="checkbox" <?php if($ad['status']=='ACTIVE' ) { echo "checked"; }?> class="ad_status" data-toggle="toggle" data-size="mini"></td>
-                <td>
+                <td class="editable-row">
                     <a href="#">
-                        <?php echo $ad['name']; ?> <span class="edit-row-title"><i class="fa fa-pencil" aria-hidden="true"></i></span>
+                        <div class="show-camp-row">
+                            <?php echo $ad['name']; ?> <span class="edit-row-title"><i class="fa fa-pencil edit-camp-btn" aria-hidden="true"></i></span>
+                        </div>
+                        <div class="hide-camp-row">
+                            <input class="form-control editable-input" value="<?php echo $ad['name']; ?>">
+                        </div>
                     </a>
                     <div class="row-editing-icons">
                         <a href="#"  class="view-charts" data-id="#view-tab"><i class="fa fa-bar-chart" aria-hidden="true"></i> View Chart</a>
@@ -492,11 +497,11 @@
                 </td>
             </tr>
             <?php endforeach; endif; endforeach; ?>
-            <?php if($total_adset> 0) : ?>
+            <?php if($total_ads> 0) : ?>
             <tr>
                 <td colspan="2"></td>
                 <td>Results from
-                    <?php echo $total_adset; ?> ad</td>
+                    <?php echo $total_ads; ?> ad</td>
                 <td></td>
                 <td>-</td>
                 <td>-<span>People</span>

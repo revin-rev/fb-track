@@ -349,9 +349,28 @@ jQuery(document).ready(function(){
 
 	jQuery('.editable-input').keyup(function(ev) {
 		if(ev.which == 13) {
-			//alert('a');
+			var name = jQuery(this).val();
+			var access_token = get('code');
+			var id = jQuery(this).parent().parent().parent().parent().attr('id');
+			var _this = jQuery(this);
+			jQuery.ajax({
+				'url'    	:  'https://graph.facebook.com/v2.10/'+id,
+				'method'	:  'POST',
+				'data'		:  'name='+name+'&access_token='+access_token,
+				success : function(data){
+					console.log('data afeter', data);
+					if(data.success == true) {
+						location.reload();
+					}
+				}
+			});
 		}
 	});
+
+	function get(name){
+		if(name=(new RegExp('[?&]'+encodeURIComponent(name)+'=([^&]*)')).exec(location.search))
+			return decodeURIComponent(name[1]);
+	}
 	/*Edit campaign name*/
 });
 
